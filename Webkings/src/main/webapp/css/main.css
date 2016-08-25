@@ -5,7 +5,20 @@ body>div.header {
     z-index: 6;
     top: 0;
 }
-
+body>div.header h1 a {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666683");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: 0 -102px;
+    width: 92px;
+    height: 20px;
+    font-size: 0;
+    line-height: 0;
+    display: block;
+}
 body>div.header ul.gnb li:last-child a:after {
     content: "";
     display: inline-block;
@@ -70,6 +83,15 @@ body>div.header ul.gnb li.active a {
     font-weight: 500;
     font-style: normal;
 }
+body>div.header ul.gnb .depth2 .bg {
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-right-radius: 5px;
+    bottom: 0;
+}
 body>div.header ul.gnb li>a {
     display: block;
     line-height: 68px;
@@ -81,7 +103,7 @@ body>div.header ul.gnb li>a {
     width: 57px;
     text-align: center;
 }
-body>div.header ul.gnb .depth2.sec2 {
+body>div.header ul.gnb .depth2 sec2 {
     width: 230px;
 }
 
@@ -130,7 +152,7 @@ body>div.header ul.gnb .depth2 .bg {
     border-bottom-right-radius: 5px;
     bottom: 0;
 }
-body>div.header ul.gnb .depth-2 dl dd a em {
+body>div.header ul.gnb .depth2 dl dd a em {
     font-family: 'Malgun Gothic','맑은 고딕','NanumBarunGothic','나눔바른고딕','NanumGothic','나눔고딕','Tahoma','Nanum Barun Gothic','Apple SD Gothic Neo Bold','Apple SD Gothic Neo','애플 SD 고딕 Neo','dotum',sans-serif;
     white-space: nowrap;
     line-height: 12px;
@@ -138,7 +160,7 @@ body>div.header ul.gnb .depth-2 dl dd a em {
     display: inline-block;
     border-bottom: 1px solid #fff;
 }
-body>div.header ul.gnb .depth-2 dl dd a {
+body>div.header ul.gnb .depth2 dl dd a {
     display: block;
     padding: 5px 0;
 }

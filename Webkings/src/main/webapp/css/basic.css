@@ -9,7 +9,6 @@ p {
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
 }
-
 h1 {
     display: block;
     font-size: 2em;
@@ -22,7 +21,8 @@ h1 {
 i, em {
     font-style: normal;
 }
-ul, menu, dir {
+
+ menu, dir {
     display: block;
     list-style-type: disc;
     -webkit-margin-before: 1em;
@@ -45,7 +45,6 @@ a:link, a:visited {
     cursor: pointer;
 }
 
-user agent stylesheet
 li {
     display: list-item;
     text-align: -webkit-match-parent;

@@ -1,31 +1,44 @@
-<%@taglib uri="http://java.sun.com/jstl/sql" prefix="sql"%><%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/clear.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_m.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/basic.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_m.css" />
 </head>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".gnb li").mouseenter(function() {
+			$(".gnb li:first-child").removeClass("active");
+			$(this).addClass("active");
+		})
+		$(".gnb li").mouseleave(function() {
+			$(this).removeClass("active");
+			$(".gnb li:first-child").addClass("active");
+		});
+	});
+</script>
 <body class="M">
 	<div class="header">
 		<div class="shadow">
 			<div>
 				<div class="in-sec">
-					<h1>
-						<a href="#">WEBKINGS</a></h1>
+					<h1><a href="#">WEBKINGS</a></h1>
 					<a href="javascript:;" class="gender f">여성</a>
 					<a href="javascript:;" class="gender m">남성</a>
 					<ul class="gnb">
-						<li class="active" active="true">
+						<li class="active" >
 							<a href="#">ITEM</a>
-							<div class="depth2.sec2">
+							<div class="depth2 sec2">
 								<dl class="age-sel">
 									<dt>추천신상품</dt>
 									<dd>
@@ -90,7 +103,7 @@
 								<div class="bg"></div>
 							</div>
 						</li>
-						<li class>
+						<li class="">
 							<a href="#">SHOP</a>
 							<div class="depth2">
 								<dl class="shop-sel">
@@ -123,13 +136,13 @@
 								</dl>
 							</div>
 						</li>
-						<li class>
+						<li>
 							<a href="#">FEED</a>
 						</li>
-						<li class>
+						<li>
 							<a href="#">
-								"MY"
-								::after
+								MY
+								<!-- ::after -->
 							</a>
 						</li>
 					</ul>

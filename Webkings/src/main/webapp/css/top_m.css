@@ -5,6 +5,12 @@ body>div.header div.shadow div.in-sec {
     position: relative;
     height: 71px;
 }
+body>div.header h1 {
+    position: absolute;
+    left: 97px;
+    top: 25px;
+}
+
 body.M>div.header a.gender.f {
     opacity: .2;
 }
