@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+body>div.header div.shadow div.in-sec {
+    width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    height: 71px;
+}
+body.M>div.header a.gender.f {
+    opacity: .2;
+}
+body.M>div.header a.gender.m {
+    cursor: default;
+}
+body>div.header a.gender.m {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666683");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -167px -71px;
+    width: 22px;
+    height: 40px;
+    left: 56px;
+}
+body.M>div.header ul.gnb li.active>a {
+    border-color: #0fb6c5;
+}
+body>div.header a.gender.f {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666683");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -167px 0;
+    width: 32px;
+    height: 40px;
+}
+body.M>div.header div.login p:after {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666729");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -167px -111px;
+    width: 20px;
+    height: 28px;
+}
