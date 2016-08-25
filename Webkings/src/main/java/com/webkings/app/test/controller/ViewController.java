@@ -1,4 +1,4 @@
-package com.webkings.app.view.controller;
+package com.webkings.app.test.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
