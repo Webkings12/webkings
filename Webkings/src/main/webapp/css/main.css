@@ -6,7 +6,7 @@ body>div.header {
     top: 0;
 }
 body>div.header h1 a {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666683");
+    background-image: url("/images/logo.png");
     -webkit-background-size: 252px 234px;
     -moz-background-size: 252px 234px;
     -o-background-size: 252px 234px;
