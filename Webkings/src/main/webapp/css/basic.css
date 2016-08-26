@@ -39,12 +39,6 @@ dl {
     -webkit-margin-end: 0px;
 }
 
-a:link, a:visited {
-    color: #202022;
-    text-decoration: none;
-    cursor: pointer;
-}
-
 li {
     display: list-item;
     text-align: -webkit-match-parent;

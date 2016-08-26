@@ -160,6 +160,11 @@ body>div.header ul.gnb .depth2 dl dd a em {
     display: inline-block;
     border-bottom: 1px solid #fff;
 }
+a:link, a:visited {
+    color: #202022;
+    text-decoration: none;
+    cursor: pointer;
+}
 body>div.header ul.gnb .depth2 dl dd a {
     display: block;
     padding: 5px 0;
@@ -173,6 +178,7 @@ body>div.header div.bg {
     background-color: #fff;
     opacity: .97;
 }
+
 body>div.header div.login {
     position: absolute;
     top: 50%;
@@ -242,7 +248,14 @@ body>div.header div.search form>p input {
     right: 10px;
     padding: 0;
 }
-
+body>div.header ul.gnb li:hover .depth2{
+	display: block;
+}
+body>div.header ul.gnb li.active a {
+    font-family: DINPro_M,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
 body>div.header div.search form>p:after {
     content: "";
     position: absolute;
