@@ -5,8 +5,29 @@ body>div.header {
     z-index: 6;
     top: 0;
 }
+body>div.header ul.logout li {
+    float: left;
+}
+body>div.header ul.logout li a {
+    display: block;
+    padding: 0 9px 0 10px;
+    line-height: 20px;
+    position: relative;
+}
+body>div.header ul.logout {
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    width: 120px;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 224px;
+}
 body>div.header h1 a {
-    background-image: url("/images/logo.png");
+    /*  background-image: url("../images/logo.png");  */
     -webkit-background-size: 252px 234px;
     -moz-background-size: 252px 234px;
     -o-background-size: 252px 234px;
@@ -22,7 +43,7 @@ body>div.header h1 a {
 body>div.header ul.gnb li:last-child a:after {
     content: "";
     display: inline-block;
-    background-image: url("/rsc/front/img/sprite.png?_1471437666683");
+    /* background-image: url("/rsc/front/img/sprite.png?_1471437666683"); */
     -webkit-background-size: 252px 234px;
     -moz-background-size: 252px 234px;
     -o-background-size: 252px 234px;
@@ -38,7 +59,7 @@ body>div.header ul.gnb li:last-child a:after {
 }
 body>div.header div.shadow {
     padding-bottom: 3px;
-    background: url("/rsc/front/img/bg-gnb-1.png") repeat-x bottom;
+    /* background: url("/rsc/front/img/bg-gnb-1.png") repeat-x bottom; */
     position: relative;
     z-index: 1;
 }
@@ -78,20 +99,6 @@ body>div.header ul.gnb li {
 body>div.header ul.gnb li:last-child a {
     position: relative;
 }
-body>div.header ul.gnb li.active a {
-    font-family: DINPro_M,sans-serif;
-    font-weight: 500;
-    font-style: normal;
-}
-body>div.header ul.gnb .depth2 .bg {
-    -webkit-border-bottom-left-radius: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    border-bottom-left-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-bottom-right-radius: 5px;
-    bottom: 0;
-}
 body>div.header ul.gnb li>a {
     display: block;
     line-height: 68px;
@@ -103,7 +110,7 @@ body>div.header ul.gnb li>a {
     width: 57px;
     text-align: center;
 }
-body>div.header ul.gnb .depth2 sec2 {
+body>div.header ul.gnb .depth2.sec2 {
     width: 230px;
 }
 
@@ -142,7 +149,14 @@ body>div.header {
     z-index: 6;
     top: 0;
 }
-
+input, select, textarea {
+    font-family: 'Malgun Gothic','맑은 고딕','NanumBarunGothic','나눔바른고딕','NanumGothic','나눔고딕','Tahoma','Nanum Barun Gothic','Apple SD Gothic Neo Bold','Apple SD Gothic Neo','애플 SD 고딕 Neo','dotum',sans-serif;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #888;
+    word-spacing: -0.2em;
+    line-height: 136%;
+}
 body>div.header ul.gnb .depth2 .bg {
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius-bottomleft: 5px;
@@ -256,6 +270,22 @@ body>div.header ul.gnb li.active a {
     font-weight: 500;
     font-style: normal;
 }
+input {
+    -webkit-appearance: textfield;
+    background-color: white;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    cursor: auto;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+}
 body>div.header div.search form>p:after {
     content: "";
     position: absolute;
@@ -288,6 +318,28 @@ body>div.header div.login strong {
 body>div.header div.login a {
     color: #a2a2a5;
 }
+
+input, textarea, keygen, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 13.3333px Arial;
+}
+
+input, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+@media screen and (max-width: 1460px)
+body>div.header ul.logout {
+    right: 65px;
+}
 @media screen and (max-width: 1460px)
 body>div.header div.search {
     width: 40px;
@@ -311,4 +363,8 @@ body>div.header div.search form>p:after {
     -ms-transform: translate(-50%,-50%);
     -o-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
+}
+@media screen and (max-width: 1460px)
+body>div.header ul.logout {
+    right: 65px;
 }

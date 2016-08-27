@@ -10,7 +10,13 @@ body>div.header h1 {
     left: 97px;
     top: 25px;
 }
-
+body.M>div.header ul.gnb li div.depth2 dt {
+    color: #0fb6c5;
+}
+body>div.header ul.gnb .depth2 dl dt {
+    padding-bottom: 5px;
+    white-space: nowrap;
+}
 body.M>div.header a.gender.f {
     opacity: .2;
 }
@@ -18,14 +24,14 @@ body.M>div.header a.gender.m {
     cursor: default;
 }
 body>div.header a.gender.m {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666683");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/avatar.png");
+     -webkit-background-size: 32px 32px; */
+     -moz-background-size: 32px 32px;
+    -o-background-size: 32px 32px;
+    background-size: 32px 32px; 
     background-repeat: no-repeat;
-    background-position: -167px -71px;
-    width: 22px;
+    margin-top: 5px;
+    width: 32px;
     height: 40px;
     left: 56px;
 }
@@ -33,18 +39,18 @@ body.M>div.header ul.gnb li.active>a {
     border-color: #0fb6c5;
 }
 body>div.header a.gender.f {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666683");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/woman.png");
+     -webkit-background-size: 32px 32px;
+    -moz-background-size: 32px 32px;
+    -o-background-size: 32px 32px;
+    margin-top: 5px;
+    background-size: 32px 32px; 
     background-repeat: no-repeat;
-    background-position: -167px 0;
     width: 32px;
     height: 40px;
 }
 body.M>div.header div.login p:after {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666729");
+    /* background-image: url("/rsc/front/img/sprite.png?_1471437666729"); */
     -webkit-background-size: 252px 234px;
     -moz-background-size: 252px 234px;
     -o-background-size: 252px 234px;

@@ -25,6 +25,12 @@
 			$(this).removeClass("active");
 			$(".gnb li:first-child").addClass("active");
 		});
+	/* 	$("in-sec a").click(function() {
+			if($("body").hasClass("M")){
+				$("body>div.header a.gender.f").fadeTo(0, opacity);
+			}
+		}); */
+		
 	});
 </script>
 <body class="M">
@@ -148,13 +154,10 @@
 						</li>
 					</ul>
 					<%-- <c:if test=""> 세션이 있으면 --%>
-						<div class="login">
-							<p><img alt="회원사진이미지" src="#">
-								::after
-							</p>
-							<strong>아이디</strong>
-							<a href="#">로그아웃</a>
-						</div>
+						<ul class="logout">
+							<li><a href="#login">로그인</a></li>
+							<li><a href="#join">회원가입</a></li>
+						</ul>
 					<%-- </c:if> --%>
 					<%-- <c:if test="">  세션이 없으면 
 						<div class="logout">
