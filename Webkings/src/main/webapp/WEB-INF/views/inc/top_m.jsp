@@ -7,12 +7,12 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/clear.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/basic.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_m.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 </head>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
@@ -25,12 +25,6 @@
 			$(this).removeClass("active");
 			$(".gnb li:first-child").addClass("active");
 		});
-	/* 	$("in-sec a").click(function() {
-			if($("body").hasClass("M")){
-				$("body>div.header a.gender.f").fadeTo(0, opacity);
-			}
-		}); */
-		
 	});
 </script>
 <body class="M">
@@ -38,8 +32,8 @@
 		<div class="shadow">
 			<div>
 				<div class="in-sec">
-					<h1><a href="#">WEBKINGS</a></h1>
-					<a href="javascript:;" class="gender f">여성</a>
+					<h1><a href="<c:url value='/view/top.do?gender=m'/>">WEBKINGS</a></h1>
+					<a href="<c:url value='/view/top.do'/>" class="gender f">여성</a>
 					<a href="javascript:;" class="gender m">남성</a>
 					<ul class="gnb">
 						<li class="active" >
@@ -167,10 +161,10 @@
 						</div>
 					</c:if> --%>
 					<div class="search">
-						<form id="fmSearch" name="fmSearch" action="#" class="autoValidateForm">
+						<form id="fmSearch" name="fmSearch" action="#" class="autoValidateForm"><p>
 							<input type="text" name="q" value="" fieldname="검색어" checkfunctionname="checkSpecialChar"
 							 restrictutf8bytes="45" class="__required" confirmmessage="특수문자로 검색하실수 없습니다." 
-							 autocomplete="off" focus="off"/>
+							 autocomplete="off" focus="off"/></p>
 						</form>
 						<!-- <div class="keyword"></div> 검색어 저장기능 사용시-->
 					</div>

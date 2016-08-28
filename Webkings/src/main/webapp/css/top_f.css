@@ -1,18 +1,17 @@
 @CHARSET "UTF-8";
-body.M>div.header ul.gnb li div.depth2 dt {
-    color: #0fb6c5;
+body.F>div.header ul.gnb li div.depth2 dt {
+    color: #e6178f;
 }
-body.M>div.header a.gender.f {
+body.F>div.header a.gender.m {
     opacity: .2;
 }
-body.M>div.header a.gender.m {
+body.F>div.header a.gender.f {
     cursor: default;
 }
-body.M>div.header ul.gnb li.active>a {
-    border-color: #0fb6c5;
+body.F>div.header ul.gnb li.active>a {
+   border-color: #e6178f;
 }
-
-body.M>div.header div.login p:after {
+body.F>div.header div.login p:after {
     /* background-image: url("/rsc/front/img/sprite.png?_1471437666729"); */
     -webkit-background-size: 252px 234px;
     -moz-background-size: 252px 234px;

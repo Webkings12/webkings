@@ -27,15 +27,14 @@ body>div.header ul.logout {
     right: 224px;
 }
 body>div.header h1 a {
-    /*  background-image: url("../images/logo.png");  */
+    background-image: url("../images/logo.png");
     -webkit-background-size: 252px 234px;
     -moz-background-size: 252px 234px;
     -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-size: 120px 28px;
     background-repeat: no-repeat;
-    background-position: 0 -102px;
-    width: 92px;
-    height: 20px;
+    width: 120px;
+    height: 30px;
     font-size: 0;
     line-height: 0;
     display: block;
@@ -149,6 +148,44 @@ body>div.header {
     z-index: 6;
     top: 0;
 }
+body>div.header a.gender.m {
+    background-image: url("../images/avatar.png");
+     -webkit-background-size: 32px 32px; 
+     -moz-background-size: 32px 32px;
+    -o-background-size: 32px 32px;
+    background-size: 32px 32px; 
+    background-repeat: no-repeat;
+    margin-top: 5px;
+    width: 32px;
+    height: 40px;
+    left: 56px;
+}
+body>div.header h1 {
+    position: absolute;
+    left: 115px;
+    top: 7px;
+}
+body>div.header ul.gnb .depth2 dl dt {
+    padding-bottom: 5px;
+    white-space: nowrap;
+}
+body>div.header div.shadow div.in-sec {
+    width: 1460px;
+    margin: 0 auto;
+    position: relative;
+    height: 71px;
+}
+body>div.header a.gender.f {
+    background-image: url("../images/woman.png");
+     -webkit-background-size: 32px 32px;
+    -moz-background-size: 32px 32px;
+    -o-background-size: 32px 32px;
+    margin-top: 5px;
+    background-size: 32px 32px; 
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 40px;
+}
 input, select, textarea {
     font-family: 'Malgun Gothic','맑은 고딕','NanumBarunGothic','나눔바른고딕','NanumGothic','나눔고딕','Tahoma','Nanum Barun Gothic','Apple SD Gothic Neo Bold','Apple SD Gothic Neo','애플 SD 고딕 Neo','dotum',sans-serif;
     vertical-align: middle;
@@ -256,9 +293,10 @@ body>div.header div.search form>p input {
     height: 37px;
     border: 0;
     display: block;
+    width:140;
     color: #202022;
     position: absolute;
-    left: 38px;
+    left: 35px;
     right: 10px;
     padding: 0;
 }
@@ -291,14 +329,13 @@ body>div.header div.search form>p:after {
     position: absolute;
     top: 50%;
     left: 12px;
-    background-image: url("/rsc/front/img/sprite.png?_1471437666683");
+    background-image: url("../images/search.png");
     -webkit-background-size: 252px 234px;
     -moz-background-size: 252px 234px;
     -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-size: 14px 14px;
     background-repeat: no-repeat;
-    background-position: -235px -50px;
-    width: 15px;
+    width: 14px;
     height: 16px;
     -webkit-transform: translate(0,-50%);
     -moz-transform: translate(0,-50%);
@@ -352,6 +389,18 @@ body>div.header div.search form>p input {
 @media screen and (max-width: 1460px)
 body>div.header div.login {
     right: 65px;
+}
+@media screen and (max-width: 1460px)
+body>div.header div.search {
+    width: 40px;
+}
+@media screen and (max-width: 1460px)
+body>div.header div.search form>p input {
+    display: none;
+}
+@media screen and (max-width: 1460px)
+body>div.header div.shadow div.in-sec {
+    width: 950px;
 }
 @media screen and (max-width: 1460px)
 body>div.header div.search form>p:after {
