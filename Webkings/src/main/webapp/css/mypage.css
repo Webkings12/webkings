@@ -58,3 +58,147 @@ div.body-sec>div.in-sec>div {
 .nlink {
     cursor: default !important;
 }
+.mypage-btn {
+    width: 360px;
+    margin: -100px auto 0;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.mypage-btn li {
+    float: left;
+    padding: 0 5px 10px;
+}
+div.body-sec>div.in-sec>div.footer div.in-sec-2 {
+    bottom: 52px;
+}
+div.body-sec div.in-sec-2 {
+    position: absolute;
+    left: 0;
+    top: 192px;
+    right: 0;
+    bottom: 0;
+}
+.mypage-btn li a {
+    display: block;
+    width: 110px;
+    height: 110px;
+    background-color: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 13px;
+    overflow: hidden;
+    position: relative;
+}
+.mypage-btn li.login a:before {
+    margin-top: 22px;
+}
+.mypage-btn li.recent-prod a:before {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -72px -166px;
+    width: 36px;
+    height: 35px;
+}
+.mypage-btn li a:before {
+    content: "";
+    margin: 25px auto 16px;
+    display: block;
+}
+.mypage-btn li a em {
+    position: absolute;
+    min-width: 23px;
+    line-height: 23px;
+    color: #fff;
+    font-family: DINPro_M,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #e6178f;
+    top: 12px;
+    right: 12px;
+    -webkit-border-radius: 13px;
+    -moz-border-radius: 13px;
+    border-radius: 13px;
+    font-size: 12px;
+}
+.mypage-btn li.recent-shop a:before {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -108px -166px;
+    width: 36px;
+    height: 35px;
+}
+.mypage-btn li a:before {
+    content: "";
+    margin: 25px auto 16px;
+    display: block;
+}
+.mypage-btn li.coupon a:before {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -36px -166px;
+    width: 36px;
+    height: 35px;
+}
+.mypage-btn li a:before {
+    content: "";
+    margin: 25px auto 16px;
+    display: block;
+}
+.mypage-btn li.favor a:before {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -199px 0;
+    width: 36px;
+    height: 35px;
+}
+.mypage-btn li a:before {
+    content: "";
+    margin: 25px auto 16px;
+    display: block;
+}
+.mypage-btn li.follow a:before {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -199px -35px;
+    width: 36px;
+    height: 35px;
+}
+.mypage-btn li a:before {
+    content: "";
+    margin: 25px auto 16px;
+    display: block;
+}
+.mypage-btn li a:before {
+    content: "";
+    margin: 25px auto 16px;
+    display: block;
+}

@@ -380,6 +380,11 @@ body>div.header div.search:hover p:after, body>div.header div.search.active p:af
 input, textarea, keygen, select, button, meter, progress {
     -webkit-writing-mode: horizontal-tb;
 }
+a:hover, a:active {
+    color: #202022;
+    text-decoration: none;
+    cursor: pointer;
+}
 body>div.header div.search:hover, body>div.header div.search.active {
     width: 198px;
 }
