@@ -12,7 +12,7 @@ import com.webkings.app.qna.model.QnaService;
 import com.webkings.app.qna.model.QnaVO;
 
 @Controller
-@RequestMapping("/board")
+@RequestMapping("/board/qna")
 public class QnaController {
 	
 	private static final Logger logger
@@ -21,13 +21,13 @@ public class QnaController {
 	/*@Autowired
 	private QnaService qnaService;*/
 	
-	@RequestMapping(value="/qna.do",method=RequestMethod.GET)
+	@RequestMapping(value="/write.do",method=RequestMethod.GET)
 	public String qnaView(){
 		//1.
 		logger.info("QnA창 보이기");
 		//2.
 		//3.
-		return "board/qna";
+		return "board/qna/write";
 	}
 	
 	/*@RequestMapping(value="/qna.do",method=RequestMethod.POST)
