@@ -8,6 +8,17 @@ body.F>div.header a.gender.m {
 body.F>div.header a.gender.f {
     cursor: default;
 }
+body.F .mypage-btn li.login a:before {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666729");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -67px -60px;
+    width: 36px;
+    height: 38px;
+}
 body.F>div.header ul.gnb li.active>a {
    border-color: #e6178f;
 }

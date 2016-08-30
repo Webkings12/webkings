@@ -7,10 +7,11 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/clear.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/basic.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_m.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/clear.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/basic.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_m.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_f.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -25,16 +26,31 @@
 			$(this).removeClass("active");
 			$(".gnb li:first-child").addClass("active");
 		});
+		$("#mypage").click(function() {
+			$(location).attr("href","/Webkings/view/mypage.do");
+		});
+		$(".gender.m").click(function() {
+			if($("body").hasClass("F")){
+				$("body").removeClass("F");
+				$("body").attr("class","M");
+			}
+		});
+			$(".gender.f").click(function(){
+			if($("body").hasClass("M")){
+				$("body").removeClass("M");
+				$("body").attr("class","F");
+			}
+		});
 	});
 </script>
-<body class="M">
+<body class="F">
 	<div class="header">
 		<div class="shadow">
 			<div>
 				<div class="in-sec">
-					<h1><a href="<c:url value='/view/top.do?gender=m'/>">WEBKINGS</a></h1>
-					<a href="<c:url value='/view/top.do'/>" class="gender f">여성</a>
-					<a href="javascript:;" class="gender m">남성</a>
+					<h1><a href="<c:url value='/view/top.do'/>">WEBKINGS</a></h1>
+					<a href="#" class="gender f">여성</a>
+					<a href="#" class="gender m">남성</a>
 					<ul class="gnb">
 						<li class="active" >
 							<a href="#">ITEM</a>
@@ -141,7 +157,7 @@
 							<a href="#">FEED</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="#" id="mypage">
 								MY
 								<!-- ::after -->
 							</a>
@@ -173,5 +189,3 @@
 		</div>
 		<div class="bg"></div>
 	</div>
-</body>
-</html>
