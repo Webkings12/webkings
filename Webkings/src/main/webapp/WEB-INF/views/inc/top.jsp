@@ -183,7 +183,7 @@
 					<%-- <c:if test=""> 세션이 있으면 --%>
 						<ul class="logout">
 							<li><a href="#login">로그인</a></li>
-							<li><a href="#join">회원가입</a></li>
+							<li><a href="<c:url value='/member/tos.do'/>">회원가입</a></li>
 						</ul>
 					<%-- </c:if> --%>
 					<%-- <c:if test="">  세션이 없으면 
