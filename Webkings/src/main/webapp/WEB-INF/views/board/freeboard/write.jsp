@@ -18,44 +18,116 @@
 	};
 </script>
 <style type="text/css">
-	.divForm{
+	.divFrm2{
 		margin: 0 auto;
-		margin-top: 100px;
+		margin-top: 200px;
 		width: 600px;
+		text-align: center;
 	}
+
+.btn_default.btn_light {
+    padding: 0;
+}
+.btn_default {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    width: 150px;
+    font-weight: 700;
+    cursor: pointer;
+    -webkit-box-shadow: 0 3px 10px -3px #aaa;
+    -moz-box-shadow: 0 3px 10px -3px #aaa;
+    box-shadow: 0 3px 10px -3px #aaa;
+}
+.btn_large {
+    padding: 10px 40px;
+    font-size: 20px;
+}
+.btn_light {
+    padding: 4px 9px;
+    color: #666;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+.btn_BaW {
+	
+    /* background-color: #1A70DC; */
+    background-color: #FF00CC;
+}
+
+
+.divFrm2 input[type=text] {
+    height: 40px;
+    border: 1px solid #e4e6e9;
+    text-indent: 12px;
+    width: 88%;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 0;
+}
+
+.divFrm2 textarea {
+    border: 1px solid #e4e6e9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    line-height: 140%;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 12px;
+    height: 300px;
+    
+}
+.float_left{
+	float: left;
+}
+.align_center{
+	text-align: center;
+	margin: 0 auto;
+}
+.btn .btn_BaW {
+	color: #FFFFFF;
+}
+.top_Padding{
+	padding-top: 10px;
+}
 </style>
 
-<div class="divForm">
-<form name="frmWrite" method="post" action="<c:url value='/board/write.do'/>" id="frmWrite">
- <fieldset>
-	<legend>글쓰기</legend>
-        <div class="firstDiv">
-            <label for="title">제목</label>
-            <input type="text" id="title" name="title"  />
-        </div>
-        <div>
-            <label for="name">작성자</label>
-            <input type="text" id="name" name="name" />
-        </div>
-        <div>
-            <label for="pwd">비밀번호</label>
-            <input type="password" id="pwd" name="pwd" />
-        </div>
-        <div>
-            <label for="email">이메일</label>
-            <input type="text" id="email" name="email" />
-        </div>
-        <div>  
-        	<label for="content">내용</label>
-        </div>
-        <div>
-			<textarea name="content" id="content" rows="12" cols="60"></textarea>
-			<!-- <textarea name="content" rows="12" cols="60" class="ckeditor"></textarea> -->
+
+
+<div class="divFrm2">
+		
+	<form id="write_form" method="post" target="_self" name="write_form" action="#">
+
+		<div class="align_center">
+			<h4 class="float_left top_Padding"><strong>제목</strong></h4>
+			<input type="text" id="subject" name="subject" class="float_left top_Padding" value="">
+			<div class="float_left top_Padding"><strong>45</strong>자 제한</div>
 		</div>
-        <div class="center">
-            <input type = "submit" value="등록"/>
-            <input type = "Button" value="글목록" onclick="location.href='<c:url value="/board/list.do"/>';" />         
-        </div>
-    </fieldset>
-</form>
-</div>   
+		<br>
+		<br>
+		<div class="divContent">
+			<textarea id="fm_post" name="content"></textarea>
+		</div>
+		<div>
+			<input type="file" name="">
+		</div>	
+		<br>			
+		<div class="btn">
+			<a id="write_submit" class="btn_default btn_light btn_large btn_BaW" href="#">등록</a>
+			<a class="btn_default btn_light btn_large" href="#" >글목록</a>
+		</div>
+	</form>
+
+	</div>

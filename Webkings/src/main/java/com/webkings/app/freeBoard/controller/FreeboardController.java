@@ -1,4 +1,4 @@
-package com.webkings.app.board.controller;
+package com.webkings.app.freeBoard.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
