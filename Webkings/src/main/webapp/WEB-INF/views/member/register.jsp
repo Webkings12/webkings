@@ -10,7 +10,7 @@
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
 <title>Custom Login Demo - Kakao JavaScript SDK</title>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+
 <script type="text/javascript" src="https://apis.google.com/js/api:client.js"></script>
 <script type="text/javascript" src="/asset/js/sns_login_google.js"></script>
 
@@ -169,8 +169,9 @@ FaceBookApp.init(document, 'script', 'facebook-jssdk');
 	</div>
 		
 	<!-- 네이버 -->	
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
 	<script type="text/javascript">
-		var naver_id_login = new naver_id_login("3M_DJpojkr2fyowsWYaT", "http://127.0.0.1:9090/Webkings/");
+		var naver_id_login = new naver_id_login("3M_DJpojkr2fyowsWYaT", "http://192.168.0.46:9090/Webkings/member/register.do");
 		var state = naver_id_login.getUniqState();
 		/* naver_id_login.setButton("white", 1,40); */
 		naver_id_login.setDomain(".service.com");
@@ -189,10 +190,8 @@ FaceBookApp.init(document, 'script', 'facebook-jssdk');
 	</script>
       <button type="submit" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">회원가입</button>
     </div>
-    
   </form>
 </div>
-
 <script>
 // Get the modal
 </script>

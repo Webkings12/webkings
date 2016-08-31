@@ -199,3 +199,9 @@ ALTER TABLE REPLY
 		REFERENCES FREEBOARD (
 			B_NO
 		);
+		
+create sequence member_seq
+minvalue 1
+maxvalue 999999
+increment by 1
+nocache;
