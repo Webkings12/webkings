@@ -389,18 +389,14 @@ body>div.header div.search:hover, body>div.header div.search.active {
     width: 198px;
 }
 @media screen and (max-width: 1460px)
-body>div.header ul.logout {
+{body>div.header ul.logout {
     right: 65px;
-}
-@media screen and (max-width: 1460px)
-{div.body-sec>div.in-sec {
-    width: 950px;
 }}
 @media screen and (max-width: 1460px){body>div.header div.search{
     width: 40px;
 }} 
 @media screen and (max-width: 1460px)
-body>div.header {div.search form>p input {
+{body>div.header div.search form>p input {
     display: none;
 }}
 
@@ -435,3 +431,5 @@ body>div.header {div.search form>p input {
 {body>div.header ul.logout {
     right: 65px;
 }}
+
+

@@ -17,7 +17,6 @@
 				$("#tos2").focus();
 				event.preventDefault();
 			}
-			
 		});
 	});
 </script>	
