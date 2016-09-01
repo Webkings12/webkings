@@ -1,5 +1,10 @@
 package com.webkings.app.member.controller;
 
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.webkings.app.common.FileUploadWabUtil;
 import com.webkings.app.member.model.MemberService;
 import com.webkings.app.member.model.MemberVo;
 
@@ -21,6 +27,9 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private FileUploadWabUtil fileUtil;
 	
 	@RequestMapping("/tos.do")
 	public String tos_get(){
@@ -36,12 +45,22 @@ public class MemberController {
 		return "member/register";
 	}
 	@RequestMapping(value="/register.do", method=RequestMethod.POST)
-	public String register_post(@ModelAttribute MemberVo memberVo){
+	public String register_post(@ModelAttribute MemberVo memberVo,
+			HttpServletRequest request){
 		logger.info("회원가입 처리, 파라미터 MemberVo={}",memberVo);
 		
+		int uploadTpye=fileUtil.IMAGE_UPLOAD;
+		
+		List<Map<String, Object>> fileList=
+				fileUtil.fileUPload(request, uploadTpye);
+		String fileName="";
+		for( Map<String, Object> mymap:fileList){
+			fileName=(String)mymap.get("fileName");
+		}
+		memberVo.setmImage(fileName);
 		int cnt= memberService.insertMember(memberVo);
 		logger.info("회원가입 처리, 파라미터 cnt={}",cnt);
 		
-		return "main";
+		return "redirect:/main.do";
 	}
 }

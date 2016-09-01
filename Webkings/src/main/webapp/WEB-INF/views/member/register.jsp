@@ -133,40 +133,71 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+$(document).ready(function(){
+	$("#form").submit(function(event){
+		if($("#mEmail").val().length<1){
+			alert("이메일을 입력하세요.");
+			$("#id01").css("display","block");
+			$("#mEmail").focus();
+			return false;
+		}else if($("#mNick").val().length<1){
+			alert("닉네임을 입력하세요.");
+			$("#id01").css("display","block");
+			$("#mNick").focus();
+			return false;
+		}else if($("#mPwd").val().length<1){
+			alert("비밀번호를 입력하세요.");
+			$("#id01").css("display","block");
+			$("#mPwd").focus();
+			return false;
+		}else if($("#mPwd_ok").val().length<1){
+			alert("비밀번호확인을 입력하세요.");
+			$("#id01").css("display","block");
+			$("#mPwd_ok").focus();
+			return false;
+		}else if($("#mPwd").val()!= $("#mPwd_ok").val()){
+			alert("비밀번호가 다릅니다.");
+			$("#id01").css("display","block");
+			$("#mPwd_ok").focus();
+			return false;
+		}
+		
+		$("#id01").css("display","none");
+		
+	});
+});
 </script>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/member.css" />
 
-<body>
-
-
 <div id="id01" class="modal">
-	<div class="amodel">
-  <form class="modal-content animate" 
-  action="<c:url value="/member/register.do"/>" method="post" enctype="multipart/form-data" >
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+	<div class="amodel">
+  <form id="form" class="modal-content animate"
+  action="<c:url value="/member/register.do"/>" method="post" enctype="multipart/form-data" >
     <div class="reg">
     <div class="imgfile">
        <img id="UploadedImg" 
        src="" /> 
     </div>
     <div>
-		<input type='file'  onchange="readURL(this);"  value="사진등록" />
+		<input type='file' name="upFile" onchange="readURL(this)"/>
     </div>
     </div>
    
     <div class="container1">
     	<div class="reg">
-      		<input type="text" placeholder="이메일" name="mEmail" required>
+      		<input type="text" placeholder="이메일" name="mEmail" id="mEmail">
     	</div>
     	<div class="reg"> 
-      		<input type="text" placeholder="닉네임" name="mNick" required>
+      		<input type="text" placeholder="닉네임" name="mNick" id="mNick">
    		</div>
 		<div class="reg">
-      		<input type="password" placeholder="비밀번호" name="mPwd" required>
+      		<input type="password" placeholder="비밀번호" name="mPwd" id="mPwd">
       	</div>
     	<div class="reg">  
-      		<input type="password" placeholder="비밀번호확인" name="mPwd_ok" required>
+      		<input type="password" placeholder="비밀번호확인" name="mPwd_ok" id="mPwd_ok">
     	</div>
     </div>
 	
@@ -209,14 +240,9 @@ function readURL(input) {
 		// 네이버 사용자 프로필 조회
 		naver_id_login.get_naver_userprofile("naverSignInCallback()");
 	</script>
-      <input  type="submit" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" value="회원가입" />
+      <input  type="submit" class="cancelbtn" value="회원가입" />
     </div>
   </form>
 </div>
 </div>
-<script>
-// Get the modal
-</script>
 
-</body>
-</html>
