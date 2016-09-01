@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/board/freeboard")
+@RequestMapping("/freeboard")
 public class FreeboardController {
 	public static final Logger logger=
 			LoggerFactory.getLogger(FreeboardController.class);
@@ -20,4 +20,15 @@ public class FreeboardController {
 		//3.
 		return "board/freeboard/write";
 	}
+	@RequestMapping("/list.do")
+	public String freeBoardList(){
+		//1.
+		
+		//2.
+		
+		//3.
+		
+		return "board/freeboard/list";
+	}
+	
 }
