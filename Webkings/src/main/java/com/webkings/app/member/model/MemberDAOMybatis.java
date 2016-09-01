@@ -1,8 +1,7 @@
 package com.webkings.app.member.model;
 
-import org.springframework.stereotype.Repository;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
 
-@Repository
-public class MemberDAOMybatis implements MemberDAO {
+public class MemberDAOMybatis extends SqlSessionDaoSupport implements MemberDAO {
 
 }

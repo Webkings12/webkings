@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.wekings.app">
+	<logger name="com.webkings.app">
 		<level value="info" />
 	</logger>
 	

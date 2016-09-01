@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 public class QnaDAOMybatis extends SqlSessionDaoSupport implements QnaDAO{
 	private String namespace="com.mybatis.mapper.oracle.qna";
 	
+	@Override
 	public int insertQna(QnaVO qnaVo){
 		return getSqlSession().insert(namespace+".inertQna",qnaVo);
 	}

@@ -6,14 +6,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class QnaServiceImpl implements QnaService{
 
-	@Override
-	public int insertQna(QnaVO qnaVo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-/*	@Autowired
+	@Autowired
 	private QnaDAO qnaDao;
 	
+	@Override
+	public int insertQna(QnaVO qnaVo) {
+		int cnt = 5;
+		return cnt;
+	}
+/*	
 	public int insertQna(QnaVO qnaVo){
 		return qnaDao.insertQna(qnaVo);
 	}*/
