@@ -103,7 +103,13 @@
 	padding-top: 10px;
 }
 </style>
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btSubmit").click(function(){
+			$("#write_form").submit();
+		});
+	});
+</script>
 
 
 <div class="divFrm2">
@@ -112,20 +118,20 @@
 
 		<div class="align_center">
 			<h4 class="float_left top_Padding"><strong>제목</strong></h4>
-			<input type="text" id="subject" name="subject" class="float_left top_Padding" value="">
+			<input type="text" id="subject" name="bTitle" class="float_left top_Padding" value="">
 			<div class="float_left top_Padding"><strong>45</strong>자 제한</div>
 		</div>
 		<br>
 		<br>
 		<div class="divContent">
-			<textarea id="fm_post" name="content"></textarea>
+			<textarea id="fm_post" name="bContent"></textarea>
 		</div>
 		<div>
-			<input type="file" name="">
+			<input type="file" name="upfile">
 		</div>	
 		<br>			
 		<div class="btn">
-			<a id="write_submit" class="btn_default btn_light btn_large btn_BaW" href="#">등록</a>
+			<a id="btSubmit" class="btn_default btn_light btn_large btn_BaW" href="#">등록</a>
 			<a class="btn_default btn_light btn_large" href="#" >글목록</a>
 		</div>
 	</form>

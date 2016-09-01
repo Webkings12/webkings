@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.mapper.oracle.freeBoard">
+	<insert id="insertFBoard" parameterType="FreeBoardVO">
+		<selectKey order="BEFORE" keyProperty="bNo" resultType="int">
+		select freeboard_seq from dual
+		</selectKey>
+		insert into freeboard(b_no,b_title,b_content,b_fileName,b_filesize,b_originalfilename,b_regdate,b_chgdate,m_no)
+		values(#{bNo},#{bTitle},#{bContent},#{bFilename},#{bFilesize},#{bOriginalfilename},sysdate,sysdate,#{mNo})
+	</insert>
+</mapper>
