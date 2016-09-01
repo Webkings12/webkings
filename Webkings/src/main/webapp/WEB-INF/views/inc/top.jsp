@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_m.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_f.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -26,9 +27,8 @@
 			$(this).removeClass("active");
 			$(".gnb li:first-child").addClass("active");
 		});
-		$("#mypage").click(function() {
-			$(location).attr("href","/Webkings/view/mypage.do");
-		});
+		
+	
 		$(".gender.m").click(function() {
 			if($("body").hasClass("F")){
 				$("body").removeClass("F");
@@ -41,6 +41,23 @@
 				$("body").attr("class","F");
 			}
 		});
+			
+		/* if($("body").hasClass("F")){
+			$("#mypage").click(function() {
+				if($("body").hasClass("M")){
+					$("body").removeClass("M");
+					 $("body").attr("class","F");
+				}
+			});
+		}
+		if($("body").hasClass("M")){
+			$("#mypage").click(function() {
+				if($("body").hasClass("F")){
+					$("body").removeClass("F");
+					 $("body").attr("class","M");
+				}
+			}); */
+		/* } */
 	});
 </script>
 <body class="F">
@@ -48,7 +65,7 @@
 		<div class="shadow">
 			<div>
 				<div class="in-sec">
-					<h1><a href="<c:url value='/view/top.do'/>">WEBKINGS</a></h1>
+					<h1><a href="<c:url value='/view/main.do'/>">WEBKINGS</a></h1>
 					<a href="#" class="gender f">여성</a>
 					<a href="#" class="gender m">남성</a>
 					<ul class="gnb">
@@ -154,7 +171,7 @@
 							</div>
 						</li>
 						<li>
-							<a href="#">FEED</a>
+							<a href="#">INFO</a>
 						</li>
 						<li>
 							<a href="#" id="mypage">
@@ -166,7 +183,7 @@
 					<%-- <c:if test=""> 세션이 있으면 --%>
 						<ul class="logout">
 							<li><a href="#login">로그인</a></li>
-							<li><a href="#join">회원가입</a></li>
+							<li><a href="<c:url value='/member/tos.do'/>">회원가입</a></li>
 						</ul>
 					<%-- </c:if> --%>
 					<%-- <c:if test="">  세션이 없으면 

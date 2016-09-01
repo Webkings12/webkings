@@ -8,6 +8,7 @@ public class MemberVo {
 	private String mEmail; //이메일
 	private String mNlck; //닉네임
 	private String mPwd;//비밀번호
+	private String mImage;//이미지
 	private Timestamp mRegdate; //회원등록일
 	private Timestamp mChgdate; //회원수정일 
 	public int getmNO() {

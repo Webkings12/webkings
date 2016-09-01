@@ -18,15 +18,16 @@ public class QnaController {
 	private static final Logger logger
 		=LoggerFactory.getLogger(QnaController.class);
 	
-	/*@Autowired
-	private QnaService qnaService;*/
+	@Autowired
+	private QnaService qnaService;
 	
 	@RequestMapping(value="/write.do",method=RequestMethod.GET)
-	public String qnaView(){
+	public String qnaView(QnaVO qnaVO){
 		//1.
 		logger.info("QnA창 보이기");
 		//2.
 		//3.
+		qnaService.insertQna(qnaVO);
 		return "board/qna/write";
 	}
 	

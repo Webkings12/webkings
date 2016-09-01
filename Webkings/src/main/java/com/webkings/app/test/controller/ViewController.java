@@ -4,10 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/view")
 public class ViewController {
 	
-	@RequestMapping("/top.do")
+	@RequestMapping("/main.do")
 	public String top(){
 		return "main";
 	}
@@ -15,4 +14,5 @@ public class ViewController {
 	public String mypage(){
 		return "inc/mypage";
 	}
+	
 }

@@ -9,7 +9,7 @@ body.F>div.header a.gender.f {
     cursor: default;
 }
 body.F .mypage-btn li.login a:before {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666729");
+   /*  background-image: url("/rsc/front/img/sprite.png?_1471437666729"); */
     -webkit-background-size: 252px 234px;
     -moz-background-size: 252px 234px;
     -o-background-size: 252px 234px;

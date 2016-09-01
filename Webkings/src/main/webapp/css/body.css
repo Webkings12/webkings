@@ -1,0 +1,465 @@
+@CHARSET "UTF-8";
+
+/* BODY 전체 */
+
+div.body-sec {
+    height: 100%;
+    position: relative;
+}
+
+/* in-sec */
+div.body-sec>div.in-sec {
+    width: 1440px;
+    min-height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+div.body-sec>div.in-sec>div {
+    min-height: 660px;
+    padding-bottom: 20px;
+}
+@media screen and (max-width: 1460px)
+{div.body-sec>div.in-sec {
+    width: 950px;
+}}
+
+/* 개인정보 */
+@media screen and (max-width: 1460px)
+{div.body-sec>div.in-sec p.privacy-fixed {
+    width: 1082px;
+    margin-left: -541px;
+}}
+
+div.body-sec>div.in-sec p.privacy-fixed>a {
+    background-image: url("/rsc/front/img/sprite.png?_1471437666698");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 0;
+    line-height: 0;
+}
+
+div.body-sec>div.in-sec p.privacy-fixed {
+    position: fixed;
+    bottom: 20px;
+    width: 1560px;
+    height: 60px;
+    left: 50%;
+    margin-left: -780px;
+}
+
+.list-top-1 {
+    height: 74px;
+    position: relative;
+    z-index: 5;
+    padding-top: 75px;
+}
+.list-top-1 .notice-1, .list-top-1 .notice-2, .list-top-1 .tab-type-1, .list-top-1 .option-sec-1, .list-top-1 .option-sec-2 {
+    margin-top: 37px;
+}
+
+/* banner select search */
+.notice-1 {
+    padding-left: 9px;
+    position: absolute;
+    top: 57%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    left: 15px;
+    white-space: nowrap;
+}
+.notice-1:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    left: 0;
+    background-image: url("/rsc/front/img/sprite.png?_1471437666698");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -249px -98px;
+    width: 3px;
+    height: 12px;
+}
+.notice-1 em {
+    color: #e6178f;
+}
+
+/* BODY TAB-TYPE */
+
+.tab-type-1 {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
+    -ms-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+    margin-top: 17px !important;
+}
+
+.tab-type-1 ul li {
+    float: left;
+    margin-right: -1px;
+}
+.tab-type-1 ul li:last-child dl {
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-right-radius: 5px;
+}
+.tab-type-1 ul li:first-child dl {
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-left-radius: 5px;
+}
+.tab-type-1 ul li.active dl {
+    background-color: #fff;
+}
+
+.tab-type-1 ul li dl {
+    border: 1px solid #d0d0d0;
+    background-color: #f2f2f5;
+    font-size: 12px;
+    overflow: hidden;
+}
+.tab-type-1 ul li dl:not(.none):hover dd{
+	display: block;
+}
+
+.tab-type-1 ul li dl dt a {
+    line-height: 36px;
+    width: 182px;
+    border-left: 1px solid #fff;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid transparent;
+    position: relative;
+}
+.tab-type-1 ul li a {
+    display: block;
+    text-indent: 14px;
+}
+
+
+
+/* TAB TYPE DD */
+.tab-type-1 ul li dl dd {
+    display: none;
+}
+
+.tab-type-1 ul li dl dd a {
+    display: block;
+    border-left: 1px solid #fff;
+    padding: 5px 0 4px 0;
+}
+
+.tab-type-1 ul li dl dd:last-child a {
+    padding-bottom: 15px;
+}
+
+/* BODY SEARCH 창 */
+.option-sec-2 {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 15px;
+    background-color: #d0d0d0;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    padding: 0 18px 0 34px;
+}
+.option-sec-2 input {
+    height: 40px;
+    border: 0;
+    background-color: transparent;
+    color: #fff;
+    width: 102px;
+}
+.option-sec-2:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -235px -82px;
+    width: 15px;
+    height: 16px;
+    left: 14px;
+}
+
+
+
+
+/* ITEM LIST */
+@media screen and (max-width: 1460px)
+{div.body-sec .item-list {
+    width: 950px !important;
+}}
+
+.item-list {
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    width: 1416px;
+}
+.item-list>li {
+    float: left;
+    padding: 3px;
+}
+
+
+/* NOTICE-2 */
+.notice-2 {
+    padding-left: 9px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    left: 15px;
+    white-space: nowrap;
+}
+strong, b {
+    font-weight: bold;
+}
+.notice-2 em {
+    color: #e6178f;
+    font-family: DINPro_M,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+.notice-2 i {
+    color: #a2a2a5;
+    font-family: DINPro_L,sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+/* OPTION */
+.option-sec-1 {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 15px;
+}
+.option-sec-1>ul>li {
+    float: left;
+    position: relative;
+}
+.option-sec-1>ul>li>a {
+    line-height: 30px;
+}
+a.aw-1 {
+    display: inline-block;
+    padding: 0 14px;
+    position: relative;
+}
+a.aw-1:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 0;
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -189px -103px;
+    width: 9px;
+    height: 6px;
+}
+
+/* OPTION SEARCH */
+a.search-1 {
+    display: inline-block;
+    padding: 0 14px;
+    position: relative;
+}
+a.search-1:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 0;
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -187px -111px;
+    width: 11px;
+    height: 11px;
+}
+.option-sec-1>ul>li.detail-search .sec .in {
+    padding: 20px;
+}
+.option-sec-1>ul>li.detail-search .sec div {
+    text-align: right;
+    position: relative;
+    overflow: hidden;
+    padding: 5px 0;
+}
+.option-sec-1>ul>li.detail-search .sec p {
+    position: relative;
+    margin-bottom: 15px;
+}
+.option-sec-1>ul>li.detail-search .sec p input {
+    width: 100%;
+    background-color: #fafafc;
+    border: 1px solid #e4e6e9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 34px;
+    text-indent: 27px;
+    color: #202022;
+}
+.option-sec-1>ul>li.detail-search .sec div>label {
+    line-height: 38px;
+    width: 40px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: left;
+}
+.option-sec-1>ul>li.detail-search .sec div input[name=ssp], .option-sec-1>ul>li.detail-search .sec div input[name=sep] {
+    width: 78px;
+    border: 1px solid #e4e6e9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 34px;
+    text-align: right;
+    padding-right: 10px;
+}
+.option-sec-1>ul>li.detail-search .sec div>label {
+    line-height: 38px;
+    width: 40px;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: left;
+}
+.option-sec-1>ul>li.detail-search .sec div ul {
+    overflow: hidden;
+    width: 194px;
+    float: right;
+    border: 1px solid #e4e6e9;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.option-sec-1>ul>li.detail-search .sec div ul li {
+    float: left;
+    width: 33.3%;
+    border-right: 1px solid #e4e6e9;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+}
+.option-sec-1>ul>li.detail-search .sec div ul li input {
+    position: absolute;
+    visibility: hidden;
+}
+.option-sec-1>ul>li.detail-search .sec div ul li label {
+    display: block;
+    line-height: 34px;
+    text-align: center;
+    color: #a2a2a5;
+}
+.option-sec-1>ul>li.detail-search .sec div.btn input[type=submit] {
+    width: 100%;
+    background-color: #c5cdd5;
+    color: #fff;
+    line-height: 36px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.option-sec-1>ul>li.detail-search .sec div.btn input {
+    border: 0;
+    cursor: pointer;
+}
+.option-sec-1>ul>li.detail-search .sec div.btn a.reset {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 0;
+    background-color: transparent;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -60px -201px;
+    width: 20px;
+    height: 20px;
+}
