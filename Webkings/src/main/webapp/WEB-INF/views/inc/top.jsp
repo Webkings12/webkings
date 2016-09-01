@@ -65,7 +65,7 @@
 		<div class="shadow">
 			<div>
 				<div class="in-sec">
-					<h1><a href="<c:url value='/view/main.do'/>">WEBKINGS</a></h1>
+					<h1><a href="<c:url value='/main.do'/>">WEBKINGS</a></h1>
 					<a href="#" class="gender f">여성</a>
 					<a href="#" class="gender m">남성</a>
 					<ul class="gnb">

@@ -344,6 +344,43 @@ a.search-1:after {
     width: 11px;
     height: 11px;
 }
+.option-sec-1>ul>li.order ul {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
+    -ms-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+    background-color: #fff;
+    border: 1px solid #d0d0d0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px 0;
+    top: 30px;
+    margin-left: 7px;
+}
+.option-sec-1>ul>li>ul {
+    display: none;
+}
+.option-sec-1>ul>li.order ul a {
+    white-space: nowrap;
+    display: block;
+    padding: 0 15px;
+    line-height: 21px;
+}
+.option-sec-1>ul>li.detail-search .sec {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #d0d0d0;
+    width: 278px;
+    right: -15px;
+}
 .option-sec-1>ul>li.detail-search .sec .in {
     padding: 20px;
 }
@@ -387,15 +424,6 @@ a.search-1:after {
     text-align: right;
     padding-right: 10px;
 }
-.option-sec-1>ul>li.detail-search .sec div>label {
-    line-height: 38px;
-    width: 40px;
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    text-align: left;
-}
 .option-sec-1>ul>li.detail-search .sec div ul {
     overflow: hidden;
     width: 194px;
@@ -407,6 +435,44 @@ a.search-1:after {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+}
+
+.option-sec-1>ul>li.detail-search .sec p:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    left: 10px;
+    background-image: url("../images/search.png");
+    -webkit-background-size: 15px 16px;
+    -moz-background-size: 15px 16px;
+    -o-background-size: 15px 16px;
+    background-size: 12px 13px;
+    background-repeat: no-repeat;
+    margin-top:3px;
+    width: 15px;
+    height: 16px;
+}
+
+body.F .detail-search.detail-search:hover>a {
+    color: #e6178f;
+}
+input, select, textarea {
+    font-family: 'Malgun Gothic','맑은 고딕','NanumBarunGothic',
+    '나눔바른고딕','NanumGothic','나눔고딕','Tahoma','Nanum Barun Gothic',
+    'Apple SD Gothic Neo Bold','Apple SD Gothic Neo','애플 SD 고딕 Neo','dotum',sans-serif;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #888;
+    word-spacing: -0.2em;
+    line-height: 136%;
+}
+label {
+    cursor: pointer;
 }
 .option-sec-1>ul>li.detail-search .sec div ul li {
     float: left;
@@ -432,10 +498,12 @@ a.search-1:after {
     background-color: #c5cdd5;
     color: #fff;
     line-height: 36px;
+    text-align:center;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
+
 .option-sec-1>ul>li.detail-search .sec div.btn input {
     border: 0;
     cursor: pointer;
@@ -462,4 +530,20 @@ a.search-1:after {
     background-position: -60px -201px;
     width: 20px;
     height: 20px;
+}
+/*공통 검색 이벤트 css*/
+/*검색어*/
+.option-sec-1>ul>li.detail-search:hover .sec {
+    display: block;
+}
+/*상품*/
+.option-sec-1>ul>li.order:hover ul {
+    display: block;
+}
+/* 여자  search option event css*/
+body.F .detail-search.detail-search:hover>a {
+    color: #e6178f;
+}
+body.F .option-sec-1>ul>li.order:hover>a, body.F .option-sec-1>ul>li li a:hover {
+    color: #e6178f;
 }
