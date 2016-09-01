@@ -4,7 +4,10 @@
 
 <mapper namespace="com.mybatis.mapper.oracle.qna">
 	<insert id="insertQna" parameterType="QnaVO">
-		insert into qna(qNo,qTitle,qContent,qEmail,qTel,mNo) 
-		value(#{qNo},#{qTitle},#{qContent},#{qEmail},#{qTel},#{mNo})
+		<selectKey order="BEFORE" keyProperty="qNo" resultType="int" >
+			select qna_seq.nextval from dual
+		</selectKey>
+		insert into qna(q_No,q_Title,q_Content,q_Email,q_Tel,m_No) 
+		values(#{qNo},#{qTitle},#{qContent},#{qEmail},#{qTel},#{mNo})
 	</insert>
 </mapper>
