@@ -58,6 +58,7 @@
     -moz-box-shadow: 0 3px 10px -3px #aaa;
     box-shadow: 0 3px 10px -3px #aaa;
     font-size: 15px;
+
 }
 .btn_light {
     color: #666;
@@ -129,12 +130,12 @@ input[type=checkbox]{
 <div class="divFrm1" style="text-align: center">
 	<form id="frmQna" name="frmQna" method="post" action="/board/qna.do" >
 		<ul id="list">
-			<li><input name="title" type="text" id="title" placeholder="제목"></li>
-			<li><textarea name="contents" id="contents"  placeholder="문의내용"></textarea></li>
+			<li><input name="qTitle" type="qTitle" id="qTitle" placeholder="제목"></li>
+			<li><textarea name="qContent" id="qContent"  placeholder="문의내용"></textarea></li>
 		</ul>
 		<ul id="list">
-			<li><input name="phone" type="text" id="phone"  placeholder="연락처"></li>
-			<li><input name="email" type="text" id="email" placeholder="이메일"></li>
+			<li><input name="qTel" type="text" id="qTel"  placeholder="연락처"></li>
+			<li><input name="qEmail" type="text" id="qEmail" placeholder="이메일"></li>
 		</ul>
 
 
