@@ -50,7 +50,7 @@ form {
 }
 dd {
     display: block;
-    -webkit-margin-start: 40px;
+    -webkit-margin-start: 0;
 }
 img, fieldset {
     border: 0 none transparent;

@@ -37,7 +37,10 @@
 					<a href="javascript:;" class="search-1">상세검색</a>
 					<div class="sec"><div class="in">
 					<form id="_frmDetailSearch">
-						<p><input type="text" name="sw2" value="" fieldname="검색어" placeholder="결과내 재검색" checkfunctionname="checkSpecialChar" restrictutf8bytes="45" confirmmessage="특수문자로 검색하실수 없습니다." autocomplete="off" focus="off"></p>
+						<p><input type="text" name="sw2" value="" fieldname="검색어" placeholder="결과내 재검색" 
+						checkfunctionname="checkSpecialChar" restrictutf8bytes="45"
+						 confirmmessage="특수문자로 검색하실수 없습니다." autocomplete="off" focus="off">
+						 </p>
 						<div>
 							<label>가격대</label>
 							<input type="text" name="ssp" value=""> ~ <input type="text" name="sep" value="">
