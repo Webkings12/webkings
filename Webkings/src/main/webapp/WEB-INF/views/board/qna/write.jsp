@@ -5,7 +5,9 @@
 	#list{
 	   list-style:none;
 	}
-	input::-webkit-input-placeholder { color: #f00; }
+	
+	input::-webkit-input-placeholder { color: #FF00CC; }
+	textarea::-webkit-input-placeholder { color: #FF00CC; }
 	#frm{
 		margin: 0 auto;
 	}
@@ -15,7 +17,7 @@
 	margin: 0 auto;
 	margin-top: 150px;
 	
-	width: 400px;
+	width: 450px;
 	}
 	.divFrm1 ul li input[type=text], .agree label {
     height: 40px;
@@ -108,6 +110,20 @@ input[type=checkbox]{
     -webkit-user-select: text;
     cursor: auto;
 }
+.div1 {
+    height: 150px;
+    background-color: #fafafc;
+    overflow-y: scroll;
+    padding: 0 15px;
+    
+    word-break:break-all;
+    width: 90%
+}
+.agree{
+	word-break:break-all;
+	
+}
+
 </style>
 
 <div class="divFrm1" style="text-align: center">
@@ -117,8 +133,6 @@ input[type=checkbox]{
 			<li><textarea name="contents" id="contents"  placeholder="문의내용"></textarea></li>
 		</ul>
 		<ul id="list">
-			<li><input name="comName" type="text" id="comName"  placeholder="회사명"></li>
-			<li><input name="contactName" type="text" id="contactName"  placeholder="담당자명"></li>
 			<li><input name="phone" type="text" id="phone"  placeholder="연락처"></li>
 			<li><input name="email" type="text" id="email" placeholder="이메일"></li>
 		</ul>
@@ -126,10 +140,11 @@ input[type=checkbox]{
 
 
 				
-		
+		<br>
 		<div class="agree">
 			<input type="checkbox" id="agree-1">
 			<label for="agree-1">개인정보 취급방침</label>
+	    	<iframe class="div1" src="<c:url value='/common/personal.html'/>"></iframe>
 		</div>
 		<input type="submit" class="btn_default btn_light back_color" value="문의 보내기">
 	</form>

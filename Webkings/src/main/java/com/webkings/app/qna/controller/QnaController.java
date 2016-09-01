@@ -12,7 +12,7 @@ import com.webkings.app.qna.model.QnaService;
 import com.webkings.app.qna.model.QnaVO;
 
 @Controller
-@RequestMapping("/board/qna")
+@RequestMapping("/qna")
 public class QnaController {
 	
 	private static final Logger logger
@@ -37,9 +37,16 @@ public class QnaController {
 		//2.
 		int cnt=qnaService.insertQna(qnaVo);
 		//3.
-		if(){
-			
+		
+		String msg="", url="";
+		if(cnt>0){
+			msg="문의전송";
+			url="redirect:/qna/qna.do";
+		}else{
+			msg="문의전송";
+			url="redirect:/qna/qna.do";
 		}
-		return "board/qna";
+		return "common/message";
 	}*/
+	
 }
