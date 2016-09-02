@@ -15,7 +15,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-</head>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -28,7 +27,6 @@
 			$(".gnb li:first-child").addClass("active");
 		});
 		
-	
 		$(".gender.m").click(function() {
 			if($("body").hasClass("F")){
 				$("body").removeClass("F");
@@ -41,25 +39,9 @@
 				$("body").attr("class","F");
 			}
 		});
-			
-		/* if($("body").hasClass("F")){
-			$("#mypage").click(function() {
-				if($("body").hasClass("M")){
-					$("body").removeClass("M");
-					 $("body").attr("class","F");
-				}
-			});
-		}
-		if($("body").hasClass("M")){
-			$("#mypage").click(function() {
-				if($("body").hasClass("F")){
-					$("body").removeClass("F");
-					 $("body").attr("class","M");
-				}
-			}); */
-		/* } */
 	});
 </script>
+</head>
 <body class="F">
 	<div class="header">
 		<div class="shadow">
@@ -70,7 +52,7 @@
 					<a href="#" class="gender m">남성</a>
 					<ul class="gnb">
 						<li class="active" >
-							<a href="#">ITEM</a>
+							<a href="#" id="item">ITEM</a>
 							<div class="depth2 sec2">
 								<dl class="age-sel">
 									<dt>추천신상품</dt>
@@ -137,7 +119,7 @@
 							</div>
 						</li>
 						<li class="">
-							<a href="#">SHOP</a>
+							<a href="#" id="shop">SHOP</a>
 							<div class="depth2">
 								<dl class="shop-sel">
 									<dt>스타일전체</dt>
@@ -171,7 +153,7 @@
 							</div>
 						</li>
 						<li>
-							<a href="#">INFO</a>
+							<a href="#" id="info">INFO</a>
 						</li>
 						<li>
 							<a href="#" id="mypage">

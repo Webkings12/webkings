@@ -63,7 +63,6 @@
 			</ul>
 		</div>
 	</div>
-
 	<ul class="item-list abs-list"></ul>
 </div></div></div>
 <form id="pageFrm" name="pageFrm" method="get" target="_self">
