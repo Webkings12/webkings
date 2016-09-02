@@ -20,10 +20,9 @@
 				$("#tos2").focus();
 				return false;
 			}
-<<<<<<< HEAD
-=======
+
 			$("#id01").css("display","none");
->>>>>>> branch 'master' of https://github.com/Webkings12/webkings.git
+
 		});
 	});
 </script>	
@@ -34,6 +33,7 @@
 
 <div id="id01" class="modal">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <div class="amodel">
   <form id="form" class="modal-content animate" method="get" 
   action="<c:url value='/member/register.do'/>">
 <div class="modal1">
@@ -65,11 +65,5 @@
   </form>
 </div>
 </div>
-<script>
-// Get the modal
-
-// When the user clicks anywhere outside of the modal, close it
-</script>
-
 </body>
 </html>
