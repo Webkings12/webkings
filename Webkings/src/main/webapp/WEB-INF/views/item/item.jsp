@@ -1,9 +1,7 @@
 <%@page import="org.apache.xmlbeans.impl.xb.xsdschema.IncludeDocument.Include"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
-<script type="text/javascript" src="<c:url value='js/common.js'/>"></script>
-<div class="body-sec"><div class="in-sec"><p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
+<p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
 	<div class="list-top-1">
 		<p class="notice-1">매일 업데이트 되는 <em>5,000 여개의 신상품</em> 중에서 추천</p>
 		<div class="tab-type-1 tab-type-main" >
@@ -35,4 +33,4 @@
 		</li>
 		<li class="bnr-1"><a href="javascript:;" target="_blank"><img src="#" class="item"></a></li>
 	</ul>
-</div></div></div>
+</div>
