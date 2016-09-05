@@ -2,7 +2,8 @@ package com.webkings.app.freeBoard.model;
 
 import java.sql.Timestamp;
 
-public class FreeBoardVO {
+public class BoardViewVO {
+	private int newImgTerm;
 	private int bNo; //NUMBER NOT NULL, /* 글번호 */
 	private String bTitle; //B_TITLE VARCHAR2(200) NOT NULL, /* 글제목 */
 	private String bContent; //B_CONTENT CLOB NOT NULL, /* 글내용 */
@@ -11,20 +12,28 @@ public class FreeBoardVO {
 	private String bOriginalfilename; //B_ORIGINALFILENAME VARCHAR2(200), /* 파일명 */
 	private Timestamp bRegdate; //B_REGDATE DATE DEFAULT SYSDATE NOT NULL, /* 글등록일 */
 	private Timestamp bChgdate; //B_CHGDATE DATE, /* 글수정일 */
-	private int bReadcount;
 	private int mNo;//M_NO NUMBER NOT NULL /* 회원번호 */
+	private String mEmail;
+	private int bReadcount;
+	private String mImage;//이미지
 	
+	public String getmImage() {
+		return mImage;
+	}
+	public void setmImage(String mImage) {
+		this.mImage = mImage;
+	}
 	public int getbReadcount() {
 		return bReadcount;
 	}
 	public void setbReadcount(int bReadcount) {
 		this.bReadcount = bReadcount;
 	}
-	@Override
-	public String toString() {
-		return "FreeBoardVO [bNo=" + bNo + ", bTitle=" + bTitle + ", bContent=" + bContent + ", bFilename=" + bFilename
-				+ ", bFilesize=" + bFilesize + ", bOriginalfilename=" + bOriginalfilename + ", bRegdate=" + bRegdate
-				+ ", bChgdate=" + bChgdate + ", bReadcount=" + bReadcount + ", mNo=" + mNo + "]";
+	public int getNewImgTerm() {
+		return newImgTerm;
+	}
+	public void setNewImgTerm(int newImgTerm) {
+		this.newImgTerm = newImgTerm;
 	}
 	public int getbNo() {
 		return bNo;
@@ -80,4 +89,18 @@ public class FreeBoardVO {
 	public void setmNo(int mNo) {
 		this.mNo = mNo;
 	}
+	public String getmEmail() {
+		return mEmail;
+	}
+	public void setmEmail(String mEmail) {
+		this.mEmail = mEmail;
+	}
+	@Override
+	public String toString() {
+		return "BoardViewVO [newImgTerm=" + newImgTerm + ", bNo=" + bNo + ", bTitle=" + bTitle + ", bContent="
+				+ bContent + ", bFilename=" + bFilename + ", bFilesize=" + bFilesize + ", bOriginalfilename="
+				+ bOriginalfilename + ", bRegdate=" + bRegdate + ", bChgdate=" + bChgdate + ", mNo=" + mNo + ", mEmail="
+				+ mEmail + ", bReadcount=" + bReadcount + ", mImage=" + mImage + "]";
+	}
+		
 }

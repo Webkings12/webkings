@@ -130,10 +130,10 @@ function pageProc(curPage){
 <div class="divFrm2">
 <table class="box2"
 	 	summary="기본 게시판에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
-	<caption>자유 게시판</caption>
+	<caption>QnA 게시판</caption>
 	<colgroup>
 		<col style="width:10%;" />
-		<col style="width:50%;" />
+		<col style="width:60%;" />
 		<col style="width:15%;" />
 		<col style="width:15%;" />
 		<col style="width:10%;" />		
@@ -144,7 +144,6 @@ function pageProc(curPage){
 	    <th scope="col">제목</th>
 	    <th scope="col">작성자</th>
 	    <th scope="col">작성일</th>
-	    <th scope="col">조회수</th>
 	  </tr>
 	</thead> 
 	<tbody>  
@@ -157,14 +156,14 @@ function pageProc(curPage){
 	<c:if test="${!empty alist }">
 	<c:forEach var="vo" items="${alist }">
 	<tr style="text-align: center">
-		 	 	<td>${vo.bNo }</td>
-		 		<td><a href="<c:url value='/freeboard/updateCount.do?no=${vo.bNo}'/>">
+		 	 	<td>${vo.qNo }</td>
+		 		<td><a href="<c:url value='/qna/detail.do?no=${vo.qNo}'/>">
 		 		<!-- 제목이 긴경우 일부만 보여주기 -->
-		 		<c:if test="${fn:length(vo.bTitle)>30 }">
-		 			${fn:substring(vo.bTitle,0,30) }...
+		 		<c:if test="${fn:length(vo.qTitle)>30 }">
+		 			${fn:substring(vo.qTitle,0,30) }...
 		 		</c:if>
-		 		<c:if test="${fn:length(vo.bTitle)<=30 }">
-		 			${vo.bTitle}
+		 		<c:if test="${fn:length(vo.qTitle)<=30 }">
+		 			${vo.qTitle}
 		 		</c:if>
 		 		</a>
 				<!-- 24시간 이내의 글인 경우 new 이미지 보여주기 -->
@@ -173,8 +172,7 @@ function pageProc(curPage){
 				</c:if>		 		
 		 		</td>
 		 		<td>${vo.mEmail }</td>
-		 		<td><fmt:formatDate value="${vo.bRegdate }" pattern="yyyy-MM-dd"/></td>
-		 		<td>${vo.bReadcount }</td>
+		 		<td><fmt:formatDate value="${vo.qRegdate }" pattern="yyyy-MM-dd"/></td>
 		 	</tr>
 	</c:forEach>
 	  <!--반복처리 끝  -->
@@ -210,20 +208,20 @@ function pageProc(curPage){
 </div>
 
 <div class="divFrm3">
-   	<form name="frmSearch" method="post" action='<c:url value="/freeboard/list.do"/>'>
+   	<form name="frmSearch" method="post" action='<c:url value="/qna/list.do"/>'>
         <select name="searchCondition">
-			<option value="b.b_Title"
-				<c:if test="${param.searchCondition=='b.b_Title'}">
+			<option value="q_Title"
+				<c:if test="${param.searchCondition=='q_Title'}">
 					selected
 				</c:if>	 
 			>제목</option>
-            <option value="b.b_Content" 
-            	<c:if test="${param.searchCondition=='b.b_content'}">
+            <option value="q_Content" 
+            	<c:if test="${param.searchCondition=='q_Content'}">
             	selected
             	</c:if>
             >내용</option> 
-            <option value="m.m_Email"
-            	<c:if test="${param.searchCondition=='m.m_Email'}">
+            <option value="m_Email"
+            	<c:if test="${param.searchCondition=='m_Email'}">
             	selected
             	</c:if>
             >작성자</option>
@@ -236,6 +234,5 @@ function pageProc(curPage){
 </div>
 
 <div class="divFrm3">
-    <a href='<c:url value="/freeboard/write.do"/>' >글쓰기</a>
 </div>
 

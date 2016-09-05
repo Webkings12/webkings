@@ -11,4 +11,13 @@
 			insert into member(m_No,m_Email,m_Nick,m_Pwd,m_IMAGE) 
 			values(#{mNo},#{mEmail},#{mNick},#{mPwd},#{mImage})
 	</insert>
+	<select id="selectPwd" parameterType="MemberVo"
+		resultType="string">
+		select m_Pwd from member
+		where m_Email=#{mEmail}
+	</select>
+	<select id="selectmEmail" parameterType="String" resultType="MemberVo" >
+		select * from member
+		where m_Email=#{mEmail}
+	</select>
 </mapper>

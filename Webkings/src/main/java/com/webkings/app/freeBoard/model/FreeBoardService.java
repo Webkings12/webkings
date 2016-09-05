@@ -1,5 +1,17 @@
 package com.webkings.app.freeBoard.model;
 
-public interface FreeBoardService {
+import java.util.List;
 
+import com.webkings.app.common.SearchVO;
+
+public interface FreeBoardService {
+	public int insertFreeBoard(FreeBoardVO freeBoardVo);
+	public List<BoardViewVO> freeBoardselectAll(SearchVO searchVo);
+	public int selectTotalRecord(SearchVO searchVo);
+	public int updateCount(int no);
+	public BoardViewVO selectByNo(int no);
+	public int updateBoard(FreeBoardVO freeBoardVo);
+	public int deleteBoard(int bNo);
+	
+	
 }

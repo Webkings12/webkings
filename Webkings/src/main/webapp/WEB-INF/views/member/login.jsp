@@ -2,169 +2,137 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<style>
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-}
-
-img.avatar {
-    width: 25%;
-    border-radius: 35%;
-}
-
-.container {
-    padding: 16px;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-}
-    
-@keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-}
-</style>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/member.css"/>
+<script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<html lang="ko">
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+<script type="text/javascript" src="/asset/js/sns_login_facebook.js"></script>
 <body>
 
-<h2>Modal Login Form</h2>
+ <!-- 페이스북 1767015933560224;-->
 
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#form").submit(function(event){
+		if($("#mEmail").val().length<1){
+			alert("이메일을 입력하세요.");
+			$("#id01").css("display","block");
+			$("#mEmail").focus();
+			return false;
+		}else if($("#mPwd").val().length<1){
+			alert("비밀번호를 입력하세요.");
+			$("#id01").css("display","block");
+			$("#mPwd").focus();
+			return false;
+		}
+		
+		$("#id01").css("display","none");
+	});
+	
+});
+</script>
+<body>
 
 <div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="action_page.php">
-    <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+  <div class="amodel">
+  <form class="modal-content animate" id="form"
+   action="<c:url value='/member/login.do'/>" method="post">
+    <div class="imgcontainer">
+      <img src="<c:url value='/images/logo.png'/>" alt="Avatar" class="avatar">
     </div>
 
     <div class="container">
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button type="submit">Login</button>
-      <input type="checkbox" checked="checked"> Remember me
+    <div class="reg">
+      <input type="text" placeholder="이메일" name="mEmail" id=mEmail>
+	</div>
+	<div class="reg">
+      <input type="password" placeholder="비밀번호" name="mPwd" id=mPwd>
+    </div>   
+      <input type="submit"  class="cancelbtn" value="로그인"/>
+      <label for="chkId">아이디 저장</label>
+      <input type="checkbox" checked="checked" id="chkId" name="chkId">
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
   </form>
+  	<hr>
+  	<h4 id="h4">빠른로그인</h4>
+  	 <div class="regdiv">
+  	 	
+		<a id="custom-login-btn" href="javascript:loginWithKakao()">
+		<img alt="카카오" src="<c:url value='../images/kakaolink.png'/>" class="img1"/></a>
+
+	</div>
+
+		<div class="regdiv">
+			<a id="google_join_btn" href="javascript:void(0);">
+			<img  alt="구글" src="<c:url value='../images/Google.png'/>" class="img1" /></a>
+		</div>
+	<div id="naver_id_login" class="regdiv">
+		
+	</div>
+	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+		</fb:login-button>
+
+	<div class="regdiv">
+		 <a class="regdiv" href="<c:url value='/member/tos.do'/>" id="reg">
+		 	<img  alt="회원가입" src="<c:url value='../images/email.png'/>" class="img1" /></a>
+		 </a>
+	</div>
+	
+	</div>
 </div>
 
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+<!-- 네이버아디디로로그인 초기화 Script -->
+<script type="text/javascript">
+	var naver_id_login = new naver_id_login("hnHk72nmxpcjD70Gfi0M", "http://192.168.0.39:9090/Webkings/main.do");
+	//등록한 ClientID 값  등록한 Callback URL 값
+	var state = naver_id_login.getUniqState();
+	naver_id_login.setButton("white", 1,50);
+	naver_id_login.setDomain(".service.com");
+	naver_id_login.setState(state);
+	naver_id_login.setPopup();
+	naver_id_login.init_naver_id_login();
+	
+	function naverSignInCallback() {
+		// naver_id_login.getProfileData('프로필항목명');
+		// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
+		alert(naver_id_login.getProfileData('email'));
+		alert(naver_id_login.getProfileData('nickname'));
+		alert(naver_id_login.getProfileData('age'));
+	}
 
-
-
-
+	// 네이버 사용자 프로필 조회
+	naver_id_login.get_naver_userprofile("naverSignInCallback()");v
 </script>
+
+<!-- 카카오 -->
+<script type='text/javascript'>
+  
+    //<![CDATA[
+      // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('9ccbc592cdad5e00996fdc1c739bad84');
+      function loginWithKakao() {
+          // 로그인 창을 띄웁니다.
+          Kakao.Auth.login({
+            success: function(authObj) {
+              alert("로그인성공");
+              location.href="/Webkings/main.do";
+            },
+            fail: function(err) {
+              alert(JSON.stringify(err));
+            }
+          });
+        };
+
+  </script>
+
 
 </body>
 </html>

@@ -11,5 +11,13 @@ public class MemberDAOMybatis extends SqlSessionDaoSupport implements MemberDAO 
 	public int insertMember(MemberVo vo) {
 		return getSqlSession().insert(namespace+".insertmember", vo);
 	}
+	@Override
+	public String loginCheck(MemberVo vo) {
+		return getSqlSession().selectOne(namespace+".selectPwd", vo);
+	}
+	@Override
+	public MemberVo selectmEmail(String mEmail) {
+		return getSqlSession().selectOne(namespace+".selectmEmail", mEmail);
+	}
 
 }

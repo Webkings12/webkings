@@ -142,8 +142,13 @@
 					</ul>
 					<%-- <c:if test=""> 세션이 있으면 --%>
 						<ul class="logout">
-							<li><a href="#login">로그인</a></li>
+						<c:if test="${empty sessionScope.mEmail }">
+							<li><a href="<c:url value='/member/login.do'/>">로그인</a></li>
 							<li><a href="<c:url value='/member/tos.do'/>">회원가입</a></li>
+						</c:if>					
+						<c:if test="${!empty sessionScope.mEmail }">
+							<li><a href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
+						</c:if>
 						</ul>
 					<%-- </c:if> --%>
 					<%-- <c:if test="">  세션이 없으면 

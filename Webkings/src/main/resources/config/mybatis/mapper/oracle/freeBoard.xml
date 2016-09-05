@@ -3,11 +3,79 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mybatis.mapper.oracle.freeBoard">
-	<insert id="insertFBoard" parameterType="FreeBoardVO">
+	
+	<sql id="searchWhere">
+		<where>
+			<if test="searchKeyword!=null and searchKeyword!=''">
+				${searchCondition} 
+				like '%' || #{searchKeyword} || '%'
+			</if>
+		</where>
+	</sql>
+	
+	<insert id="insertFreeBoard" parameterType="FreeBoardVO">
 		<selectKey order="BEFORE" keyProperty="bNo" resultType="int">
-		select freeboard_seq from dual
+		select freeboard_seq.nextval from dual
 		</selectKey>
 		insert into freeboard(b_no,b_title,b_content,b_fileName,b_filesize,b_originalfilename,b_regdate,b_chgdate,m_no)
 		values(#{bNo},#{bTitle},#{bContent},#{bFilename},#{bFilesize},#{bOriginalfilename},sysdate,sysdate,#{mNo})
 	</insert>
+	
+	<select id="freeBoardselectAll" resultType="BoardViewVO" 
+		parameterType="SearchVO">
+		select *
+		from
+		(
+		    select rownum as RNUM, LIST_ALL.*
+		    from
+		        (select 
+					(sysdate-b.b_regdate)*24 as newImgTerm,
+					b.b_no, b.b_title, b.b_content, b.b_fileName, b.b_fileSize, b.b_originalFileName, b.b_readcount, m.m_email,b.b_regdate
+		        from freeboard b, member m
+		        where b.m_no=m.m_no
+		        <if test="searchKeyword!=null and searchKeyword!=''">
+		        and ${searchCondition} 
+				like '%' || #{searchKeyword} || '%'
+				</if>  
+				order by b_no desc  		        
+		        ) LIST_ALL 
+		) 
+		<![CDATA[
+		where  RNUM> #{firstRecordIndex} 
+			and RNUM<= #{firstRecordIndex}
+			+ #{recordCountPerPage}
+		]]>
+	</select>
+	
+	<select id="selectTotalRecord" parameterType="SearchVO" resultType="int">
+		select count(*) 
+		from freeboard b, member m
+		where b.m_no=m.m_no
+		<if test="searchKeyword!=null and searchKeyword!=''">
+		    and ${searchCondition} 
+			like '%' || #{searchKeyword} || '%'
+		</if>
+	</select>
+	
+	<update id="updateCount" parameterType="int">
+		update freeboard set b_readcount=b_readcount+1 where b_no=#{no}
+	</update>
+	
+	<select id="selectByNo" parameterType="int" resultType="BoardViewVO">
+		select b.*,M.M_EMAIL,M.M_IMAGE from freeboard b, member m
+		where b.m_no=m.m_no
+		and b_no=#{no}
+	</select>
+	<update id="updateByNo" parameterType="FreeBoardVO">
+		update freeBoard
+    set b_title=#{bTitle},b_content=#{bContent},
+    b_fileName=#{bFilename},b_filesize=#{bFilesize},b_originalfilename=#{bOriginalfilename},
+    b_chgdate=sysdate
+    where b_no=#{bNo}
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from freeboard
+    where b_no=#{bNo}
+	</delete>
 </mapper>
