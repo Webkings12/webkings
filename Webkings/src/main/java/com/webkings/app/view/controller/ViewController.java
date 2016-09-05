@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,8 +22,9 @@ public class ViewController {
 	}
 	
 	@RequestMapping("/page.do")
-	public String page(@RequestParam String page){
+	public String page(@RequestParam String page, Model model){
 		logger.info("page={}",page);
+		model.addAttribute("gbn",cate);
 		return "page"+page;
 	}
 	

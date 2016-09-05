@@ -11,17 +11,6 @@ $(document).ready(function() {
 			gender="F";
 		}
 		*/
-		
-		var page = "";
-		var cate = "";
-		/*alert(page);*/
-		$(".gnb li").click(function() {
-			cate = $(".active #gnbPage").val();
-	 		page= cate+cate;
-	 		if(cate=="/product" || cate=="/shop"){
-	 			page+=gender;
-	 		}
-	 		
 		$(".gnb li").mouseenter(function() {
 			$(".gnb li:first-child").removeClass("active");
 			$(this).addClass("active");
@@ -30,6 +19,20 @@ $(document).ready(function() {
 			$(this).removeClass("active");
 			$(".gnb li:first-child").addClass("active");
 		});
+		
+		var page = "";
+		var cate = "";
+		/*alert(page);*/
+		$(".gnb li").click(function() {
+			cate = $(".active #gnbPage").val();
+	 		page= cate+cate;
+	 		$(this).css("active","true");
+	 		if(cate=="/product" || cate=="/shop"){
+	 			page+=gender;
+	 		}
+	 		$(location).attr('href', "/Webkings/page.do?page="+page);
+		});
+		
 		
 		$(".gender.m").click(function() {
 			gender="M";
@@ -51,7 +54,7 @@ $(document).ready(function() {
 		});
 			
 /* 		alert(page);*/
- 		$(location).attr('href', "/Webkings/page.do?page="+page);
-	});
+ 		
+	
 	
 }); 

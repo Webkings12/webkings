@@ -2,6 +2,19 @@
  * 
  */
 $(document).ready(function() {
+/*	if(${li=="/item"} || ${li==null}){
+			$(".gnb li:first-child").toggleClass("active");
+		}else if(li=="/item"){
+			$(".gnb li:nth-child(1)").toggleClass("active");
+		}else if(li=="/shop"){
+			$(".gnb li:nth-child(2)").toggleClass("active");
+		}else if(li=="/info"){
+			$(".gnb li:nth-child(3)").toggleClass("active");
+		}else if(li=="/mypage"){
+			$(".gnb li:nth-child(4)").toggleClass("active");
+		}*/
+		
+		
 		$("body").attr("class","F");
 		var gender = $("body").attr("class");
 		/*var page="";
@@ -12,8 +25,8 @@ $(document).ready(function() {
 		}
 		*/
 		$(".gnb li").mouseenter(function() {
-			$(".gnb li:first-child").removeClass("active");
-			$(this).addClass("active");
+			$(".gnb li").removeClass("active");
+			$(this).toggleClass("active");
 		})
 		$(".gnb li").mouseleave(function() {
 			$(this).removeClass("active");
@@ -23,18 +36,16 @@ $(document).ready(function() {
 		var page = "";
 		var cate ="";
 		$(".gnb li").click(function() {
+			$(".gnb li").removeClass("active");
+			$(this).toggleClass("active");
 			cate= $(".gnb li.active #gnbPage").val();
-			alert(cate);
 	 		page= cate+cate;
-	 		if($(".gnb li").hasClass("active")){
-				$(this).removeClass("active");
-			}
-			$(this).addClass("active");
 	 		if(cate=="/product" || cate=="/shop"){
 	 			page+=gender;
 	 		}
 	 		$(location).attr('href', "/Webkings/page.do?page="+page);
 		});
+		
 		$(".gender.m").click(function() {
 			gender="M";
 			page="/product/productM";

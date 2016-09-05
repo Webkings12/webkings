@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mypage.css"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
+<script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
+<%@ include file="../../inc/top.jsp" %>
+<div class="body-sec">
+<div class="in-sec">
 		<div class="footer">
 			<div class="list-top-2">
 				<div class="in">
@@ -23,3 +29,5 @@
 	</div>
 	<%@ include file="footer-sec.jsp" %>
 </div>
+</body>
+</html>

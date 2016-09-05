@@ -21,11 +21,12 @@
 		<div class="shadow">
 			<div>
 				<div class="in-sec">
+					<input type="hidden" id="gnb-sel" value="">
 					<h1><a href="<c:url value='/main.do'/>">WEBKINGS</a></h1>
 					<a href="#" class="gender f">여성</a>
 					<a href="#" class="gender m">남성</a>
 					<ul class="gnb">
-						<li class="active">
+						<li class="">
 							<input type="hidden" id="gnbPage" value="/product">
 							<a href="#">ITEM</a>
 							<div class="depth2 sec2">
