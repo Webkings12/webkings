@@ -32,4 +32,9 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	@Override
+	public MemberVo selectmEmail(String mEmail) {
+		return memberDAO.selectmEmail(mEmail);
+	}
+
 }

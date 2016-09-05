@@ -38,7 +38,7 @@
   action="<c:url value='/member/register.do'/>">
 <div class="modal1">
     <div class="imgcontainer">
-      <h2>약관동의</h2>
+      <h2 class="h2">약관동의</h2>
       <hr>
     </div>
   
