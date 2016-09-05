@@ -2,7 +2,7 @@ package com.webkings.app.qna.model;
 
 import java.sql.Timestamp;
 
-public class QnaVO {
+public class QnaViewVo {
 	private int qNo;
 	private String qTitle;
 	private String qContent;
@@ -10,6 +10,15 @@ public class QnaVO {
 	private String qTel;
 	private Timestamp qRegdate;
 	private int mNo;
+	private String mEmail; //이메일
+	private String mNick; //닉네임
+	private int newImgTerm;
+	public int getNewImgTerm() {
+		return newImgTerm;
+	}
+	public void setNewImgTerm(int newImgTerm) {
+		this.newImgTerm = newImgTerm;
+	}
 	public int getqNo() {
 		return qNo;
 	}
@@ -52,10 +61,23 @@ public class QnaVO {
 	public void setmNo(int mNo) {
 		this.mNo = mNo;
 	}
+	public String getmEmail() {
+		return mEmail;
+	}
+	public void setmEmail(String mEmail) {
+		this.mEmail = mEmail;
+	}
+	public String getmNick() {
+		return mNick;
+	}
+	public void setmNick(String mNick) {
+		this.mNick = mNick;
+	}
 	@Override
 	public String toString() {
-		return "QnaVO [qNo=" + qNo + ", qTitle=" + qTitle + ", qContent=" + qContent + ", qEmail=" + qEmail + ", qTel="
-				+ qTel + ", qRegdate=" + qRegdate + ", mNo=" + mNo + "]";
+		return "QnaViewVo [qNo=" + qNo + ", qTitle=" + qTitle + ", qContent=" + qContent + ", qEmail=" + qEmail
+				+ ", qTel=" + qTel + ", qRegdate=" + qRegdate + ", mNo=" + mNo + ", mEmail=" + mEmail + ", mNick="
+				+ mNick + ", newImgTerm=" + newImgTerm + "]";
 	}
 	
 }

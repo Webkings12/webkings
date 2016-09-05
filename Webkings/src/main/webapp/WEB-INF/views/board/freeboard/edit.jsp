@@ -106,7 +106,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#btSubmit").click(function(){
-			$("#write_form").submit();
+			$("#edit_form").submit();
 		});
 	});
 </script>
@@ -114,25 +114,36 @@
 
 <div class="divFrm2">
 		
-	<form id="write_form" method="post" name="write_form" action="<c:url value='/freeboard/write.do'/>" enctype="multipart/form-data" >
-
+	<form id="edit_form" method="post" name="edit_form" action="<c:url value='/freeboard/edit.do'/>" enctype="multipart/form-data" >
+			<input type="hidden" name="bNo" value="${vo.bNo}">
+		<input type="hidden" name="oldFilename" value="${vo.bFilename}">
+		<input type="hidden" name="oldOriginfilename" value="${vo.bOriginalfilename}">
+		<input type="hidden" name="oldFilesize" value="${vo.bFilesize}">
+		
+		
 		<div class="align_center">
 			<h4 class="float_left top_Padding"><strong>제목</strong></h4>
-			<input type="text" id="subject" name="bTitle" class="float_left top_Padding" value="">
+			<input type="text" id="subject" name="bTitle" class="float_left top_Padding" value="${vo.bTitle }">
 			<div class="float_left top_Padding"><strong>45</strong>자 제한</div>
 		</div>
 		<br>
 		<br>
 		<div class="divContent">
-			<textarea id="fm_post" name="bContent"></textarea>
+			<textarea name="bContent">${vo.bContent }</textarea>
 		</div>
 		<div>
 			<input type="file" name="upfile">
+			<c:if test="${!empty vo.bFilename }">
+         		<p style="color:green;">
+         			※첨부파일을 새로 지정할 경우 기존파일
+         			<img src="<c:url value='/images/file.gif'/>" alt="파일이미지">${vo.bOriginalfilename } 은삭제됩니다.
+         		</p>
+         	</c:if>
 		</div>	
 		<br>			
 		<div class="btn">
-			<a id="btSubmit" class="btn_default btn_light btn_large btn_BaW" href="#">등록</a>
-			<a class="btn_default btn_light btn_large" href='<c:url value="/freeboard/list.do"/>' >글목록</a>
+			<a id="btSubmit" class="btn_default btn_light btn_large btn_BaW" href="#">수정</a>
+			<a class="btn_default btn_light btn_large" href="<c:url value='/freeboard/detail.do?no=${vo.bNo}'/>" >취소</a>
 		</div>
 	</form>
 

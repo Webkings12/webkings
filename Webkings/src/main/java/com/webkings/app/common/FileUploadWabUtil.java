@@ -28,7 +28,7 @@ public class FileUploadWabUtil {
 	// 자료실에서 업로드인지 , 상품등록에서 이미지 등록인지 구분 해주는 상수
 	public static final int PDS_UPLOAD=1; // 자료실 업로드
 	public static final int IMAGE_UPLOAD=2; // 상품이미지 업로드
-	
+	public static final int BOARD_IMAGE_UPLOAD=3;
 	
 	@Resource(name="fileUploadProperties")
 	private Properties fileUploadProps;
@@ -77,6 +77,7 @@ public class FileUploadWabUtil {
 				Map<String, Object> map= new HashMap<String, Object>();
 				map.put("fileName", fileName);
 				map.put("fileSize", fileSize);
+				map.put("ofileName", ofileName);
 				
 				// map을 List에 저장한다
 				fileList.add(map);
@@ -123,10 +124,13 @@ public class FileUploadWabUtil {
 			if(uploadTpye==PDS_UPLOAD){
 				// 자료실 파일 업로드
 				realPath=fileUploadProps.getProperty("file.upload.path.test");
-			}else {
+			}else if(uploadTpye==IMAGE_UPLOAD) {
 				// 상품등록시 파일 이미지 업로드
 				realPath
 				=fileUploadProps.getProperty("imageFile.upload.path.test");
+			}else if (uploadTpye==BOARD_IMAGE_UPLOAD){
+				realPath
+				=fileUploadProps.getProperty("boardImageFile.upload.path.test");
 			}
 			logger.info("테스트 경로={}", realPath);
 		}else{
@@ -135,10 +139,13 @@ public class FileUploadWabUtil {
 				// 자료실
 				realPath
 				=fileUploadProps.getProperty("file.upload.path");							
-			}else{
+			}else if(uploadTpye==IMAGE_UPLOAD){
 				// 상품이미지 등록
 				realPath
 				=fileUploadProps.getProperty("imageFile.upload.path");
+			}else if(uploadTpye==BOARD_IMAGE_UPLOAD){
+				realPath
+				=fileUploadProps.getProperty("boardImageFile.upload.path.test");
 			}
 			logger.info("실제 배포시 경로={}", realPath);
 			

@@ -1,5 +1,41 @@
 package com.webkings.app.freeBoard.model;
 
-public class FreeBoardDAOMybatis {
+import java.util.List;
 
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.stereotype.Repository;
+
+import com.webkings.app.common.SearchVO;
+
+@Repository
+public class FreeBoardDAOMybatis extends SqlSessionDaoSupport implements FreeBoardDAO {
+	private String namespace="com.mybatis.mapper.oracle.freeBoard";
+	
+	public int insertFreeBoard(FreeBoardVO freeBoardVo){
+		return getSqlSession().insert(namespace+".insertFreeBoard",freeBoardVo);
+	}
+	
+	public List<BoardViewVO> freeBoardselectAll(SearchVO searchVo){
+		return getSqlSession().selectList(namespace+".freeBoardselectAll",searchVo);
+	}
+	
+	public int selectTotalRecord(SearchVO searchVo){
+		return getSqlSession().selectOne(namespace+".selectTotalRecord",searchVo);
+	}
+	
+	public int updateCount(int no){
+		return getSqlSession().update(namespace+".updateCount",no);
+	}
+	
+	public BoardViewVO selectByNo(int no){
+		return getSqlSession().selectOne(namespace+".selectByNo",no);
+	}
+	
+	public int updateBoard(FreeBoardVO freeBoardVo){
+		return getSqlSession().update(namespace+".updateByNo",freeBoardVo);
+	}
+	
+	public int deleteBoard(int bNo){
+		return getSqlSession().delete(namespace+".deleteBoard",bNo);
+	}
 }
