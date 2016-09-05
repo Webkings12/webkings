@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div class="body-sec"><div class="in-sec"><p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
+<p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
 	<div class="list-top-1">
 		<p class="notice-2"><strong>카테고리 전체 : </strong> <em></em> <i>total</i></p>
 		<div class="tab-type-1 tab-type-main">
@@ -63,9 +63,8 @@
 			</ul>
 		</div>
 	</div>
-
 	<ul class="item-list abs-list"></ul>
-</div></div></div>
+</div>
 <form id="pageFrm" name="pageFrm" method="get" target="_self">
 	<input type="hidden" name="cs" value="100" />
 	<input type="hidden" name="sw2" value="" />
