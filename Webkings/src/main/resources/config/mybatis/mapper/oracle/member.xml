@@ -16,4 +16,8 @@
 		select m_Pwd from member
 		where m_Email=#{mEmail}
 	</select>
+	<select id="selectmEmail" parameterType="String" resultType="MemberVo" >
+		select * from member
+		where m_Email=#{mEmail}
+	</select>
 </mapper>

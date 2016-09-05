@@ -7,4 +7,5 @@ public interface MemberService {
 	
 	public int insertMember(MemberVo vo);
 	public int loginCheck(MemberVo vo);
+	public MemberVo selectmEmail(String mEmail);
 }

@@ -85,6 +85,7 @@ public class MemberController {
 		String msg="", url="/member/login.do";
 		if(result==MemberService.LOGIN_OK){
 			
+			memberVo =memberService.selectmEmail(memberVo.getmEmail());
 			HttpSession session= request.getSession();
 			session.setAttribute("mEmail", memberVo.getmEmail());
 			session.setAttribute("mNick", memberVo.getmNick());
