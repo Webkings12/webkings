@@ -61,6 +61,9 @@ $(document).ready(function(){
 	<div class="amodel">
   <form id="form" class="modal-content animate"
   action="<c:url value="/member/register.do"/>" method="post" enctype="multipart/form-data" >
+  	
+  	<h2 class="h2">회원가입</h2>
+  	<hr>
     <div class="reg">
     <div class="imgfile">
        <img id="UploadedImg" 
