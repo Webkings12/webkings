@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
@@ -18,7 +19,10 @@
 </head>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+ 	$(document).ready(function() {
+ 		/* var contextPath="/Webkings";
+ 		var pathName=""; */
+ 	
 		var gender="F";		
 		$(".gnb li").mouseenter(function() {
 			$(".gnb li:first-child").removeClass("active");
@@ -44,57 +48,60 @@
 			}
 		});
 	
-	var page = "viewPage=product"+gender;
-	var loadPage="item/product/productF.jsp";
+		var page = "viewPage=product"+gender;
+/* 	var loadPage="item/product/productF.jsp"; */
 	alert(page);
 	$(".gnb li").click(function() {
+		alert("zzz"+viewPage);
 		var li = $(".active #gnbPage").val();		
  		page="viewPage="+li;
- 		if(li=="product"){
- 			page+=gender;
- 		}
- 		if(li=="shop"){
+ 		if(li=="shop" || li=="product"){
  			page+=gender;
  		}
  		alert(page);
  		
- 		/* 클릭할때마다 불러오는 include*/
- 		
- 		 $.ajax({
+ 		$.ajax({
  			url:"<c:url value='/page.do'/>",
  			data:page,
  			type:"GET",
- 			dataType:"html",
+ 			async:false,
+ 			dataType:"text",
  			success:function(res){
- 				alert(res);
- 				$(".in-sec").html(res);
+ 				viewPage=res;
+ 				alert("success:"+viewPage);
+ 				$("#value").val(res);
+ 				var viewPage=$("#value").val();
  			},
  			error:function(xhr, status, error){
  				alert(error);
  			}
- 		});     
+ 		});
+ 		$("#cola").load(var viewPage=$("#value").val());
+ 		
 	});
-	
-	/*처음실행될때 초기화면*/
- 	 $.ajax({
-		url:"<c:url value='/page.do'/>",
-		data:page,
-		type:"GET",
-		dataType:"json",
-		success:function(res){
-			alert(res);
-			 $(".in-sec").html(res); 
-		},
-		error:function(xhr, status, error){
-			alert(error);
-		}
-	});     
-});
+ 		/* 클릭할때마다 불러오는 include*/
+	 	
+	/* 	  $.ajax({
+	 			url:"<c:url value='/page.do'/>",
+	 			data:page,
+	 			type:"GET",
+	 			dataType:"text",
+	 			success:function(res){
+	 				var viewPage =res;
+	 				alert(res);
+	 			},
+	 			error:function(xhr, status, error){
+	 				alert(error);
+	 			}
+	 		});      */ 
+}); 
 </script>
-<%@ include file="inc/top.jsp" %>
+	 <input type="text" id="value" value="${viewPage}", style="margin-top: 150px;"/>
+	 <c:set var="viewPage" value="${viewPage}"></c:set>
+     <jsp:include page="inc/top.jsp" flush="false" /> 
 <div class="body-sec">
-	<div class="in-sec">
-         <jsp:include page="${ss}"></jsp:include> 
+	<div class="in-sec" id="cola">
+		  <jsp:include page="${viewPage}.jsp" flush="false" /> 
 	</div>
 </div>
 </body>

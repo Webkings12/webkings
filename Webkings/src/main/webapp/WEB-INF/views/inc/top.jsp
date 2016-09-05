@@ -4,6 +4,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE html PUBLIC>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/clear.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/basic.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_m.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_f.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
 <body class="F">
 	<div class="header">
 		<div class="shadow">
@@ -14,7 +26,7 @@
 					<a href="#" class="gender m">남성</a>
 					<ul class="gnb">
 						<li class="active">
-							<input type="hidden" id="gnbPage" value="product">
+							<input type="hidden" id="gnbPage" value="/product">
 							<a href="#">ITEM</a>
 							<div class="depth2 sec2">
 								<dl class="age-sel">
@@ -82,7 +94,7 @@
 							</div>
 						</li>
 						<li class="">
-							<input type="hidden" id="gnbPage" value="shop">
+							<input type="hidden" id="gnbPage" value="/shop">
 							<a href="#">SHOP</a>
 							<div class="depth2">
 								<dl class="shop-sel">
@@ -117,11 +129,11 @@
 							</div>
 						</li>
 						<li class="">
-							<input type="hidden" id="gnbPage" value="info">
+							<input type="hidden" id="gnbPage" value="/info">
 							<a href="#">INFO</a>
 						</li>
 						<li class="">
-							<input type="hidden" id="gnbPage" value="mypage">
+							<input type="hidden" id="gnbPage" value="/mypage">
 							<a href="#">
 								MY
 								<!-- ::after -->

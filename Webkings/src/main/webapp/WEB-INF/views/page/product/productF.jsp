@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
+<script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
+<%@ include file="../../inc/top.jsp" %>
+<div class="body-sec">
+<div class="in-sec">
 <p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
 	<div class="list-top-1">
 		<p class="notice-2"><strong>카테고리 전체 : </strong> <em></em> <i>total</i></p>
@@ -69,3 +75,5 @@
 	<input type="hidden" name="cs" value="100" />
 	<input type="hidden" name="sw2" value="" />
 </form>
+</body>
+</html>
