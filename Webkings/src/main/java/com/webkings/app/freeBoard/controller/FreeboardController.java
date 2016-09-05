@@ -53,6 +53,7 @@ public class FreeboardController {
 		//1.
 		logger.info("자게 글쓰기 파라미터 fboardVo={}",fboardVo);
 		
+		
 		//2.
 		
 		int uploadTpye=fileUtil.BOARD_IMAGE_UPLOAD;
