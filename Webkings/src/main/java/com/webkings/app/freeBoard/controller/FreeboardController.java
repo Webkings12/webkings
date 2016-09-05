@@ -72,6 +72,8 @@ public class FreeboardController {
 		fboardVo.setbFilename(fileName);
 		fboardVo.setbFilesize(fileSize);
 		fboardVo.setbOriginalfilename(ofileName);
+		int mNo=(Integer)session.getAttribute("mNo");
+		fboardVo.setmNo(mNo);
 		
 		logger.info("글쓰기 업로드처리, 파라미터 fboardVo={}",fboardVo);
 		

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,10 +43,16 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value="/write.do",method=RequestMethod.POST)
-	public String qnaSend(@ModelAttribute QnaVO qnaVo,Model model){
+	public String qnaSend(@ModelAttribute QnaVO qnaVo,HttpSession session,Model model){
 		//1.
+		
+		String mEmail=(String)session.getAttribute("mEmail");
+		int mNo=(Integer)session.getAttribute("mNo");
+		qnaVo.setmNo(mNo);
+		qnaVo.setqEmail(mEmail);
 		logger.info("QnA전송 파라미터 QnaVo={}",qnaVo);
 		//2.
+		
 		
 		int cnt=0;
 		logger.info("Qna 시작전 cnt={}",cnt);
