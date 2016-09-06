@@ -2,7 +2,7 @@
  * 
  */
 $(document).ready(function() {
-/*	if(${li=="/item"} || ${li==null}){
+		/*	if(${li=="/item"} || ${li==null}){
 			$(".gnb li:first-child").toggleClass("active");
 		}else if(li=="/item"){
 			$(".gnb li:nth-child(1)").toggleClass("active");

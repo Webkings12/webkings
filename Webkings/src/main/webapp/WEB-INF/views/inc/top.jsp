@@ -16,6 +16,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
+<script type="text/javascript">
+	var cha = ${param.page};
+	if(cha=="/product"){
+		$(".gnb li:nth-child(1)"){
+			$(this).addClass("active");
+		}
+	}else if(cha=="/shop"){
+		$(this).addClass("active");
+	}else if(cha=="/mypage"){
+		$(this).addClass("active");
+	}
+</script>
 <body class="F">
 	<div class="header">
 		<div class="shadow">

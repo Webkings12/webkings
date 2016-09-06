@@ -22,9 +22,8 @@ public class ViewController {
 	}
 	
 	@RequestMapping("/page.do")
-	public String page(@RequestParam String page, Model model){
+	public String page(@RequestParam String page){
 		logger.info("page={}",page);
-		model.addAttribute("gbn",cate);
 		return "page"+page;
 	}
 	

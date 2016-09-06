@@ -44,7 +44,7 @@
 	<select id="selectByNo" resultType="QnaViewVo" parameterType="int">
 		select * from qnaview where q_no=#{no}	
 	</select>
-	
+	 
 	<delete id="deleteQna" parameterType="int">
 		delete from qna
 		where q_no=70

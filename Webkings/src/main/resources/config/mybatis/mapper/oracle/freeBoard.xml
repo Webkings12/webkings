@@ -21,7 +21,7 @@
 		values(#{bNo},#{bTitle},#{bContent},#{bFilename},#{bFilesize},#{bOriginalfilename},sysdate,sysdate,#{mNo})
 	</insert>
 	
-	<select id="freeBoardselectAll" resultType="BoardViewVO" 
+	<!-- <select id="freeBoardselectAll" resultType="BoardViewVO" 
 		parameterType="SearchVO">
 		select *
 		from
@@ -45,7 +45,7 @@
 			and RNUM<= #{firstRecordIndex}
 			+ #{recordCountPerPage}
 		]]>
-	</select>
+	</select> -->
 	
 	<select id="selectTotalRecord" parameterType="SearchVO" resultType="int">
 		select count(*) 

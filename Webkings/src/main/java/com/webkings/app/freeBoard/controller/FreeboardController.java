@@ -1,4 +1,4 @@
-package com.webkings.app.freeBoard.controller;
+/*package com.webkings.app.freeBoard.controller;
 
 import java.io.File;
 import java.util.List;
@@ -91,9 +91,9 @@ public class FreeboardController {
 	
 	@RequestMapping("/list.do")
 	public String freeBoardList(SearchVO searchVo,Model model){
-		/*3. 글목록 조회
+		3. 글목록 조회
 		/reBoard/list.do => ReBoardListController
-		=> /reBoard/list.jsp*/
+		=> /reBoard/list.jsp
 		//1. 파라미터 읽어오기
 		logger.info("글목록 조회, 파라미터 searchVo={}",
 				searchVo);
@@ -267,3 +267,4 @@ public class FreeboardController {
 	}
 	
 }
+*/
