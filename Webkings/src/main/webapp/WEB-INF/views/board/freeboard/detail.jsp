@@ -1,23 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top.jsp" %>
+<script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <style type="text/css">
-	.divFrm2{
-		margin: 0 auto;
-		margin-top: 200px;
-		width: 600px;
-		text-align: center;
-	}
 	
-	.content{
-		border: 1px solid lightgray;
-		background: white;
-		padding: 15px;
-	}
-	
-	.align_left{
-		text-align: left;
-	}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -31,7 +18,7 @@
 </script>
 
 
-	<div class="divFrm2">
+	<div class="divList2 topMargin">
 		<div class="firstDiv">
 			<span class="sp1">제목</span> <span>${vo.bTitle }</span>
 		</div>
@@ -50,11 +37,14 @@
 		</div>
 		</c:if>
 		<div class="align_left ">			
-			<pre class="content">${vo.bContent }</pre>
+			<pre class="boardContent">${vo.bContent }</pre>
 		</div>
-		<div class="center">
+		<div class="align_right">
+			<c:if test="${sessionScope.mNo==vo.mNo }">
 			<a href='<c:url value="/freeboard/edit.do?no=${vo.bNo}"/>'>수정</a> |
         	<a id="sendDel" href='#'>삭제</a> |
-        	<a href='<c:url value="/freeboard/list.do"/>'>목록</a>			
+        	</c:if>
+        	<a href='<c:url value="/freeboard/listView.do"/>'>목록</a>			
 		</div>
 	</div>
+	<c:import url="/freeboard/list.do"></c:import>

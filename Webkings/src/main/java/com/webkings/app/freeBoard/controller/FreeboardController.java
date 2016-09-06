@@ -79,11 +79,15 @@ public class FreeboardController {
 		logger.info("글쓰기 업로드처리, 파라미터 fboardVo={}",fboardVo);
 		
 		int cnt=fBoardService.insertFreeBoard(fboardVo);
+		logger.info("글쓰기 결과cnt={}",cnt);
 		
 		if(cnt>0){
+			logger.info("글쓰기 결과cnt={}",cnt);
 			return "redirect:/freeboard/list.do";
 		}else{
+			logger.info("글쓰기 결과cnt={}",cnt);
 			return "redirect:/freeboard/write.do";
+			
 		}
 		
 	
@@ -122,6 +126,10 @@ public class FreeboardController {
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		
+		return "board/freeboard/listView";
+	}
+	@RequestMapping("/listView.do")
+	public String listView(){
 		return "board/freeboard/list";
 	}
 	
