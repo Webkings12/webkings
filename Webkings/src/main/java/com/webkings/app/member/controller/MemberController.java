@@ -90,6 +90,7 @@ public class MemberController {
 			session.setAttribute("mEmail", memberVo.getmEmail());
 			session.setAttribute("mNick", memberVo.getmNick());
 			session.setAttribute("mNo", memberVo.getmNo());
+			session.setAttribute("mType", memberVo.getmType());
 			
 			msg=memberVo.getmEmail()+"님 환영합니다";
 			url="/main.do";

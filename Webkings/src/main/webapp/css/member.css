@@ -180,7 +180,10 @@ span.psw {
 	margin-top: 30px;
 }
 #upFile{
-	background-image: url("../images/logo.pug");
-	opacity:0.0;
+	margin-left: 50px;
+}
+#h4{
+	text-align: center;
+	color: skyblue;
 }
 

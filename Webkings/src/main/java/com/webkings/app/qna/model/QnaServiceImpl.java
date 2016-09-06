@@ -1,4 +1,4 @@
-package com.webkings.app.qna.model;
+/*package com.webkings.app.qna.model;
 
 import java.util.List;
 
@@ -30,3 +30,4 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDao.deleteQna(no);
 	}
 }
+*/

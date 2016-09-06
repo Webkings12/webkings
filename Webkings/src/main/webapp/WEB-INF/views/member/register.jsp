@@ -70,7 +70,7 @@ $(document).ready(function(){
        src="" /> 
     </div>
     <div>
-		<input type='file' name="upFile" onchange="readURL(this)"/>
+		<input type='file' name="upFile" onchange="readURL(this)";/>
     </div>
     </div>
    
