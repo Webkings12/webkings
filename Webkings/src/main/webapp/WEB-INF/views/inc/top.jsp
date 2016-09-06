@@ -144,7 +144,7 @@
 					<%-- <c:if test=""> 세션이 있으면 --%>
 						<ul class="logout">
 						<c:if test="${empty sessionScope.mEmail }">
-							<li><a onclick="document.getElementById('divLogin').style.display='block'">로그인</a></li>
+							<li><p onclick="document.getElementById('divLogin').style.display='block'">로그인</p></li>
 							<li><a
 							onclick="document.getElementById('divtos').style.display='block'">회원가입</a></li>
 						</c:if>					
