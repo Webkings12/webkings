@@ -1,4 +1,4 @@
-package com.webkings.app.qna.model;
+/*package com.webkings.app.qna.model;
 
 import java.util.List;
 
@@ -31,3 +31,4 @@ public class QnaDAOMybatis extends SqlSessionDaoSupport implements QnaDAO{
 		return getSqlSession().delete(namespace+".deleteQna",no);
 	}
 }
+*/

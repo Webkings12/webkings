@@ -26,5 +26,4 @@
 	
 	<util:properties id="fileUploadProperties"
 		location="classpath:/config/props/fileUpload.properties" />
-	
 </beans>

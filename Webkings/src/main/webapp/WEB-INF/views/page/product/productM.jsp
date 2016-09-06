@@ -1,5 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
+<script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	var pageNum = ${pageNum};
+	$(".gnb li:nth-child("+pageNum+")").addClass("active");
+	
+	$(".gnb li").mouseenter(function() {
+		$(".gnb li").removeClass("active");
+		$(this).addClass("active");
+	})
+	$(".gnb li").mouseleave(function() {
+		$(this).removeClass("active");
+		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
+	});
+});
+</script>
+<%@ include file="../../inc/top.jsp" %>
+<div class="body-sec">
+<div class="in-sec">
 <p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
 	<div class="list-top-1">
 		<p class="notice-2"><strong>카테고리 전체 : </strong> <em></em> <i>total</i></p>
@@ -7,7 +28,7 @@
 			<ul>
 				<li>
 					<dl class="age-sel">
-						<dt><a href="/home">신상품 추천</a></dt>
+						<dt><a href="#" onclick="gbn()">신상품 추천</a></dt>
 						<dd><a href="javascript:;"><em>전체 연령대</em></a></dd>
 						<dd><a href="javascript:;"><em>10대 신상품</em></a></dd>
 						<dd><a href="javascript:;"><em>20대 신상품</em></a></dd>
@@ -16,7 +37,7 @@
 				</li>
 				<li class="active">
 					<dl class="prod-cate-sel">
-						<dt><a href="javascript:;">전체 상품</a></dt>
+						<dt><a href="#" ">전체 상품</a></dt>
 					</dl>
 				</li>
 			</ul>
@@ -69,3 +90,5 @@
 	<input type="hidden" name="cs" value="100" />
 	<input type="hidden" name="sw2" value="" />
 </form>
+</body>
+</html>
