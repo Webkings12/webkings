@@ -1,0 +1,150 @@
+@CHARSET "UTF-8";
+
+/*자게 qna에서 사용할 css  */
+.divFrm2{
+		margin: 0 auto;
+		width: 700px;
+		text-align: center;
+	}
+.divList2{
+		margin: 0 auto;
+		width: 700px;
+		text-align: center;
+	}
+
+.topMargin{
+	margin-top: 200px;
+}
+.btn_default.btn_light {
+    padding: 0;
+}
+.btn_default {
+	text-decoration:none;
+	background:white;
+    display: inline-block;
+    line-height: 25px;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    -webkit-box-shadow: 0 3px 10px -3px #aaa;
+    -moz-box-shadow: 0 3px 10px -3px #aaa;
+    box-shadow: 0 3px 10px -3px #aaa;
+    font-size: 15px;
+}
+.size_M{
+	padding: 10px 40px;
+    width: 80px;
+    font-size: 15px;
+}
+.btn_large {
+    padding: 10px 40px;
+    height: 40px;
+    width: 150px;
+    font-size: 20px;
+}
+.btn_light {
+    padding: 4px 9px;
+    color: #666;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+.btn_BaW {
+	
+    /* background-color: #1A70DC; */
+    background-color: #FF00CC;
+}
+
+
+.divFrm2 input[type=text] {
+    height: 40px;
+    border: 1px solid #e4e6e9;
+    text-indent: 12px;
+    width: 80%;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 0;
+}
+
+.divFrm2 textarea {
+    border: 1px solid #e4e6e9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    line-height: 140%;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 12px;
+    height: 300px;
+    
+}
+.float_left{
+	float: left;
+}
+.align_center{
+	text-align: center;
+}
+.mCenter{
+	margin: 0 auto;
+}
+.align_left{
+	text-align: left;
+}
+.align_right{
+	text-align: right;
+}
+.btn .btn_BaW {
+	color: #FFFFFF;
+}
+.top_Padding{
+	padding-top: 10px;
+}
+.bTitle{
+	margin-bottom: 5px;
+}
+.boardContent{
+		border: 1px solid lightgray;
+		background: white;
+		padding: 15px;
+}
+.listTable{
+	background: #fff;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid lightgray;
+}
+.listTable tr td{
+	border-bottom: 1px solid lightgray;
+	border-top: 1px solid lightgray;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.listTable th{
+	background: #FF00CC;
+	color: #fff;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-size: 15px;
+}
+.listTable td:nth-child(2){
+	padding-left:7px;
+	text-align: left;
+}
+.listTable td:nth-child(1){
+	font-size: 0.8em;
+}
+.noneDeco a{
+	text-decoration: none;
+}
+body{
+	background: #F0F0F0;
+}

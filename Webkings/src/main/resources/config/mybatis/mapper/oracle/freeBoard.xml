@@ -78,4 +78,11 @@
 		delete from freeboard
     where b_no=#{bNo}
 	</delete>
+	
+	<select id="selectMaxBNo" parameterType="int" resultType="int">
+		select max(b_no) from freeboard
+	</select>
+	
+	
+	
 </mapper>
