@@ -50,8 +50,9 @@ public class MemberController {
 	}
 	@RequestMapping(value="/register.do", method=RequestMethod.POST)
 	public String register_post(@ModelAttribute MemberVo memberVo,
-			HttpServletRequest request){
+			HttpServletRequest request, Model model){
 		logger.info("회원가입 처리, 파라미터 MemberVo={}",memberVo);
+		int count=memberService.selectmCount(memberVo.getmEmail());
 		
 		int uploadTpye=fileUtil.IMAGE_UPLOAD;
 		
@@ -61,10 +62,9 @@ public class MemberController {
 		for( Map<String, Object> mymap:fileList){
 			fileName=(String)mymap.get("fileName");
 		}
-		memberVo.setmImage(fileName);
-		int cnt= memberService.insertMember(memberVo);
-		logger.info("회원가입 처리, 파라미터 cnt={}",cnt);
-		
+			memberVo.setmImage(fileName);
+			int cnt= memberService.insertMember(memberVo);
+			logger.info("회원가입 처리, 파라미터 cnt={}",cnt);
 		return "redirect:/main.do";
 	}
 	
@@ -77,7 +77,7 @@ public class MemberController {
 	}
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public String login_post(@ModelAttribute MemberVo memberVo,
-			HttpServletRequest request,HttpServletResponse response,Model model){
+			HttpServletRequest request,HttpServletResponse response,String chkId,Model model){
 		logger.info("로그인 파라미터, memberVo={}",memberVo);
 		
 		int result=memberService.loginCheck(memberVo);
@@ -91,6 +91,15 @@ public class MemberController {
 			session.setAttribute("mNick", memberVo.getmNick());
 			session.setAttribute("mNo", memberVo.getmNo());
 			session.setAttribute("mType", memberVo.getmType());
+			
+			Cookie ck= new Cookie("ck_mEmail", memberVo.getmEmail());
+			if(chkId!=null){
+				ck.setMaxAge(1*24*60*60); 
+				response.addCookie(ck);				
+			}else{
+				ck.setMaxAge(0);
+				response.addCookie(ck);
+			}
 			
 			msg=memberVo.getmEmail()+"님 환영합니다";
 			url="/main.do";

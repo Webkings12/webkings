@@ -11,10 +11,59 @@
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <html lang="ko">
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
-<script type="text/javascript" src="/asset/js/sns_login_facebook.js"></script>
+<meta charset="utf-8">
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="322313348244-d0nvh2l8k8lv01jrlsue4lhdr2juvnfg.apps.googleusercontent.com">
+<script type="text/javascript" src="https://apis.google.com/js/api:client.js"></script>
+<script type="text/javascript" src="/asset/js/sns_login_google.js"></script>
+
 <body>
 
  <!-- 페이스북 1767015933560224;-->
+ 
+ <!-- 구글 -->
+<script type="text/javascript">
+var GoogleApp = {
+	     auth2: {},
+	     // 초기화
+	     init: function() {
+	          gapi.load('auth2', function() {
+	               GoogleApp.auth2 = gapi.auth2.init({
+	                    client_id: '322313348244-d0nvh2l8k8lv01jrlsue4lhdr2juvnfg.apps.googleusercontent.com',
+	                    cookiepolicy: 'single_host_origin',
+	               });
+	 
+	               // 특정 노드에 구글 로그인 버튼 연동
+	               GoogleApp.attachSignin(document.getElementById('google_join_btn'));
+	          });
+	     },
+	     // 특정 노드에 구글 로그인 연동
+	     attachSignin: function(element) {
+	          // 버튼 노드, ?, 로그인 성공시 콜백함수, 로그인 실패시 콜백함수
+	          GoogleApp.auth2.attachClickHandler(element, {}, GoogleApp.signinCallback, GoogleApp.signinFailure);
+	     },
+	     // 로그인 성공시 콜백함수
+	     signinCallback: function(googleUser) {
+	          var id = googleUser.getBasicProfile().getId();
+	          var memberName = googleUser.getBasicProfile().getName();
+	          var email = googleUser.getBasicProfile().getEmail();
+	          var token = googleUser.getAuthResponse().access_token;
+	          location.href="/Webkings/main.do";
+	          
+	          alert(id);
+	          alert(email);
+	          alert(memberName);
+	          alert(token);
+	          // 실행할 코드
+	     },
+	     // 로그인 실패시 콜백함수
+	     signinFailure: function(error) {
+	          console.log(JSON.stringify(error, undefined, 2));
+	     }
+	};
+	// 초기화 실행
+	GoogleApp.init();	
+</script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -46,17 +95,19 @@ $(document).ready(function(){
     <div class="imgcontainer">
       <img src="<c:url value='/images/logo.png'/>" alt="Avatar" class="avatar">
     </div>
-
+	
     <div class="container">
+    <hr>
     <div class="reg">
-      <input type="text" placeholder="이메일" name="mEmail" id=mEmail>
+      <input type="text" placeholder="이메일" name="mEmail" id="mEmail" value="${cookie.ck_mEmail.value}">
 	</div>
 	<div class="reg">
-      <input type="password" placeholder="비밀번호" name="mPwd" id=mPwd>
+      <input type="password" placeholder="비밀번호" name="mPwd" id="mPwd">
     </div>   
       <input type="submit"  class="cancelbtn" value="로그인"/>
       <label for="chkId">아이디 저장</label>
       <input type="checkbox" checked="checked" id="chkId" name="chkId">
+      <a href="#" class="a">비밀번호 찾기</a>
     </div>
 
   </form>
@@ -80,7 +131,7 @@ $(document).ready(function(){
 		</fb:login-button>
 
 	<div class="regdiv">
-		 <a class="regdiv" href="<c:url value='/member/tos.do'/>" id="reg">
+		 <a href="<c:url value='/member/tos.do'/>" id="reg">
 		 	<img  alt="회원가입" src="<c:url value='../images/email.png'/>" class="img1" /></a>
 		 </a>
 	</div>
@@ -123,6 +174,16 @@ $(document).ready(function(){
           Kakao.Auth.login({
             success: function(authObj) {
               alert("로그인성공");
+             
+              Kakao.API.request({
+                  url: '/v1/user/update_profile',
+                  success: function(res) {
+                    alert(JSON.stringify(res));
+                  },
+                  fail: function(error) {
+                    alert(JSON.stringify(error));
+                  }
+                });
               location.href="/Webkings/main.do";
             },
             fail: function(err) {

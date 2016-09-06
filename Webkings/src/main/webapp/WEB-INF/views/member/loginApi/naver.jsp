@@ -11,7 +11,7 @@
 
 <!-- 네이버아디디로로그인 초기화 Script -->
 <script type="text/javascript">
-	var naver_id_login = new naver_id_login("MqgamNXJD2WLujVMabN6", "a_main.do");
+	var naver_id_login = new naver_id_login("hnHk72nmxpcjD70Gfi0M", "a_main.do");
 	var state = naver_id_login.getUniqState();
 	naver_id_login.setButton("white", 2,40);
 	naver_id_login.setDomain(".service.com");
