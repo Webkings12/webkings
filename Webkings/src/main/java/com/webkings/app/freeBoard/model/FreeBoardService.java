@@ -1,4 +1,4 @@
-/*package com.webkings.app.freeBoard.model;
+package com.webkings.app.freeBoard.model;
 
 import java.util.List;
 
@@ -15,4 +15,3 @@ public interface FreeBoardService {
 	
 	
 }
-*/

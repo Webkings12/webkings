@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -16,31 +15,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
-<script type="text/javascript">
-	var cha = ${param.page};
-	if(cha=="/product"){
-		$(".gnb li:nth-child(1)"){
-			$(this).addClass("active");
-		}
-	}else if(cha=="/shop"){
-		$(this).addClass("active");
-	}else if(cha=="/mypage"){
-		$(this).addClass("active");
-	}
-</script>
 <body class="F">
 	<div class="header">
 		<div class="shadow">
 			<div>
 				<div class="in-sec">
 					<input type="hidden" id="gnb-sel" value="">
-					<h1><a href="<c:url value='/main.do'/>">WEBKINGS</a></h1>
+					<h1><a href="<c:url value='/page.do'/>">WEBKINGS</a></h1>
 					<a href="#" class="gender f">여성</a>
 					<a href="#" class="gender m">남성</a>
 					<ul class="gnb">
 						<li class="">
-							<input type="hidden" id="gnbPage" value="/product">
+							<input type="hidden" id="gnbPage" value="/item">
 							<a href="#">ITEM</a>
 							<div class="depth2 sec2">
 								<dl class="age-sel">

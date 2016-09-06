@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
-<script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
@@ -18,7 +18,7 @@ $(document).ready(function() {
 	});
 });
 </script>
-<%@ include file="../../inc/top.jsp" %>
+<%@ include file="../../inc/top.jsp"  %>
 <div class="body-sec">
 <div class="in-sec">
 <p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
@@ -37,7 +37,8 @@ $(document).ready(function() {
 				</li>
 				<li>
 					<dl class="prod-cate-sel">
-						<dt><a href="/shopping/men">전체 상품</a></dt>
+						<dt><a href="#" onclick="gbn()">전체 상품</a></dt>
+						<dd><a>ALL</a></dd>
 					</dl>
 				</li>
 			</ul>
@@ -50,10 +51,10 @@ $(document).ready(function() {
 			<a href="#exhibition" class="total">전체보기</a>
 			<div class="paging"></div>
 		</li>
-		<li class="bnr-1"><a href="javascript:;" target="_blank"><img src="http://img.sta1.info/rsc/front/img/bnr-1.png" class="item"></a></li>
+		<li class="bnr-1"><a href="javascript:;" target="_blank"><img src="#" class="item"></a></li>
 	</ul>
-	</div>
-	</div>
+</div>
+</div>
 </div>
 </body>
 </html>

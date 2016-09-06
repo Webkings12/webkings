@@ -1,4 +1,4 @@
-/*package com.webkings.app.freeBoard.model;
+package com.webkings.app.freeBoard.model;
 
 import java.util.List;
 
@@ -37,4 +37,3 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		return fbDao.deleteBoard(bNo);
 	}
 }
-*/
