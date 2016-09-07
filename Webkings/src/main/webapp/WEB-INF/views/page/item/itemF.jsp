@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
@@ -39,6 +39,9 @@ $(document).ready(function() {
 					<dl class="prod-cate-sel">
 						<dt><a href="#" onclick="gbn()">전체 상품</a></dt>
 						<dd><a>ALL</a></dd>
+						<c:forEach var="Item_TypeVO" items="${alist}">
+										<dd><a href="#">${Item_TypeVO.itName}</a></dd>
+						</c:forEach>
 					</dl>
 				</li>
 			</ul>

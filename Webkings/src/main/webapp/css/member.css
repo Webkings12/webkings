@@ -35,8 +35,9 @@ button {
 }
 
 img.avatar {
-    width: 10%;
+    width: 40%;
     border-radius: 10%;
+    
 }
 
 .container {
@@ -50,7 +51,7 @@ span.psw {
 
 /* The Modal (background) */
 .modal {
-    display: block; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -140,6 +141,7 @@ span.psw {
    
 }
 .reg{
+	padding-left:10px;
 	margin: 5px;
 	text-align: center;
 }
@@ -186,4 +188,11 @@ span.psw {
 	text-align: center;
 	color: skyblue;
 }
-
+.a{
+	padding-left:10px;
+	text-decoration:none;
+	color: black;	
+}
+.tos1{
+	width: 10px;
+}

@@ -37,4 +37,9 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.selectmEmail(mEmail);
 	}
 
+	@Override
+	public int selectmCount(String mEmail) {
+		return memberDAO.selectmCount(mEmail);
+	}
+
 }

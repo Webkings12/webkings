@@ -20,4 +20,9 @@
 		select * from member
 		where m_Email=#{mEmail}
 	</select>
+	<select id="selectmCount" parameterType="String" resultType="int" >
+		select count(*) from member
+		where m_Email=#{mEmail}
+	</select>
+	
 </mapper>
