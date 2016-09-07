@@ -16,7 +16,15 @@ public class BoardViewVO {
 	private String mEmail;
 	private int bReadcount;
 	private String mImage;//이미지
+	private String mNick; //닉네임
 	
+	
+	public String getmNick() {
+		return mNick;
+	}
+	public void setmNick(String mNick) {
+		this.mNick = mNick;
+	}
 	public String getmImage() {
 		return mImage;
 	}
@@ -100,7 +108,7 @@ public class BoardViewVO {
 		return "BoardViewVO [newImgTerm=" + newImgTerm + ", bNo=" + bNo + ", bTitle=" + bTitle + ", bContent="
 				+ bContent + ", bFilename=" + bFilename + ", bFilesize=" + bFilesize + ", bOriginalfilename="
 				+ bOriginalfilename + ", bRegdate=" + bRegdate + ", bChgdate=" + bChgdate + ", mNo=" + mNo + ", mEmail="
-				+ mEmail + ", bReadcount=" + bReadcount + ", mImage=" + mImage + "]";
+				+ mEmail + ", bReadcount=" + bReadcount + ", mImage=" + mImage + ", mNick=" + mNick + "]";
 	}
 		
 }

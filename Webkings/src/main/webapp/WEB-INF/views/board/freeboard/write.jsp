@@ -3,7 +3,6 @@
 <%@ include file="../../inc/top.jsp" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <style type="text/css">
-	
 </style>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
 <script src="<c:url value='/ckeditor/ckeditor.js' />" type="text/javascript"></script>
@@ -25,7 +24,7 @@
 </script>
 
 
-<div class="divFrm2">
+<div class="divFrm2 topMargin">
 		
 	<form id="write_form" method="post" name="write_form" action="<c:url value='/freeboard/write.do'/>" enctype="multipart/form-data" >
 

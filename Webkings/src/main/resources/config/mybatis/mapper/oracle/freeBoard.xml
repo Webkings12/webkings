@@ -21,7 +21,7 @@
 		values(#{bNo},#{bTitle},#{bContent},#{bFilename},#{bFilesize},#{bOriginalfilename},sysdate,sysdate,#{mNo})
 	</insert>
 	
-	<!-- <select id="freeBoardselectAll" resultType="BoardViewVO" 
+	<select id="freeBoardselectAll" resultType="BoardViewVO" 
 		parameterType="SearchVO">
 		select *
 		from
@@ -30,7 +30,7 @@
 		    from
 		        (select 
 					(sysdate-b.b_regdate)*24 as newImgTerm,
-					b.b_no, b.b_title, b.b_content, b.b_fileName, b.b_fileSize, b.b_originalFileName, b.b_readcount, m.m_email,b.b_regdate
+					b.b_no, b.b_title, b.b_content, b.b_fileName, b.b_fileSize, b.b_originalFileName, b.b_readcount, m.m_email,b.b_regdate,m.m_nick
 		        from freeboard b, member m
 		        where b.m_no=m.m_no
 		        <if test="searchKeyword!=null and searchKeyword!=''">
@@ -45,7 +45,7 @@
 			and RNUM<= #{firstRecordIndex}
 			+ #{recordCountPerPage}
 		]]>
-	</select> -->
+	</select>
 	
 	<select id="selectTotalRecord" parameterType="SearchVO" resultType="int">
 		select count(*) 
@@ -62,7 +62,7 @@
 	</update>
 	
 	<select id="selectByNo" parameterType="int" resultType="BoardViewVO">
-		select b.*,M.M_EMAIL,M.M_IMAGE from freeboard b, member m
+		select b.*,M.M_EMAIL,M.M_IMAGE,m.m_nick from freeboard b, member m
 		where b.m_no=m.m_no
 		and b_no=#{no}
 	</select>
@@ -83,6 +83,21 @@
 		select max(b_no) from freeboard
 	</select>
 	
+	<select id="selectMinBNo" parameterType="int" resultType="int">
+		select min(b_no) from freeboard
+	</select>
+	
+	<select id="selectNext" parameterType="int" resultType="int">
+		
+		select b_no from freeboard
+		where b_no>#{no} 
+		and <![CDATA[ rownum<=1
+		]]>
+	</select>
+	
+	<select id="selectBefore" parameterType="int" resultType="int">
+		select max(b_no) from(select b_no from freeboard where <![CDATA[ b_no<#{no} ]]>)
+	</select>
 	
 	
 </mapper>

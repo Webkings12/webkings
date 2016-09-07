@@ -83,7 +83,7 @@ public class FreeboardController {
 		
 		if(cnt>0){
 			logger.info("글쓰기 결과cnt={}",cnt);
-			return "redirect:/freeboard/list.do";
+			return "redirect:/freeboard/listView.do";
 		}else{
 			logger.info("글쓰기 결과cnt={}",cnt);
 			return "redirect:/freeboard/write.do";
@@ -161,16 +161,19 @@ public class FreeboardController {
 		//1.파라미터가 x
 		if(no==0){
 			model.addAttribute("msg","잘못된 url입니다");
-			model.addAttribute("url","/freeboard/list.do");
+			model.addAttribute("url","/freeboard/listView.do");
 			
 			return "common/message";
 		}
 		
 		//2. db작업
 		BoardViewVO vo=fBoardService.selectByNo(no);
-		
+		int nextNo=fBoardService.selectNext(no);
+		int beforeNo=fBoardService.selectBefore(no);
 		//3. 결과저장, 뷰페이지 리턴
 		model.addAttribute("vo",vo);
+		model.addAttribute("nextNo",nextNo);
+		model.addAttribute("beforeNo",beforeNo);
 		
 		return "board/freeboard/detail";
 	}
@@ -264,7 +267,7 @@ public class FreeboardController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="삭제 완료";
-			url="/freeboard/list.do";
+			url="/freeboard/listView.do";
 		}else{
 			msg="삭제 실패";
 			url="/freeboard/detail.do?no="+bNo;
