@@ -60,36 +60,9 @@
 											<em>ALL</em>
 										</a>
 									</dd>
-									<dd>
-										<a href="#">
-											<em>OUTER</em>
-										</a>
-									</dd>
-									<dd>
-										<a href="#">
-											<em>TOP</em>
-										</a>
-									</dd>
-									<dd>
-										<a href="#">
-											<em>BOTTOM</em>
-										</a>
-									</dd>
-									<dd>
-										<a href="#">
-											<em>SHOES</em>
-										</a>
-									</dd>
-									<dd>
-										<a href="#">
-											<em>BAG</em>
-										</a>
-									</dd>
-									<dd>
-										<a href="#">
-											<em>ACC/ETC</em>
-										</a>
-									</dd>
+									<c:forEach var="Item_TypeVO" items="${alist}">
+										<dd><a href="#"><em>${Item_TypeVO.itName}</em></a></dd>
+									</c:forEach>
 								</dl>
 								<div class="bg"></div>
 							</div>

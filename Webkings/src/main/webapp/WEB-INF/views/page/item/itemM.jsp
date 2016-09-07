@@ -45,6 +45,9 @@ $(document).ready(function() {
 					<dl class="prod-cate-sel">
 						<dt><a href="#" onclick="gbn()">전체 상품</a></dt>
 						<dd><a>ALL</a></dd>
+						<c:forEach var="Item_TypeVO" items="${alist}">
+							<dd><a href="#">${Item_TypeVO.itName}</a></dd>
+						</c:forEach>
 					</dl>
 				</li>
 			</ul>
