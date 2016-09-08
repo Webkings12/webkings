@@ -84,10 +84,10 @@ $(document).ready(function() {
 		</li>	
 		
 		<li class="date"><div class="sec today"><span>TODAY</span><strong>09.08</strong><em>116</em>개의 신상품 추천</div></li>
-	
+		
 		<li class="prod F ia">
 			<a href="javascript:;" sseq="121" seq="1349867" maindate="20160908">	
-				<img src="<c:url value='ItemInfo/img/noImage.jpg'/>" 
+				<img src="<c:url value='ItemInfo/img/no-image.jpg'/>" 
 				  data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg" style="height: 340px; display: block;" class="item">	
 				<span class="favor">관심상품</span>	
 				<div class="info">	<span class="shop">갠소</span>		
@@ -99,6 +99,24 @@ $(document).ready(function() {
 				<div class="bg"></div>
 			</a>
 		</li>
+		<%-- <c:forEach>
+			<li class="prod F ia">
+				<a href="javascript:;" sseq="121" seq="1349867" maindate="20160908">	
+					<img src="<c:url value='ItemInfo/img/noImage.jpg'/>" 
+					  data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg" 
+					  style="height: 340px; display: block;" class="item">
+					<span class="favor">관심상품</span>	
+					<div class="info">	<span class="shop">갠소</span>		
+						<span class="name">빈티지박시후드집업(4차 재입고)</span>	<em class="cate" cate="101">OUTER</em><i>35,200</i>		
+						<div class="btn">
+							<span class="fb"></span><i>페이스북 공유</i><span class="tw"></span><i>트위터 공유</i>
+						</div>	
+					</div>	
+					<div class="bg"></div>
+				</a>
+			</li>
+		</c:forEach> --%>
+		
 		</ul>
 </div>
 </div>
