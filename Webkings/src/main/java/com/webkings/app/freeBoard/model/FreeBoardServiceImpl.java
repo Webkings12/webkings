@@ -36,4 +36,24 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	public int deleteBoard(int bNo) {
 		return fbDao.deleteBoard(bNo);
 	}
+
+	@Override
+	public int selectNext(int bNo) {
+		int nextNo=fbDao.selectMaxBNo(bNo);
+		if(nextNo==bNo){
+			return nextNo;
+		}else{
+			return fbDao.selectNext(bNo);
+		}
+	}
+
+	@Override
+	public int selectBefore(int bNo) {
+		int before=fbDao.selectMinBNo(bNo);
+		if(before==bNo){
+			return before;
+		}else{
+			return fbDao.selectBefore(bNo);
+		}
+	}
 }

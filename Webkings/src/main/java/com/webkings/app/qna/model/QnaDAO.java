@@ -1,4 +1,4 @@
-/*package com.webkings.app.qna.model;
+package com.webkings.app.qna.model;
 
 import java.util.List;
 
@@ -11,4 +11,3 @@ public interface QnaDAO {
 	public QnaViewVo selectByNo(int no);
 	public int deleteQna(int no);
 }
-*/

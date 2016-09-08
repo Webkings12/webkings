@@ -12,4 +12,8 @@ public interface FreeBoardDAO {
 	public BoardViewVO selectByNo(int no);
 	public int updateBoard(FreeBoardVO freeBoardVo);
 	public int deleteBoard(int bNo);
+	public int selectMaxBNo(int bNo);
+	public int selectMinBNo(int bNo);
+	public int selectNext(int bNo);
+	public int selectBefore(int bNo);
 }

@@ -38,4 +38,23 @@ public class FreeBoardDAOMybatis extends SqlSessionDaoSupport implements FreeBoa
 	public int deleteBoard(int bNo){
 		return getSqlSession().delete(namespace+".deleteBoard",bNo);
 	}
+	
+	public int selectMaxBNo(int bNo){
+		return getSqlSession().selectOne(namespace+".selectMaxBNo",bNo);
+	}
+
+	@Override
+	public int selectMinBNo(int bNo) {
+		return getSqlSession().selectOne(namespace+".selectMinBNo",bNo);
+	}
+
+	@Override
+	public int selectNext(int bNo) {
+		return getSqlSession().selectOne(namespace+".selectNext",bNo);
+	}
+
+	@Override
+	public int selectBefore(int bNo) {
+		return getSqlSession().selectOne(namespace+".selectBefore",bNo);
+	}
 }
