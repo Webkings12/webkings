@@ -10,7 +10,7 @@ public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
 	
 	private String namespace="com.mybatis.mapper.oracle.item";
 	
-	@Override
+	@Override  //아이템 리스트 top and item
 	public List<Item_TypeVO> selectItemType(String gender) {
 		return getSqlSession().selectList(namespace+".selectItemType", gender);
 	}

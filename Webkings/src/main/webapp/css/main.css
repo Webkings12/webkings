@@ -316,6 +316,8 @@ body>div.header div.search form>p input {
     left: 35px;
     right: 10px;
     padding: 0;
+    margin: 0;
+    
 }
 body>div.header ul.gnb li:hover .depth2{
 	display: block;

@@ -3,60 +3,59 @@ package com.webkings.app.item.model;
 import java.sql.Timestamp;
 
 public class ItemVO {
-    private int I_NO;  
-    private String I_NAME;    
-    private String I_IMAGE;   
-    private Timestamp I_REGDATE; 
-    private Timestamp I_CHGDATE;
-    private int IT_NO;
-    private int S_NO;
-	  
-	public int getI_NO() {
-		return I_NO;
+    private int iNo;  
+    private String iName;    
+    private String iImage;   
+    private Timestamp iRegdate; 
+    private Timestamp iChgdate;
+    private int itNo;
+    private int sNo;
+	public int getiNo() {
+		return iNo;
 	}
-	public void setI_NO(int i_NO) {
-		I_NO = i_NO;
+	public void setiNo(int iNo) {
+		this.iNo = iNo;
 	}
-	public String getI_NAME() {
-		return I_NAME;
+	public String getiName() {
+		return iName;
 	}
-	public void setI_NAME(String i_NAME) {
-		I_NAME = i_NAME;
+	public void setiName(String iName) {
+		this.iName = iName;
 	}
-	public String getI_IMAGE() {
-		return I_IMAGE;
+	public String getiImage() {
+		return iImage;
 	}
-	public void setI_IMAGE(String i_IMAGE) {
-		I_IMAGE = i_IMAGE;
+	public void setiImage(String iImage) {
+		this.iImage = iImage;
 	}
-	public Timestamp getI_REGDATE() {
-		return I_REGDATE;
+	public Timestamp getiRegdate() {
+		return iRegdate;
 	}
-	public void setI_REGDATE(Timestamp i_REGDATE) {
-		I_REGDATE = i_REGDATE;
+	public void setiRegdate(Timestamp iRegdate) {
+		this.iRegdate = iRegdate;
 	}
-	public Timestamp getI_CHGDATE() {
-		return I_CHGDATE;
+	public Timestamp getiChgdate() {
+		return iChgdate;
 	}
-	public void setI_CHGDATE(Timestamp i_CHGDATE) {
-		I_CHGDATE = i_CHGDATE;
+	public void setiChgdate(Timestamp iChgdate) {
+		this.iChgdate = iChgdate;
 	}
-	public int getIT_NO() {
-		return IT_NO;
+	public int getItNo() {
+		return itNo;
 	}
-	public void setIT_NO(int iT_NO) {
-		IT_NO = iT_NO;
+	public void setItNo(int itNo) {
+		this.itNo = itNo;
 	}
-	public int getS_NO() {
-		return S_NO;
+	public int getsNo() {
+		return sNo;
 	}
-	public void setS_NO(int s_NO) {
-		S_NO = s_NO;
+	public void setsNo(int sNo) {
+		this.sNo = sNo;
 	}
-	
 	@Override
 	public String toString() {
-		return "ItemVO [I_NO=" + I_NO + ", I_NAME=" + I_NAME + ", I_IMAGE=" + I_IMAGE + ", I_REGDATE=" + I_REGDATE
-				+ ", I_CHGDATE=" + I_CHGDATE + ", IT_NO=" + IT_NO + ", S_NO=" + S_NO + "]";
-	}       
+		return "ItemVO [iNo=" + iNo + ", iName=" + iName + ", iImage=" + iImage + ", iRegdate=" + iRegdate
+				+ ", iChgdate=" + iChgdate + ", itNo=" + itNo + ", sNo=" + sNo + "]";
+	}
+	
 }

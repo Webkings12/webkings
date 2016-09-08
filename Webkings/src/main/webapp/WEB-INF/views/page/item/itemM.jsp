@@ -1,4 +1,3 @@
-<%-- <%@page import="org.apache.xmlbeans.impl.xb.xsdschema.IncludeDocument.Include"%> --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,11 +16,6 @@ $(document).ready(function() {
 		$(this).removeClass("active");
 		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
 	});
-	function gbn() {
-		page="/product/productM";
-		alert("gbn의 페이지"+page);
-		$(location).attr('href', "/Webkings/page.do?page="+page);
-	}
 });
 </script>
 <%@ include file="../../inc/top.jsp"  %>
@@ -34,18 +28,18 @@ $(document).ready(function() {
 			<ul>
 				<li class="active">
 					<dl class="age-sel">
-						<dt><a href="javascript:;">10대 신상품</a></dt>
-						<dd><a href="javascript:;"><em>전체 연령대</em></a></dd>
-						<dd><a href="javascript:;"><em>10대 신상품</em></a></dd>
-						<dd><a href="javascript:;"><em>20대 신상품</em></a></dd>
-						<dd><a href="javascript:;"><em>30대 신상품</em></a></dd>
+						<dt><input type="hidden" id="ageS" value="${age}"><a href="#">${age}</a></dt>
+						<dd><a href="/Webkings/page.do?page=/item&gender=M"><em>전체 연령대</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=M&ageSel=10"><em>10대 신상품</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=M&ageSel=20"><em>20대 신상품</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=M&ageSel=30"><em>30대 신상품</em></a></dd>
 					</dl>
 				</li>
 				<li>
 					<dl class="prod-cate-sel">
 						<dt><a href="#" onclick="gbn()">전체 상품</a></dt>
 						<dd><a>ALL</a></dd>
-						<c:forEach var="Item_TypeVO" items="${alist}">
+						<c:forEach var="Item_TypeVO" items="${itemList}">
 							<dd><a href="#">${Item_TypeVO.itName}</a></dd>
 						</c:forEach>
 					</dl>

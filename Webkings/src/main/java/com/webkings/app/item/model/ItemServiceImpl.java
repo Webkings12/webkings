@@ -11,7 +11,7 @@ public class ItemServiceImpl implements ItemService{
 	@Autowired
 	private ItemDAO itemDao;
 
-	@Override
+	@Override  //아이템 리스트 top and item
 	public List<Item_TypeVO> selectItemType(String gender) {
 		return itemDao.selectItemType(gender);
 	}

@@ -1,0 +1,287 @@
+@CHARSET "UTF-8";
+
+/* item css */
+@media screen and (max-width: 1460px)
+{div.body-sec .item-list {
+    width: 950px !important;
+}}
+
+.item-list {
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    width: 1416px;
+}
+.item-list>li {
+    float: left;
+    padding: 3px;
+}
+.plan-sec {
+    position: relative;
+}
+.plan-sec .list {
+    width: 466px;
+    height: 340px;
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.plan-sec .list li {
+    float: left;
+}
+.item-list>li img {
+    display: block;
+}
+
+.plan-sec a.total {
+    position: absolute;
+    font-size: 14px;
+    color: #fff;
+    left: 19px;
+    bottom: 13px;
+    padding-right: 17px;
+}
+
+.plan-sec a.total:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 0;
+    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -103px -60px;
+    width: 11px;
+    height: 11px;
+}
+
+.plan-sec .paging {
+    position: absolute;
+    bottom: 15px;
+    right: 18px;
+}
+.plan-sec .paging span.active {
+    background-color: #39d3ff;
+    opacity: 1;
+}
+
+.plan-sec .paging span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #000;
+    margin: 0 2px;
+    font-size: 0;
+    line-height: 0;
+    opacity: .3;
+}
+
+.item-list>li.bnr-1 img {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+/* 날짜 */
+.item-list>li.date .sec {
+    background-color: #fff;
+    width: 230px;
+    height: 340px;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.item-list>li.date .sec.today span {
+    display: inline-block;
+}
+
+.item-list>li.date .sec span {
+    display: inline-block;
+    font-family: DINPro_M,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 24px;
+    padding: 0 11px;
+    border: 2px solid #70d3e0;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    color: #70d3e0;
+    margin-top: 40px;
+    display: none;
+}
+.item-list>li.date .sec.today strong {
+    padding: 67px 0 12px 0;
+}
+body.F .item-list li.date strong {
+    color: #e6178f;
+}
+
+.item-list>li.date .sec strong {
+    display: block;
+    font-size: 40px;
+    font-family: DINPro_M,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 100%;
+    padding: 135px 0 12px 0;
+}
+body.F .item-list li.date em {
+    color: #e6178f;
+}
+
+/* item 이미지 */
+.item-list>li.prod>a {
+    display: block;
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #e4e7ea;
+}
+.item-list>li.prod>a>img {
+    width: 230px;
+    background: url("/rsc/front/img/ajax-loader.gif") no-repeat center;
+}
+
+element.style {
+    height: 340px;
+    display: block;
+}
+
+.item-list>li.prod .favor {
+    font-size: 0;
+    line-height: 0;
+    background-image: url("/rsc/front/img/sprite.png?_1471437666698");
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 252px 234px;
+    background-repeat: no-repeat;
+    background-position: -158px -201px;
+    width: 19px;
+    height: 16px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 4;
+}
+
+.item-list>li.prod .info {
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    width: 100%;
+}
+
+/* 마우스 hover 이미지*/
+.item-list>li.prod>a:hover .info {
+    top: 0;
+    z-index: 3;
+}
+.item-list>li.prod>a:hover .info>span.shop {
+    font-size: 14px;
+    width: 100%;
+    margin-top: -48px;
+}
+
+.item-list>li.prod>a:hover .info>span.name {
+    color: #fff;
+    width: 75%;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: -30px;
+}
+.item-list>li.prod>a:hover .info>span {
+    display: block;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.item-list>li.prod>a:hover .info .btn span:hover {
+    background-color: #fff;
+}
+.item-list>li.prod>a:hover .info .btn {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 100%;
+    text-align: center;
+    margin-top: 24px;
+}
+
+.item-list>li.prod.F .info .shop {
+    color: #e6178f;
+}
+.item-list>li.prod .info span.shop, .item-list>li.prod .info span.name {
+    display: none;
+}
+
+.item-list>li.prod .info em {
+    font-family: DINPro_R,sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    left: 12px;
+}
+.item-list>li.prod .info em, .item-list>li.prod .info i {
+    position: absolute;
+    bottom: 8px;
+    color: #fff;
+}
+.item-list>li.prod .info i {
+    font-family: DINPro_M,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    right: 12px;
+    letter-spacing: 0;
+}
+
+.item-list>li.prod .info .btn {
+    display: none;
+}
+
+.item-list>li.prod>a>div.bg {
+    display: none;
+}
+
+.item-list>li.prod>a:after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    background: url("/rsc/front/img/gradient.png");
+    z-index: 2;
+    display: block;
+}

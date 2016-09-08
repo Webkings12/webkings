@@ -12,7 +12,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_m.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/top_f.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/member.css"/>	
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/member.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/item.css"/>	
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -60,7 +61,7 @@
 											<em>ALL</em>
 										</a>
 									</dd>
-									<c:forEach var="Item_TypeVO" items="${alist}">
+									<c:forEach var="Item_TypeVO" items="${itemList}">
 										<dd><a href="#"><em>${Item_TypeVO.itName}</em></a></dd>
 									</c:forEach>
 								</dl>
@@ -78,26 +79,13 @@
 											<em>쇼핑몰전체</em>
 										</a>
 									</dd>
-									<dd>
-										<a href="#">
-											<em>트랜드</em>
-										</a>
-									</dd>
-									<dd>
-										<a href="#">
-											<em></em>
-										</a>
-									</dd>
-									<dd>
-										<a href="#">
-											<em></em>
-										</a>
-									</dd>
-									<dd>
-										<a href="#">
-											<em></em>
-										</a>
-									</dd>
+									 <c:forEach var="StyleVO" items="${styleList}">
+										<dd>
+											<a href="#">
+												<em>${StyleVO.stName}</em>
+											</a>
+										</dd>
+									</c:forEach> 
 								</dl>
 								<div class="bg"></div>
 							</div>
@@ -117,7 +105,7 @@
 					<%-- <c:if test=""> 세션이 있으면 --%>
 						<ul class="logout">
 						<c:if test="${empty sessionScope.mEmail }">
-							<li><p onclick="document.getElementById('divLogin').style.display='block'">로그인</p></li>
+							<li><a onclick="document.getElementById('divLogin').style.display='block'">로그인</a></li>
 							<li><a
 							onclick="document.getElementById('divtos').style.display='block'">회원가입</a></li>
 						</c:if>					
@@ -247,7 +235,6 @@ $(document).ready(function(){
 	});
 });
 </script>
-
 
 				<div id="divreg" class="modal">
 				 <span onclick="document.getElementById('divreg').style.display='none'" class="close" title="Close Modal">&times;</span>

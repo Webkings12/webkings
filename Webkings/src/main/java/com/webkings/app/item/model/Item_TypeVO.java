@@ -1,6 +1,7 @@
 package com.webkings.app.item.model;
 
 public class Item_TypeVO {
+	//아이템 리스트 top and item
 	private String itName;
 
 	public String getItName() {
