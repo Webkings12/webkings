@@ -8,5 +8,8 @@ public interface MemberService {
 	public int insertMember(MemberVo vo);
 	public int loginCheck(MemberVo vo);
 	public MemberVo selectmEmail(String mEmail);
-	public int selectmCount(String mEmail);	
+	public int selectmCount(String mEmail);
+	public int updateMember(String mEmail);
+	public int deleteMember(String mEmail);
+	public int updatePwd(MemberVo vo);
 }

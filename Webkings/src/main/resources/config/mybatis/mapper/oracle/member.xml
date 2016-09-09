@@ -33,4 +33,9 @@
 		delete from member
 		where m_Email=#{mEmail}
 	</delete>
+	<update id="updatePwd" parameterType="MemberVo">
+		update member
+		set m_Pwd=#{mPwd}
+		where m_Email=#{mEmail}
+	</update>
 </mapper>

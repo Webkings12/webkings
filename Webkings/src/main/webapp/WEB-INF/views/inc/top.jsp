@@ -30,6 +30,8 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+</script>
 </head>
 <body class="F">
 	<div class="header">
@@ -218,12 +220,17 @@
 									<input type="password" placeholder="비밀번호확인" name="mPwd_ok"
 										id="mPwd_ok">
 								</div>
+								<div class="certify">
+									<input type="text" placeholder="인증번호"
+										 id="certify" name="certify" style="width: 40%; height: 30px;" >
+									<a id="aCertify" style="width: 28%; height: 30px; font-size: 2.0ex">인증번호 받기</a>
+								</div>
 							</div>
 
 
 							<div class="container">
-								<button type="submit" class="cancelbtn">회원가입</button>
-							</div>
+								<button type="submit" class="cancelbtn" style="clear: both;">회원가입</button>
+							</div >
 						</form>
 					</div>
 				</div>
@@ -255,7 +262,7 @@
 									</div>
 									<button type="submit" class="cancelbtn" >로그인</button><label
 										for="chkId">아이디 저장</label> <input type="checkbox"
-										checked="checked" id="chkId" name="chkId"> <a href="#"
+										checked="checked" id="chkId" name="chkId"> <a href="#" id="find"
 										class="a">비밀번호 찾기</a>
 								</div>
 
@@ -289,42 +296,41 @@
 
 					<!-- 로그인 끝-->	
 					
-					<!-- 비밀번호 찾기 -->
-						<div id="divfind" class="modal">
-					      <span onclick="document.getElementById('divfind').style.display='none'" class="close" title="Close Modal">&times;</span>
-					  <div class="amodel">
-					<div class="modal1">
-					    <div class="imgcontainer">
-					      <h2 class="h2">약관동의</h2>
-					      <hr>
-					    </div>
-					  
-					    <div class="tos">
-					    	<label for="tos1">이용약관</label>
-					    	<input type="checkbox" id="tos1" name="tos1" class="toss">
-					    	<div>
-					    		<iframe class="iframe" src="
-					    		<c:url value='/common/provision.html'/>"></iframe>
-					    	</div>
-					    </div>
-					    <div class="tos">
-					    	<label for="tos2">개인정보취급방침</label>
-					    	<input type="checkbox" id="tos2" name="tos2" class="toss">
-					   		<div>
-					    		<iframe class="iframe" src="
-					    		<c:url value='/common/personal.html'/>"></iframe>
-					    	</div>
-					    </div>
+				 	<!-- 비밀번호 찾기-->
+				<div id="divfind" class="modal">
+					<span
+						onclick="document.getElementById('divfind').style.display='none'"
+						class="close" title="Close Modal">&times;</span>
+					<div class="amodel">
+
+						<div class="modal2">
+							<div class="imgcontainer">
+								<h2 class="h2">비밀번호 찾기</h2>
+								<br>
+								<hr>
+								<br><br><br><br>
+							</div>
+
+							<div class="tos">
+								<p>가입하신 회원님의 이메일 주소를 입력해 주세요. 임시비밀번호를 메일로 발송해 드립니다.</p>
+							</div>
+						<form  method="post" action="<c:url value='/email/emailFind.do'/>" id="frmFind">
+							<div class="tos">
+								<input type="text" placeholder="이메일을 입력하세요" name="mEmail"
+									id="mEmail2">
+							</div>
+							<div class="container" >
+					      		<button type="submit" id="bt1" class="cancelbtn">확인</button>
+							</div>
+						</form>
+						</div>	
+					</div>	
 					</div>
-					    <div class="container" style="background-color:#f1f1f1">
-					      <button type="button" id="bt1" class="cancelbtn">다음</button>
-					    </div>
-					</div>
+
+				<!--비밀번호 찾기 끝-->
+ 
 				</div>
-					
-					<!-- 비밀번호 찾기 끝 -->
 			</div>
-		</div>
 		<div class="bg"></div>
 	</div>
 

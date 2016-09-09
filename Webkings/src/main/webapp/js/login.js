@@ -25,6 +25,12 @@ $(document).ready(function(){
 		$("#divLogin").css("display","none");
 		$("#divtos").css("display","block");
 	});
+	
+	$("#find").click(function () {
+			$("#divLogin").css("display","none");
+			$("#divfind").css("display","block");
+	});
+
 });
 
 
@@ -73,6 +79,22 @@ $(document).ready(function(){
 		$("#divreg").css("display","none");
 		
 	});
+	$("#aCertify").click(function() {
+		if(($("#mEmail").val().length<1)){
+			alert("이메일을 입력하세요.");
+			$("#divreg").css("display","block");
+			$("#mEmail").focus();
+			return false
+		}
+	
+		var mEmail=$("#mEmail").val();
+		alert("이메일로 인증번호를 보냈습니다");
+		location.href="/Webkings/certify/certifyNo.do?mEmail="+mEmail;
+		$("#divreg").css("display","block");
+	});
+	
+	
+	
 });
 
 //이용약관
@@ -97,6 +119,20 @@ $(document).ready(function(){
 	});
 });
 
+// 비밀번호 찾기
+$(document).ready(function(){
+	$("#frmFind").submit(function(){
+		if(!chkEmail($("#mEmail2").val())){
+			alert("이메일형식에 맞게 입력하세요.");
+			$("#divfind").css("display","block");
+			$("#mEmail2").focus();
+			return false;
+		}
+		$("#divfind").css("display","none");
+		$("#divLogin").css("display","block");
+	});
+});
+			
 function chkEmail(mEmail)
 {
  var reg_email =new RegExp(/^[a-zA-Z0-9]([-_\.]?[0-9a-zA-Z])*@[a-zA-Z]([-_\.]?[a-zA-Z])*\.[a-zA-Z]{2,3}$/i); 

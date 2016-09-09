@@ -5,4 +5,8 @@ public interface MemberDAO {
 	public String loginCheck(MemberVo vo);
 	public MemberVo selectmEmail(String mEmail);		
 	public int selectmCount(String mEmail);
+	public int updateMember(String mEmail);
+	public int deleteMember(String mEmail);
+	public int updatePwd(MemberVo vo);
+	
 }

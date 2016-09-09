@@ -42,4 +42,19 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.selectmCount(mEmail);
 	}
 
+	@Override
+	public int updateMember(String mEmail) {
+		return memberDAO.updateMember(mEmail);
+	}
+
+	@Override
+	public int deleteMember(String mEmail) {
+		return memberDAO.deleteMember(mEmail);
+	}
+
+	@Override
+	public int updatePwd(MemberVo vo) {
+		return memberDAO.updatePwd(vo);
+	}
+
 }
