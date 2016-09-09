@@ -16,10 +16,17 @@
 
 
 	<div class="divList2 topMargin">
-		<div class="firstDiv">
-			<span class="sp1">제목</span> <span>${vo.bTitle }</span>
+		<div class="detailTitle">
+			<span>${vo.bTitle }</span>
 		</div>
 		<div>
+			<c:if test="${empty vo.mImge }">
+			<img class="user_Img" src="<c:url value='/user_images/default.jpg'/>">
+			</c:if>
+			
+			<c:if test="${!empty vo.mImge }">
+			<img class="user_Img" src="<c:url value='/user_images/${vo.mImage }'/>">
+			</c:if>
 			<span class="sp1">작성자</span> <span>${vo.mEmail }</span> <span>${vo.mNick }</span>
 		</div>
 		<div>
@@ -54,6 +61,9 @@
 			</div>
 			<div class="float_clear"></div>
 		</div>
+	</div>
+	<div class="divReply">
+		<c:import url="/reply/list.do?bNo=${vo.bNo }"></c:import>
 	</div>
 	<div class="divReply">
 		<%@include file="../reply/replyWrite.jsp" %>

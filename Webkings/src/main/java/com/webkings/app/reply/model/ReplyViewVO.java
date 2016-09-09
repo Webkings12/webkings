@@ -2,7 +2,7 @@ package com.webkings.app.reply.model;
 
 import java.sql.Timestamp;
 
-public class ReplyVo {
+public class ReplyViewVO {
 	private int rNo;//R_NO NUMBER NOT NULL, /* 댓글번호 */
 	private int rNoGroup;// R_NO_GROUP NUMBER NOT NULL, /* 댓글번호구분값 */
 	private int rGbn;//R_GBN NUMBER NOT NULL, /* 댓글구분값 */
@@ -11,6 +11,9 @@ public class ReplyVo {
 	private Timestamp rChgdate;//R_CHGDATE DATE, /* 댓글수정일 */
 	private int bNo;//B_NO NUMBER NOT NULL /* 글번호 */
 	private int mNo;
+	private String mEmail;
+	private String mImage;//이미지
+	private String mNick; //닉네임
 	public int getrNo() {
 		return rNo;
 	}
@@ -59,11 +62,29 @@ public class ReplyVo {
 	public void setmNo(int mNo) {
 		this.mNo = mNo;
 	}
+	public String getmEmail() {
+		return mEmail;
+	}
+	public void setmEmail(String mEmail) {
+		this.mEmail = mEmail;
+	}
+	public String getmImage() {
+		return mImage;
+	}
+	public void setmImage(String mImage) {
+		this.mImage = mImage;
+	}
+	public String getmNick() {
+		return mNick;
+	}
+	public void setmNick(String mNick) {
+		this.mNick = mNick;
+	}
 	@Override
 	public String toString() {
 		return "ReplyVo [rNo=" + rNo + ", rNoGroup=" + rNoGroup + ", rGbn=" + rGbn + ", rContent=" + rContent
-				+ ", rRegdate=" + rRegdate + ", rChgdate=" + rChgdate + ", bNo=" + bNo + ", mNo=" + mNo + "]";
+				+ ", rRegdate=" + rRegdate + ", rChgdate=" + rChgdate + ", bNo=" + bNo + ", mNo=" + mNo + ", mEmail="
+				+ mEmail + ", mImage=" + mImage + ", mNick=" + mNick + "]";
 	}
-	
 	
 }

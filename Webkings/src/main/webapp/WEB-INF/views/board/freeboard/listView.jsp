@@ -76,7 +76,7 @@ function pageProc(curPage){
 		<tbody>  
 		<c:if test="${empty alist }">
 			<tr>
-				<td colspan="5" class="align_center">자료없다</td>
+				<td colspan="5" class="align_center">데이터가 없습니다</td>
 			</tr>
 		</c:if>
 		  <!--게시판 내용 반복문 시작  -->
@@ -143,7 +143,7 @@ function pageProc(curPage){
 	</div>
 	
 	<div class="divFrm3">
-	   	<form name="frmSearch" method="post" action='<c:url value="/freeboard/list.do"/>'>
+	   	<form name="frmSearch" method="post" action='<c:url value="/freeboard/listView.do"/>'>
 	        <select name="searchCondition">
 				<option value="b.b_Title"
 					<c:if test="${param.searchCondition=='b.b_Title'}">
@@ -162,11 +162,12 @@ function pageProc(curPage){
 	            >작성자</option>
 	        </select>
 	           
-	        <input type="text" name="searchKeyword" title="검색어 입력" value=${param.searchKeyword } >
+	        <input type="text" name="searchKeyword" title="검색어 입력" value="${param.searchKeyword }" id="searchKey" >
 	           
 			<input type="submit" value="검색">
 	    </form>
 	    	<div class="align_right">
+	    		<a href='<c:url value="/freeboard/listView.do"/>' class="btn_default btn_light size_M" >목록</a>
 			    <a href='<c:url value="/freeboard/write.do"/>' class="btn_default btn_light size_M" >글쓰기</a>
 			</div>
 	</div>

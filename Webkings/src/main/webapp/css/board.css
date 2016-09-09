@@ -130,7 +130,7 @@
 	margin-bottom: 5px;
 }
 .boardContent{
-		border: 1px solid lightgray;
+		border: 1px solid #CECECE;
 		background: white;
 		padding: 15px;
 }
@@ -138,11 +138,11 @@
 	background: #fff;
 	width: 100%;
 	border-collapse: collapse;
-	border: 1px solid lightgray;
+	border: 1px solid #CECECE;
 }
 .listTable tr td{
-	border-bottom: 1px solid lightgray;
-	border-top: 1px solid lightgray;
+	border-bottom: 1px solid #CECECE;
+	border-top: 1px solid #CECECE;
 	padding-top: 3px;
 	padding-bottom: 3px;
 }
@@ -173,4 +173,70 @@
 #rContent{
 	padding:7px;
 	float: left;
+}
+.rContent{
+	padding:7px;
+	float: left;
+}
+#rerContent{
+	padding:7px;
+	float: left;
+}
+#searchKey{
+	width:150px;
+	height: 10px; 
+	
+}
+.replyList{
+	background: #fff;
+	width: 100%;
+	border: 1px solid #CECECE;
+}
+.replyList td{
+	border-top: 1px solid #CECECE;
+	border-bottom: 1px solid #CECECE;
+}
+.replyList td:nth-child(2){
+	padding-left:7px;
+	text-align: left;
+	font-size: 0.9em;
+}
+
+.replyList td:nth-child(3){
+	font-size: 0.7em;
+}
+.replyList td:nth-child(1){
+	font-size: 0.8em;
+	font-weight:bold;
+	border: 1px solid #CECECE;
+	background: #F5F5F5;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#replyDel{
+	font-size: 1em;
+	font-weight: bold;
+	color: red;
+}
+.btReReply{
+	padding-top: 2px;
+	width: 40px;
+	height: 31px;
+	float: left;
+	background-color: #FF33CC;
+}
+.dateSpan{
+	font-size: 0.8em;
+}
+.gbnReply{
+	padding-left: 15px;
+}
+.user_Img{
+	width: 100px;
+	height: 100px;
+}
+.detailTitle{
+	width: 100%;
+	background: #fff;
+	font-weight: bold;
 }
