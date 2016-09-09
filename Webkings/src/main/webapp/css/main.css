@@ -328,7 +328,7 @@ body>div.header ul.gnb li.active a {
     font-style: normal;
 }
 input {
-    -webkit-appearance: textfield;
+   /*  -webkit-appearance: textfield; */
     background-color: white;
     border-image-source: initial;
     border-image-slice: initial;

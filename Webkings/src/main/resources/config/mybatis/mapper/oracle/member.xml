@@ -24,5 +24,13 @@
 		select count(*) from member
 		where m_Email=#{mEmail}
 	</select>
-	
+	<update id="updateMember" parameterType="MemberVo">
+		update member
+			set m_image=#{mImage}m_nick=#{mNick}
+		where m_Email=#{mEmail}
+	</update>
+	<delete id="deleteMember" parameterType="string">
+		delete from member
+		where m_Email=#{mEmail}
+	</delete>
 </mapper>

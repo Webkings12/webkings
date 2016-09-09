@@ -34,7 +34,12 @@ $(document).ready(function() {
 			</div>
 	<div class="in-sec-2">
 		<ul class="mypage-btn">
-			<li class="login"><a href="#login">로그인</a></li>
+		<c:if test="${empty sessionScope.mEmail }">
+			<li class="login"><a onclick="document.getElementById('divLogin').style.display='block'">로그인</a></li>
+		</c:if >
+		<c:if test="${!empty sessionScope.mEmail }">
+			<li class="login"><a href="#login">내정보 관리</a></li>
+		</c:if>
 			<li class="recent-prod"><a href="/recent/prod">최근 본 상품<em></em></a></li>
 			<li class="recent-shop"><a href="/recent/shop">최근 본 샵<em></em></a></li>
 			<li class="coupon"><a href="#login">쿠폰북</a></li>

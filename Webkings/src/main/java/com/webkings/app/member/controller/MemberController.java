@@ -35,19 +35,19 @@ public class MemberController {
 	@Autowired
 	private FileUploadWabUtil fileUtil;
 	
-	@RequestMapping("/tos.do")
+	/*@RequestMapping("/tos.do")
 	public String tos_get(){
 		logger.info("이용약관 화면 보여주기");
 		
 		return "member/tos";
 	}
-	
-	@RequestMapping(value="/register.do", method=RequestMethod.GET)
+	*/
+	/*@RequestMapping(value="/register.do", method=RequestMethod.GET)
 	public String register_get(){
 		logger.info("회원가입 화면 보여주기");
 		
 		return "member/register";
-	}
+	}*/
 	@RequestMapping(value="/register.do", method=RequestMethod.POST)
 	public String register_post(@ModelAttribute MemberVo memberVo,
 			HttpServletRequest request, Model model){
@@ -65,24 +65,24 @@ public class MemberController {
 			memberVo.setmImage(fileName);
 			int cnt= memberService.insertMember(memberVo);
 			logger.info("회원가입 처리, 파라미터 cnt={}",cnt);
-		return "redirect:/main.do";
+		return "redirect:/page.do";
 	}
 	
-	@RequestMapping(value="/login", method=RequestMethod.GET)
+	/*@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login_get(){
 		//1.
 		logger.info("로그인 화면 보여주기");
 		
 		return "member/login";
-	}
-	@RequestMapping(value="/login",method=RequestMethod.POST)
+	}*/
+	@RequestMapping(value="/login.do")
 	public String login_post(@ModelAttribute MemberVo memberVo,
 			HttpServletRequest request,HttpServletResponse response,String chkId,Model model){
 		logger.info("로그인 파라미터, memberVo={}",memberVo);
 		
 		int result=memberService.loginCheck(memberVo);
 		
-		String msg="", url="/member/login.do";
+		String msg="", url="/page.do";
 		if(result==MemberService.LOGIN_OK){
 			
 			memberVo =memberService.selectmEmail(memberVo.getmEmail());
@@ -101,8 +101,7 @@ public class MemberController {
 				response.addCookie(ck);
 			}
 			
-			msg=memberVo.getmEmail()+"님 환영합니다";
-			url="/main.do";
+			msg=memberVo.getmNick()+"님 환영합니다";
 			
 		}else if (result==memberService.PWD_DISAGREE) {
 			msg="비밀번호가 일치하지 않습니다";
@@ -121,7 +120,7 @@ public class MemberController {
 		session.removeAttribute("mNick");
 		session.removeAttribute("mNo");
 		
-		return "redirect:/main.do";
+		return "redirect:/page.do";
 	}
 	
 }
