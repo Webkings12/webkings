@@ -30,4 +30,22 @@ public class QnaDAOMybatis extends SqlSessionDaoSupport implements QnaDAO{
 	public int deleteQna(int no){
 		return getSqlSession().delete(namespace+".deleteQna",no);
 	}
+	public int selectMaxBNo(int qNo){
+		return getSqlSession().selectOne(namespace+".selectMaxBNo",qNo);
+	}
+
+	@Override
+	public int selectMinBNo(int qNo) {
+		return getSqlSession().selectOne(namespace+".selectMinBNo",qNo);
+	}
+
+	@Override
+	public int selectNext(int qNo) {
+		return getSqlSession().selectOne(namespace+".selectNext",qNo);
+	}
+
+	@Override
+	public int selectBefore(int qNo) {
+		return getSqlSession().selectOne(namespace+".selectBefore",qNo);
+	}
 }

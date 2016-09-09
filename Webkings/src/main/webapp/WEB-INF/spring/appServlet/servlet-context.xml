@@ -32,5 +32,17 @@
 		<context:include-filter expression="org.springframework.stereotype.Controller" 	type="annotation"/>
 	</context:component-scan>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/freeboard/write.do" />
+			<mapping path="/freeboard/edit.do" />
+			<mapping path="/freeboard/delete.do" />
+			<mapping path="/reply/write.do" />
+			<mapping path="/reply/write2.do" />
+			<mapping path="/reply/delete.do" />
+			<mapping path="/qna/write.do" />
+			<beans:ref bean="loginIntercepter" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

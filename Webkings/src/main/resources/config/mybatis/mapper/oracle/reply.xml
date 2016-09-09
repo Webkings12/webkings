@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.mapper.oracle.reply">
+	<insert id="insertReply" parameterType="ReplyViewVO">
+		<selectKey keyProperty="rNo" order="BEFORE" resultType="int">
+			select reply_seq.nextval from dual
+		</selectKey>
+	insert into reply
+	values(#{rNo},#{rNo}, 0,#{rContent},sysdate,sysdate,#{bNo},#{mNo})
+	</insert>
+	
+	<select id="selectReply" parameterType="int" resultType="ReplyViewVO">
+		select * From replyview where b_no=#{bNo} order by r_no_group, r_gbn
+	</select>
+	
+	<delete id="deleteReply" parameterType="int">
+		delete reply
+		where r_no=#{rNo}
+	</delete>
+	
+	<update id="gbnReply" parameterType="ReplyViewVO">
+		update reply
+		set r_gbn=r_gbn+1
+		where b_no=#{bNo} and r_no_group=#{rNoGroup} and r_gbn>#{rGbn}
+	</update>
+	
+	<insert id="insertReply2" parameterType="ReplyViewVO">
+		<selectKey keyProperty="rNo" order="BEFORE" resultType="int">
+			select reply_seq.nextval from dual
+		</selectKey>
+	insert into reply
+	values(#{rNo},#{rNoGroup}, #{rGbn}+1,#{rContent},sysdate,sysdate,#{bNo},#{mNo})
+	</insert>
+</mapper>

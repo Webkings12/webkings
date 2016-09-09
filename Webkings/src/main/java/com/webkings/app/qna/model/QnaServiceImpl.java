@@ -29,4 +29,23 @@ public class QnaServiceImpl implements QnaService{
 	public int deleteQna(int no){
 		return qnaDao.deleteQna(no);
 	}
+	
+	public int selectNext(int qNo) {
+		int nextNo=qnaDao.selectMaxBNo(qNo);
+		if(nextNo==qNo){
+			return nextNo;
+		}else{
+			return qnaDao.selectNext(qNo);
+		}
+	}
+
+	@Override
+	public int selectBefore(int qNo) {
+		int before=qnaDao.selectMinBNo(qNo);
+		if(before==qNo){
+			return before;
+		}else{
+			return qnaDao.selectBefore(qNo);
+		}
+	}
 }

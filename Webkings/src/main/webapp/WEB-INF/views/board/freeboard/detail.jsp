@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <script type="text/javascript">
@@ -16,24 +17,37 @@
 
 
 	<div class="divList2 topMargin">
-		<div class="firstDiv">
-			<span class="sp1">제목</span> <span>${vo.bTitle }</span>
-		</div>
-		<div>
-			<span class="sp1">작성자</span> <span>${vo.mEmail }</span> <span>${vo.mNick }</span>
-		</div>
-		<div>
-			<span class="sp1">등록일</span> <span>${vo.bRegdate }</span>
-		</div>
-		<div>
-			<span class="sp1">조회수</span> <span>${vo.bReadcount }</span>
-		</div>
+			<div clss="upsideDetail" style="background: #fff;height:165px; border: 1px solid #CECECE;" >
+				<div class="detailTitle">
+					<span>${vo.bTitle }</span>
+				</div>
+				<div>
+					<div class="float_left">
+						<!-- 유저 이미지 -->
+						<c:if test="${empty vo.mImage }">
+						<img class="user_Img" src="<c:url value='/user_images/defaultUser.png'/>">
+						</c:if>
+						<c:if test="${!empty vo.mImage }">
+						<img class="user_Img" src="<c:url value='/user_images/${vo.mImage }'/>">
+						</c:if>
+					</div>
+					<div class="float_left user_info">
+					 <span class="nickName">${vo.mNick }</span><br><span class="eMail">(${vo.mEmail })</span>
+					 </div>
+				</div>
+				<div>
+					<span class="sp1">작성일</span> <span><fmt:formatDate value="${vo.bRegdate }" pattern="yyyy-MM-dd(mm:ss)"/></span>
+				</div>
+				<div>
+					<span class="sp1">조회수</span> <span>${vo.bReadcount }</span>
+				</div>
+			</div>
 		<c:if test="${!empty vo.bFilename}">
 		<div>
 			<span class="sp1">이미지</span> <span><img alt="${vo.mImage }" src="<c:url value='/fBoardImages/${vo.bFilename }' />"></span>
 		</div>
 		</c:if>
-		<div class="align_left ">			
+		<div class="align_left">			
 			<pre class="boardContent">${vo.bContent }</pre>
 		</div>
 		<div>
@@ -54,6 +68,9 @@
 			</div>
 			<div class="float_clear"></div>
 		</div>
+	</div>
+	<div class="divReply">
+		<c:import url="/reply/list.do?bNo=${vo.bNo }"></c:import>
 	</div>
 	<div class="divReply">
 		<%@include file="../reply/replyWrite.jsp" %>
