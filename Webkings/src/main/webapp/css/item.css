@@ -42,7 +42,6 @@
     bottom: 13px;
     padding-right: 17px;
 }
-
 .plan-sec a.total:after {
     content: "";
     position: absolute;
@@ -154,6 +153,9 @@ body.F .item-list li.date em {
     border-radius: 5px;
     overflow: hidden;
     background-color: #e4e7ea;
+}
+.item-list>li.prod>a:hover .info .btn span:hover+i {
+    display: block;
 }
 .item-list>li.prod>a>img {
     width: 230px;

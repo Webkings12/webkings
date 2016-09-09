@@ -14,4 +14,9 @@ public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
 	public List<Item_TypeVO> selectItemType(String gender) {
 		return getSqlSession().selectList(namespace+".selectItemType", gender);
 	}
+
+	@Override
+	public List<ItemViewVO> itemSelectAll(String gender) {
+		return getSqlSession().selectList(namespace+".itemSelectA", gender);
+	}
 }

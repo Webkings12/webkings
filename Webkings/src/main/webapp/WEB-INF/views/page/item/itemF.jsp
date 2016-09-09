@@ -4,6 +4,41 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
+		$(document).ready(function() {
+			var gender = "${param.gender}";
+			var itemSel=[];
+			alert(gender);
+			 $.ajax({
+				url:"<c:url value='/item/selectAll.do'/>",
+				type:"GET",
+				data: "gender="+gender,
+				async:false,
+				dataType:"json",
+				success:function(res){
+					alert(res);
+					var result="";
+					$.each(res.selItemList, function(idx, item) {
+						result="<img src='<c:url value="+${item.iImage}+"/>'"+
+							 "data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg' style='height: 340px; display: block;' class='item'>"+
+							"<span class='favor'>관심상품</span>"+
+							"<div class='info'>	<span class='shop'>"+${item.sName}+"</span>"+		
+								"<span class='name'>"+${item.iName}+"</span>	<em class='cate' cate='101'>"+${item.itName}+"</em><i>"+
+								${item.iSalePrice}+"</i>"+		
+								"<div class='btn'>"+
+									"<span class='fb'></span><i>페이스북 공유</i><span class='tw'></span><i>트위터 공유</i>"+
+								"</div>"+	
+							"</div>"+	
+							"<div class='bg'></div>"
+					});
+					$(".prod F ia a").html(result);
+				},
+				error:function(xhr, status, error){
+					alert(error);
+				}
+			}); 
+		});
+</script>
+<script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
 	$(".gnb li:nth-child("+pageNum+")").addClass("active");
@@ -18,7 +53,6 @@ $(document).ready(function() {
 	});
 });
 </script>
-
 <%@ include file="../../inc/top.jsp"  %>
 <div class="body-sec">
 <div class="in-sec">
@@ -83,22 +117,28 @@ $(document).ready(function() {
 			<img src="http://img.sta1.info/rsc/front/img/bnr-1.png" class="item"></a>
 		</li>	
 		
-		<li class="date"><div class="sec today"><span>TODAY</span><strong>09.08</strong><em>116</em>개의 신상품 추천</div></li>
+		<li class="date"><div class="sec today"><span>TODAY</span><strong>09.09</strong><em>116</em>개의 신상품 추천</div></li>
 		
-		<li class="prod F ia">
-			<a href="javascript:;" sseq="121" seq="1349867" maindate="20160908">	
-				<img src="<c:url value='ItemInfo/img/no-image.jpg'/>" 
-				  data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg" style="height: 340px; display: block;" class="item">	
-				<span class="favor">관심상품</span>	
-				<div class="info">	<span class="shop">갠소</span>		
-					<span class="name">빈티지박시후드집업(4차 재입고)</span>	<em class="cate" cate="101">OUTER</em><i>35,200</i>		
-					<div class="btn">
-						<span class="fb"></span><i>페이스북 공유</i><span class="tw"></span><i>트위터 공유</i>
-					</div>	
-				</div>	
-				<div class="bg"></div>
-			</a>
-		</li>
+		
+		
+		<!-- 자료가 없는 상태 -->
+						<!-- 자료가 있는 상태 -->
+	
+					<li class="prod F ia">
+						<a href="javascript:;" sseq="121" seq="1349867" maindate="20160908"></a> 
+						<%-- <a href="javascript:;" sseq="121" seq="1349867" maindate="20160908">
+							<img src="<c:url value='${item.iImage}'/>" 
+							  data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg" style="height: 340px; display: block;" class="item">	
+							<span class="favor">관심상품</span>	
+							<div class="info">	<span class="shop">${item.sName}</span>		
+								<span class="name">${item.iName}</span>	<em class="cate" cate="101">${item.itName}</em><i>${item.iSalePrice}</i>		
+								<div class="btn">
+									<span class="fb"></span><i>페이스북 공유</i><span class="tw"></span><i>트위터 공유</i>
+								</div>	
+							</div>	
+							<div class="bg"></div>
+						</a> --%>
+					</li>
 		<%-- <c:forEach>
 			<li class="prod F ia">
 				<a href="javascript:;" sseq="121" seq="1349867" maindate="20160908">	
@@ -123,3 +163,4 @@ $(document).ready(function() {
 </div>
 </body>
 </html>
+

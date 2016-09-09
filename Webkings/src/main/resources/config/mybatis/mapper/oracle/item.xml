@@ -3,11 +3,27 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mybatis.mapper.oracle.item">
-	<!-- 아이템 리스트 top and item -->
+	<!-- 사용법 include <include refid="itemWhere"></include> -->
+	<sql id="itemWhere">
+		<where>
+			order by i_no desc
+		</where>
+	</sql> 
+	
+	
+	<!-- 아이템 (ITEM_TYPE TABLE) 리스트 top and item -->
 	<select id="selectItemType" parameterType="String" resultType="Item_TypeVO" >
 		select it_Name from item_Type
 		where 1=1
 		and it_Gender=#{gender}
+	</select>
+		
+	
+	<!-- 아이템 select List -->
+	<select id="itemSelectA" parameterType="String" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{gender}
 	</select>
 	
 </mapper>

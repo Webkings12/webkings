@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webkings.app.item.model.ItemService;
+import com.webkings.app.item.model.ItemViewVO;
 import com.webkings.app.item.model.Item_TypeVO;
 import com.webkings.app.style.model.StyleService;
 import com.webkings.app.style.model.StyleVO;
@@ -61,6 +62,8 @@ public class ViewController {
 			logger.info("age={}",age);
 			model.addAttribute("age", age);
 		}
+		
+		
 		
 		/*category sel*/
 		int pageNum=0;

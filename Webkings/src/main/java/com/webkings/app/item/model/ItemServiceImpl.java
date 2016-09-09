@@ -15,4 +15,9 @@ public class ItemServiceImpl implements ItemService{
 	public List<Item_TypeVO> selectItemType(String gender) {
 		return itemDao.selectItemType(gender);
 	}
+
+	@Override  //item 화면 selectAll
+	public List<ItemViewVO> itemSelectAll(String gender) {
+		return itemDao.itemSelectAll(gender);
+	}
 }
