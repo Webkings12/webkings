@@ -10,4 +10,8 @@ public interface QnaDAO {
 	public int selectTotalCount(SearchVO searchVo);
 	public QnaViewVo selectByNo(int no);
 	public int deleteQna(int no);
+	public int selectMaxBNo(int qNo);
+	public int selectMinBNo(int qNo);
+	public int selectNext(int qNo);
+	public int selectBefore(int qNo);
 }

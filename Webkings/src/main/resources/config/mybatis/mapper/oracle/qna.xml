@@ -47,6 +47,27 @@
 	 
 	<delete id="deleteQna" parameterType="int">
 		delete from qna
-		where q_no=70
+		where q_no=#{no}
 	</delete>
+	
+	<select id="selectMaxBNo" parameterType="int" resultType="int">
+		select max(q_no) from qna
+	</select>
+	
+	<select id="selectMinBNo" parameterType="int" resultType="int">
+		select min(q_no) from qna
+	</select>
+	
+	<select id="selectNext" parameterType="int" resultType="int">
+		
+		select b_no from qna
+		where q_no>#{no} 
+		and <![CDATA[ rownum<=1
+		]]>
+	</select>
+	
+	<select id="selectBefore" parameterType="int" resultType="int">
+		select max(q_no) from(select q_no from freeboard where <![CDATA[ q_no<#{no} ]]>)
+	</select>
+	
 </mapper>

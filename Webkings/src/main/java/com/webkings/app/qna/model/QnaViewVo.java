@@ -12,6 +12,13 @@ public class QnaViewVo {
 	private int mNo;
 	private String mEmail; //이메일
 	private String mNick; //닉네임
+	private String mImage; //닉네임
+	public String getmImage() {
+		return mImage;
+	}
+	public void setmImage(String mImage) {
+		this.mImage = mImage;
+	}
 	private int newImgTerm;
 	public int getNewImgTerm() {
 		return newImgTerm;
@@ -77,7 +84,7 @@ public class QnaViewVo {
 	public String toString() {
 		return "QnaViewVo [qNo=" + qNo + ", qTitle=" + qTitle + ", qContent=" + qContent + ", qEmail=" + qEmail
 				+ ", qTel=" + qTel + ", qRegdate=" + qRegdate + ", mNo=" + mNo + ", mEmail=" + mEmail + ", mNick="
-				+ mNick + ", newImgTerm=" + newImgTerm + "]";
+				+ mNick + ", mImage=" + mImage + ", newImgTerm=" + newImgTerm + "]";
 	}
 	
 }

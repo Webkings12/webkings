@@ -103,6 +103,10 @@ public class QnaController {
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		
+		return "board/qna/listView";
+	}
+	@RequestMapping("/listView.do")
+	public String listView(){
 		return "board/qna/list";
 	}
 	
@@ -120,9 +124,13 @@ public class QnaController {
 		
 		//2. db작업
 		QnaViewVo vo=qnaService.selectByNo(no);
+		int nextNo=qnaService.selectNext(no);
+		int beforeNo=qnaService.selectBefore(no);
 		logger.info("qna상세보기 결과 vo={}",vo);
 		//3. 결과저장, 뷰페이지 리턴
 		model.addAttribute("vo",vo);
+		model.addAttribute("nextNo",nextNo);
+		model.addAttribute("beforeNo",beforeNo);
 		
 		return "board/qna/detail";
 	}
@@ -144,7 +152,7 @@ public class QnaController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="삭제 완료";
-			url="/qna/list.do";
+			url="/qna/listView.do";
 		}else{
 			msg="삭제 실패";
 			url="/qna/detail.do?no="+qNo;
