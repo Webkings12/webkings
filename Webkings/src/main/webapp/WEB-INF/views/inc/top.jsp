@@ -398,7 +398,7 @@ var GoogleApp = {
 	}
 
 	// 네이버 사용자 프로필 조회
-	naver_id_login.get_naver_userprofile("naverSignInCallback()");v
+	naver_id_login.get_naver_userprofile("naverSignInCallback()");
 </script>
 
 <!-- 카카오 -->

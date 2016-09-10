@@ -13,7 +13,8 @@ select * from itemview;
 --alter table item
 --add(I_SALEPRICE NUMBER);
 
-
+--alter table item
+--add(I_PRICE NUMBER);
 --전체 조회 등록순
 select * from itemview
 where 1=1

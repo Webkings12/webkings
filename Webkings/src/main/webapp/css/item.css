@@ -305,9 +305,7 @@ element.style {
     width: 20px;
     height: 20px;
 }
-.item-list>li.prod.F .info .shop {
-    color: #e6178f;
-}
+
 .item-list>li.prod .info span.shop, .item-list>li.prod .info span.name {
     display: none;
 }
@@ -367,4 +365,12 @@ element.style {
     background: url("/rsc/front/img/gradient.png");
     z-index: 2;
     display: block;
+}
+
+/* 남자여자 다른것들 */
+.item-list>li.prod.M .info .shop {
+    color: #0fb6c5;
+}
+.item-list>li.prod.F .info .shop {
+    color: #e6178f;
 }

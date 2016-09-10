@@ -547,3 +547,38 @@ body.F .detail-search.detail-search:hover>a {
 body.F .option-sec-1>ul>li.order:hover>a, body.F .option-sec-1>ul>li li a:hover {
     color: #e6178f;
 }
+.tab-type-1 ul li dl dt a:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 17px;
+}
+/* 여자 */
+body.F .tab-type-1 ul li.active dl dt a:after {
+    background-image: url("../images/arrowF.png");
+    -webkit-background-size: 11px 6px;
+    -moz-background-size: 11px 6px;
+    -o-background-size: 11px 6px;
+    background-size: 11px 6px;
+    background-repeat: no-repeat;
+    width: 11px;
+    height: 6px;
+}
+
+
+/* 남자 */
+body.M .tab-type-1 ul li.active dl dt a:after{
+    background-image: url("../images/arrowM.png");
+    -webkit-background-size: 11px 6px;
+    -moz-background-size: 11px 6px;
+    -o-background-size: 11px 6px;
+    background-size: 11px 6px;
+    background-repeat: no-repeat;
+    width: 11px;
+    height: 6px;
+}

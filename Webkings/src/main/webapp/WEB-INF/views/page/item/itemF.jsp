@@ -4,40 +4,11 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
-		$(document).ready(function() {
-			var gender = "${param.gender}";
-			var itemSel=[];
-			alert(gender);
-			 $.ajax({
-				url:"<c:url value='/item/selectAll.do'/>",
-				type:"GET",
-				data: "gender="+gender,
-				async:false,
-				dataType:"json",
-				success:function(res){
-					alert(res);
-					var result="";
-					$.each(res.selItemList, function(idx, item) {
-						result="<img src='<c:url value="+${item.iImage}+"/>'"+
-							 "data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg' style='height: 340px; display: block;' class='item'>"+
-							"<span class='favor'>관심상품</span>"+
-							"<div class='info'>	<span class='shop'>"+${item.sName}+"</span>"+		
-								"<span class='name'>"+${item.iName}+"</span>	<em class='cate' cate='101'>"+${item.itName}+"</em><i>"+
-								${item.iSalePrice}+"</i>"+		
-								"<div class='btn'>"+
-									"<span class='fb'></span><i>페이스북 공유</i><span class='tw'></span><i>트위터 공유</i>"+
-								"</div>"+	
-							"</div>"+	
-							"<div class='bg'></div>"
-					});
-					$(".prod F ia a").html(result);
-				},
-				error:function(xhr, status, error){
-					alert(error);
-				}
-			}); 
-		});
+var gender = "${param.gender}";
+var itemSel=[];
+var url="<c:url value='/item/selectAll.do'/>";
 </script>
+<script type="text/javascript" src="<c:url value='/js/itemView.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
@@ -63,7 +34,11 @@ $(document).ready(function() {
 			<ul>
 				<li class="active">
 					<dl class="age-sel">
-						<dt><input type="hidden" id="ageS" value="${age}"><a href="#">${age}</a></dt>
+						<dt><input type="hidden" id="ageS" value="${age}">
+						<a href="#"> 
+						${age}
+						</a> 
+						</dt>
 						<dd><a href="/Webkings/page.do?page=/item&gender=F">
 								<em>전체 연령대</em></a></dd>
 						<dd><a href="/Webkings/page.do?page=/item&gender=F&ageSel=10">
@@ -109,36 +84,28 @@ $(document).ready(function() {
 					</li>
 				</ul>
 			</div>
-		<a href="#exhibition" class="total">전체보기</a>
+			<a href="#exhibition" class="total">전체보기</a>
 			<div class="paging"><span class="active">1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
 		</li>
 		
-		<li class="bnr-1"><a href="https://play.google.com/store/apps/details?id=com.sta1.front&amp;hl=ko" target="_blank">
+		<li class="bnr-1">
+			<a href="https://play.google.com/store/apps/details?id=com.sta1.front&amp;hl=ko" target="_blank">
 			<img src="http://img.sta1.info/rsc/front/img/bnr-1.png" class="item"></a>
 		</li>	
 		
-		<li class="date"><div class="sec today"><span>TODAY</span><strong>09.09</strong><em>116</em>개의 신상품 추천</div></li>
+		<li class="date">
+			<div class="sec today">
+				<span>TODAY</span><strong>09.09</strong><em>116</em>개의 신상품 추천
+			</div>
+		</li>
 		
 		
 		
-		<!-- 자료가 없는 상태 -->
-						<!-- 자료가 있는 상태 -->
 	
-					<li class="prod F ia">
-						<a href="javascript:;" sseq="121" seq="1349867" maindate="20160908"></a> 
-						<%-- <a href="javascript:;" sseq="121" seq="1349867" maindate="20160908">
-							<img src="<c:url value='${item.iImage}'/>" 
-							  data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg" style="height: 340px; display: block;" class="item">	
-							<span class="favor">관심상품</span>	
-							<div class="info">	<span class="shop">${item.sName}</span>		
-								<span class="name">${item.iName}</span>	<em class="cate" cate="101">${item.itName}</em><i>${item.iSalePrice}</i>		
-								<div class="btn">
-									<span class="fb"></span><i>페이스북 공유</i><span class="tw"></span><i>트위터 공유</i>
-								</div>	
-							</div>	
-							<div class="bg"></div>
-						</a> --%>
-					</li>
+		<li class="prod F ia">
+			
+			
+		</li>
 		<%-- <c:forEach>
 			<li class="prod F ia">
 				<a href="javascript:;" sseq="121" seq="1349867" maindate="20160908">	
@@ -156,7 +123,6 @@ $(document).ready(function() {
 				</a>
 			</li>
 		</c:forEach> --%>
-		
 		</ul>
 </div>
 </div>

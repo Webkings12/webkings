@@ -1,6 +1,8 @@
 package com.webkings.app.item.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,10 +26,14 @@ public class ItemController {
 	
 	@RequestMapping("/selectAll.do")
 	@ResponseBody
-	public List<ItemViewVO> itemSelectAll(@RequestParam String gender){
+	public Map<String, Object> itemSelectAll(@RequestParam String gender){
 		List<ItemViewVO> selItemList = itemService.itemSelectAll(gender);
 		
-		logger.info("ajax 아이템 전체조회={}",selItemList);
-		return selItemList;
+		
+		Map<String, Object> resMap = new HashMap<String, Object>();
+		resMap.put("itemList", selItemList);
+		
+		logger.info("ajax itemList={}",selItemList);
+		return resMap;
 	}
 }
