@@ -3,65 +3,72 @@ select * from shop;
 select * from item_type;
 select * from itemview;
 
---¾ÆÀÌÅÛ ºä CREATE
---create or replace view ItemView
---as
+--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ CREATE
+--CREATE OR REPLACE FORCE VIEW ITEMVIEW
+--AS 
 --select  i.i_no,  S.S_DOMAIN, i.i_image, i.i_name, i.i_saleprice, s_name,
---        s.s_age, it.it_gender, it.it_name
---from shop s, item i, item_type it;
+--        s.s_age, it.it_gender, it.it_name, i.i_click, i.i_price
+--from shop s, item i, item_type it
+--where 1=1 
+--and s.s_no=i.s_no
+--and i.it_no=it.it_no;
+
+--0911
+--alter table item add(I_ClICK number DEFAULT 0  NOT NULL);
+--select * from item;
 
 --alter table item
 --add(I_SALEPRICE NUMBER);
 
 --alter table item
 --add(I_PRICE NUMBER);
---ÀüÃ¼ Á¶È¸ µî·Ï¼ø
+--ï¿½ï¿½Ã¼ ï¿½ï¿½È¸ ï¿½ï¿½Ï¼ï¿½
 select * from itemview
 where 1=1
 and it_gender = ''
 order by s.s_no desc;
 
---³·Àº °¡°Ý¼ø
+--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¼ï¿½
 select * from itemview
 where 1=1
 and it_gender = ''
 order by i_saleprice desc;
 
---³ôÀº °¡°Ý¼ø
+--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¼ï¿½
 select * from itemview
 where 1=1
 and it_gender = ''
 order by i_saleprice asc;
 
---°¡°Ý¼ø »ó¼¼
+--ï¿½ï¿½ï¿½Ý¼ï¿½ ï¿½ï¿½
 select * from itemview
 where 1=1
 and it_gender = ''
 and i_saleprice between '' and ''
 order by s.s_no desc;
 
---¿¬·É´ëº°
+--ï¿½ï¿½ï¿½É´ëº°
 select * from itemview
 where 1=1
 and it_gender = ''
 and s_age=''
 order by s.s_no desc;
 
---»óÇ°º°
+--ï¿½ï¿½Ç°ï¿½ï¿½
 select * from itemview
 where 1=1
 and it_gender = ''
 and it_name=''
 order by s.s_no desc;
 
---Á¶°Ç °Ë»ö (»óÇ°ÀÌ¸§)
+--ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ (ï¿½ï¿½Ç°ï¿½Ì¸ï¿½)
 select * from itemview
 where 1=1
 and it_gender = ''
 and i_name = '%'|| 'ss' || '%'
 order by s.s_no desc;
 
---Á¶°Ç °Ë»ö (»óÇ°ÀÌ¸§, °¡°Ý)
+--ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ (ï¿½ï¿½Ç°ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½)
 select * from itemview
 where 1=1
 and it_gender = ''
@@ -69,7 +76,7 @@ and i_name = '%'|| 'ss' || '%'
 and i_saleprice between 1 and 999
 order by s.s_no desc;
 
---Á¶°Ç °Ë»ö (»óÇ°ÀÌ¸§, °¡°Ý, ¿¬·É´ë)
+--ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ (ï¿½ï¿½Ç°ï¿½Ì¸ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½É´ï¿½)
 select * from itemview
 where 1=1
 and it_gender = ''
@@ -78,3 +85,5 @@ and i_saleprice between 1 and 999
 and s_age=''
 order by s.s_no desc;
 
+select * from itemview
+order by i_click desc

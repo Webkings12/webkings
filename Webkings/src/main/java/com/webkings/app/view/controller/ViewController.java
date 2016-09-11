@@ -31,7 +31,7 @@ public class ViewController {
 	
 	@RequestMapping("/page.do")
 	public String page(@RequestParam(defaultValue="/item") String page, @RequestParam(defaultValue="all") String ageSel,
-			@RequestParam(defaultValue="F") String gender,	Model model){
+			@RequestParam(defaultValue="F") String gender, Model model){
 		logger.info("page,gender={},{}",page,gender);
 		
 		if(page.equals("/product" )|| page.equals("/item" )|| page.equals("/shop" )|| page.equals("/mypage")){
@@ -63,8 +63,6 @@ public class ViewController {
 			model.addAttribute("age", age);
 		}
 		
-		
-		
 		/*category sel*/
 		int pageNum=0;
 		if(page.equals("/item/itemF") || page.equals("/item/itemM") ||
@@ -90,5 +88,4 @@ public class ViewController {
 		
 		return "page"+page;
 	}
-	
 }

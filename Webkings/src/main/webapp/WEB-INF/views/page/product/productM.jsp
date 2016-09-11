@@ -4,6 +4,12 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
 <script type="text/javascript">
+var gender = "${param.gender}";
+var itemCate= "${param.cate}";
+var itemSel=[];
+var url="<c:url value='/item/itemSelectName.do'/>";
+</script>
+<script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
 	$(".gnb li:nth-child("+pageNum+")").addClass("active");
@@ -23,16 +29,20 @@ $(document).ready(function() {
 <div class="in-sec">
 <p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
 	<div class="list-top-1">
-		<p class="notice-2"><strong>카테고리 전체 : </strong> <em></em> <i>total</i></p>
+		<p class="notice-2"><strong>카테고리 전체 : </strong> <em>${itCount}</em> <i>total</i></p>
 		<div class="tab-type-1 tab-type-main">
 			<ul>
 				<li>
 					<dl class="age-sel">
 						<dt><a href="#" onclick="gbn()">신상품 추천</a></dt>
-						<dd><a href="javascript:;"><em>전체 연령대</em></a></dd>
-						<dd><a href="javascript:;"><em>10대 신상품</em></a></dd>
-						<dd><a href="javascript:;"><em>20대 신상품</em></a></dd>
-						<dd><a href="javascript:;"><em>30대 신상품</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=M">
+								<em>전체 연령대</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=M&ageSel=10">
+								<em>10대 신상품</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=M&ageSel=20">
+								<em>20대 신상품</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=M&ageSel=30">
+								<em>30대 신상품</em></a></dd>
 					</dl>
 				</li>
 				<li class="active">
@@ -48,9 +58,9 @@ $(document).ready(function() {
 					<a href="javascript:;" class="aw-1">신상품순</a>
 					<ul>
 						<li><a href="javascript:;" val="0">신상품순</a></li>
-						<li><a href="javascript:;" val="2">클릭순</a></li>
-						<li><a href="javascript:;" val="3">낮은 가격순</a></li>
-						<li><a href="javascript:;" val="4">높은 가격순</a></li>
+						<li><a href="javascript:;" val="1">클릭순</a></li>
+						<li><a href="javascript:;" val="2">낮은 가격순</a></li>
+						<li><a href="javascript:;" val="3">높은 가격순</a></li>
 					</ul>
 				</li>
 

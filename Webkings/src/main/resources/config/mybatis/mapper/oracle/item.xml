@@ -10,7 +10,6 @@
 		</where>
 	</sql> 
 	
-	
 	<!-- 아이템 (ITEM_TYPE TABLE) 리스트 top and item -->
 	<select id="selectItemType" parameterType="String" resultType="Item_TypeVO" >
 		select it_Name from item_Type
@@ -19,11 +18,75 @@
 	</select>
 		
 	
-	<!-- 아이템 select List -->
-	<select id="itemSelectA" parameterType="String" resultType="ItemViewVO">
+	<!-- 아이템 select All List -->
+	<select id="itemSelectAll" parameterType="String" resultType="ItemViewVO">
 		select * from itemview
 		where 1=1
 		and it_gender = #{gender}
+	</select>
+	
+	<!-- 아이템 select Age List -->
+	<select id="itemSelectAge" parameterType="ItemViewVO" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{itGender}
+		and s_age = #{sAge}
+	</select>
+	
+	<select id="itemSelectName" parameterType="ItemViewVO" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{itGender}
+		and it_name= #{itName}
+	</select>
+	
+	<select id="itemAllCount" resultType="int">
+		select count(*) from itemview
+	</select>
+	
+	<select id="itemClick" parameterType="ItemViewVO" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{itGender}
+		order by i_click desc
+	</select>
+	
+	<select id="itemClickCate" parameterType="ItemViewVO" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{itGender}
+		and it_name= #{itName}
+		order by i_click desc
+	</select>
+	
+	<select id="itemPriceDesc" parameterType="ItemViewVO" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{itGender}
+		order by i_price desc
+	</select>
+	
+	<select id="itemDescCate" parameterType="ItemViewVO" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{itGender}
+		and it_name= #{itName}
+		order by i_price desc
+	</select>
+	
+	<select id="itemPriceAsc" parameterType="ItemViewVO" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{itGender}
+		order by i_price asc
+	</select>
+	
+	<select id="itemAscCate" parameterType="ItemViewVO" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{itGender}
+		and it_name= #{itName}
+		order by i_price asc
 	</select>
 	
 </mapper>

@@ -13,6 +13,15 @@ public class ItemViewVO {
 	private String sAge; 
 	private String itGender; 
 	private String itName;
+	private int iClick;
+	public int getiClick() {
+		return iClick;
+	}
+
+	public void setiClick(int iClick) {
+		this.iClick = iClick;
+	}
+
 	public int getiNo() {
 		return iNo;
 	}
@@ -73,7 +82,7 @@ public class ItemViewVO {
 	public String toString() {
 		return "ItemViewVO [iNo=" + iNo + ", sDomain=" + sDomain + ", iImage=" + iImage + ", iName=" + iName
 				+ ", iSalePrice=" + iSalePrice + ", sName=" + sName + ", sAge=" + sAge + ", itGender=" + itGender
-				+ ", itName=" + itName + "]";
+				+ ", itName=" + itName + ", iClick=" + iClick + "]";
 	}
 	
 }

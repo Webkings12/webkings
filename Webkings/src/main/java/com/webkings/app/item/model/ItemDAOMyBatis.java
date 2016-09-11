@@ -10,13 +10,61 @@ public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
 	
 	private String namespace="com.mybatis.mapper.oracle.item";
 	
-	@Override  //아이템 리스트 top and item
+	@Override  //�����ۼ���Ʈ top and item
 	public List<Item_TypeVO> selectItemType(String gender) {
 		return getSqlSession().selectList(namespace+".selectItemType", gender);
 	}
 
 	@Override
 	public List<ItemViewVO> itemSelectAll(String gender) {
-		return getSqlSession().selectList(namespace+".itemSelectA", gender);
+		return getSqlSession().selectList(namespace+".itemSelectAll", gender);
 	}
+
+	@Override
+	public List<ItemViewVO> itemSelectAge(ItemViewVO itViewVo) {
+		return getSqlSession().selectList(namespace+".itemSelectAge", itViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemSelectName(ItemViewVO itViewVo) {
+		return getSqlSession().selectList(namespace+".itemSelectName", itViewVo);
+	}
+
+	@Override
+	public int itemSelectCount() {
+		return getSqlSession().selectOne(namespace+".itemAllCount");
+	}
+
+	@Override
+	public List<ItemViewVO> itemClick(ItemViewVO itViewVo) {
+		return getSqlSession().selectList(namespace+".itemClick",itViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemPriceDesc(ItemViewVO itemViewVo) {
+		return getSqlSession().selectList(namespace+".itemPriceDesc",itemViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemPriceAsc(ItemViewVO itemViewVo) {
+		return getSqlSession().selectList(namespace+".itemPriceAsc", itemViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemClickCate(ItemViewVO itViewVo) {
+		return getSqlSession().selectList(namespace+".itemClickCate", itViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemDescCate(ItemViewVO itViewVo) {
+		return getSqlSession().selectList(namespace+".itemDescCate", itViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemAscCate(ItemViewVO itViewVo) {
+		return getSqlSession().selectList(namespace+".itemAscCate",itViewVo);
+	}
+	
+	
+	
 }

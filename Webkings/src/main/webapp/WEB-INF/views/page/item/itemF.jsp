@@ -5,8 +5,9 @@
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
 var gender = "${param.gender}";
+var itemAge = "${param.ageSel}";
 var itemSel=[];
-var url="<c:url value='/item/selectAll.do'/>";
+var url="<c:url value='/item/selectItem.do'/>";
 </script>
 <script type="text/javascript" src="<c:url value='/js/itemView.js'/>"></script>
 <script type="text/javascript">
@@ -52,9 +53,9 @@ $(document).ready(function() {
 				<li>
 					<dl class="prod-cate-sel">
 						<dt><a href="#" onclick="gbn()">전체 상품</a></dt>
-						<dd><a>ALL</a></dd>
+						<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=F&cate=ALL">ALL</a></dd>
 						<c:forEach var="Item_TypeVO" items="${itemList}">
-										<dd><a href="#">${Item_TypeVO.itName}</a></dd>
+						<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=F&cate=${Item_TypeVO.itName}">${Item_TypeVO.itName}</a></dd>
 						</c:forEach>
 					</dl>
 				</li>
@@ -95,34 +96,14 @@ $(document).ready(function() {
 		
 		<li class="date">
 			<div class="sec today">
-				<span>TODAY</span><strong>09.09</strong><em>116</em>개의 신상품 추천
+				<span>TODAY</span><strong>09.11</strong><em>116</em>개의 신상품 추천
 			</div>
 		</li>
 		
-		
-		
-	
 		<li class="prod F ia">
 			
 			
 		</li>
-		<%-- <c:forEach>
-			<li class="prod F ia">
-				<a href="javascript:;" sseq="121" seq="1349867" maindate="20160908">	
-					<img src="<c:url value='ItemInfo/img/noImage.jpg'/>" 
-					  data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg" 
-					  style="height: 340px; display: block;" class="item">
-					<span class="favor">관심상품</span>	
-					<div class="info">	<span class="shop">갠소</span>		
-						<span class="name">빈티지박시후드집업(4차 재입고)</span>	<em class="cate" cate="101">OUTER</em><i>35,200</i>		
-						<div class="btn">
-							<span class="fb"></span><i>페이스북 공유</i><span class="tw"></span><i>트위터 공유</i>
-						</div>	
-					</div>	
-					<div class="bg"></div>
-				</a>
-			</li>
-		</c:forEach> --%>
 		</ul>
 </div>
 </div>

@@ -58,12 +58,3 @@ $(document).ready(function() {
 			}
 		});
 });
-function gbn() {
-		if($(".list-top-1 p").hasClass("notice-1")){
-			page="/product";
-			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender+"&ageSel=no");
-		}else if($(".list-top-1 p").hasClass("notice-2")){
-			page="/item";
-			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
-		}
-}

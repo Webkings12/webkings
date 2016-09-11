@@ -20,4 +20,50 @@ public class ItemServiceImpl implements ItemService{
 	public List<ItemViewVO> itemSelectAll(String gender) {
 		return itemDao.itemSelectAll(gender);
 	}
+
+	@Override
+	public List<ItemViewVO> itemSelectAge(ItemViewVO itViewVo) {
+		return itemDao.itemSelectAge(itViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemSelectName(ItemViewVO itViewVo) {
+		return itemDao.itemSelectName(itViewVo);
+	}
+
+	@Override
+	public int itemSelectCount() {
+		return itemDao.itemSelectCount();
+	}
+
+	@Override
+	public List<ItemViewVO> itemClick(ItemViewVO itViewVo) {
+		return itemDao.itemClick(itViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemPriceDesc(ItemViewVO itemViewVo) {
+		return itemDao.itemPriceDesc(itemViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemPriceAsc(ItemViewVO itemViewVo) {
+		return itemDao.itemPriceAsc(itemViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemClickCate(ItemViewVO itViewVo) {
+		return itemDao.itemClickCate(itViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemDescCate(ItemViewVO itViewVo) {
+		return itemDao.itemDescCate(itViewVo);
+	}
+
+	@Override
+	public List<ItemViewVO> itemAscCate(ItemViewVO itViewVo) {
+		return itemDao.itemAscCate(itViewVo);
+	}
+	
 }

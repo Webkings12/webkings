@@ -4,6 +4,16 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
+var gender = "${param.gender}";
+var itemCate= "${param.cate}";
+var itemSel=[];
+var orderVal="${param.orderVal}";
+var itCount;
+var orderName="${orderName}";
+var url="<c:url value='/item/itemSelectName.do'/>";
+</script>
+<script type="text/javascript" src="<c:url value='/js/itemCateView.js'/>"></script>
+<script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
 	$(".gnb li:nth-child("+pageNum+")").addClass("active");
@@ -15,6 +25,15 @@ $(document).ready(function() {
 	$(".gnb li").mouseleave(function() {
 		$(this).removeClass("active");
 		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
+	});
+	$(".option-sec-1>ul>li.order ul a").click(function() {
+		orderVal=$(this).find("input").val();
+		$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal);
+	});
+	
+	$("a.aw-1").append(orderName);
+	$("a.aw-1").click(function() {
+		$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal);
 	});
 });
 </script>
@@ -29,15 +48,35 @@ $(document).ready(function() {
 				<li>
 					<dl class="age-sel">
 						<dt><a href="#" onclick="gbn()">신상품 추천</a></dt>
-						<dd><a href="javascript:;"><em>전체 연령대</em></a></dd>
-						<dd><a href="javascript:;"><em>10대 신상품</em></a></dd>
-						<dd><a href="javascript:;"><em>20대 신상품</em></a></dd>
-						<dd><a href="javascript:;"><em>30대 신상품</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=F">
+								<em>전체 연령대</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=F&ageSel=10">
+								<em>10대 신상품</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=F&ageSel=20">
+								<em>20대 신상품</em></a></dd>
+						<dd><a href="/Webkings/page.do?page=/item&gender=F&ageSel=30">
+								<em>30대 신상품</em></a></dd>
 					</dl>
 				</li>
+				
 				<li class="active">
 					<dl class="prod-cate-sel">
-						<dt><a href="#" ">전체 상품</a></dt>
+					<dt><a href="#">
+					<c:choose>
+						<c:when test="${null eq param.cate || 'ALL' eq param.cate ||'' eq param.cate}">
+							전체상품
+						</c:when>
+						<c:otherwise>
+							${param.cate}
+						</c:otherwise>
+					</c:choose>
+					</a></dt>
+						<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=F&cate=ALL">
+						ALL</a></dd>
+						<c:forEach var="Item_TypeVO" items="${itemList}">
+						<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=F&cate=${Item_TypeVO.itName}&orderVal=${orderVal}">
+						${Item_TypeVO.itName}</a></dd>
+						</c:forEach>
 					</dl>
 				</li>
 			</ul>
@@ -45,12 +84,12 @@ $(document).ready(function() {
 		<div class="option-sec-1">
 			<ul>
 				<li class="order">
-					<a href="javascript:;" class="aw-1">신상품순</a>
+					<a href="#"	class="aw-1"></a>
 					<ul>
-						<li><a href="javascript:;" val="0">신상품순</a></li>
-						<li><a href="javascript:;" val="2">클릭순</a></li>
-						<li><a href="javascript:;" val="3">낮은 가격순</a></li>
-						<li><a href="javascript:;" val="4">높은 가격순</a></li>
+						<li><a href="#"><input type="hidden" value="0">신상품순</a></li>
+						<li><a href="#"><input type="hidden" value="1">클릭순</a></li>
+						<li><a href="#"><input type="hidden" value="2">낮은 가격순</a></li>
+						<li><a href="#"><input type="hidden" value="3">높은 가격순</a></li>
 					</ul>
 				</li>
 
@@ -84,11 +123,17 @@ $(document).ready(function() {
 			</ul>
 		</div>
 	</div>
-	<ul class="item-list abs-list"></ul>
+	<ul class="item-list abs-list">
+		<li class="prod M" style="left: 0px; top: 0px;">
+			
+		</li>
+	</ul>
 </div>
-<form id="pageFrm" name="pageFrm" method="get" target="_self">
+<!-- <form id="pageFrm" name="pageFrm" method="get" target="_self">
 	<input type="hidden" name="cs" value="100" />
 	<input type="hidden" name="sw2" value="" />
-</form>
+</form> -->
+</div>
+</div>
 </body>
 </html>

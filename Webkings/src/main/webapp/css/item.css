@@ -5,7 +5,9 @@
 {div.body-sec .item-list {
     width: 950px !important;
 }}
-
+.item-list.abs-list {
+    height: 4605px;
+}
 .item-list {
     overflow: hidden;
     position: relative;
