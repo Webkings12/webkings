@@ -20,5 +20,10 @@ public interface ItemDAO {
 	
 	
 	//아이템 갯수
-	public int itemSelectCount();
+	public int itemSelectCount(String cate);
+	
+	
+	//아이템 검색
+	public List<ItemViewVO> itemSearch(ItemSearchVO itemSearchVo);
+	
 }

@@ -11,6 +11,31 @@ var orderVal="${param.orderVal}";
 var itCount;
 var orderName="${orderName}";
 var url="<c:url value='/item/itemSelectName.do'/>";
+var itemSearchVo = "${itemSearchVo}";
+//search
+var sw2="${itemSearchVo.sw2}";
+var sac="${itemSearchVo.sac}";
+var ssp="${itemSearchVo.ssp}";
+var sep="${itemSearchVo.sep}";
+
+/* if(sw2!=""){
+	$("_frmDetailSearch #sw2").val(sw2);
+}
+if(ssp!=""){
+	$("_frmDetailSearch #ssp").val(ssp);
+}
+if(sep!=""){
+	$("_frmDetailSearch #sep").val(sep);
+}
+if(sac!=""){
+	if(sac=="1"){
+		$("_frmDetailSearch #age1").attr("checked", true);
+	}else if(sac=="2"){
+		$("_frmDetailSearch #age2").attr("checked", true);
+	}else if(sac=="3"){
+		$("_frmDetailSearch #age2").attr("checked", true);
+	}
+} */
 </script>
 <script type="text/javascript" src="<c:url value='/js/itemCateView.js'/>"></script>
 <script type="text/javascript">
@@ -25,15 +50,6 @@ $(document).ready(function() {
 	$(".gnb li").mouseleave(function() {
 		$(this).removeClass("active");
 		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
-	});
-	$(".option-sec-1>ul>li.order ul a").click(function() {
-		orderVal=$(this).find("input").val();
-		$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal);
-	});
-	
-	$("a.aw-1").append(orderName);
-	$("a.aw-1").click(function() {
-		$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal);
 	});
 });
 </script>
@@ -96,14 +112,18 @@ $(document).ready(function() {
 				<li class="detail-search">
 					<a href="javascript:;" class="search-1">상세검색</a>
 					<div class="sec"><div class="in">
-					<form id="_frmDetailSearch">
-						<p><input type="text" name="sw2" value="" fieldname="검색어" placeholder="결과내 재검색" 
+					<form id="_frmDetailSearch" action="/Webkings/item/itemCate.do">
+						<input type="hidden" name="page" value="/product">
+						<input type="hidden" name="orderVal" value="${orderVal}">
+						<input type="hidden" name="gender" value="F">
+						<input type="hidden" name="cate" value="${itemCate}">
+						<p><input type="text" name="sw2"  value="" fieldname="검색어" placeholder="결과내 재검색" 
 						checkfunctionname="checkSpecialChar" restrictutf8bytes="45"
 						 confirmmessage="특수문자로 검색하실수 없습니다." autocomplete="off" focus="off">
 						 </p>
 						<div>
 							<label>가격대</label>
-							<input type="text" name="ssp" value=""> ~ <input type="text" name="sep" value="">
+							<input type="text" name="ssp" id="ssp" value=""> ~ <input type="text" id="sep" name="sep" value="">
 						</div>
 						<div>
 							<label>연령대</label>

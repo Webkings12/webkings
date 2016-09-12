@@ -32,8 +32,8 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public int itemSelectCount() {
-		return itemDao.itemSelectCount();
+	public int itemSelectCount(String cate) {
+		return itemDao.itemSelectCount(cate);
 	}
 
 	@Override
@@ -65,5 +65,9 @@ public class ItemServiceImpl implements ItemService{
 	public List<ItemViewVO> itemAscCate(ItemViewVO itViewVo) {
 		return itemDao.itemAscCate(itViewVo);
 	}
-	
+
+	@Override
+	public List<ItemViewVO> itemSearch(ItemSearchVO itemSearchVo) {
+		return itemDao.itemSearch(itemSearchVo);
+	}
 }

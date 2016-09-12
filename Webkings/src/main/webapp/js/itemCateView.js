@@ -1,11 +1,34 @@
 /**
  * 
  */
+function searchItem(){
+	alert(sw2);
+	if($("#sw2").val()!=null){
+		sw2=$("#sw2").val();
+	}
+	if($("#ssp").val()!=null){
+		ssp=$("#ssp").val();
+	}
+	if($("#sep").val()!=null){
+		sep=$("#sep").val();
+	}
+	if($("#age1").is(":checked")){
+		sac=$(this).val();
+	}
+	else if($("#age2").is(":checked")){
+		sac=$(this).val();
+	}
+	else if($("#age3").is(":checked")){
+		sac=$(this).val();
+	}
+	return true;
+}
+
 $(document).ready(function() {
 			 $.ajax({
 				url:url,
 				type:"GET",
-				data: "gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal,
+				data: "gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac,
 				async:false,
 				dataType:"json",
 				success:function(res){
@@ -36,6 +59,16 @@ $(document).ready(function() {
 					alert(error);
 				}
 			}); 
+			 $(".option-sec-1>ul>li.order ul a").click(function(){
+					orderVal=$(this).find("input").val();
+					$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal);
+				});
+				
+				$("a.aw-1").append(orderName);
+				$("a.aw-1").click(function(){
+					$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal);
+		});
+			
 });
 function gbn(){
 	if($(".list-top-1 p").hasClass("notice-1")){
@@ -47,4 +80,3 @@ function gbn(){
 		$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
 	}
 }
-

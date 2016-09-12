@@ -40,8 +40,12 @@
 		and it_name= #{itName}
 	</select>
 	
-	<select id="itemAllCount" resultType="int">
+	<select id="itemAllCount" parameterType="String" resultType="int">
 		select count(*) from itemview
+		<if test="!_parameter.equals('ALL')">
+			where 1=1
+			and it_name = #{_parameter}
+		</if>
 	</select>
 	
 	<select id="itemClick" parameterType="ItemViewVO" resultType="ItemViewVO">
@@ -89,4 +93,44 @@
 		order by i_price asc
 	</select>
 	
+	
+	<select id="itemSearch" parameterType="ItemSearchVO" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and it_gender = #{gender}
+		<if test='sw2!=null and sw2 neq ""'>
+		and i_name like '%' || #{sw2} || '%'
+		</if>
+		<if test='ssp!=null and ssp neq "" and sep!=null and sep neq ""'>
+			and i_price between #{ssp} and #{sep}
+		</if>
+		<if test='ssp!=null and ssp neq "" and (sep==null or sep eq "")'>
+		<![CDATA[
+			and i_price <= #{ssp}
+		]]>
+		</if>
+		<if test='sep!=null and sep neq "" and (ssp==null or ssp eq "")'>
+		<![CDATA[
+			and i_price >= #{sep}
+		]]>
+		</if>
+		<if test='sac!=null and sac neq ""'>
+			and s_age = #{sac}
+		</if>
+		<if test='cate!=null and cate neq "ALL"'>
+			and it_name = #{cate}
+		</if>
+		<if test='orderVal eq "0"'>
+			order by i_no desc
+		</if>
+		<if test='orderVal eq "1"'>
+			order by i_click desc
+		</if>
+		<if test='orderVal eq "2"'>
+			order by i_price desc
+		</if>
+		<if test='orderVal eq "3"'>
+			order by i_price asc
+		</if>
+	</select>
 </mapper>

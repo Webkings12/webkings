@@ -18,7 +18,9 @@ div.body-sec>div.in-sec>div {
     min-height: 660px;
     padding-bottom: 20px;
 }
-
+body.F .detail-search input:checked+label {
+    color: #e6178f !important;
+}
 /* 개인정보 */
 @media screen and (max-width: 1460px)
 {div.body-sec>div.in-sec p.privacy-fixed {

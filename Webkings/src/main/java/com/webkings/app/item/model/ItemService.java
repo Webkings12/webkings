@@ -18,5 +18,8 @@ public interface ItemService {
 	public List<ItemViewVO> itemAscCate(ItemViewVO itViewVo);
 	
 	//아이템 전체 갯수
-	public int itemSelectCount();
+	public int itemSelectCount(String cate);
+	
+	//아이템 검색
+	public List<ItemViewVO> itemSearch(ItemSearchVO itemSearchVo);
 }

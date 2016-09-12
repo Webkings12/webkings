@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.webkings.app.item.model.ItemSearchVO;
 import com.webkings.app.item.model.ItemService;
 import com.webkings.app.item.model.ItemViewVO;
 import com.webkings.app.item.model.Item_TypeVO;
@@ -35,11 +36,19 @@ public class ItemController {
 	@RequestMapping("/itemCate.do")
 	public String itemCategory(@RequestParam String page, @RequestParam String gender,
 					  @RequestParam(defaultValue="ALL") String cate, @RequestParam(defaultValue="0") String orderVal, 
-					  Model model){
-		
+					  @RequestParam(required=false) String sw2, @RequestParam(required=false) String ssp, @RequestParam(required=false) String sep,
+					  @RequestParam(required=false) String sac,  Model model){
 		if(orderVal==""){
 			orderVal="0";
 		}
+		
+		ItemSearchVO itemSearchVo = new ItemSearchVO();
+		itemSearchVo.setSw2(sw2);
+		itemSearchVo.setSac(sac);
+		itemSearchVo.setCate(cate);
+		itemSearchVo.setSsp(ssp);
+		itemSearchVo.setSep(sep);
+		
 		String orderName="";
 		if(orderVal.equals("0")){
 			orderName="신상품순";
@@ -50,7 +59,7 @@ public class ItemController {
 		}else if(orderVal.equals("3")){
 			orderName="높은 가격순";
 		}
-		logger.info("지그므극={}",gender);
+		logger.info("itemSearchVo={}", itemSearchVo);
 		
 		logger.info("product 처음화면 cate={},orderVal={}",cate, orderVal);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
@@ -83,10 +92,9 @@ public class ItemController {
 		model.addAttribute("itView",itViewVo);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("orderName", orderName);
+		model.addAttribute("itemSearchVo", itemSearchVo);
 		return "page"+page;
 	}
-	
-	
 	@RequestMapping("/selectItem.do")
 	@ResponseBody
 	public Map<String, Object> itemSelectAll(@RequestParam String gender, 
@@ -118,7 +126,9 @@ public class ItemController {
 	@RequestMapping("/itemSelectName.do")
 	@ResponseBody
 	public  Map<String, Object> itemSelectName(@RequestParam String gender, 
-			@RequestParam(defaultValue="ALL") String cate, @RequestParam String orderVal){
+			@RequestParam(defaultValue="ALL") String cate, @RequestParam String orderVal,
+			@RequestParam(required=false) String sw2, @RequestParam(required=false) String ssp, @RequestParam(required=false) String sep,
+			@RequestParam(required=false) String sac){
 		
 		ItemViewVO itemViewVo = new ItemViewVO();
 		if(cate.equals("")){
@@ -127,47 +137,72 @@ public class ItemController {
 		if(orderVal.equals("")){
 			orderVal="0";
 		}
+		
 		itemViewVo.setItGender(gender);
 		itemViewVo.setItName(cate);
 		logger.info("아이템 선택페이지에서 값들  cate,orderVal={},{}", cate,orderVal);
 		logger.info("gender, temViewVo={}", itemViewVo);
 		
 		List<ItemViewVO> selItemList = null;
-		if(orderVal.equals("0")){
-			if(cate.equals("ALL")){
-				selItemList= itemService.itemSelectAll(gender);
+		if(!sw2.equals("") && !sw2.isEmpty() || !ssp.equals("") && !ssp.isEmpty() || !sep.equals("") && !sep.isEmpty() || !sac.equals("") && !sac.isEmpty()){
+			ItemSearchVO itemSearchVo= new ItemSearchVO();
+			itemSearchVo.setSw2(sw2);
+			itemSearchVo.setCate(cate);
+			itemSearchVo.setOrderVal(orderVal);
+			itemSearchVo.setSsp(ssp);
+			itemSearchVo.setSep(sep);
+			itemSearchVo.setGender(gender);
+			if(sac.equals("1")){
+				sac="10";
+			}else if(sac.equals("2")){
+				sac="20";
+			}else if(sac.equals("3")){
+				sac="30";
 			}else{
-				itViewVo.setItName(cate);
-				selItemList= itemService.itemSelectName(itemViewVo);
+				sac=" ";
 			}
-		}
-		else if(orderVal.equals("1")){
-			if(cate.equals("ALL")){
-				selItemList= itemService.itemClick(itemViewVo);
-			}else{
-				itViewVo.setItName(cate);
-				selItemList= itemService.itemClickCate(itemViewVo);
+			itemSearchVo.setSac(sac);
+			
+			logger.info("아이템 searchVo12={}", itemSearchVo);
+			selItemList = itemService.itemSearch(itemSearchVo);
+			
+		}else{
+			if(orderVal.equals("0")){
+				if(cate.equals("ALL")){
+					selItemList= itemService.itemSelectAll(gender);
+				}else{
+					itViewVo.setItName(cate);
+					selItemList= itemService.itemSelectName(itemViewVo);
+				}
 			}
-		}
-		else if(orderVal.equals("2")){
-			if(cate.equals("ALL")){
-				selItemList= itemService.itemPriceDesc(itemViewVo);
-			}else{
-				itViewVo.setItName(cate);
-				selItemList= itemService.itemDescCate(itemViewVo);
+			else if(orderVal.equals("1")){
+				if(cate.equals("ALL")){
+					selItemList= itemService.itemClick(itemViewVo);
+				}else{
+					itViewVo.setItName(cate);
+					selItemList= itemService.itemClickCate(itemViewVo);
+				}
 			}
-		}else if(orderVal.equals("3")){
-			if(cate.equals("ALL")){
-				selItemList= itemService.itemPriceAsc(itemViewVo);
-			}else{
-				itViewVo.setItName(cate);
-				selItemList= itemService.itemAscCate(itemViewVo);
+			else if(orderVal.equals("2")){
+				if(cate.equals("ALL")){
+					selItemList= itemService.itemPriceDesc(itemViewVo);
+				}else{
+					itViewVo.setItName(cate);
+					selItemList= itemService.itemDescCate(itemViewVo);
+				}
+			}else if(orderVal.equals("3")){
+				if(cate.equals("ALL")){
+					selItemList= itemService.itemPriceAsc(itemViewVo);
+				}else{
+					itViewVo.setItName(cate);
+					selItemList= itemService.itemAscCate(itemViewVo);
+				}
 			}
 		}
 		int itCount=0;
-		if(cate.equals("ALL")){
-			itCount=itemService.itemSelectCount();
-		}
+	
+		itCount=itemService.itemSelectCount(cate);
+		
 		logger.info("count="+itCount);
 		
 		Map<String, Object> resMap = new HashMap<String, Object>();
@@ -176,5 +211,4 @@ public class ItemController {
 		logger.info("ajax itemList={}", selItemList);
 		return resMap;
 	}
-
 }
