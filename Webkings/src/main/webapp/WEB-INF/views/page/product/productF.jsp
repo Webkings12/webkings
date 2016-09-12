@@ -13,29 +13,10 @@ var orderName="${orderName}";
 var url="<c:url value='/item/itemSelectName.do'/>";
 var itemSearchVo = "${itemSearchVo}";
 //search
-var sw2="${itemSearchVo.sw2}";
-var sac="${itemSearchVo.sac}";
-var ssp="${itemSearchVo.ssp}";
-var sep="${itemSearchVo.sep}";
-
-/* if(sw2!=""){
-	$("_frmDetailSearch #sw2").val(sw2);
-}
-if(ssp!=""){
-	$("_frmDetailSearch #ssp").val(ssp);
-}
-if(sep!=""){
-	$("_frmDetailSearch #sep").val(sep);
-}
-if(sac!=""){
-	if(sac=="1"){
-		$("_frmDetailSearch #age1").attr("checked", true);
-	}else if(sac=="2"){
-		$("_frmDetailSearch #age2").attr("checked", true);
-	}else if(sac=="3"){
-		$("_frmDetailSearch #age2").attr("checked", true);
-	}
-} */
+var sw2="${param.sw2}";
+var sac="${param.sac}";
+var ssp="${param.ssp}";
+var sep="${param.sep}";
 </script>
 <script type="text/javascript" src="<c:url value='/js/itemCateView.js'/>"></script>
 <script type="text/javascript">
@@ -77,16 +58,7 @@ $(document).ready(function() {
 				
 				<li class="active">
 					<dl class="prod-cate-sel">
-					<dt><a href="#">
-					<c:choose>
-						<c:when test="${null eq param.cate || 'ALL' eq param.cate ||'' eq param.cate}">
-							전체상품
-						</c:when>
-						<c:otherwise>
-							${param.cate}
-						</c:otherwise>
-					</c:choose>
-					</a></dt>
+					<dt><a href="#"></a></dt>
 						<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=F&cate=ALL">
 						ALL</a></dd>
 						<c:forEach var="Item_TypeVO" items="${itemList}">
@@ -114,10 +86,10 @@ $(document).ready(function() {
 					<div class="sec"><div class="in">
 					<form id="_frmDetailSearch" action="/Webkings/item/itemCate.do">
 						<input type="hidden" name="page" value="/product">
-						<input type="hidden" name="orderVal" value="${orderVal}">
+						<input type="hidden" name="orderVal" id="orderVal" value="">
 						<input type="hidden" name="gender" value="F">
-						<input type="hidden" name="cate" value="${itemCate}">
-						<p><input type="text" name="sw2"  value="" fieldname="검색어" placeholder="결과내 재검색" 
+						<input type="hidden" name="cate" id="cate" value="">
+						<p><input type="text" name="sw2" value="" fieldname="검색어" placeholder="결과내 재검색" 
 						checkfunctionname="checkSpecialChar" restrictutf8bytes="45"
 						 confirmmessage="특수문자로 검색하실수 없습니다." autocomplete="off" focus="off">
 						 </p>

@@ -93,28 +93,27 @@
 		order by i_price asc
 	</select>
 	
-	
 	<select id="itemSearch" parameterType="ItemSearchVO" resultType="ItemViewVO">
 		select * from itemview
 		where 1=1
 		and it_gender = #{gender}
-		<if test='sw2!=null and sw2 neq ""'>
-		and i_name like '%' || #{sw2} || '%'
+		<if test="sw2 != null and sw2 neq ''">
+			and i_name like '%' || #{sw2} || '%'
 		</if>
-		<if test='ssp!=null and ssp neq "" and sep!=null and sep neq ""'>
-			and i_price between #{ssp} and #{sep}
+		<if test='ssp neq "" and sep neq ""'>
+			and i_price  between #{ssp} and #{sep}
 		</if>
-		<if test='ssp!=null and ssp neq "" and (sep==null or sep eq "")'>
+		<if test='ssp neq "" and (sep==null or sep eq "")'>
 		<![CDATA[
-			and i_price <= #{ssp}
+			and i_price  >= #{ssp}
 		]]>
 		</if>
-		<if test='sep!=null and sep neq "" and (ssp==null or ssp eq "")'>
+		<if test='sep neq "" and (ssp==null or ssp eq "")'>
 		<![CDATA[
-			and i_price >= #{sep}
+			and i_price <= #{sep}
 		]]>
-		</if>
-		<if test='sac!=null and sac neq ""'>
+		</if> 
+		<if test='sac!=null and sac neq " "'>
 			and s_age = #{sac}
 		</if>
 		<if test='cate!=null and cate neq "ALL"'>

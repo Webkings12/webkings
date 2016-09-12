@@ -1,28 +1,6 @@
 /**
  * 
  */
-function searchItem(){
-	alert(sw2);
-	if($("#sw2").val()!=null){
-		sw2=$("#sw2").val();
-	}
-	if($("#ssp").val()!=null){
-		ssp=$("#ssp").val();
-	}
-	if($("#sep").val()!=null){
-		sep=$("#sep").val();
-	}
-	if($("#age1").is(":checked")){
-		sac=$(this).val();
-	}
-	else if($("#age2").is(":checked")){
-		sac=$(this).val();
-	}
-	else if($("#age3").is(":checked")){
-		sac=$(this).val();
-	}
-	return true;
-}
 
 $(document).ready(function() {
 			 $.ajax({
@@ -59,16 +37,43 @@ $(document).ready(function() {
 					alert(error);
 				}
 			}); 
-			 $(".option-sec-1>ul>li.order ul a").click(function(){
+		$(".option-sec-1>ul>li.order ul a").click(function(){
 					orderVal=$(this).find("input").val();
-					$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal);
+					$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
 				});
 				
-				$("a.aw-1").append(orderName);
-				$("a.aw-1").click(function(){
-					$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal);
+		$("a.aw-1").append(orderName);
+		$("a.aw-1").click(function(){
+			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
 		});
-			
+		
+		
+		if(sw2!=""){
+			$(".option-sec-1>ul>li.detail-search .sec p input").val(sw2);
+		}
+		if(ssp!=""){
+			$(".option-sec-1>ul>li.detail-search .sec div input[name=ssp]").val(ssp);
+		}
+		if(sep!=""){
+			$(".option-sec-1>ul>li.detail-search .sec div input[name=sep]").val(sep);
+		}
+		if(sac!=" "){
+			if(sac=="1"){
+				$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age1]").prop("checked", true);
+			}else if(sac=="2"){
+				$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age2]").prop("checked", true);
+			}else if(sac=="3"){
+				$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age3]").prop("checked", true);
+			}
+		}
+		
+		if(itemCate=="ALL" || itemCate==""){
+			$(".tab-type-1 ul li.active dl dt a").append("전체상품");
+		}else{
+			$(".tab-type-1 ul li.active dl dt a").append(itemCate);
+			$(".option-sec-1>ul>li.detail-search .sec div #cate").val(itemCate);
+		}
+		$(".option-sec-1>ul>li.detail-search .sec div #orderVal").val(orderVal);
 });
 function gbn(){
 	if($(".list-top-1 p").hasClass("notice-1")){
