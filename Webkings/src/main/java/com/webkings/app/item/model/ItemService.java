@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ItemService {
 	public List<Item_TypeVO> selectItemType(String gender); //�븘�씠�뀥 由ъ뒪�듃 top and item
-	public List<ItemViewVO> itemSelectAll(String gender); //item selectAll
+	public List<ItemViewVO> itemSelectAll(ItemViewVO itViewVo); //item selectAll
 	public List<ItemViewVO> itemSelectAge(ItemViewVO itViewVo);
 	
 	//아이템 선택
@@ -18,7 +18,7 @@ public interface ItemService {
 	public List<ItemViewVO> itemAscCate(ItemViewVO itViewVo);
 	
 	//아이템 전체 갯수
-	public int itemSelectCount(String cate);
+	public int itemSelectCount(ItemSearchVO itemSearchVo);
 	
 	//아이템 검색
 	public List<ItemViewVO> itemSearch(ItemSearchVO itemSearchVo);

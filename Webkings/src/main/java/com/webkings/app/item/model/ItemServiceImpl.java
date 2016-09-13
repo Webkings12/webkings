@@ -17,8 +17,8 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override  //item 화면 selectAll
-	public List<ItemViewVO> itemSelectAll(String gender) {
-		return itemDao.itemSelectAll(gender);
+	public List<ItemViewVO> itemSelectAll(ItemViewVO itViewVo) {
+		return itemDao.itemSelectAll(itViewVo);
 	}
 
 	@Override
@@ -32,8 +32,8 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public int itemSelectCount(String cate) {
-		return itemDao.itemSelectCount(cate);
+	public int itemSelectCount(ItemSearchVO itemSearchVo) {
+		return itemDao.itemSelectCount(itemSearchVo);
 	}
 
 	@Override

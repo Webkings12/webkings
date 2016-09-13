@@ -3,7 +3,6 @@ package com.webkings.app.item.model;
 public class ItemViewVO {
 	
 	/*카테고리 아이템 select*/
-	
 	private int iNo;
 	private String sDomain; 
 	private String iImage; 
@@ -14,6 +13,16 @@ public class ItemViewVO {
 	private String itGender; 
 	private String itName;
 	private int iClick;
+	private String dateType;	
+	
+	public String getDateType() {
+		return dateType;
+	}
+
+	public void setDateType(String dateType) {
+		this.dateType = dateType;
+	}
+
 	public int getiClick() {
 		return iClick;
 	}
@@ -82,7 +91,7 @@ public class ItemViewVO {
 	public String toString() {
 		return "ItemViewVO [iNo=" + iNo + ", sDomain=" + sDomain + ", iImage=" + iImage + ", iName=" + iName
 				+ ", iSalePrice=" + iSalePrice + ", sName=" + sName + ", sAge=" + sAge + ", itGender=" + itGender
-				+ ", itName=" + itName + ", iClick=" + iClick + "]";
+				+ ", itName=" + itName + ", iClick=" + iClick + ", dateType=" + dateType + "]";
 	}
 	
 }

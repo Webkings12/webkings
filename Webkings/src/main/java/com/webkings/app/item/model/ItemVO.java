@@ -3,13 +3,13 @@ package com.webkings.app.item.model;
 import java.sql.Timestamp;
 
 public class ItemVO {
-    private int iNo;  
-    private String iName;    
-    private String iImage;   
-    private Timestamp iRegdate; 
-    private Timestamp iChgdate;
-    private int itNo;
-    private int sNo;
+    private int iNo;  //아이템 번호
+    private String iName;   //아이템이름
+    private String iImage;   //아이템 이미지 정보
+    private Timestamp iRegdate; //등록일자
+    private Timestamp iChgdate; //수정일자
+    private int itNo; //아이템타입번호
+    private int sNo; //샵번호
 	public int getiNo() {
 		return iNo;
 	}

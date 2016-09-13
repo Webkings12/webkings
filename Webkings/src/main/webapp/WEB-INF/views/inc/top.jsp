@@ -32,6 +32,8 @@
 <title>오늘뭐입지?</title>
 <script type="text/javascript">
 var gender = "${gender}";
+var itNCount="${itNCount}";
+var itOCount="${itOCount}";
 </script>
 </head>
 <body class="F">
@@ -57,17 +59,17 @@ var gender = "${gender}";
 									</dd>
 									<dd>
 										<a href="/Webkings/page.do?page=/item&gender=${gender}&ageSel=10">
-											<em>10대신상품</em>
+											<em>10대 신상품</em>
 										</a>
 									</dd>
 									<dd>
 										<a href="/Webkings/page.do?page=/item&gender=${gender}&ageSel=20">
-											<em>20대신상품</em>
+											<em>20대 신상품</em>
 										</a>
 									</dd>
 									<dd>
 										<a href="/Webkings/page.do?page=/item&gender=${gender}&ageSel=30">
-											<em>30대신상품</em>
+											<em>30대 신상품</em>
 										</a>
 									</dd>
 								</dl>

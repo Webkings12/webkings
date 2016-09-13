@@ -64,47 +64,8 @@ $(document).ready(function() {
 	
 	<!-- 상품 이미지 -->
 	<ul class="item-list">
-		<li class="plan-sec">
-			<div class="list">
-				<ul>
-					<li>
-						<a href="/exhibition/62"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472187676462_wm.png" class="item"></a>
-					</li>
-					<li>
-						<a href="/exhibition/65"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472635035374_wm.png" class="item"></a>
-					</li>
-					<li>
-						<a href="/exhibition/57"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472031294631_wm.png" class="item"></a>
-					</li>
-					<li>
-						<a href="/exhibition/63"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472548791421_wm.png" class="item"></a>
-					</li>
-					<li>
-						<a href="/exhibition/60"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472054776607_wm.png" class="item"></a>
-					</li>
-				</ul>
-			</div>
-			<a href="#exhibition" class="total">전체보기</a>
-			<div class="paging"><span class="active">1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
-		</li>
 		
-		<li class="bnr-1">
-			<a href="https://play.google.com/store/apps/details?id=com.sta1.front&amp;hl=ko" target="_blank">
-			<img src="http://img.sta1.info/rsc/front/img/bnr-1.png" class="item"></a>
-		</li>	
-		
-		<li class="date">
-			<div class="sec today">
-				<span>TODAY</span><strong>09.09</strong><em>116</em>개의 신상품 추천
-			</div>
-		</li>
-		
-		<!-- 상품나오는곳 -->
-		<li class="prod F ia">
-		
-		
-		</li>
-		</ul>
+	</ul>
 </div>
 </div>
 </div>

@@ -132,6 +132,9 @@
 body.F .item-list li.date strong {
     color: #e6178f;
 }
+body.M .item-list li.date strong {
+    color: #0fb6c5;
+}
 
 .item-list>li.date .sec strong {
     display: block;
@@ -145,7 +148,9 @@ body.F .item-list li.date strong {
 body.F .item-list li.date em {
     color: #e6178f;
 }
-
+body.M .item-list li.date em {
+    color: #0fb6c5;
+}
 /* item 이미지 */
 .item-list>li.prod>a {
     display: block;

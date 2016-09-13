@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.webkings.app.item.model.ItemSearchVO;
 import com.webkings.app.item.model.ItemService;
 import com.webkings.app.item.model.ItemViewVO;
 import com.webkings.app.item.model.Item_TypeVO;
@@ -42,6 +43,20 @@ public class ViewController {
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
 		
+		/*아이템 갯수*/
+		ItemSearchVO itemSearchVo= new ItemSearchVO();
+		itemSearchVo.setGender(gender);
+		itemSearchVo.setSac(ageSel);
+		
+		
+		//오늘 신상
+		itemSearchVo.setnItem("NEW");
+		int itNCount=itemService.itemSelectCount(itemSearchVo);
+		 
+		 
+		itemSearchVo.setnItem("");
+		int itOCount= itemService.itemSelectCount(itemSearchVo);
+		
 		logger.info("alist.size(),ageSel={},{}", itemList.size(), ageSel);
 		logger.info("styleList1.size()={}", styleList.size());
 		
@@ -68,7 +83,6 @@ public class ViewController {
 		if(page.equals("/item/itemF") || page.equals("/item/itemM") ||
 			page.equals("/product/productF") || page.equals("/product/productM")){
 			pageNum=1;
-			
 		}
 		else if(page.equals("/shop/shopF") || page.equals("/shop/shopM")){
 			pageNum=2;
@@ -86,6 +100,8 @@ public class ViewController {
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("gender", gender);
+		model.addAttribute("itNCount", itNCount);
+		model.addAttribute("itOCount", itOCount);
 		
 		return "page"+page;
 	}

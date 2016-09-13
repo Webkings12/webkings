@@ -17,12 +17,16 @@
 		and it_Gender=#{gender}
 	</select>
 		
-	
 	<!-- 아이템 select All List -->
-	<select id="itemSelectAll" parameterType="String" resultType="ItemViewVO">
+	<select id="itemSelectAll" parameterType="ItemViewVO" resultType="ItemViewVO">
 		select * from itemview
 		where 1=1
-		and it_gender = #{gender}
+		and it_gender = #{itGender}
+		<if test='dateType eq "TO"'>
+		<![CDATA[
+			and to_char(i_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
+		]]>
+		</if>
 	</select>
 	
 	<!-- 아이템 select Age List -->
@@ -31,6 +35,11 @@
 		where 1=1
 		and it_gender = #{itGender}
 		and s_age = #{sAge}
+		<if test='dateType eq "TO"'>
+		<![CDATA[
+			and to_char(i_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
+		]]>
+		</if>
 	</select>
 	
 	<select id="itemSelectName" parameterType="ItemViewVO" resultType="ItemViewVO">
@@ -38,16 +47,60 @@
 		where 1=1
 		and it_gender = #{itGender}
 		and it_name= #{itName}
+		<![CDATA[
+			and to_char(i_regdate+1, 'yyyymmdd') >= to_char(sysdate,'yyyymmdd')
+		]]>
 	</select>
 	
-	<select id="itemAllCount" parameterType="String" resultType="int">
+	<!-- 아이템갯수 -->
+	<select id="itemAllCount" parameterType="ItemSearchVO" resultType="int">
 		select count(*) from itemview
-		<if test="!_parameter.equals('ALL')">
-			where 1=1
-			and it_name = #{_parameter}
+		where 1=1
+		and it_gender = #{gender}
+		<if test="cate !=null and cate neq''">
+			and it_name = #{cate}
 		</if>
+		<if test="sw2 != null and sw2 neq ''">
+			and i_name like '%' || #{sw2} || '%'
+		</if>
+		<if test='ssp!=null and ssp neq "" and sep!=null and sep neq ""'>
+			and i_price  between #{ssp} and #{sep}
+		</if>
+		<if test='ssp != null and ssp neq "" and (sep==null or sep eq "")'>
+		<![CDATA[
+			and i_price  >= #{ssp}
+		]]>
+		</if>
+		<if test='sep !=null and sep neq "" and (ssp==null or ssp eq "")'>
+		<![CDATA[
+			and i_price <= #{sep}
+		]]>
+		</if> 
+		<if test='sac != null and sac neq " " and sac neq "all"'>
+			and s_age=#{sac}
+		</if>
+		<if test='nItem eq "NEW"'>
+			<![CDATA[
+			and to_char(i_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
+			]]>
+		</if>
+		<if test='orderVal eq "0"'>
+			order by i_no desc
+		</if>
+		<if test='orderVal eq "1"'>
+			order by i_click desc
+		</if>
+		<if test='orderVal eq "2"'>
+			order by i_price desc
+		</if>
+		<if test='orderVal eq "3"'>
+			order by i_price asc
+		</if>
+		
 	</select>
 	
+	
+	<!-- 신상품순 -->
 	<select id="itemClick" parameterType="ItemViewVO" resultType="ItemViewVO">
 		select * from itemview
 		where 1=1

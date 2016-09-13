@@ -16,8 +16,8 @@ public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
 	}
 
 	@Override
-	public List<ItemViewVO> itemSelectAll(String gender) {
-		return getSqlSession().selectList(namespace+".itemSelectAll", gender);
+	public List<ItemViewVO> itemSelectAll(ItemViewVO itViewVo) {
+		return getSqlSession().selectList(namespace+".itemSelectAll", itViewVo);
 	}
 
 	@Override
@@ -31,8 +31,8 @@ public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
 	}
 
 	@Override
-	public int itemSelectCount(String cate) {
-		return getSqlSession().selectOne(namespace+".itemAllCount", cate);
+	public int itemSelectCount(ItemSearchVO itemSearchVo) {
+		return getSqlSession().selectOne(namespace+".itemAllCount", itemSearchVo);
 	}
 
 	@Override

@@ -6,6 +6,7 @@
 <script type="text/javascript">
 var itemAge = "${param.ageSel}";
 var itemSel=[];
+var nItemSel=[];
 var url="<c:url value='/item/selectItem.do'/>";
 </script>
 <script type="text/javascript" src="<c:url value='/js/itemView.js'/>"></script>
@@ -36,7 +37,7 @@ $(document).ready(function() {
 					<dl class="age-sel">
 						<dt><input type="hidden" id="ageS" value="${age}">
 						<a href="#"> 
-						${age}
+							${age}
 						</a> 
 						</dt>
 						<dd><a href="/Webkings/page.do?page=/item&gender=F">
@@ -63,45 +64,8 @@ $(document).ready(function() {
 	</div>
 	
 	<!-- 상품 이미지 -->
-	<ul class="item-list">
-		<li class="plan-sec">
-			<div class="list">
-				<ul>
-					<li>
-						<a href="/exhibition/62"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472187676462_wm.png" class="item"></a>
-					</li>
-					<li>
-						<a href="/exhibition/65"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472635035374_wm.png" class="item"></a>
-					</li>
-					<li>
-						<a href="/exhibition/57"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472031294631_wm.png" class="item"></a>
-					</li>
-					<li>
-						<a href="/exhibition/63"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472548791421_wm.png" class="item"></a>
-					</li>
-					<li>
-						<a href="/exhibition/60"><img src="http://img.sta1.kr/_up/exhib/2016/08/1472054776607_wm.png" class="item"></a>
-					</li>
-				</ul>
-			</div>
-			<a href="#exhibition" class="total">전체보기</a>
-			<div class="paging"><span class="active">1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
-		</li>
-		
-		<li class="bnr-1">
-			<a href="https://play.google.com/store/apps/details?id=com.sta1.front&amp;hl=ko" target="_blank">
-			<img src="http://img.sta1.info/rsc/front/img/bnr-1.png" class="item"></a>
-		</li>	
-		
-		<li class="date">
-			<div class="sec today">
-				<span>TODAY</span><strong>09.11</strong><em>116</em>개의 신상품 추천
-			</div>
-		</li>
-		<li class="prod F ia">
-			
-		</li>
-		</ul>
+	<ul class='item-list'>
+	</ul>
 </div>
 </div>
 </div>

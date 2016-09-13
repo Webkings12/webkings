@@ -8,6 +8,7 @@ public class ItemSearchVO {
 		private String cate; //카테고리
 		private String gender; // 성별
 		private String orderVal;
+		private String nItem;  //신상
 		
 		public String getOrderVal() {
 			return orderVal;
@@ -52,10 +53,16 @@ public class ItemSearchVO {
 			this.sac = sac;
 		}
 		
+		public String getnItem() {
+			return nItem;
+		}
+		public void setnItem(String nItem) {
+			this.nItem = nItem;
+		}
 		@Override
 		public String toString() {
 			return "ItemSearchVO [sw2=" + sw2 + ", ssp=" + ssp + ", sep=" + sep + ", sac=" + sac + ", cate=" + cate
-					+ ", gender=" + gender + ", orderVal=" + orderVal + "]";
+					+ ", gender=" + gender + ", orderVal=" + orderVal + ", nItem=" + nItem + "]";
 		}
 		
 }

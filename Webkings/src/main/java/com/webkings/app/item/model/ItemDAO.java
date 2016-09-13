@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ItemDAO {
 	public List<Item_TypeVO> selectItemType(String gender);	//ī�װ� top and item
-	public List<ItemViewVO> itemSelectAll(String gender); //item ��ü��ȸ
+	public List<ItemViewVO> itemSelectAll(ItemViewVO itViewVo); //item ��ü��ȸ
 	public List<ItemViewVO> itemSelectAge(ItemViewVO itViewVo);
 	
 	//아이템 선택
@@ -20,7 +20,7 @@ public interface ItemDAO {
 	
 	
 	//아이템 갯수
-	public int itemSelectCount(String cate);
+	public int itemSelectCount(ItemSearchVO itemSearchVo);
 	
 	
 	//아이템 검색
