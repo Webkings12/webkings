@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webkings.app.common.FileUploadWabUtil;
+import com.webkings.app.common.FreeboardSearchVO;
 import com.webkings.app.common.PaginationInfo;
 import com.webkings.app.common.SearchVO;
 import com.webkings.app.freeBoard.model.BoardViewVO;
@@ -83,7 +84,7 @@ public class FreeboardController {
 		
 		if(cnt>0){
 			logger.info("글쓰기 결과cnt={}",cnt);
-			return "redirect:/freeboard/listView.do";
+			return "redirect:/freeboard/list.do";
 		}else{
 			logger.info("글쓰기 결과cnt={}",cnt);
 			return "redirect:/freeboard/write.do";
@@ -94,7 +95,7 @@ public class FreeboardController {
 	}
 	
 	@RequestMapping("/list.do")
-	public String freeBoardList(SearchVO searchVo,Model model){
+	public String freeBoardList(FreeboardSearchVO searchVo,Model model){
 		/*3. 글목록 조회
 		
 		reBoard/list.do => ReBoardListController
@@ -124,56 +125,95 @@ public class FreeboardController {
 				
 		//3. 결과 저장, 뷰페이지 리턴
 		model.addAttribute("alist", alist);
+		model.addAttribute("searchVo", searchVo);
+		
+		model.addAttribute("pagingInfo", pagingInfo);
+		
+		
+		return "board/freeboard/list";
+	}
+	
+	@RequestMapping("/listView.do")
+	public String freeBoardListView(FreeboardSearchVO searchVo,Model model){
+		/*3. 글목록 조회
+		
+		reBoard/list.do => ReBoardListController
+		=> /reBoard/list.jsp
+		//1. 파라미터 읽어오기*/
+		logger.info("글목록 조회, 파라미터 searchVo={}",
+				searchVo);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(10); //블록사이즈
+		pagingInfo.setRecordCountPerPage(15); //페이지에 보여줄 레코드수
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage()); //현제 페이지
+		
+		searchVo.setBlockSize(10); 
+		searchVo.setRecordCountPerPage(15);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex()); //시작 레코드
+				
+		//2. db작업 - select
+		List<BoardViewVO> alist = fBoardService.freeBoardselectAll(searchVo);
+		logger.info("글목록 조회 결과 alist.size()={}", 
+				alist.size());
+		
+		//전체 레코드 개수 조회하기
+		int totalRecord 
+			= fBoardService.selectTotalRecord(searchVo);
+		pagingInfo.setTotalRecord(totalRecord);
+				
+		//3. 결과 저장, 뷰페이지 리턴
+		model.addAttribute("alist", alist);
+		model.addAttribute("searchVo", searchVo);
+		
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		
 		return "board/freeboard/listView";
 	}
-	@RequestMapping("/listView.do")
-	public String listView(){
-		return "board/freeboard/list";
-	}
 	
 	@RequestMapping("/updateCount.do")
 	public String updateCount(@RequestParam(defaultValue="0") int no, Model model){
 		//1. 파라미터 읽기
-				logger.info("조회수 증가, 파라미터 no={}",no);
-				
-				if(no==0){
-					model.addAttribute("msg","잘못된 url입니다");
-					model.addAttribute("url","/freeboard/list.do");
-					
-					return "common/message";
-				}
-				//2. db작업
-				int cnt=fBoardService.updateCount(no);
-				
-				logger.info("조회수 증가 결과, cnt={}",cnt);
-				//3 결과저장 , 뷰 페이지 리턴
-				return "redirect:/freeboard/detail.do?no="+no;
+		logger.info("조회수 증가, 파라미터 no={}",no);
+			
+		//2. db작업
+		int cnt=fBoardService.updateCount(no);
+		
+		logger.info("조회수 증가 결과, cnt={}",cnt);
+		//3 결과저장 , 뷰 페이지 리턴
+		
+		return "redirect:/freeboard/detail.do?no="+no;
 		
 	}
 	
 	@RequestMapping("/detail.do")
-	public String boardDetail(@RequestParam(defaultValue="0") int no,Model model){
+	public String boardDetail(@RequestParam(defaultValue="0") int no
+			,Model model){
 		//1.파라미터 읽기
 		logger.info("글상세보기 파라미터 no={}",no);
+		
+		//2. db작업
+		int cnt=fBoardService.updateCount(no);
+		
+		logger.info("조회수 증가 결과, cnt={}",cnt);
 		//1.파라미터가 x
 		if(no==0){
-			model.addAttribute("msg","잘못된 url입니다");
-			model.addAttribute("url","/freeboard/listView.do");
+			model.addAttribute("msg","잘못된zzz url입니다");
+			model.addAttribute("url","/freeboard/list.do");
 			
 			return "common/message";
 		}
 		
 		//2. db작업
 		BoardViewVO vo=fBoardService.selectByNo(no);
-		int nextNo=fBoardService.selectNext(no);
 		int beforeNo=fBoardService.selectBefore(no);
+		int nextNo=fBoardService.selectNext(no);
+		
 		//3. 결과저장, 뷰페이지 리턴
 		model.addAttribute("vo",vo);
-		model.addAttribute("nextNo",nextNo);
 		model.addAttribute("beforeNo",beforeNo);
+		model.addAttribute("nextNo",nextNo);
 		
 		return "board/freeboard/detail";
 	}
@@ -267,7 +307,7 @@ public class FreeboardController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="삭제 완료";
-			url="/freeboard/listView.do";
+			url="/freeboard/list.do";
 		}else{
 			msg="삭제 실패";
 			url="/freeboard/detail.do?no="+bNo;

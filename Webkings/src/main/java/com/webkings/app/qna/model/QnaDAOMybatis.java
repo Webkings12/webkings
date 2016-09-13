@@ -48,4 +48,8 @@ public class QnaDAOMybatis extends SqlSessionDaoSupport implements QnaDAO{
 	public int selectBefore(int qNo) {
 		return getSqlSession().selectOne(namespace+".selectBefore",qNo);
 	}
+	
+	public int updateQna(QnaVO vo){
+		return getSqlSession().update(namespace+".updateQna",vo);
+	}
 }

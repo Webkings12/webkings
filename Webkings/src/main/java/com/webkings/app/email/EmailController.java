@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.webkings.app.member.model.MemberService;
 import com.webkings.app.member.model.MemberVo;
@@ -74,6 +75,7 @@ public class EmailController {
 	}
 	
 	@RequestMapping("/certify/certifyNo.do")
+	@ResponseBody
 	public String certifyNo(@RequestParam String mEmail){
 		logger.info("인증번호 발송 처리 파라미터,mEmail={}",mEmail);
 
@@ -108,9 +110,10 @@ public class EmailController {
 				logger.info("이메일 발송 실패!!");
 				e.printStackTrace();
 			}
+			
+			
 		
-
-		return "redirect:/page.do";
+		return certify;
 	}
 	
 }

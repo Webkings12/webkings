@@ -33,7 +33,7 @@ function pageProc(curPage){
 <body>
 
 <form name="frmPage" method="post" 
-	action="<c:url value='/freeboard/list.do'/>">
+	action="<c:url value='/qna/list.do'/>">
 	<input type="hidden" name="currentPage">
 	<input type="hidden" name="searchCondition" 
 		value="${param.searchCondition }">
@@ -46,11 +46,11 @@ function pageProc(curPage){
 <div class="divList2">
 <div class="align_left">
 	<h2>qna</h2>
-	<c:if test="${!empty param.searchKeyWord }">
+	<c:if test="${!empty param.searchKeyword }">
 		<p>검색어 : ${param.searchKeyword },${pagingInfo.totalRecord }건 검색되었습니다</p>
 	</c:if> 
 		
-	<c:if test="${empty param.searchKeyWord }">
+	<c:if test="${empty param.searchKeyword }">
 		<p>전체조회 : ${pagingInfo.totalRecord }건 검색되었습니다</p>
 	</c:if>
 </div>
@@ -82,12 +82,12 @@ function pageProc(curPage){
 	<c:forEach var="vo" items="${alist }">
 	<tr style="text-align: center">
 		 	 	<td>${vo.qNo }</td>
-		 		<td><a href="<c:url value='/qna/detail.do?no=${vo.qNo}'/>">
+		 		<td><a href="<c:url value='/qna/detail.do?no=${vo.qNo}&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }'/>">
 		 		<!-- 제목이 긴경우 일부만 보여주기 -->
-		 		<c:if test="${fn:length(vo.qTitle)>30 }">
-		 			${fn:substring(vo.qTitle,0,30) }...
+		 		<c:if test="${fn:length(vo.qTitle)>25 }">
+		 			${fn:substring(vo.qTitle,0,25) }...
 		 		</c:if>
-		 		<c:if test="${fn:length(vo.qTitle)<=30 }">
+		 		<c:if test="${fn:length(vo.qTitle)<=25 }">
 		 			${vo.qTitle}
 		 		</c:if>
 		 		</a>
@@ -102,7 +102,7 @@ function pageProc(curPage){
 			 		<fmt:formatDate value="${vo.qRegdate }" pattern="yyyy-MM-dd"/>
 			 		</c:if>
 			 		<c:if test="${vo.newImgTerm<=24 }">
-			 		<fmt:formatDate value="${vo.qRegdate }" pattern="hh:mm"/>
+			 		<fmt:formatDate value="${vo.qRegdate }" pattern="HH:mm"/>
 			 		</c:if>
 				</td>
 		 	</tr>
@@ -139,7 +139,11 @@ function pageProc(curPage){
 	</c:if> 
 </div>
 
-<div class="divFrm3">
+<div class="divFrm3" 
+<c:if test="${sessionScope.mType!='0' }">
+	style="display: none;"
+</c:if>
+>
    	<form name="frmSearch" method="post" action='<c:url value="/qna/list.do"/>'>
         <select name="searchCondition">
 			<option value="q_Title"

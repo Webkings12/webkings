@@ -15,11 +15,6 @@
 				alert("내용을 입력하세요");
 				$("#qContent").focus();
 				return false
-			}else if(!$("#agree-1").is(":checked")){
-				alert("약관에 동의하셔야합니다");
-				$("#agree-1").focus();
-				return false
-			
 			}else if($("#qTitle").val().length>45){
 				alert("제목이 너무 깁니다");
 				$("#qTitle").focus();
@@ -42,19 +37,15 @@
 	}
 </script>
 <div class="divFrm1" style="text-align: center">
-	<form id="frmQna" name="frmQna" method="post" action="<c:url value='/qna/write.do' />" >
+	<form id="frmQna" name="frmQna" method="post" action="<c:url value='/qna/edit.do' />" >
 		<ul id="list">
-			<li><input name="qTitle" type="text" id="qTitle" placeholder="제목"></li>
-			<li><textarea name="qContent" id="qContent"  placeholder="문의내용"></textarea></li>
+			<li><input name="qNo" type="text"  value="${qVo.qNo }" ></li>
+			<li><input name="qTitle" type="text" id="qTitle" value="${qVo.qTitle }"></li>
+			<li><textarea name="qContent" id="qContent">${qVo.qContent }</textarea></li>
 		</ul>
 				
 		<br>
-		<div class="agree">
-			<input type="checkbox" id="agree-1">
-			<label for="agree-1">개인정보 취급방침</label>
-	    	<iframe class="div1" src="<c:url value='/common/personal.html'/>"></iframe>
-		</div>
-		<input type="submit" class="btn_default btn_light back_color" id="btQsubMit" value="문의 보내기">
+		<input type="submit" class="btn_default btn_light back_color" id="btQsubMit" value="수 정">
 	</form>
 </div>
 </body>

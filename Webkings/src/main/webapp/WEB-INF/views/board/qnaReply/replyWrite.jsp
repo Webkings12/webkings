@@ -10,11 +10,11 @@
 		});
 	});
 </script>
-<form name="fmReply" method="post" action="<c:url value='/reply/write.do'/>" id="fmReply">
+<form name="fmReply" method="post" action="<c:url value='/qnaReply/write.do'/>" id="fmReply">
 	 <fieldset>
 	 	<div>
-            <input type="hidden"  name="bNo" value="${vo.bNo }"  />
-            <textarea name="rContent" id="rContent" rows="3" cols="95"></textarea>
+            <input type="hidden"  name="qNo" value="${vo.qNo }"  />
+            <textarea name="qrContent" id="rContent" rows="3" cols="95"></textarea>
             <a class="btn_default btReply" href="#" id="btnReply">등록</a>
 	 	</div>
 	 </fieldset>

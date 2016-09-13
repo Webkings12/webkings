@@ -188,7 +188,31 @@ var itOCount="${itOCount}";
 				
 				<!-- 이용약관 끝 -->
 	<!-- 회원가입 시작-->	
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#aCertify").click(function() {
+			if(($("#mEmail").val().length<1)){
+				alert("이메일을 입력하세요.");
+				$("#divreg").css("display","block");
+				$("#mEmail").focus();
+				return false
+			}
+		$.ajax({
+			url:"<c:url value='/certify/certifyNo.do'/>",
+			type:"GET",
+			data:"mEmail="+$("#mEmail").val(), //요청 파라미터
+			dataType:"text",
+			success:function(res){
+				alert("인증메일이 발송되었습니다");
+				$("#certifyChk").val(res);
+			},
+			error:function(xhr, status, error){
+			}
+		});
+	});
+		
+});
+</script>	
 
 				<div id="divreg" class="modal">
 				 <span onclick="document.getElementById('divreg').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -239,15 +263,69 @@ var itOCount="${itOCount}";
 				</div>
 				<!-- 회원가입 끝-->
 				<!-- 로그인 시작-->		
-
+<script type="text/javascript">
+$(document).ready(function(event){
+	var loginCheck="";
+	$("#formLogin").submit(function(event){
+		if($("#mEmail1").val().length<1){
+			alert("이메일을 입력하세요.");
+			$("#divLogin").css("display","block");
+			$("#mEmail1").focus();
+			return false;
+		}else if($("#mPwd1").val().length<1){
+			alert("비밀번호를 입력하세요.");
+			$("#divLogin").css("display","block");
+			$("#mPwd1").focus();
+			return false;
+		}else{				
+			$.ajax({
+				url:"<c:url value='/member/login.do'/>",
+				type:"POST",
+				async:false,
+				data:$(this).serialize(), //요청 파라미터
+				dataType:"json",
+				success:function(res){
+					if(res==1){
+					}else if (res==2) {
+						alert("비밀번호가 다릅니다");
+						$("#divLogin").css("display","block");
+					}else if (res==3){
+						alert("아이디가 존재하지 않습니다");
+						$("#divLogin").css("display","block");
+					}
+					loginCheck=res;
+				},
+				error:function(xhr, status, error){
+					alert(error);
+				}
+			});
+		}
+		if(loginCheck=="1"){
+			return true; 
+		}else{
+			return false;
+		}
+	});
+	
+	
+	$("#reg").click(function () {
+		$("#divLogin").css("display","none");
+		$("#divtos").css("display","block");
+	});
+			
+	$("#find").click(function () {
+		$("#divLogin").css("display","none");
+		$("#divfind").css("display","block");
+	});
+});
+</script>
 
 					<div id="divLogin" class="modal">
 						<span
 							onclick="document.getElementById('divLogin').style.display='none'"
 							class="close" title="Close Modal">&times;</span>
 						<div class="amodel">
-							<form class="modal-content animate" id="formLogin"
-								action="<c:url value='/member/login.do'/>" method="post">
+							<form class="modal-content animate" id="formLogin" method="post">
 								<div class="imgcontainer">
 									<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
 										class="avatar">
@@ -337,6 +415,7 @@ var itOCount="${itOCount}";
 		<div class="bg"></div>
 	</div>
 
+
 <!-- 구글 -->
 <script type="text/javascript">
 var GoogleApp = {
@@ -364,12 +443,10 @@ var GoogleApp = {
 	          var memberName = googleUser.getBasicProfile().getName();
 	          var email = googleUser.getBasicProfile().getEmail();
 	          var token = googleUser.getAuthResponse().access_token;
-	          location.href="/Webkings/main.do";
 	          
-	          alert(id);
-	          alert(email);
-	          alert(memberName);
-	          alert(token);
+	          location.href="/Webkings/member/apiLogin.do?mEmail="+email+"&mNick="+memberName;
+	          
+	          
 	          // 실행할 코드
 	     },
 	     // 로그인 실패시 콜백함수
@@ -414,18 +491,18 @@ var GoogleApp = {
           // 로그인 창을 띄웁니다.
           Kakao.Auth.login({
             success: function(authObj) {
-              alert("로그인성공");
-             
               Kakao.API.request({
-                  url: '/v1/user/update_profile',
+            	  url: '/v1/user/me',
                   success: function(res) {
-                    alert(JSON.stringify(res));
+                    
+					location.href="/Webkings/member/apiLogin.do?mEmail="+res.id+"&mNick="+res.properties.nickname;
+                    
                   },
                   fail: function(error) {
                     alert(JSON.stringify(error));
                   }
                 });
-              location.href="/Webkings/main.do";
+              
             },
             fail: function(err) {
               alert(JSON.stringify(err));

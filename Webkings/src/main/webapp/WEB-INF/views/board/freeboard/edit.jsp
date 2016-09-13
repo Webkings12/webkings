@@ -2,27 +2,28 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top.jsp" %>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#frmWrite").submit(function(event){
-			if($("#title").val()==""){
-				alert("제목을 입력하세요");
-				$('#title').focus();
-				event.preventDefault();
-			}
-		});
-	});
-	
-	window.onload=function(){
-		
-	};
-</script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <style type="text/css">
 
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$("#edit_form").submit(function(event){
+			if($("#bTitle").val()==""){
+				alert("제목을 입력하세요");
+				$("#bTitle").focus();
+				event.preventDefault();
+			}else if($("#bContent").val()==''){
+				alert("내용을 입력하세요");
+				$("#bContent").focus();
+				event.preventDefault();
+			}
+			if($("#bTitle").val().length>45){
+				alert("제목이 너무 깁니다");
+				$('#bTitle').focus();
+				event.preventDefault();
+			}
+		});
 		$("#btSubmit").click(function(){
 			$("#edit_form").submit();
 		});
@@ -40,10 +41,10 @@
 		
 		
 		<div class="align_center bTitle">
-			<strong>제목</strong><input type="text" id="subject" name="bTitle" class="top_Padding" value="${vo.bTitle }"><strong>45</strong>자 제한
+			<strong>제목</strong><input type="text" id="bTitle" name="bTitle" class="top_Padding" value="${vo.bTitle }"><strong>45</strong>자 제한
 		</div>
 		<div class="divContent">
-			<textarea name="bContent">${vo.bContent }</textarea>
+			<textarea id="bContent" name="bContent">${vo.bContent }</textarea>
 		</div>
 		<div>
 			<input type="file" name="upfile">

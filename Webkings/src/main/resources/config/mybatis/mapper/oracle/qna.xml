@@ -16,8 +16,8 @@
 		<selectKey order="BEFORE" keyProperty="qNo" resultType="int" >
 			select qna_seq.nextval from dual
 		</selectKey>
-		insert into qna(q_No,q_Title,q_Content,q_Email,q_Tel,m_No) 
-		values(#{qNo},#{qTitle},#{qContent},#{qEmail},#{qTel},#{mNo})
+		insert into qna(q_No,q_Title,q_Content,m_No) 
+		values(#{qNo},#{qTitle},#{qContent},#{mNo})
 	</insert>
 	
 	<select id="qnaSelectAll" parameterType="SearchVO" resultType="QnaViewVo">
@@ -25,7 +25,7 @@
 		from
 		(
 		    select rownum as RNUM, LIST_ALL.*
-		    from (select q_no, q_title,q_content, q_email,q_tel,q_regdate,m_no,m_nick,m_email,			 
+		    from (select q_no, q_title,q_content,q_regdate,m_no,m_nick,m_email,			 
 			(sysdate-q_regdate)*24 as newImgTerm from qnaview
 		           <include refid="searchWhere"></include>
 		            order by q_no desc) LIST_ALL
@@ -60,14 +60,20 @@
 	
 	<select id="selectNext" parameterType="int" resultType="int">
 		
-		select b_no from qna
+		select q_no from qna
 		where q_no>#{no} 
 		and <![CDATA[ rownum<=1
 		]]>
 	</select>
 	
 	<select id="selectBefore" parameterType="int" resultType="int">
-		select max(q_no) from(select q_no from freeboard where <![CDATA[ q_no<#{no} ]]>)
+		select max(q_no) from(select q_no from qna where <![CDATA[ q_no<#{no} ]]>)
+	</select>
+	
+	<select id="updateQna" parameterType="QnaVO" >
+		update qna
+		set	q_Title=#{qTitle} , q_Content=#{qContent}
+		where q_No=#{qNo}
 	</select>
 	
 </mapper>
