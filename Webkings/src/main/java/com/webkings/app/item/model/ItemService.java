@@ -19,6 +19,7 @@ public interface ItemService {
 	
 	//아이템 전체 갯수
 	public int itemSelectCount(ItemSearchVO itemSearchVo);
+	public int itemAllCount();
 	
 	//아이템 검색
 	public List<ItemViewVO> itemSearch(ItemSearchVO itemSearchVo);

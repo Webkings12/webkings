@@ -55,9 +55,9 @@ public class ItemController {
 		}else if(orderVal.equals("1")){
 			orderName="클릭순";
 		}else if(orderVal.equals("2")){
-			orderName="낮은 가격순";
-		}else if(orderVal.equals("3")){
 			orderName="높은 가격순";
+		}else if(orderVal.equals("3")){
+			orderName="낮은 가격순";
 		}
 		logger.info("itemSearchVo={}", itemSearchVo);
 		
@@ -96,6 +96,8 @@ public class ItemController {
 		model.addAttribute("gender", gender);
 		return "page"+page;
 	}
+	
+	
 	@RequestMapping("/selectItem.do")
 	@ResponseBody
 	public Map<String, Object> itemSelectAll(@RequestParam String gender, 
@@ -149,8 +151,6 @@ public class ItemController {
 			@RequestParam(defaultValue="ALL") String cate, @RequestParam String orderVal,
 			@RequestParam(required=false) String sw2, @RequestParam(required=false) String ssp, @RequestParam(required=false) String sep,
 			@RequestParam(required=false) String sac){
-		
-		ItemViewVO itemViewVo = new ItemViewVO();
 		if(cate.equals("")){
 			cate="ALL";
 		}
@@ -158,21 +158,23 @@ public class ItemController {
 			orderVal="0";
 		}
 		
-		itemViewVo.setItGender(gender);
-		itemViewVo.setItName(cate);
+		itViewVo.setItGender(gender);
+		itViewVo.setItName(cate);
+		itViewVo.setsAge("");
 		logger.info("아이템 선택페이지에서 값들  cate,orderVal={},{}", cate,orderVal);
-		logger.info("gender, temViewVo={}", itemViewVo);
+		logger.info("gender, temViewVo={}", itViewVo);
 		
 		List<ItemViewVO> selItemList = null;
-		ItemSearchVO itemSearchVo= new ItemSearchVO();
-		if(!sw2.equals("") && !sw2.isEmpty() || !ssp.equals("") && !ssp.isEmpty() || !sep.equals("") && !sep.isEmpty() || !sac.equals("") && !sac.isEmpty()){
 		
-			itemSearchVo.setSw2(sw2);
-			itemSearchVo.setCate(cate);
-			itemSearchVo.setOrderVal(orderVal);
-			itemSearchVo.setSsp(ssp);
-			itemSearchVo.setSep(sep);
-			itemSearchVo.setGender(gender);
+		ItemSearchVO itemSearchVo= new ItemSearchVO();
+		itemSearchVo.setSw2(sw2);
+		itemSearchVo.setCate(cate);
+		itemSearchVo.setOrderVal(orderVal);
+		itemSearchVo.setSsp(ssp);
+		itemSearchVo.setSep(sep);
+		itemSearchVo.setGender(gender);
+		if(!sw2.equals("") && !sw2.isEmpty() || !ssp.equals("") && !ssp.isEmpty() || !sep.equals("") && !sep.isEmpty() || !sac.equals("") && !sac.isEmpty()){
+			
 			if(sac.equals("1")){
 				sac="10";
 			}else if(sac.equals("2")){
@@ -187,49 +189,47 @@ public class ItemController {
 			logger.info("아이템 searchVo12={}", itemSearchVo);
 			selItemList = itemService.itemSearch(itemSearchVo);
 		}else{
-			logger.info("sss");
+			itViewVo.setDateType("");	
 			if(orderVal.equals("0")){
 				if(cate.equals("ALL")){
-					itemViewVo.setItGender(gender);
-					selItemList= itemService.itemSelectAll(itemViewVo);
+					selItemList= itemService.itemSelectAll(itViewVo);
 				}else{
-					itemViewVo.setItName(cate);
-					selItemList= itemService.itemSelectName(itemViewVo);
+					selItemList= itemService.itemSelectName(itViewVo);
 				}
 			}
 			else if(orderVal.equals("1")){
 				if(cate.equals("ALL")){
-					selItemList= itemService.itemClick(itemViewVo);
+					selItemList= itemService.itemClick(itViewVo);
 				}else{
-					itemViewVo.setItName(cate);
-					selItemList= itemService.itemClickCate(itemViewVo);
+					itViewVo.setItName(cate);
+					selItemList= itemService.itemClickCate(itViewVo);
 				}
 			}
 			else if(orderVal.equals("2")){
 				if(cate.equals("ALL")){
-					selItemList= itemService.itemPriceDesc(itemViewVo);
+					selItemList= itemService.itemPriceDesc(itViewVo);
 				}else{
-					itemViewVo.setItName(cate);
-					selItemList= itemService.itemDescCate(itemViewVo);
+					selItemList= itemService.itemDescCate(itViewVo);
 				}
 			}else if(orderVal.equals("3")){
 				if(cate.equals("ALL")){
-					selItemList= itemService.itemPriceAsc(itemViewVo);
+					selItemList= itemService.itemPriceAsc(itViewVo);
 				}else{
-					itemViewVo.setItName(cate);
-					selItemList= itemService.itemAscCate(itemViewVo);
+					selItemList= itemService.itemAscCate(itViewVo);
 				}
 			}
 		}
-		int itCount=0;
-	 
-		  itCount=itemService.itemSelectCount(itemSearchVo);
+		/*아이템 총 수*/
+		int itAllCount=itemService.itemAllCount();
+		/*검색조회 수*/
+		int itCount=itemService.itemSelectCount(itemSearchVo);
 		
 		logger.info("count="+itCount);
 		
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		resMap.put("itemList", selItemList);
 		resMap.put("itCount", itCount);
+		resMap.put("itAllCount", itAllCount);
 		logger.info("ajax itemList={}", selItemList);
 		return resMap;
 	}

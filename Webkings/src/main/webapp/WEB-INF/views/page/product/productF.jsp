@@ -8,6 +8,7 @@ var itemCate= "${param.cate}";
 var itemSel=[];
 var orderVal="${param.orderVal}";
 var itCount;
+var itAllCount;
 var orderName="${orderName}";
 var url="<c:url value='/item/itemSelectName.do'/>";
 var itemSearchVo = "${itemSearchVo}";
@@ -39,7 +40,7 @@ $(document).ready(function() {
 <p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
 	<div class="list-top-1">
 		<p class="notice-2"><strong>카테고리 전체 : </strong> <em></em> <i>total</i></p>
-		<div class="tab-type-1 tab-type-main">
+			<div class="tab-type-1 tab-type-main">
 			<ul>
 				<li>
 					<dl class="age-sel">
@@ -75,8 +76,8 @@ $(document).ready(function() {
 					<ul>
 						<li><a href="#"><input type="hidden" value="0">신상품순</a></li>
 						<li><a href="#"><input type="hidden" value="1">클릭순</a></li>
-						<li><a href="#"><input type="hidden" value="2">낮은 가격순</a></li>
-						<li><a href="#"><input type="hidden" value="3">높은 가격순</a></li>
+						<li><a href="#"><input type="hidden" value="2">높은 가격순</a></li>
+						<li><a href="#"><input type="hidden" value="3">낮은 가격순</a></li>
 					</ul>
 				</li>
 
@@ -114,10 +115,8 @@ $(document).ready(function() {
 			</ul>
 		</div>
 	</div>
-	<ul class="item-list abs-list">
-		<li class="prod M" style="left: 0px; top: 0px;">
-			
-		</li>
+	<ul class="item-list abs-list" style="height: 4879px;">
+		
 	</ul>
 </div>
 <!-- <form id="pageFrm" name="pageFrm" method="get" target="_self">

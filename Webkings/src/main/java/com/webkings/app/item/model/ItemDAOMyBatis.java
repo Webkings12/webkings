@@ -69,6 +69,11 @@ public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
 	public List<ItemViewVO> itemSearch(ItemSearchVO itemSearchVo) {
 		return getSqlSession().selectList(namespace+".itemSearch", itemSearchVo);
 	}
+
+	@Override
+	public int itemAllCount() {
+		return getSqlSession().selectOne(namespace+".AllCount");
+	}
 	
 	
 	

@@ -9,12 +9,17 @@ $(document).ready(function() {
 				async:false,
 				dataType:"json",
 				success:function(res){
-					var result="";
 					itCount = res.itCount;
 					itemSel = res.itemList;
-					$(".notice-2 em").append(itCount);
+					itAllCount = res.itAllCount;
+					var result="";
+					if(itemCate!=null && itemCate!="" && itemCate !="ALL"){
+					result += "<li class='tit-cate "+gender+"' style='left: 0px; top: 0px;'>" +
+							"<div><strong></strong><span><em></em>개의 상품 검색</span></div></li>";
+					}
 					$.each(itemSel, function(idx, item) {
-						result=
+					result+=
+					"<li class='prod "+gender+"'>"+
 						"<a href='"+item.sDomain+"' sseq='121' seq='1349867' maindate='20160908'>"+
 							"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 							"style='height: 340px; display: block;' class='item'>"+
@@ -27,15 +32,20 @@ $(document).ready(function() {
 								"</div>"+	
 							"</div>"+	
 							"<div class='bg'></div>"+
-						"</a>";
-						
-						$(".item-list.abs-list li").html(result);
+						"</a>"+
+					"</li>";
 					});
+					$(".item-list.abs-list").html(result);
 				},
 				error:function(xhr, status, error){
 					alert(error);
 				}
 			}); 
+			 
+			$(".notice-2 em").append(itAllCount);
+			$(".item-list>li.tit-cate>div strong").append(itemCate); 
+			$(".item-list>li.tit-cate>div span em").append(itCount);
+			 
 		$(".option-sec-1>ul>li.order ul a").click(function(){
 					orderVal=$(this).find("input").val();
 					$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
@@ -46,7 +56,7 @@ $(document).ready(function() {
 			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
 		});
 		
-		
+		/*검색창 값넣기*/
 		if(sw2!=""){
 			$(".option-sec-1>ul>li.detail-search .sec p input").val(sw2);
 		}
@@ -66,6 +76,7 @@ $(document).ready(function() {
 			}
 		}
 		
+		/*초기화*/
 		if(itemCate=="ALL" || itemCate==""){
 			$(".tab-type-1 ul li.active dl dt a").append("전체상품");
 		}else{

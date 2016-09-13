@@ -578,5 +578,5 @@ body.M .tab-type-1 ul li.active dl dt a:after{
 
 /* itemCate */
 .item-list.abs-list li {
-    position: absolute;
+    position: relative;
 }

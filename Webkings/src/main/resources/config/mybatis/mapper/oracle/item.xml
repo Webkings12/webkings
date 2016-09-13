@@ -21,7 +21,7 @@
 	<select id="itemSelectAll" parameterType="ItemViewVO" resultType="ItemViewVO">
 		select * from itemview
 		where 1=1
-		and it_gender = #{itGender}
+		and it_gender=#{itGender}
 		<if test='dateType eq "TO"'>
 		<![CDATA[
 			and to_char(i_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
@@ -47,9 +47,11 @@
 		where 1=1
 		and it_gender = #{itGender}
 		and it_name= #{itName}
+		<if test='dateType eq "TO"'>
 		<![CDATA[
-			and to_char(i_regdate+1, 'yyyymmdd') >= to_char(sysdate,'yyyymmdd')
+			and to_char(i_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
 		]]>
+		</if>
 	</select>
 	
 	<!-- 아이템갯수 -->
@@ -57,23 +59,23 @@
 		select count(*) from itemview
 		where 1=1
 		and it_gender = #{gender}
-		<if test="cate !=null and cate neq''">
+		<if test="cate !=null and cate neq'' and cate neq 'ALL'">
 			and it_name = #{cate}
 		</if>
 		<if test="sw2 != null and sw2 neq ''">
 			and i_name like '%' || #{sw2} || '%'
 		</if>
 		<if test='ssp!=null and ssp neq "" and sep!=null and sep neq ""'>
-			and i_price  between #{ssp} and #{sep}
+			and i_salePrice  between #{ssp} and #{sep}
 		</if>
 		<if test='ssp != null and ssp neq "" and (sep==null or sep eq "")'>
 		<![CDATA[
-			and i_price  >= #{ssp}
+			and i_salePrice >= #{ssp}
 		]]>
 		</if>
 		<if test='sep !=null and sep neq "" and (ssp==null or ssp eq "")'>
 		<![CDATA[
-			and i_price <= #{sep}
+			and i_salePrice <= #{sep}
 		]]>
 		</if> 
 		<if test='sac != null and sac neq " " and sac neq "all"'>
@@ -91,10 +93,10 @@
 			order by i_click desc
 		</if>
 		<if test='orderVal eq "2"'>
-			order by i_price desc
+			order by i_salePrice desc
 		</if>
 		<if test='orderVal eq "3"'>
-			order by i_price asc
+			order by i_salePrice asc
 		</if>
 		
 	</select>
@@ -120,7 +122,7 @@
 		select * from itemview
 		where 1=1
 		and it_gender = #{itGender}
-		order by i_price desc
+		order by i_salePrice desc
 	</select>
 	
 	<select id="itemDescCate" parameterType="ItemViewVO" resultType="ItemViewVO">
@@ -128,14 +130,14 @@
 		where 1=1
 		and it_gender = #{itGender}
 		and it_name= #{itName}
-		order by i_price desc
+		order by i_salePrice desc
 	</select>
 	
 	<select id="itemPriceAsc" parameterType="ItemViewVO" resultType="ItemViewVO">
 		select * from itemview
 		where 1=1
 		and it_gender = #{itGender}
-		order by i_price asc
+		order by i_salePrice asc
 	</select>
 	
 	<select id="itemAscCate" parameterType="ItemViewVO" resultType="ItemViewVO">
@@ -143,7 +145,7 @@
 		where 1=1
 		and it_gender = #{itGender}
 		and it_name= #{itName}
-		order by i_price asc
+		order by i_salePrice asc
 	</select>
 	
 	<select id="itemSearch" parameterType="ItemSearchVO" resultType="ItemViewVO">
@@ -154,16 +156,16 @@
 			and i_name like '%' || #{sw2} || '%'
 		</if>
 		<if test='ssp neq "" and sep neq ""'>
-			and i_price  between #{ssp} and #{sep}
+			and i_salePrice  between #{ssp} and #{sep}
 		</if>
 		<if test='ssp neq "" and (sep==null or sep eq "")'>
 		<![CDATA[
-			and i_price  >= #{ssp}
+			and i_salePrice  >= #{ssp}
 		]]>
 		</if>
 		<if test='sep neq "" and (ssp==null or ssp eq "")'>
 		<![CDATA[
-			and i_price <= #{sep}
+			and i_salePrice <= #{sep}
 		]]>
 		</if> 
 		<if test='sac!=null and sac neq " "'>
@@ -179,10 +181,14 @@
 			order by i_click desc
 		</if>
 		<if test='orderVal eq "2"'>
-			order by i_price desc
+			order by i_salePrice desc
 		</if>
 		<if test='orderVal eq "3"'>
-			order by i_price asc
+			order by i_salePrice asc
 		</if>
+	</select>
+	
+	<select id="AllCount" resultType="int">
+		select count(*) from itemView
 	</select>
 </mapper>

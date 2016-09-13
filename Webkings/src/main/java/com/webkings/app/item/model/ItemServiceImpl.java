@@ -70,4 +70,9 @@ public class ItemServiceImpl implements ItemService{
 	public List<ItemViewVO> itemSearch(ItemSearchVO itemSearchVo) {
 		return itemDao.itemSearch(itemSearchVo);
 	}
+
+	@Override
+	public int itemAllCount() {
+		return itemDao.itemAllCount();
+	}
 }
