@@ -325,7 +325,7 @@ $(document).ready(function(event){
 							onclick="document.getElementById('divLogin').style.display='none'"
 							class="close" title="Close Modal">&times;</span>
 						<div class="amodel">
-							<form class="modal-content animate" id="formLogin" method="post">
+							<form class="modal-content animate" id="formLogin" name="formLogin" method="post">
 								<div class="imgcontainer">
 									<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
 										class="avatar">
