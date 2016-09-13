@@ -24,6 +24,10 @@ import com.webkings.app.common.SearchVO;
 import com.webkings.app.freeBoard.model.BoardViewVO;
 import com.webkings.app.freeBoard.model.FreeBoardService;
 import com.webkings.app.freeBoard.model.FreeBoardVO;
+import com.webkings.app.item.model.ItemService;
+import com.webkings.app.item.model.Item_TypeVO;
+import com.webkings.app.style.model.StyleService;
+import com.webkings.app.style.model.StyleVO;
 
 @Controller
 @RequestMapping("/freeboard")
@@ -36,6 +40,12 @@ public class FreeboardController {
 
 	@Autowired
 	private FileUploadWabUtil fileUtil;
+	
+	@Autowired
+	private ItemService itemService;
+	
+	@Autowired
+	private StyleService styleService;
 	
 	@RequestMapping(value="/write.do",method=RequestMethod.GET)
 	public String write_get(){
@@ -95,7 +105,7 @@ public class FreeboardController {
 	}
 	
 	@RequestMapping("/list.do")
-	public String freeBoardList(FreeboardSearchVO searchVo,Model model){
+	public String freeBoardList(FreeboardSearchVO searchVo, @RequestParam String gender, Model model){
 		/*3. 글목록 조회
 		
 		reBoard/list.do => ReBoardListController
@@ -118,6 +128,14 @@ public class FreeboardController {
 		logger.info("글목록 조회 결과 alist.size()={}", 
 				alist.size());
 		
+		
+		/* [헤더관련 필요한것 승수] 헤더에 라인달기*/
+		int pageNum=3;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		
+		
 		//전체 레코드 개수 조회하기
 		int totalRecord 
 			= fBoardService.selectTotalRecord(searchVo);
@@ -126,9 +144,12 @@ public class FreeboardController {
 		//3. 결과 저장, 뷰페이지 리턴
 		model.addAttribute("alist", alist);
 		model.addAttribute("searchVo", searchVo);
-		
 		model.addAttribute("pagingInfo", pagingInfo);
 		
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
 		
 		return "board/freeboard/list";
 	}
