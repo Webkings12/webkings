@@ -1,5 +1,6 @@
 package com.webkings.app.member.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -12,10 +13,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.webkings.app.common.FileUploadWabUtil;
 import com.webkings.app.member.model.MemberService;
@@ -76,13 +80,13 @@ public class MemberController {
 		return "member/login";
 	}*/
 	@RequestMapping(value="/login.do")
-	public String login_post(@ModelAttribute MemberVo memberVo,
+	@ResponseBody
+	public int login_post(@ModelAttribute MemberVo memberVo,
 			HttpServletRequest request,HttpServletResponse response,String chkId,Model model){
 		logger.info("로그인 파라미터, memberVo={}",memberVo);
 		
 		int result=memberService.loginCheck(memberVo);
 		
-		String msg="", url="/page.do";
 		if(result==MemberService.LOGIN_OK){
 			
 			memberVo =memberService.selectmEmail(memberVo.getmEmail());
@@ -100,17 +104,9 @@ public class MemberController {
 				ck.setMaxAge(0);
 				response.addCookie(ck);
 			}
-			
-			msg=memberVo.getmNick()+"님 환영합니다";
-			
-		}else if (result==memberService.PWD_DISAGREE) {
-			msg="비밀번호가 일치하지 않습니다";
-		}else if (result==memberService.ID_NONE) {
-			msg="아이디가 없습니다";
+		
 		}
-		model.addAttribute("msg",msg);
-		model.addAttribute("url",url);
-		return "common/message";
+		return result;
 	}
 	
 	@RequestMapping("/logout.do")
@@ -122,5 +118,155 @@ public class MemberController {
 		
 		return "redirect:/page.do";
 	}
+	@RequestMapping(value="/memberEdit.do", method=RequestMethod.GET)
+	public String memberEdit_get(HttpSession session, Model model){
+		
+		String mEmail=(String)session.getAttribute("mEmail");
+		logger.info("회원수정화면 보여주기, 파라미터 mEmail={}",mEmail);
+		
+		MemberVo vo= memberService.selectmEmail(mEmail);
+		logger.info("회원정보 조회 결과 vo={}",vo);
+		
+		model.addAttribute("membervo",vo);
+
+		return "member/memberEdit";
+	}
+	
+	@RequestMapping(value="/memberEdit.do", method=RequestMethod.POST)
+	public String memberEdit_post(@ModelAttribute MemberVo membervo, 
+			@RequestParam(defaultValue="") String oldmImage,
+			@RequestParam(defaultValue="") String chgmpwd,
+			HttpSession session, HttpServletRequest request, Model model){
+		
+		String mEmail=(String)session.getAttribute("mEmail");
+		logger.info("회원수정처리 membervo={}mEmail={}",membervo,mEmail);
+		
+		membervo.setmEmail(mEmail);
+		if(chgmpwd!=null && !chgmpwd.isEmpty()){
+			membervo.setmPwd(chgmpwd);
+		}
+		
+		int uploadTpye=fileUtil.IMAGE_UPLOAD;
+		
+		List<Map<String, Object>> fileList=
+				fileUtil.fileUPload(request, uploadTpye);
+		String fileName="";
+		for(Map<String, Object> mymap:fileList){
+			fileName=(String)mymap.get("fileName");
+		}
+		membervo.setmImage(fileName);
+		logger.info("fileName이름={}",fileName);
+		
+		if(oldmImage!=""){
+			String upPath=fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
+		
+			File delfile= new File(upPath, oldmImage);
+			if(delfile.exists()){
+				boolean bool= delfile.delete();
+				logger.info("파일 삭제 결과={}",bool);
+		}	
+	
+		}
+		String msg="", url="/member/memberEdit.do";
+		int cnt=memberService.updateMember(membervo);
+		logger.info("회원수정처리결과 cnt={}",cnt);
+		
+		if(cnt>0){
+			msg="회원정보가 수정되었습니다";
+		}else{
+			msg="회원정보 수정이 실패 되었습니다";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
+		return "common/message";
+	}
+	
+	@RequestMapping(value="/memberQuit.do", method=RequestMethod.GET)
+	public String memberQuit_get(){
+		logger.info("회원탈퇴화면 보여주기");
+		
+		return "member/memberQuit";
+	}
+	@RequestMapping(value="/memberQuit.do", method=RequestMethod.POST)
+	public String memberQuit_post(HttpSession session,HttpServletRequest request,
+			@RequestParam(defaultValue="") String oldmImage){
+		String mEmail=(String)session.getAttribute("mEmail");
+		logger.info("회원탈퇴처리");
+		
+		int cnt=memberService.deleteMember(mEmail);
+		logger.info("회원탈퇴처리결과 cnt={}",cnt);
+		
+			String upPath=fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
+		
+			File delfile= new File(upPath, oldmImage);
+			if(delfile.exists()){
+				boolean bool= delfile.delete();
+				logger.info("파일 삭제 결과={}",bool);	
+			}
+		session.removeAttribute("mEmail");
+		session.removeAttribute("mNick");
+		session.removeAttribute("mNo");
+		
+		
+		return "redirect:/page.do";
+		
+	}
+	
+	@RequestMapping("/apiLogin.do")
+	@Transactional
+	public String apiLogin(@RequestParam String mEmail, @RequestParam String mNick,
+			HttpSession session,HttpServletRequest request ){
+		logger.info("apiLogin처리 mEmail={},mNick={}",mEmail,mNick);
+		
+		int count=memberService.selectmCount(mEmail);
+		MemberVo memberVo= new MemberVo();
+		if(count<1){
+			String newpwd = "";
+			for (int i = 1; i <= 6; i++) {
+				// 영어
+				char chPwd=(char)(Math.random()*26+97);
+				if (i % 3 != 0) {
+					newpwd +=chPwd;
+					// 숫자
+				}else {
+					newpwd +=(int)(Math.random()*10);
+				}
+			}
+		
+			
+			memberVo.setmEmail(mEmail);
+			memberVo.setmNick(mNick);
+			memberVo.setmPwd(newpwd);
+			memberVo.setmImage("");
+		
+			int cnt= memberService.insertMember(memberVo);
+			logger.info("회원가입처리 cnt={}",cnt);
+			if(cnt>0){
+				memberVo =memberService.selectmEmail(mEmail);
+				logger.info("로그인 처리 memberVo={}",memberVo);
+				
+				session= request.getSession();
+				session.setAttribute("mEmail", memberVo.getmEmail());
+				session.setAttribute("mNick", memberVo.getmNick());
+				session.setAttribute("mNo", memberVo.getmNo());
+				session.setAttribute("mType", memberVo.getmType());
+			}else {
+				logger.info("회원가입처리 실패");
+			}
+		}else {
+			memberVo =memberService.selectmEmail(mEmail);
+			logger.info("로그인 처리 memberVo={}",memberVo);
+			session= request.getSession();
+			session.setAttribute("mEmail", memberVo.getmEmail());
+			session.setAttribute("mNick", memberVo.getmNick());
+			session.setAttribute("mNo", memberVo.getmNo());
+			session.setAttribute("mType", memberVo.getmType());
+		}
+		
+		return "redirect:/page.do";
+	}
+	
 	
 }
