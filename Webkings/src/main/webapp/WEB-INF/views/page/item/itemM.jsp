@@ -3,6 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
+<script type="text/javascript">
+var itemAge = "${param.ageSel}";
+var itemSel=[];
+var url="<c:url value='/item/selectItem.do'/>";
+</script>
 <script type="text/javascript" src="<c:url value='/js/itemView.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -34,22 +39,22 @@ $(document).ready(function() {
 						${age}
 						</a> 
 						</dt>
-						<dd><a href="/Webkings/page.do?page=/item&gender=F">
+						<dd><a href="/Webkings/page.do?page=/item&gender=M">
 								<em>전체 연령대</em></a></dd>
-						<dd><a href="/Webkings/page.do?page=/item&gender=F&ageSel=10">
+						<dd><a href="/Webkings/page.do?page=/item&gender=M&ageSel=10">
 								<em>10대 신상품</em></a></dd>
-						<dd><a href="/Webkings/page.do?page=/item&gender=F&ageSel=20">
+						<dd><a href="/Webkings/page.do?page=/item&gender=M&ageSel=20">
 								<em>20대 신상품</em></a></dd>
-						<dd><a href="/Webkings/page.do?page=/item&gender=F&ageSel=30">
+						<dd><a href="/Webkings/page.do?page=/item&gender=M&ageSel=30">
 								<em>30대 신상품</em></a></dd>
 					</dl>
 				</li>
 				<li>
 					<dl class="prod-cate-sel">
 						<dt><a href="#" onclick="gbn()">전체 상품</a></dt>
-						<dd><a>ALL</a></dd>
+						<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=M&cate=ALL">ALL</a></dd>
 						<c:forEach var="Item_TypeVO" items="${itemList}">
-										<dd><a href="#">${Item_TypeVO.itName}</a></dd>
+										<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=F&cate=${Item_TypeVO.itName}">${Item_TypeVO.itName}</a></dd>
 						</c:forEach>
 					</dl>
 				</li>
@@ -96,6 +101,8 @@ $(document).ready(function() {
 		
 		<!-- 상품나오는곳 -->
 		<li class="prod F ia">
+		
+		
 		</li>
 		</ul>
 </div>

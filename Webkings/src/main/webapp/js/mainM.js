@@ -11,8 +11,10 @@ $(document).ready(function() {
 		$(".gnb li").click(function() {
 			page=$(".active #gnbPage").val();
 			
-			if(page=="/product" || page=="/item" || page=="/shop" || page=="/mypage"){
+			if(page=="/item" || page=="/shop" || page=="/mypage"){
 	 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
+	 		}else if(page=="/product"){
+	 			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
 	 		}
 		});
 		
@@ -50,12 +52,14 @@ $(document).ready(function() {
 					}
 					return;
 				}
-				
-				if(page=="/product" ||  page=="/shop" || page=="/mypage"){
-					$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=F");
-					return;
+				if(page=="/shop" || page=="/mypage"){
+		 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=M");
+		 			return;
+		 		}else if(page=="/product"){
+		 			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
+		 		}else{
+				$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=M");
 		 		}
-				$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=F");
 			}
 		});
 });

@@ -4,7 +4,6 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
-var gender = "${param.gender}";
 var itemAge = "${param.ageSel}";
 var itemSel=[];
 var url="<c:url value='/item/selectItem.do'/>";
@@ -99,9 +98,7 @@ $(document).ready(function() {
 				<span>TODAY</span><strong>09.11</strong><em>116</em>개의 신상품 추천
 			</div>
 		</li>
-		
 		<li class="prod F ia">
-			
 			
 		</li>
 		</ul>
@@ -110,4 +107,3 @@ $(document).ready(function() {
 </div>
 </body>
 </html>
-

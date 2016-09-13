@@ -4,11 +4,20 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
 <script type="text/javascript">
-var gender = "${param.gender}";
 var itemCate= "${param.cate}";
 var itemSel=[];
+var orderVal="${param.orderVal}";
+var itCount;
+var orderName="${orderName}";
 var url="<c:url value='/item/itemSelectName.do'/>";
+var itemSearchVo = "${itemSearchVo}";
+//search
+var sw2="${param.sw2}";
+var sac="${param.sac}";
+var ssp="${param.ssp}";
+var sep="${param.sep}";
 </script>
+<script type="text/javascript" src="<c:url value='/js/itemCateView.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
@@ -47,7 +56,13 @@ $(document).ready(function() {
 				</li>
 				<li class="active">
 					<dl class="prod-cate-sel">
-						<dt><a href="#" ">전체 상품</a></dt>
+						<dt><a href="#" ></a></dt>
+						<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=M&cate=ALL">
+						ALL</a></dd>
+						<c:forEach var="Item_TypeVO" items="${itemList}">
+						<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=M&cate=${Item_TypeVO.itName}&orderVal=${orderVal}">
+						${Item_TypeVO.itName}</a></dd>
+						</c:forEach>
 					</dl>
 				</li>
 			</ul>
@@ -55,19 +70,23 @@ $(document).ready(function() {
 		<div class="option-sec-1">
 			<ul>
 				<li class="order">
-					<a href="javascript:;" class="aw-1">신상품순</a>
+					<a href="javascript:;" class="aw-1"></a>
 					<ul>
-						<li><a href="javascript:;" val="0">신상품순</a></li>
-						<li><a href="javascript:;" val="1">클릭순</a></li>
-						<li><a href="javascript:;" val="2">낮은 가격순</a></li>
-						<li><a href="javascript:;" val="3">높은 가격순</a></li>
+						<li><a href="#"><input type="hidden" value="0">신상품순</a></li>
+						<li><a href="#"><input type="hidden" value="1">클릭순</a></li>
+						<li><a href="#"><input type="hidden" value="2">낮은 가격순</a></li>
+						<li><a href="#"><input type="hidden" value="3">높은 가격순</a></li>
 					</ul>
 				</li>
 
 				<li class="detail-search">
 					<a href="javascript:;" class="search-1">상세검색</a>
 					<div class="sec"><div class="in">
-					<form id="_frmDetailSearch">
+					<form id="_frmDetailSearch" action="/Webkings/item/itemCate.do">
+							<input type="hidden" name="page" value="/product">
+						<input type="hidden" name="orderVal" id="orderVal" value="">
+						<input type="hidden" name="gender" value="M">
+						<input type="hidden" name="cate" id="cate" value="">
 						<p><input type="text" name="sw2" value="" fieldname="검색어" placeholder="결과내 재검색" 
 						checkfunctionname="checkSpecialChar" restrictutf8bytes="45"
 						 confirmmessage="특수문자로 검색하실수 없습니다." autocomplete="off" focus="off">
@@ -96,9 +115,11 @@ $(document).ready(function() {
 	</div>
 	<ul class="item-list abs-list"></ul>
 </div>
-<form id="pageFrm" name="pageFrm" method="get" target="_self">
+<!-- <form id="pageFrm" name="pageFrm" method="get" target="_self">
 	<input type="hidden" name="cs" value="100" />
 	<input type="hidden" name="sw2" value="" />
-</form>
+</form> -->
+</div>
+</div>
 </body>
 </html>

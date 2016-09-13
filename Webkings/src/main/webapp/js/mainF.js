@@ -12,8 +12,10 @@ $(document).ready(function() {
 		$(".gnb li").click(function() {
 			page=$(".gnb li.active #gnbPage").val();
 			
-			if(page=="/product" || page=="/item" || page=="/shop" || page=="/mypage"){
+			if(page=="/item" || page=="/shop" || page=="/mypage"){
 	 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
+	 		}else if(page=="/product"){
+	 			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
 	 		}
 		});
 	/* 남자 아이콘 클릭시*/
@@ -24,7 +26,7 @@ $(document).ready(function() {
 			if($(".list-top-1 p").hasClass("notice-2")){
 				page="/product";
 			}
-
+				
 			/* 연령대 구분값*/
 			var age= $("#ageS").val();
 			if(age=="10대 신상품"){
@@ -36,7 +38,6 @@ $(document).ready(function() {
 			}else{
 				age="all";
 			}
-			
 			
 			if($("body").hasClass("F")){
 				$("body").removeClass("F");
@@ -50,11 +51,14 @@ $(document).ready(function() {
 					}
 					return;
 				}
-				if(page=="/product" ||  page=="/shop" || page=="/mypage"){
+				if(page=="/shop" || page=="/mypage"){
 		 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=M");
 		 			return;
-		 		}
+		 		}else if(page=="/product"){
+		 			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
+		 		}else{
 				$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=M");
+		 		}
 			}
 		});
 });

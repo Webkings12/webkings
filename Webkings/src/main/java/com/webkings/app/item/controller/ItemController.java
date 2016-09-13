@@ -93,6 +93,7 @@ public class ItemController {
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("orderName", orderName);
 		model.addAttribute("itemSearchVo", itemSearchVo);
+		model.addAttribute("gender", gender);
 		return "page"+page;
 	}
 	@RequestMapping("/selectItem.do")

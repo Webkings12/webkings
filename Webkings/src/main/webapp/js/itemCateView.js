@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 $(document).ready(function() {
 			 $.ajax({
 				url:url,
@@ -74,6 +73,17 @@ $(document).ready(function() {
 			$(".option-sec-1>ul>li.detail-search .sec div #cate").val(itemCate);
 		}
 		$(".option-sec-1>ul>li.detail-search .sec div #orderVal").val(orderVal);
+		
+		
+		$(".option-sec-1>ul>li.detail-search .sec div.btn a.reset").click(function() {
+			$(".option-sec-1>ul>li.detail-search .sec p input").val("");
+			$(".option-sec-1>ul>li.detail-search .sec div input[name=ssp]").val("");
+			$(".option-sec-1>ul>li.detail-search .sec div input[name=sep]").val("");
+			
+			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age1]").prop("checked", false);
+			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age2]").prop("checked", false);
+			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age3]").prop("checked", false);
+		});
 });
 function gbn(){
 	if($(".list-top-1 p").hasClass("notice-1")){

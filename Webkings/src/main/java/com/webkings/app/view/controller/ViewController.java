@@ -85,6 +85,7 @@ public class ViewController {
 		model.addAttribute("pageNum",pageNum);
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
+		model.addAttribute("gender", gender);
 		
 		return "page"+page;
 	}

@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
+<link rel="icon" href="${pageContext.request.contextPath}/images/tab logo.png">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/clear.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/basic.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css"/>
@@ -27,10 +28,10 @@
 <meta name="google-signin-client_id" content="322313348244-d0nvh2l8k8lv01jrlsue4lhdr2juvnfg.apps.googleusercontent.com">
 <script type="text/javascript" src="https://apis.google.com/js/api:client.js"></script>
 <script type="text/javascript" src="/asset/js/sns_login_google.js"></script>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>오늘뭐입지?</title>
 <script type="text/javascript">
+var gender = "${gender}";
 </script>
 </head>
 <body class="F">
@@ -50,22 +51,22 @@
 								<dl class="age-sel">
 									<dt>추천신상품</dt>
 									<dd>
-										<a href="#">
+										<a href="/Webkings/page.do?page=/item&gender=${gender}">
 											<em>전체연령대</em>
 										</a>
 									</dd>
 									<dd>
-										<a href="#">
+										<a href="/Webkings/page.do?page=/item&gender=${gender}&ageSel=10">
 											<em>10대신상품</em>
 										</a>
 									</dd>
 									<dd>
-										<a href="#">
+										<a href="/Webkings/page.do?page=/item&gender=${gender}&ageSel=20">
 											<em>20대신상품</em>
 										</a>
 									</dd>
 									<dd>
-										<a href="#">
+										<a href="/Webkings/page.do?page=/item&gender=${gender}&ageSel=30">
 											<em>30대신상품</em>
 										</a>
 									</dd>
@@ -73,12 +74,12 @@
 								<dl class="item-sel">
 									<dt>전체상품</dt>
 									<dd>
-										<a href="#">
+										<a href="/Webkings/item/itemCate.do?page=/product&gender=${gender}&cate=ALL">
 											<em>ALL</em>
 										</a>
 									</dd>
 									<c:forEach var="Item_TypeVO" items="${itemList}">
-										<dd><a href="#"><em>${Item_TypeVO.itName}</em></a></dd>
+										<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=${gender}&cate=${Item_TypeVO.itName}"><em>${Item_TypeVO.itName}</em></a></dd>
 									</c:forEach>
 								</dl>
 								<div class="bg"></div>

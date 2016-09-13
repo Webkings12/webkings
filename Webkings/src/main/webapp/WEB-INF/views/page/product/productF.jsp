@@ -4,7 +4,6 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
-var gender = "${param.gender}";
 var itemCate= "${param.cate}";
 var itemSel=[];
 var orderVal="${param.orderVal}";

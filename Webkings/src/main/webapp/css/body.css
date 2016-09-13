@@ -6,7 +6,6 @@ div.body-sec {
     height: 100%;
     position: relative;
 }
-
 /* in-sec */
 div.body-sec>div.in-sec {
     width: 1440px;
@@ -498,6 +497,10 @@ label {
     border: 0;
     cursor: pointer;
 }
+.option-sec-1>ul>li.detail-search .sec div.btn {
+    position: relative;
+    padding-right: 30px;
+}
 .option-sec-1>ul>li.detail-search .sec div.btn a.reset {
     position: absolute;
     top: 50%;
@@ -511,15 +514,14 @@ label {
     border: 0;
     font-size: 0;
     line-height: 0;
-    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/reset.png");
+    -webkit-background-size: 20px 20px;
+    -moz-background-size: 20px 20px;
+    -o-background-size: 20px 20px;
+    background-size: 24px 24px;
     background-repeat: no-repeat;
-    background-position: -60px -201px;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 /*공통 검색 이벤트 css*/
 /*검색어*/
