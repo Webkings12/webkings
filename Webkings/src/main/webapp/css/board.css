@@ -19,7 +19,7 @@
 }
 
 .topMargin{
-	margin-top: 200px;
+	margin-top: 150px;
 }
 .btn_default.btn_light {
     padding: 0;
@@ -133,6 +133,7 @@
 		border: 1px solid #CECECE;
 		background: white;
 		padding: 15px;
+		margin-top: 5px;
 }
 .listTable{
 	background: #fff;
@@ -147,7 +148,7 @@
 	padding-bottom: 3px;
 }
 .listTable th{
-	background: #FF00CC;
+	background: #747474;
 	color: #fff;
 	padding-top: 3px;
 	padding-bottom: 3px;
@@ -257,7 +258,7 @@
 	padding-bottom: 0;
 }
 .user_info{
-	width:100px;
+	width:200px;
 	height:100px;
 	margin: 5px;
 	padding:5px;
@@ -271,7 +272,19 @@
 	font-size:13px;
 }
 #btSearch2{
+	color:#fff;
 	outline: 0;
-	border: 0;
+	border:3px solid #CECECE;
+	background-color: #FF33CC;
+}
+.boardImage{
+	margin: 0 auto;
+	margin-top:3px;
+	border:1px solid #CECECE;
+	max-width: 698px;
+	
+}
+.topPadding{
+	padding-top: 15px;
 }
 

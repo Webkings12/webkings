@@ -9,10 +9,19 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		//CKEDITOR.replace('bContent');
-		$("#frmWrite").submit(function(event){
-			if($("#title").val()==""){
+		$("#write_form").submit(function(event){
+			if($("#bTitle").val()==""){
 				alert("제목을 입력하세요");
-				$('#title').focus();
+				$("#bTitle").focus();
+				event.preventDefault();
+			}else if($("#bContent").val()==''){
+				alert("내용을 입력하세요");
+				$("#bContent").focus();
+				event.preventDefault();
+			}
+			if($("#bTitle").val().length>45){
+				alert("제목이 너무 깁니다");
+				$('#bTitle').focus();
 				event.preventDefault();
 			}
 		});
@@ -29,10 +38,10 @@
 	<form id="write_form" method="post" name="write_form" action="<c:url value='/freeboard/write.do'/>" enctype="multipart/form-data" >
 
 		<div class="align_center bTitle">
-			<strong>제목</strong>	<input type="text" id="subject" name="bTitle" class="top_Padding" value=""><strong>45</strong>자 제한
+			<strong>제목</strong>	<input type="text" id="bTitle" name="bTitle" class="top_Padding" value=""><strong>45</strong>자 제한
 		</div>
 		<div class="divContent">
-			<textarea id="fm_post" name="bContent"></textarea>
+			<textarea  name="bContent" id="bContent"></textarea>
 		</div>
 		<div>
 			<input type="file" name="upfile">

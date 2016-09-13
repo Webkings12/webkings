@@ -1,57 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jstl/sql" prefix="sql"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
-<!DOCTYPE>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <script type="text/javascript">
+
 $(document).ready(function(){
-	$("tr")
-		.hover(function(){
+	$("tr").hover(function(){
 			$(this).css("background","skyblue")
 				.css("cursor","pointer");
 		}, function(){
 			$(this).css("background","");
 		});
 });
-
 function pageProc(curPage){
 	document.frmPage.currentPage.value=curPage;
 	document.frmPage.submit();
 }
+
+/* function pageProc2(bNo){
+	//alert(bNo);
+	document.frmPage2.bNo.value=bNo;
+	document.frmPage2.submit();
+		
+} */
 </script>
 
-<style type="text/css">
 
-
-</style>
-
-<body>
-<form name="frmPage" method="post" 
+<div>
+		<form name="frmPage" method="post" 
 	action="<c:url value='/freeboard/list.do'/>">
 	<input type="hidden" name="currentPage">
 	<input type="hidden" name="searchCondition" 
 		value="${param.searchCondition }">
 	<input type="hidden" name="searchKeyword" 
-		value="${searchVO.searchKeyword }">	
+		value="${searchVo.searchKeyword }">	
 </form>
+
+<%-- <form name="frmPage2" method="post" 
+	action="<c:url value='/freeboard/updateCount.do'/>">
+	<input type="hidden" name="currentPage"
+		value=${pagingInfo.currentPage }>
+	<input type="hidden" name="searchCondition" 
+		value="${searchVO.searchCondition }">
+	<input type="hidden" name="searchKeyword" 
+		value="${searchVO.searchKeyword }">
+	<input type="hidden" name="bNo"
+		value="${searchVO.bNo }">		
+</form> --%>
 
 
 
 <div class="divList2">
 		<div class="align_left">
-			<c:if test="${!empty param.searchKeyWord }">
+			<c:if test="${!empty param.searchKeyword }">
 				<p>검색어 : ${param.searchKeyword },${pagingInfo.totalRecord }건 검색되었습니다</p>
 			</c:if> 
 		
-			<c:if test="${empty param.searchKeyWord }">
+			<c:if test="${empty param.searchKeyword }">
 				<p>전체조회 : ${pagingInfo.totalRecord }건 검색되었습니다</p>
 			</c:if>
 		</div>
@@ -59,9 +67,9 @@ function pageProc(curPage){
 		 	summary="기본 게시판에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
 		<colgroup>
 			<col style="width:10%;" />
-			<col style="width:50%;" />
+			<col style="width:55%;" />
 			<col style="width:15%;" />
-			<col style="width:15%;" />
+			<col style="width:10%;" />
 			<col style="width:10%;" />		
 		</colgroup>
 		<thead>
@@ -84,12 +92,14 @@ function pageProc(curPage){
 		<c:forEach var="vo" items="${alist }">
 		<tr style="text-align: center">
 			 	 	<td>${vo.bNo }</td>
-			 		<td><a href="<c:url value='/freeboard/updateCount.do?no=${vo.bNo}'/>">
+			 		<td><a 
+			 			href="<c:url value='/freeboard/detail.do?no=${vo.bNo }&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }'/>"
+			 			>
 			 		<!-- 제목이 긴경우 일부만 보여주기 -->
-			 		<c:if test="${fn:length(vo.bTitle)>30 }">
-			 			${fn:substring(vo.bTitle,0,30) }...
+			 		<c:if test="${fn:length(vo.bTitle)>20 }">
+			 			${fn:substring(vo.bTitle,0,20) }...
 			 		</c:if>
-			 		<c:if test="${fn:length(vo.bTitle)<=30 }">
+			 		<c:if test="${fn:length(vo.bTitle)<=20 }">
 			 			${vo.bTitle}
 			 		</c:if>
 			 		</a>
@@ -104,7 +114,7 @@ function pageProc(curPage){
 			 		<fmt:formatDate value="${vo.bRegdate }" pattern="yyyy-MM-dd"/>
 			 		</c:if>
 			 		<c:if test="${vo.newImgTerm<=24 }">
-			 		<fmt:formatDate value="${vo.bRegdate }" pattern="hh:mm"/>
+			 		<fmt:formatDate value="${vo.bRegdate }" pattern="HH:mm"/>
 			 		</c:if>
 			 		</td>
 			 		<td>${vo.bReadcount }</td>
@@ -143,37 +153,38 @@ function pageProc(curPage){
 	</div>
 	
 	<div class="divFrm3">
-	   	<form name="frmSearch" method="post" action='<c:url value="/freeboard/listView.do"/>'>
+	   	<form name="frmSearch" method="post" action='<c:url value="/freeboard/list.do"/>'>
 	        <select name="searchCondition">
 				<option value="b.b_Title"
-					<c:if test="${param.searchCondition=='b.b_Title'}">
+					<c:if test="${searchVo.searchCondition=='b.b_Title'}">
 						selected
 					</c:if>	 
 				>제목</option>
 	            <option value="b.b_Content" 
-	            	<c:if test="${param.searchCondition=='b.b_content'}">
+	            	<c:if test="${searchVo.searchCondition=='b.b_content'}">
 	            	selected
 	            	</c:if>
 	            >내용</option> 
 	            <option value="m.m_Email"
-	            	<c:if test="${param.searchCondition=='m.m_Email'}">
+	            	<c:if test="${searchVo.searchCondition=='m.m_Email'}">
 	            	selected
 	            	</c:if>
 	            >작성자</option>
 	        </select>
 	           
-	        <input type="text" name="searchKeyword" title="검색어 입력" value="${param.searchKeyword }" id="searchKey" >
+	        <input type="text" name="searchKeyword" title="검색어 입력" value="${searchVo.searchKeyword }" id="searchKey" >
 	           
-			<input type="submit" value="검색">
+			<input type="submit" value="검색" id="btSearch2">
 	    </form>
 	    	<div class="align_right">
-	    		<a href='<c:url value="/freeboard/listView.do"/>' class="btn_default btn_light size_M" >목록</a>
+	    		<a href='<c:url value="/freeboard/list.do"/>' class="btn_default btn_light size_M" >목록</a>
 			    <a href='<c:url value="/freeboard/write.do"/>' class="btn_default btn_light size_M" >글쓰기</a>
 			</div>
 	</div>
 	
 	
 </div >
-
-</body>
-</html>
+		
+		
+		<%-- <c:import url="/freeboard/list.do"></c:import> --%>
+	</div>

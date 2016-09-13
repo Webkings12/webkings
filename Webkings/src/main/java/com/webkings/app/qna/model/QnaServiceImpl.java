@@ -48,4 +48,8 @@ public class QnaServiceImpl implements QnaService{
 			return qnaDao.selectBefore(qNo);
 		}
 	}
+	
+	public int updateQna(QnaVO vo){
+		return qnaDao.updateQna(vo);
+	}
 }

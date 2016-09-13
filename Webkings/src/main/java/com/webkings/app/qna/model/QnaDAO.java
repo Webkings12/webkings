@@ -14,4 +14,5 @@ public interface QnaDAO {
 	public int selectMinBNo(int qNo);
 	public int selectNext(int qNo);
 	public int selectBefore(int qNo);
+	public int updateQna(QnaVO vo);
 }

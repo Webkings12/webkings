@@ -6,26 +6,12 @@ public class QnaViewVo {
 	private int qNo;
 	private String qTitle;
 	private String qContent;
-	private String qEmail;
-	private String qTel;
 	private Timestamp qRegdate;
 	private int mNo;
 	private String mEmail; //이메일
 	private String mNick; //닉네임
 	private String mImage; //닉네임
-	public String getmImage() {
-		return mImage;
-	}
-	public void setmImage(String mImage) {
-		this.mImage = mImage;
-	}
 	private int newImgTerm;
-	public int getNewImgTerm() {
-		return newImgTerm;
-	}
-	public void setNewImgTerm(int newImgTerm) {
-		this.newImgTerm = newImgTerm;
-	}
 	public int getqNo() {
 		return qNo;
 	}
@@ -43,18 +29,6 @@ public class QnaViewVo {
 	}
 	public void setqContent(String qContent) {
 		this.qContent = qContent;
-	}
-	public String getqEmail() {
-		return qEmail;
-	}
-	public void setqEmail(String qEmail) {
-		this.qEmail = qEmail;
-	}
-	public String getqTel() {
-		return qTel;
-	}
-	public void setqTel(String qTel) {
-		this.qTel = qTel;
 	}
 	public Timestamp getqRegdate() {
 		return qRegdate;
@@ -80,11 +54,24 @@ public class QnaViewVo {
 	public void setmNick(String mNick) {
 		this.mNick = mNick;
 	}
+	public String getmImage() {
+		return mImage;
+	}
+	public void setmImage(String mImage) {
+		this.mImage = mImage;
+	}
+	public int getNewImgTerm() {
+		return newImgTerm;
+	}
+	public void setNewImgTerm(int newImgTerm) {
+		this.newImgTerm = newImgTerm;
+	}
 	@Override
 	public String toString() {
-		return "QnaViewVo [qNo=" + qNo + ", qTitle=" + qTitle + ", qContent=" + qContent + ", qEmail=" + qEmail
-				+ ", qTel=" + qTel + ", qRegdate=" + qRegdate + ", mNo=" + mNo + ", mEmail=" + mEmail + ", mNick="
-				+ mNick + ", mImage=" + mImage + ", newImgTerm=" + newImgTerm + "]";
+		return "QnaViewVo [qNo=" + qNo + ", qTitle=" + qTitle + ", qContent=" + qContent + ", qRegdate=" + qRegdate
+				+ ", mNo=" + mNo + ", mEmail=" + mEmail + ", mNick=" + mNick + ", mImage=" + mImage + ", newImgTerm="
+				+ newImgTerm + "]";
 	}
+	
 	
 }

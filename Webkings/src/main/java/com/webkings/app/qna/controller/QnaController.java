@@ -74,8 +74,15 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/list.do")
-	public String qnaList(SearchVO searchVo,Model model){
+	public String qnaList(SearchVO searchVo,HttpSession session,Model model){
 		//1. 파라미터 읽어오기
+		
+		String mType=(String)session.getAttribute("mType");
+		String mEmail=(String)session.getAttribute("mEmail");
+		if(!mType.equals("0")){
+			searchVo.setSearchKeyword(mEmail);
+			searchVo.setSearchCondition("m_email");
+		}
 		logger.info("글목록 조회, 파라미터 searchVo={}",
 				searchVo);
 		
@@ -103,15 +110,41 @@ public class QnaController {
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		
-		return "board/qna/listView";
+		return "board/qna/list";
 	}
 	@RequestMapping("/listView.do")
-	public String listView(){
-		return "board/qna/list";
+	public String qnaListView(SearchVO searchVo,Model model){
+		//1. 파라미터 읽어오기
+		logger.info("글목록 조회, 파라미터 searchVo={}",
+				searchVo);
+		
+		PaginationInfo pagingInfo = new PaginationInfo();
+		pagingInfo.setBlockSize(10); //블록사이즈
+		pagingInfo.setRecordCountPerPage(15); //페이지에 보여줄 레코드수
+		pagingInfo.setCurrentPage(searchVo.getCurrentPage()); //현제 페이지
+		
+		searchVo.setBlockSize(10); 
+		searchVo.setRecordCountPerPage(15);
+		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex()); //시작 레코드
+				
+		//2. db작업 - select
+		List<QnaViewVo> alist = qnaService.qnaSelectAll(searchVo);
+		logger.info("글목록 조회 결과 alist.size()={}", 
+				alist.size());
+		
+		//전체 레코드 개수 조회하기
+		int totalRecord 
+			= qnaService.selectTotalCount(searchVo);
+		pagingInfo.setTotalRecord(totalRecord);
+				
+		//3. 결과 저장, 뷰페이지 리턴
+		model.addAttribute("alist", alist);
+		model.addAttribute("pagingInfo", pagingInfo);
+		return "board/qna/listView";
 	}
 	
 	@RequestMapping("/detail.do")
-	public String qnaDetail(@RequestParam(defaultValue="0") int no,Model model){
+	public String qnaDetail(@RequestParam(defaultValue="0") int no,HttpSession session,Model model){
 		//1.파라미터 읽기
 		logger.info("qna상세보기 파라미터 no={}",no);
 		//1.파라미터가 x
@@ -124,6 +157,17 @@ public class QnaController {
 		
 		//2. db작업
 		QnaViewVo vo=qnaService.selectByNo(no);
+		
+		int mNo=(Integer)session.getAttribute("mNo");
+		String mType=(String)session.getAttribute("mType");
+		
+		if(vo.getmNo()!=mNo && !mType.equals("0")){
+			model.addAttribute("msg","권한이 없습니다");
+			model.addAttribute("url","/qna/list.do");
+			
+			return "common/message";
+		}
+		
 		int nextNo=qnaService.selectNext(no);
 		int beforeNo=qnaService.selectBefore(no);
 		logger.info("qna상세보기 결과 vo={}",vo);
@@ -152,7 +196,7 @@ public class QnaController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="삭제 완료";
-			url="/qna/listView.do";
+			url="/qna/list.do";
 		}else{
 			msg="삭제 실패";
 			url="/qna/detail.do?no="+qNo;
@@ -162,5 +206,50 @@ public class QnaController {
 		
 		return "common/message";
 	}
+	@RequestMapping(value="/edit.do",method=RequestMethod.GET)
+	public String edit_get(@RequestParam(defaultValue="0") int qNo,HttpSession session,Model model){
+		if(qNo==0){
+			model.addAttribute("msg","잘못된 url입니다");
+			model.addAttribute("url","/qna/list.do");
+			
+			return "common/message";
+		}
+		
+		QnaViewVo vo=qnaService.selectByNo(qNo);
+		
+		int mNo=(Integer)session.getAttribute("mNo");
+		String mType=(String)session.getAttribute("mType");
+		
+		if(vo.getmNo()!=mNo && !mType.equals("0")){
+			model.addAttribute("msg","권한이 없습니다");
+			model.addAttribute("url","/qna/list.do");
+			
+			return "common/message";
+		}
+		
+		model.addAttribute("qVo",vo);
+		return "board/qna/edit";
+	}
+	
+	@RequestMapping(value="/edit.do",method=RequestMethod.POST)
+	public String edit_post(@ModelAttribute QnaVO vo, Model model){
+		logger.info("qna 수정 파라미터 vo={}",vo);
+		
+		int cnt=qnaService.updateQna(vo);
+		logger.info("qna 수정 파라미터 cnt={}",cnt);
+		String msg="",url="";
+		if(cnt>0){
+			msg="수정 완료";
+			url="/qna/detail.do?no="+vo.getqNo();
+		}else{
+			msg="수정 실패";
+			url="/qna/edit.do?qNo="+vo.getqNo();
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		
+		return "common/message";
+	}
+	
 	
 }

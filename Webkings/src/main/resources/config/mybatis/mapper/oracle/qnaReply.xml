@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.mapper.oracle.qnareply">
+	<insert id="insertReply" parameterType="QnaReplyViewVO">
+		<selectKey keyProperty="qrNo" order="BEFORE" resultType="int">
+			select qnareply_seq.nextval from dual
+		</selectKey>
+	insert into qnareply
+	values(#{qrNo},#{qrNo}, 0,#{qrContent},sysdate,sysdate,#{qNo},#{mNo})
+	</insert>
+	
+	<select id="selectReply" parameterType="int" resultType="QnaReplyViewVO">
+		select * From qnareplyview where q_no=#{qNo} order by qr_no_group, qr_gbn
+	</select>
+	
+	<delete id="deleteReply" parameterType="int">
+		delete qnareply
+		where qr_no=#{qrNo}
+	</delete>
+	
+	<update id="gbnReply" parameterType="QnaReplyViewVO">
+		update qnareply
+		set qr_gbn=qr_gbn+1
+		where q_no=#{qNo} and qr_no_group=#{qrNoGroup} and qr_gbn>#{qrGbn}
+	</update>
+	
+	<insert id="insertReply2" parameterType="QnaReplyViewVO">
+		<selectKey keyProperty="qrNo" order="BEFORE" resultType="int">
+			select reply_seq.nextval from dual
+		</selectKey>
+	insert into qnareply
+	values(#{qrNo},#{qrNoGroup}, #{qrGbn}+1,#{qrContent},sysdate,sysdate,#{qNo},#{mNo})
+	</insert>
+</mapper>

@@ -35,7 +35,14 @@
 <div class="divList2 topMargin">
 			<div clss="upsideDetail" style="background: #fff;height:165px; border: 1px solid #CECECE;" >
 				<div class="detailTitle">
-					<span>${vo.qTitle }</span>
+					<span>
+						<c:if test="${fn:length(vo.qTitle)>45 }">
+				 			${fn:substring(vo.bTitle,0,45) }...
+				 		</c:if>
+				 		<c:if test="${fn:length(vo.qTitle)<=45 }">
+				 			${vo.qTitle}
+				 		</c:if>	
+					</span>
 				</div>
 				<div>
 					<div class="float_left">
@@ -47,15 +54,11 @@
 						<img class="user_Img" src="<c:url value='/user_images/${vo.mImage }'/>">
 						</c:if>
 					</div>
-					<div class="float_left user_info">
-					 <span class="nickName">${vo.mNick }</span><br><span class="eMail">(${vo.qEmail })</span>
+					<div class="float_left user_info topPadding">
+					 <span class="nickName">${vo.mNick }</span><br><span class="eMail">(${vo.mEmail })</span><br>
+					  <a class="btn_light" href="<c:url value='/qna/list.do?searchKeyword=${vo.mEmail }&searchCondition=m_Email'/>">작성글보기</a><br>
+					 <span class="sp1">작성일</span> <span><fmt:formatDate value="${vo.qRegdate }" pattern="yyyy-MM-dd(mm:ss)"/></span>
 					 </div>
-				</div>
-				<div>
-					<span class="sp1">작성일</span> <span><fmt:formatDate value="${vo.qRegdate }" pattern="yyyy-MM-dd(mm:ss)"/></span>
-				</div>
-				<div>
-					<span class="sp1">연락처</span> <span>${vo.qTel }</span>
 				</div>
 			</div>
 		<div class="align_left">			
@@ -64,19 +67,25 @@
 		<div>
 			 <div class="float_left">
 				<c:if test="${nextNo!=vo.qNo }">
-					<a href="<c:url value='/freeboard/detail.do?no=${nextNo }' />"> 윗글 </a>
+					<a href="<c:url value='/qna/detail.do?no=${nextNo }' />"> 윗글 </a>
 				</c:if> &nbsp; | &nbsp; 
 				<c:if test="${beforeNo!=vo.qNo }">
-					<a href="<c:url value='/freeboard/detail.do?no=${beforeNo }' />">아랫글 </a>
+					<a href="<c:url value='/qna/detail.do?no=${beforeNo }' />">아랫글 </a>
 				</c:if>
 			</div> 
 			<div class="float_right">
+				<a class="btn_default btn_light size_S"  href='<c:url value="/qna/edit.do?qNo=${vo.qNo}"/>'>수정</a> |
 	        	<a class="btn_default btn_light size_S" id="sendDel" href='#'>삭제</a> |
-	        	<a class="btn_default btn_light size_S" href='<c:url value="/qna/listView.do"/>'>목록</a>			
+	        	<a class="btn_default btn_light size_S" href='<c:url value="/qna/list.do"/>'>목록</a>			
 			</div>
 			<div class="float_clear"></div>
 		</div>
 	</div>
-
+	<div class="divReply">
+		<c:import url="/qnaReply/list.do?qNo=${vo.qNo }"></c:import>
+	</div> 
+	<div class="divReply">
+		<%@include file="../qnaReply/replyWrite.jsp" %>
+	</div>
 <!--  -------------------------------------------------------------------------------------------------->
-	<c:import url="/qna/list.do"></c:import>
+	<c:import url="/qna/listView.do"></c:import>
