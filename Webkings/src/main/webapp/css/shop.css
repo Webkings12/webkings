@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-input[type=text]{
+.option-sec-2 input[type=text]{
      width: 102px;
      padding: 0; 
      margin: 0; 
@@ -9,7 +9,6 @@ input[type=text]{
 }
 .list-top-1 .option-sec-2 {
     margin-top: 49px;
-    
 }
 .item-list>li.shop.sec-2 a {
     width: 466px;
