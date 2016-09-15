@@ -1,0 +1,201 @@
+@CHARSET "UTF-8";
+input[type=text]{
+     width: 102px;
+     padding: 0; 
+     margin: 0; 
+     display: inline-block; 
+     border: 0; 
+     box-sizing: inherit; 
+}
+.list-top-1 .option-sec-2 {
+    margin-top: 49px;
+    
+}
+.item-list>li.shop.sec-2 a {
+    width: 466px;
+}
+.item-list>li.shop>a {
+    display: block;
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #e4e7ea;
+}
+.item-list>li.shop.sec-2 a img.item {
+    margin-left: -3px;
+    width: 472px;
+}
+.item-list>li.shop.sec-2 a .info {
+    padding-left: 58px;
+}
+.item-list>li.shop .info {
+    background-color: #fff;
+    position: relative;
+    height: 60px;
+    padding-left: 14px;
+    color: #a2a2a5;
+}
+.item-list>li.shop>a>img.item {
+    width: 230px;
+    height: 340px;
+    background: url("/rsc/front/img/ajax-loader.gif") no-repeat center;
+}
+.item-list>li.shop .over {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 60px;
+    display: none;
+}
+.item-list>li.shop .over .btn {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+.item-list>li.shop .over .btn span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #404040;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    font-size: 0;
+    line-height: 0;
+    margin: 0 1px;
+    position: relative;
+}
+.item-list>li.shop .over .btn i {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
+    -ms-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+    width: 100%;
+    top: auto;
+    display: none;
+    font-family: 'Malgun Gothic','맑은 고딕','NanumBarunGothic','나눔바른고딕','NanumGothic','나눔고딕','Tahoma','Nanum Barun Gothic','Apple SD Gothic Neo Bold','Apple SD Gothic Neo','애플 SD 고딕 Neo','dotum',sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    top: 46px;
+    color: #a2a2a5;
+}
+.item-list>li.shop .over p i {
+    font-family: DINPro_L,sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    color: #fff;
+}
+.item-list>li.shop .over p {
+    line-height: 40px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    text-align: center;
+    color: #a0a0a0;
+}
+
+.item-list>li.shop .info strong {
+    display: block;
+    padding-top: 13px;
+}
+.item-list>li.shop.sec-2 a .info span {
+    width: 300px;
+}
+.item-list>li.shop .info span {
+    width: 125px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.item-list>li.shop .info em {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 14px;
+    display: block;
+    width: 54px;
+    line-height: 32px;
+    padding: 0 0 0 11px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    letter-spacing: -0.08em;
+    border: 1px solid #c5cdd5;
+    color: #202022;
+}
+.item-list>li.shop .info em:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    background-image: url("../images/add.png");
+    -webkit-background-size: 9px 9px;
+    -moz-background-size: 9px 9px;
+    -o-background-size: 9px 9px;
+    background-size: 9px 9px;
+    background-repeat: no-repeat;
+    width: 9px;
+    height: 10px;
+    right: 6px;
+}
+.item-list>li.shop.sec-2 a .info:after {
+    content: "HOT";
+    display: block;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-family: DINPro_M,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    left: 10px;
+}
+/* 남녀 갈라지는곳 */
+.item-list>li.shop.F strong {
+    color: #e6178f;
+}
+.item-list>li.shop.F.sec-2 .info:after {
+    background-color: #e6178f;
+}
+.item-list>li.shop.M.sec-2 .info:after {
+    background-color: #0fb6c5;
+}
+.item-list>li.shop.M strong {
+    color: #0fb6c5;
+}

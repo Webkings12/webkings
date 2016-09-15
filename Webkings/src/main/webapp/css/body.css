@@ -198,6 +198,7 @@ div.body-sec>div.in-sec p.privacy-fixed {
     border: 0;
     background-color: transparent;
     color: #fff;
+    font-color:#fff; 
     width: 102px;
 }
 .option-sec-2:after {
@@ -209,15 +210,15 @@ div.body-sec>div.in-sec p.privacy-fixed {
     -ms-transform: translate(0,-50%);
     -o-transform: translate(0,-50%);
     transform: translate(0,-50%);
-    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/search.png");
+    -webkit-background-size: 13px 14px;
+    -moz-background-size: 13px 14px;
+    -o-background-size: 13px 14px;
+    background-size: 13px 14px;
     background-repeat: no-repeat;
-    background-position: -235px -82px;
-    width: 15px;
-    height: 16px;
+    background-color: transparent; 
+    width: 13px;
+    height: 14px;
     left: 14px;
 }
 

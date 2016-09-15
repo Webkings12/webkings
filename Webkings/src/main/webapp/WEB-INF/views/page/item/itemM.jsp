@@ -54,7 +54,7 @@ $(document).ready(function() {
 						<dt><a href="#" onclick="gbn()">전체 상품</a></dt>
 						<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=M&cate=ALL">ALL</a></dd>
 						<c:forEach var="Item_TypeVO" items="${itemList}">
-										<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=F&cate=${Item_TypeVO.itName}">${Item_TypeVO.itName}</a></dd>
+										<dd><a href="/Webkings/item/itemCate.do?page=/product&gender=M&cate=${Item_TypeVO.itName}">${Item_TypeVO.itName}</a></dd>
 						</c:forEach>
 					</dl>
 				</li>

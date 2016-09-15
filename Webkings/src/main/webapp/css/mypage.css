@@ -99,16 +99,15 @@ div.body-sec div.in-sec-2 {
     position: relative;
 }
 .mypage-btn li.login a:before {
-    margin-top: 22px;
+    margin-top: 24px;
 }
 .mypage-btn li.recent-prod a:before {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/price-tag.png");
+    -webkit-background-size: 36px 35px;
+    -moz-background-size: 36px 35px;
+    -o-background-size: 36px 35px;
+    background-size: 36px 35px;
     background-repeat: no-repeat;
-    background-position: -72px -166px;
     width: 36px;
     height: 35px;
 }
@@ -134,20 +133,14 @@ div.body-sec div.in-sec-2 {
     font-size: 12px;
 }
 .mypage-btn li.recent-shop a:before {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/store.png");
+    -webkit-background-size: 36px 35px;
+    -moz-background-size: 36px 35px;
+    -o-background-size: 36px 35px;
+    background-size: 36px 35px;
     background-repeat: no-repeat;
-    background-position: -108px -166px;
     width: 36px;
     height: 35px;
-}
-.mypage-btn li a:before {
-    content: "";
-    margin: 25px auto 16px;
-    display: block;
 }
 .mypage-btn li.coupon a:before {
     background-image: url("/rsc/front/img/sprite.png?_1471437666714");
@@ -160,45 +153,23 @@ div.body-sec div.in-sec-2 {
     width: 36px;
     height: 35px;
 }
-.mypage-btn li a:before {
-    content: "";
-    margin: 25px auto 16px;
-    display: block;
-}
 .mypage-btn li.favor a:before {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/starB.png");
+    -webkit-background-size: 36px 35px;
+    -moz-background-size: 36px 35px;
+    -o-background-size: 36px 35px;
+    background-size: 36px 35px;
     background-repeat: no-repeat;
-    background-position: -199px 0;
     width: 36px;
     height: 35px;
-}
-.mypage-btn li a:before {
-    content: "";
-    margin: 25px auto 16px;
-    display: block;
 }
 .mypage-btn li.follow a:before {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/heart.png");
+    -webkit-background-size: 36px 35px;
+    -moz-background-size: 36px 35px;
+    -o-background-size: 36px 35px;
+    background-size: 36px 35px;
     background-repeat: no-repeat;
-    background-position: -199px -35px;
     width: 36px;
     height: 35px;
-}
-.mypage-btn li a:before {
-    content: "";
-    margin: 25px auto 16px;
-    display: block;
-}
-.mypage-btn li a:before {
-    content: "";
-    margin: 25px auto 16px;
-    display: block;
 }

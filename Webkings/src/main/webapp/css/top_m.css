@@ -11,7 +11,16 @@ body.M>div.header a.gender.m {
 body.M>div.header ul.gnb li.active>a {
     border-color: #0fb6c5;
 }
-
+body.M .mypage-btn li.login a:before {
+    background-image: url("../images/male.png");
+    -webkit-background-size: 36px 35px;
+    -moz-background-size: 36px 35px;
+    -o-background-size: 36px 35px;
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+}
 body.M>div.header div.login p:after {
     /* background-image: url("/rsc/front/img/sprite.png?_1471437666729"); */
     -webkit-background-size: 252px 234px;

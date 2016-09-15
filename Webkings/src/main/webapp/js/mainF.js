@@ -55,11 +55,10 @@ $(document).ready(function() {
 				}
 				if(page=="/shop" || page=="/mypage"){
 		 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=M");
-		 			return;
 		 		}else if(page=="/product"){
 		 			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
 		 		}else{
-				$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=M");
+		 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=M");
 		 		}
 			}
 		});

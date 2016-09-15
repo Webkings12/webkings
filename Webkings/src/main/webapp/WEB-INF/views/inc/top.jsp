@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/member.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/item.css"/>	
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/shop.css"/>	
 <script type="text/javascript" src="<c:url value='/js/login.js'/>"></script>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
