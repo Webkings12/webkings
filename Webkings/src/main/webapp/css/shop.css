@@ -108,7 +108,10 @@
     text-align: center;
     color: #a0a0a0;
 }
-
+.item-list>li.shop .info strong i {
+    color: #202022;
+    padding-right: 4px;
+}
 .item-list>li.shop .info strong {
     display: block;
     padding-top: 13px;
@@ -164,7 +167,7 @@
     right: 6px;
 }
 .item-list>li.shop.sec-2 a .info:after {
-    content: "HOT";
+    content: "NEW";
     display: block;
     width: 40px;
     line-height: 40px;

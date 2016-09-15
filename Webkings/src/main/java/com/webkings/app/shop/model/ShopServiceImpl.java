@@ -1,5 +1,24 @@
 package com.webkings.app.shop.model;
 
-public class ShopServiceImpl {
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class ShopServiceImpl implements ShopService{
+
+	@Autowired
+	private ShopDAO shopDao;
+	
+	@Override
+	public List<ShopViewVO> shopStyle(ShopViewVO shopViewVo) {
+		return shopDao.shopStyle(shopViewVo);
+	}
+
+	@Override
+	public List<ShopViewVO> shopNew(ShopViewVO shopViewVO) {
+		return shopDao.shopNew(shopViewVO);
+	}
+	
 }

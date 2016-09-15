@@ -1,5 +1,8 @@
 package com.webkings.app.shop.model;
 
-public interface ShopService {
+import java.util.List;
 
+public interface ShopService {
+	public List<ShopViewVO> shopStyle(ShopViewVO shopViewVo);
+	public List<ShopViewVO> shopNew(ShopViewVO shopViewVO);
 }

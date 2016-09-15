@@ -68,7 +68,7 @@ order by s.s_no desc;
 select * from itemview
 where 1=1
 and it_gender = ''
-and i_name = '%'|| 'ss' || '%'
+and i_name like '%'|| 'ss' || '%'
 order by s.s_no desc;
 
 --���� �˻� (��ǰ�̸�, ����)

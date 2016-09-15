@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.mapper.oracle.shop">
+	<select id="shopStyle" parameterType="ShopViewVO" resultType="ShopViewVO">
+		select * from shopView
+		where 1=1
+		and st_gender=#{stGender}
+		<if test='stName neq "all" and stName neq ""'>
+			and st_name = #{stName}
+		</if>
+		<if test="searchKeyword neq ''">
+		 	and s_name like '%' || #{searchKeyword} || '%'
+		</if>
+		order by s_click desc
+	</select>
+	
+	<select id="shopNew" parameterType="ShopViewVO" resultType="ShopViewVO">
+		select * from shopView
+		where 1=1
+		and st_gender=#{stGender}
+		<![CDATA[
+			and to_char(s_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
+		]]>
+	</select>
+</mapper>

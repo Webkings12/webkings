@@ -4,6 +4,12 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
+var style="${param.style}";
+var url ="<c:url value='/shop/shopStyle.do'/>";
+var searchName="";
+</script>
+<script type="text/javascript" src="<c:url value='/js/shop.js'/>"></script>
+<script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
 	$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
@@ -45,23 +51,7 @@ $(document).ready(function() {
 			<input type="text" id="quickSearch" placeholder="샵 이름으로 검색">
 		</div>
 	</div>
-
-	<ul class="item-list" style="visibility: visible;">
-		<li class="shop sec-2  F ia">
-		<a href="javascript:;" seq="121">	
-		<img src="http://img.sta1.kr/_up/shop/logo/2016/09/1473406293970_a1.jpg" data-original="http://img.sta1.kr/_up/shop/logo/2016/09/1473406293970_a1.jpg" class="item" style="display: block;">
-			<div class="over">		<div class="btn"><span class="shop"></span><i>샵 상세페이지</i><span class="fb sns"></span><i>페이스북 공유</i><span class="tw sns"></span><i>트위터 공유</i></div>	
-				<p><i>316,800</i> 회 포털검색</p>		<div class="bg"></div>	</div>	<div class="info">	
-					<strong>갠소</strong>		<span><i cate="201">러블리</i>, <i cate="215">심플베이직</i></span>		
-					<em class="">팔로우</em>
-					</div></a></li>
-		<li class="shop  F ia"><a href="javascript:;" seq="271">	
-		<img src="http://img.sta1.kr/_up/shop/logo/2016/08/1471857259160_n1.jpg" data-original="http://img.sta1.kr/_up/shop/logo/2016/08/1471857259160_n1.jpg" class="item" style="display: block;">
-			<div class="over">		<div class="btn"><span class="shop"></span><i>샵 상세페이지</i><span class="fb sns"></span><i>페이스북 공유</i><span class="tw sns"></span><i>트위터 공유</i></div>
-					<p><i>1,183,000</i> 회 포털검색</p>		<div class="bg"></div>	</div>	<div class="info">	
-						<strong><i>1위</i>육육걸즈</strong>		<span><i cate="206">십대쇼핑몰</i></span>		<em class="">팔로우</em>	</div>
-		</a></li>
-		</ul>
+	<ul class="item-list" style="visibility: visible;"></ul>
 	</div>
 	</div>
 </div>
