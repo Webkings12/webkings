@@ -120,8 +120,9 @@ $(document).ready(function() {
 		     $(".item-list li#date2 em").append(itOCount);
 		     
 		     // 클릭 이벤트
-		     $(".item-list>li.prod .favor").click(function () {
-		    	 $.ajax({
+		    $(".item-list>li.prod .favor").click(function () {
+		    	alert("ㅎㅎ");
+		    	$.ajax({
 						url:"<c:url value='/myitem.do'/>",
 						type:"GET",
 						data:"iNo="+iNo,

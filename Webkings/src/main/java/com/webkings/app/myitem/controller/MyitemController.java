@@ -37,7 +37,5 @@ public class MyitemController {
 		myitemService.insertMyitem(map);
 		
 		
-		
-		
 	}
 }
