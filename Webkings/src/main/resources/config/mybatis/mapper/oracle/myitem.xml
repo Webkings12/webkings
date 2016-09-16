@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mybatis.mapper.oracle.myitem">
+	<update id="insertMyitem" parameterType="map">
+		insert into M_ITEM(M_I_NO,M_NO,I_NO,M_I_NAME,M_I_IMAGE)
+			select M_ITEM_seq.nextval,#{mNo},I_NO,I_NAME,I_IMAGE from ITEM
+		where I_NO=#{iNo};
+	</update>
+	<select id="selectMyitem" resultType="MyitemVO" parameterType="int">
+		select * from M_ITEM
+		where M_NO=#{mNo}
+	</select>
+</mapper>
