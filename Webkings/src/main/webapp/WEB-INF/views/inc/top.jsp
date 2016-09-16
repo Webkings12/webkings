@@ -35,6 +35,7 @@ var gender = "${gender}";
 var itNCount="${itNCount}";
 var itOCount="${itOCount}";
 </script>
+<script type="text/javascript" src="<c:url value='/js/search.js'/>"></script>
 </head>
 <body class="F">
 	<div class="header">
@@ -147,12 +148,28 @@ var itOCount="${itOCount}";
 							 restrictutf8bytes="45" class="__required" confirmmessage="특수문자로 검색하실수 없습니다." 
 							 autocomplete="off" focus="off"/></p>
 						</form>
+						
 						<!-- <div class="keyword"></div> 검색어 저장기능 사용시-->
+						<div class="keyword">
+							<div class="sec">
+								<ul class="tab">
+									<li class="active"><a href="javascript:;">최근 검색어</a></li>
+								</ul>
+								<div class="con disnone" style="display: block;">
+									<ul class="noData"><li class="noData">최근 검색어가 없습니다.</li></ul>
+									<p>
+										<a href="#" onclick="saveSearch()" class="save">검색어 저장</a>
+										<a href="javascript:;" class="del">전체삭제</a>
+									</p>
+								</div>
+							</div>
+							<div class="bg"></div>
+						</div>
+						
 					</div>
 				</div>
 				<!-- 이용약관 시작 -->
 						
-					
 					<div id="divtos" class="modal">
 					      <span onclick="document.getElementById('divtos').style.display='none'" class="close" title="Close Modal">&times;</span>
 					  <div class="amodel">
@@ -306,7 +323,6 @@ $(document).ready(function(event){
 			return false;
 		}
 	});
-	
 	
 	$("#reg").click(function () {
 		$("#divLogin").css("display","none");

@@ -8,6 +8,134 @@ body.F>div.header a.gender.m {
 body.F>div.header a.gender.f {
     cursor: default;
 }
+body>div.header div.search div.keyword .con ul.noData li {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 100%;
+    text-align: center;
+}
+body>div.header div.search div.keyword .con ul.noData li:before {
+    content: "";
+    display: block;
+    margin: 0 auto 11px;
+    background-image: url("../images/chat.png");
+    -webkit-background-size: 42px 38px;
+    -moz-background-size: 42px 38px;
+    -o-background-size: 42px 38px;
+    background-size: 42px 38px;
+    background-repeat: no-repeat;
+    width: 42px;
+    height: 38px;
+}
+body>div.header div.search div.keyword .con>p a.save:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 0;
+    background-image: url("../images/switch left.png");
+    -webkit-background-size: 20px 20px;
+    -moz-background-size: 20px 20px;
+    -o-background-size: 20px 20px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+body>div.header div.search div.keyword .tab li {
+    float: left;
+    width: 98%;
+    text-align: center;
+}
+body>div.header div.search div.keyword .sec {
+    position: relative;
+    z-index: 1;
+}
+body>div.header div.search div.keyword .con>p a.del {
+    right: 10px;
+}
+body>div.header div.search div.keyword .tab li.active a {
+    border-color: #e6178f;
+    color: #202022;
+    font-weight: bold;
+}
+body>div.header div.search:hover div.keyword, body>div.header div.search.active div.keyword {
+    display: block;
+}
+body>div.header div.search div.keyword {
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
+    -ms-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+    width: 218px;
+    border: 1px solid #d1d1d1;
+    top: 71px;
+    word-spacing: -0.15em;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-bottom-right-radius: 5px;
+}
+body>div.header div.search div.keyword .tab li a {
+    line-height: 23px;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    color: #a2a2a5;
+}
+body>div.header div.search div.keyword .tab {
+    overflow: hidden;
+    padding: 24px 30px 0;
+}
+body>div.header div.search div.keyword .con ul.noData {
+    padding: 0;
+    height: 152px;
+    position: relative;
+}
+body>div.header div.search div.keyword .con>p a {
+    line-height: 30px;
+    position: absolute;
+}
+body>div.header div.search div.keyword .con>p a.save {
+    left: 10px;
+    padding-right: 25px;
+}
+body>div.header div.search div.keyword .con>p {
+    border-top: 1px solid #d1d1d1;
+    position: relative;
+    height: 30px;
+}
+form, fieldset, p {
+    margin: 0;
+    padding: 0;
+}
+body>div.header div.search div.keyword .con>p a.save.active:after {
+    background-image: url("../images/switch right.png");
+    -webkit-background-size: 20px 20px;
+    -moz-background-size: 20px 20px;
+    -o-background-size: 20px 20px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+
 body.F .mypage-btn li.login a:before {
    background-image: url("../images/womanB.png"); 
     -webkit-background-size: 36px, 38px;

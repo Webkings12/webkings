@@ -38,7 +38,9 @@ public class ViewController {
 		if(page.equals("/product" )|| page.equals("/item" )|| page.equals("/shop" )|| page.equals("/mypage")){
  			page+=page+gender;
  		}
-		
+		if(gender==""){
+			gender="F";
+		}
 		/*item sel*/
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
