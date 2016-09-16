@@ -61,9 +61,11 @@ public class MyitemController {
 		List<MyitemVO> alist= myitemService.selectMyitem(mNo);
 		logger.info("myitem 목록 alist.size()={}",alist.size());
 		
+
 		model.addAttribute("myitemList",alist);
 		model.addAttribute("list",alist.size());
 		
 		return "page/mypage/myitemList";
+
 	}
 }

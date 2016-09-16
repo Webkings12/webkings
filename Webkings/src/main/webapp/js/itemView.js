@@ -120,20 +120,21 @@ $(document).ready(function() {
 		     $(".item-list li#date2 em").append(itOCount);
 		     
 		     // 클릭 이벤트
-		     $(".item-list>li.prod .favor").click(function () {
-		    	 $.ajax({
-			 			url:"/Webkings/myitem.do",
-			 			type:"GET",
-			 			data:"iNo="+iNo, //요청 파라미터
-			 			dataType:"text",
-			 			success:function(res){
-			 				 $("#a123").click(function () {
-			 					 return false;
-			 				 });
-			 			},
-			 			error:function(xhr, status, error){
-			 			}
-			 		});
+
+		    $(".item-list>li.prod .favor").click(function () {
+		    	alert("ㅎㅎ");
+		    	$.ajax({
+						url:"<c:url value='/myitem.do'/>",
+						type:"GET",
+						data:"iNo="+iNo,
+						dataType:"text",
+						success:function(res){
+							alert("저장");
+						},
+						error:function(xhr, status, error){
+						}
+				});
+
 			});
 		     
 		});

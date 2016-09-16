@@ -13,6 +13,7 @@ var url="<c:url value='/item/selectItem.do'/>";
 <script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
+	
 	$(".gnb li:nth-child("+pageNum+")").addClass("active");
 	
 	$(".gnb li").mouseenter(function() {
