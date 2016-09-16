@@ -6,8 +6,12 @@
 	<update id="insertMyitem" parameterType="map">
 		insert into M_ITEM(M_I_NO,M_NO,I_NO,M_I_NAME,M_I_IMAGE)
 			select M_ITEM_seq.nextval,#{mNo},I_NO,I_NAME,I_IMAGE from ITEM
-		where I_NO=#{iNo};
+		where I_NO=#{iNo}
 	</update>
+	<select id="selectINO" parameterType="int" resultType="int">
+		select count(*) from M_ITEM	
+		where M_NO=#{mNo}
+	</select>
 	<select id="selectMyitem" resultType="MyitemVO" parameterType="int">
 		select * from M_ITEM
 		where M_NO=#{mNo}

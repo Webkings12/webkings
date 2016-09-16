@@ -44,7 +44,7 @@ public class LoginIntercepter extends HandlerInterceptorAdapter{
 		String mEmail =(String)session.getAttribute("mEmail");
 		if(mEmail==null ||mEmail.isEmpty()){
 			request.setAttribute("msg", "먼저 로그인하세요");
-			request.setAttribute("url", "/login/login.do");
+			request.setAttribute("url", "/page.do");
 			
 			RequestDispatcher dispatcher
 			=request.getRequestDispatcher("/WEB-INF/views/common/message.jsp");
