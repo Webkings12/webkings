@@ -53,7 +53,7 @@ $(document).ready(function() {
 						$.each(nItemSel, function(idx, item) {
 							result+=
 							"<li class='prod "+item.itGender+" ia' id='prod1'>"+
-							"<a href='"+item.sDomain+"' sseq='121' seq='1349867' maindate='20160908'>"+
+							"<a id='a123' href='"+item.sDomain+"' sseq='121' seq='1349867' maindate='20160908'>"+
 								"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 								"style='height: 340px; display: block;' class='item'>"+
 								"<span class='favor' id='myitem'>관심상품</span>"+
@@ -122,19 +122,20 @@ $(document).ready(function() {
 		     // 클릭 이벤트
 		     $(".item-list>li.prod .favor").click(function () {
 		    	 $.ajax({
-						url:"<c:url value='/myitem.do'/>",
-						type:"GET",
-						data:"iNo="+iNo,
-						dataType:"text",
-						success:function(res){
-							alert("저장");
-						},
-						error:function(xhr, status, error){
-						}
-					});
+			 			url:"/Webkings/myitem.do",
+			 			type:"GET",
+			 			data:"iNo="+iNo, //요청 파라미터
+			 			dataType:"text",
+			 			success:function(res){
+			 				 $("#a123").click(function () {
+			 					 return false;
+			 				 });
+			 			},
+			 			error:function(xhr, status, error){
+			 			}
+			 		});
 			});
-					
-
+		     
 		});
 function gbn(){
 	if($(".list-top-1 p").hasClass("notice-1")){
