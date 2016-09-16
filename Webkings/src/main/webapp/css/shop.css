@@ -7,6 +7,9 @@
      border: 0; 
      box-sizing: inherit; 
 }
+.item-list>li.shop:hover .over {
+    display: block;
+}
 .list-top-1 .option-sec-2 {
     margin-top: 49px;
 }
@@ -61,6 +64,58 @@
     width: 100%;
     text-align: center;
     z-index: 1;
+}
+.item-list>li.shop .over .btn span.tw:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-image: url("../images/twitter-logo.png");
+    -webkit-background-size: 20px 20px;
+    -moz-background-size: 20px 20px;
+    -o-background-size: 20px 20px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+.item-list>li.shop .over .btn span.fb:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-image: url("../images/facebook-logo.png");
+    -webkit-background-size: 20px 20px;
+    -moz-background-size: 20px 20px;
+    -o-background-size: 20px 20px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+.item-list>li.shop:hover .over>div.bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000;
+    opacity: .6;
+}
+.item-list>li.shop .over .btn span:hover {
+    background-color: #fff;
+}
+.item-list>li.shop .over .btn span:hover+i {
+    display: block;
 }
 .item-list>li.shop .over .btn span {
     display: inline-block;

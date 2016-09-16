@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.webkings.app.item.controller.ItemController;
+import com.webkings.app.item.model.ItemService;
+import com.webkings.app.item.model.Item_TypeVO;
 import com.webkings.app.shop.model.ShopService;
 import com.webkings.app.shop.model.ShopViewVO;
+import com.webkings.app.style.model.StyleService;
+import com.webkings.app.style.model.StyleVO;
 
 @Controller
 @RequestMapping("/shop")
@@ -24,11 +28,36 @@ public class ShopController {
 	@Autowired
 	private ShopService shopService;
 	
+	@Autowired
+	private ItemService itemService;
+	
+	@Autowired
+	private StyleService styleService;
+	
 	public static final Logger logger = LoggerFactory.getLogger(ItemController.class);
 	
+	@RequestMapping("/shopView.do")
+	public String shopView(@RequestParam String gender, @RequestParam(defaultValue="all") String style, 
+			@RequestParam(required=false) String searchName, Model model){
+		
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		int pageNum=2;
+		
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("gender", gender);
+		model.addAttribute("style", style);
+		model.addAttribute("searchName", searchName);
+		
+		return "page/shop/shop"+gender;
+	}
+
+
 	@RequestMapping("/shopStyle.do")
 	@ResponseBody
-	public Map<String, Object> shopStyle(@RequestParam String gender, @RequestParam(defaultValue="all") String style, 
+	public Map<String, Object> shopStyle(@RequestParam String gender, @RequestParam String style, 
 			@RequestParam(required=false) String searchName, Model model){
 		
 		logger.info("샵 param data ={},{}",gender , style);

@@ -4,6 +4,12 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
 <script type="text/javascript">
+var style="${style}";
+var url ="<c:url value='/shop/shopStyle.do'/>";
+var searchName="${searchName}";
+</script>
+<script type="text/javascript" src="<c:url value='/js/shop.js'/>"></script>
+<script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
 	$(".gnb li:nth-child("+pageNum+")").addClass("active");
@@ -28,11 +34,18 @@ $(document).ready(function() {
 			<ul>
 				<li class="active">
 					<dl class="shop-cate-sel">
-						<dt><a href="javascript:;">스타일 전체</a></dt>
-					<dd><a href="/ranking/women"><em>쇼핑몰 전체</em></a></dd>
+						<dt><a href="/Webkings/shop/shopView.do?gender=M&style=${style}&searchName=${style}">
+						<c:if test="${style ne 'all'}">
+						 ${style}
+						</c:if>
+						<c:if test="${style eq 'all'}">
+						 쇼핑몰 전체
+						</c:if> 
+						</a></dt>
+					<dd><a href="/Webkings/shop/shopView.do?gender=M&searchName=${searchName}"><em>쇼핑몰 전체</em></a></dd>
 					<c:forEach var="StyleVO" items="${styleList}">
 						<dd>
-							<a href="#">
+							<a href="/Webkings/shop/shopView.do?gender=M&style=${StyleVO.stName}&searchName=${searchName}">
 								<em>${StyleVO.stName}</em>
 							</a>
 						</dd>
@@ -42,28 +55,11 @@ $(document).ready(function() {
 			</ul>
 		</div>
 			<div class="option-sec-2">
-			<input type="text" id="quickSearch" placeholder="샵 이름으로 검색">
+			<input type="text" id="quickSearch" placeholder="샵 이름으로 검색" onkeypress="if( event.keyCode==13 ){enterSearch();}">
 		</div>
 	</div>
 
 	<ul class="item-list" style="visibility: visible;">
-		<li class="shop sec-2  M ia"><a href="javascript:;" seq="783">	
-		<img src="http://img.sta1.kr/_up/shop/logo/2016/08/1472545587568_a1.jpg" data-original="http://img.sta1.kr/_up/shop/logo/2016/08/1472545587568_a1.jpg" class="item" style="display: block;">
-			<div class="over">		<div class="btn"><span class="shop"></span><i>샵 상세페이지</i><span class="fb sns"></span><i>페이스북 공유</i><span class="tw sns"></span><i>트위터 공유</i></div>
-					<p><i>230,800</i> 회 포털검색</p>		<div class="bg"></div>	</div>	
-					<div class="info">		<strong>아보키</strong>		<span><i cate="301">트랜드</i></span>		<em class="">팔로우</em>	
-		</div></a>
-		</li>
-		
-		<li class="shop  M ia"><a href="javascript:;" seq="579">	
-		<img src="http://img.sta1.kr/_up/shop/logo/2016/08/1472631617471_n1.jpg" data-original="http://img.sta1.kr/_up/shop/logo/2016/08/1472631617471_n1.jpg" class="item" style="display: block;">	
-		<div class="over">		<div class="btn"><span class="shop"></span><i>샵 상세페이지</i><span class="fb sns"></span>
-		<i>페이스북 공유</i><span class="tw sns"></span><i>트위터 공유</i></div>		<p><i>281,400</i> 회 포털검색</p>		
-		<div class="bg"></div>	</div>	<div class="info">		
-		<strong><i>1위</i>슈퍼스타아이</strong>		<span><i cate="301">트랜드</i></span>		<em class="">팔로우</em>	
-		</div></a>
-		</li>
-		
 	</ul>
 	</div>
 	</div>
