@@ -14,6 +14,12 @@ div.body-sec>div.in-sec>div.not-top {
 .tit-sec-1.tit-sec-full>.in {
     margin: 0 3px;
 }
+body>div.header div.search div.keyword .con ul {
+    padding: 20px 25px 25px 25px;
+}
+body>div.header div.search div.keyword .con a {
+    line-height: 21px;
+}
 .not-item {
     position: absolute;
     left: 50%;

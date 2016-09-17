@@ -78,7 +78,7 @@
 			and i_salePrice <= #{sep}
 		]]>
 		</if> 
-		<if test='sac != null and sac neq " " and sac neq "all"'>
+		<if test='sac != null and sac neq " " and sac neq "" and sac neq "all"'>
 			and s_age=#{sac}
 		</if>
 		<if test='nItem eq "NEW"'>
@@ -168,10 +168,10 @@
 			and i_salePrice <= #{sep}
 		]]>
 		</if> 
-		<if test='sac!=null and sac neq " "'>
+		<if test='sac!=null and sac neq " " and sac neq ""'>
 			and s_age = #{sac}
 		</if>
-		<if test='cate!=null and cate neq "ALL"'>
+		<if test='cate!=null and cate neq "ALL" and cate neq ""'>
 			and it_name = #{cate}
 		</if>
 		<if test='orderVal eq "0"'>

@@ -54,7 +54,7 @@ public class SearchController {
 		model.addAttribute("gender", gender);
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
-		return "page/search/search";
+		return "page/search/search"+gender;
 	}
 	
 	@RequestMapping("/list.do")
@@ -69,14 +69,15 @@ public class SearchController {
 		}
 		list.add(searchVal);
 		 if(searchVal==null){
-			searchVal="";
+			searchVal="";     
 		}
 		
 		/*아이템 검색*/
 		ItemSearchVO itemSearchVo= new ItemSearchVO();
 		itemSearchVo.setSw2(searchVal);
 		logger.info("searchVal={}",searchVal);
-		logger.info("sw2={}", itemSearchVo.getSw2());
+		logger.info("itemSearchGender={}", gender);
+		
 		itemSearchVo.setGender(gender);
 		
 		itemSearchVo.setCate("");
@@ -86,11 +87,15 @@ public class SearchController {
 		itemSearchVo.setSac("");
 		itemSearchVo.setnItem("");
 		
+		logger.info("sw2={}", itemSearchVo.getSw2());
+		
 		
 		List<ItemViewVO> selItemList = itemService.itemSearch(itemSearchVo);
 		
+		logger.info("selItemList={}", selItemList);
 		/*아이템 검색 갯수*/
 		int itCount=itemService.itemSelectCount(itemSearchVo);
+		logger.info("itCount={}", itCount);
 		
 		
 		/*샵검색*/
@@ -98,10 +103,13 @@ public class SearchController {
 		shopViewVo.setStGender(gender);
 		shopViewVo.setSearchKeyword(searchVal);
 		
+		logger.info("shopsearchKeyword={}", shopViewVo.getSearchKeyword());
 		shopViewVo.setStName("all");
 		
 		List<ShopViewVO> shopList = shopService.shopStyle(shopViewVo);
+		logger.info("shopList={}", shopList);
 		int shopCount = shopService.shopSelect(searchVal);
+		logger.info("sCount={}", shopCount);
 		
 		
 		
@@ -111,7 +119,12 @@ public class SearchController {
 		resMap.put("itemList", selItemList);
 		resMap.put("itCount", itCount);
 		resMap.put("shopCount", shopCount);
-		
 		return resMap;
+	}
+	
+	@RequestMapping("/delete.do")
+	@ResponseBody
+	public void deleteSesion(HttpSession session){
+		session.removeAttribute("searchList");
 	}
 }
