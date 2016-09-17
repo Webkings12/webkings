@@ -5,6 +5,15 @@ public class ItemViewVO {
 	/*카테고리 아이템 select*/
 	private int iNo;
 	private String sDomain; 
+	private int sNo;
+	public int getsNo() {
+		return sNo;
+	}
+
+	public void setsNo(int sNo) {
+		this.sNo = sNo;
+	}
+
 	private String iImage; 
 	private String iName; 
 	private String iSalePrice; 
@@ -89,9 +98,9 @@ public class ItemViewVO {
 	
 	@Override
 	public String toString() {
-		return "ItemViewVO [iNo=" + iNo + ", sDomain=" + sDomain + ", iImage=" + iImage + ", iName=" + iName
-				+ ", iSalePrice=" + iSalePrice + ", sName=" + sName + ", sAge=" + sAge + ", itGender=" + itGender
-				+ ", itName=" + itName + ", iClick=" + iClick + ", dateType=" + dateType + "]";
+		return "ItemViewVO [iNo=" + iNo + ", sDomain=" + sDomain + ", sNo=" + sNo + ", iImage=" + iImage + ", iName="
+				+ iName + ", iSalePrice=" + iSalePrice + ", sName=" + sName + ", sAge=" + sAge + ", itGender="
+				+ itGender + ", itName=" + itName + ", iClick=" + iClick + ", dateType=" + dateType + "]";
 	}
 	
 }

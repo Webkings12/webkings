@@ -20,5 +20,10 @@ public class ShopServiceImpl implements ShopService{
 	public List<ShopViewVO> shopNew(ShopViewVO shopViewVO) {
 		return shopDao.shopNew(shopViewVO);
 	}
+
+	@Override
+	public int shopSelect(String searchVal) {
+		return shopDao.shopSelect(searchVal);
+	}
 	
 }

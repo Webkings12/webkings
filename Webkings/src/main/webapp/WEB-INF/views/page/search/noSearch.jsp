@@ -10,6 +10,6 @@ var nItemSel=[];
 <%@ include file="../../inc/top.jsp"  %>
 <div class="body-sec"><div class="in-sec">
 <p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p>
-<div class="not-top"><div class="not-item">검색 결과가 없습니다.</div></div></div></div>
+<div class="not-top"></div>
 </body>
 </html>

@@ -33,9 +33,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>오늘뭐입지?</title>
 <script type="text/javascript">
+var searchUrl="<c:url value='/search/list.do'/>";
 var gender = "${gender}";
 var itNCount="${itNCount}";
 var itOCount="${itOCount}";
+var searchVal="${searchVal}";
+var itCount="";
+var shopCount="";
+var searchList="";
 </script>
 <script type="text/javascript" src="<c:url value='/js/search.js'/>"></script>
 </head>
@@ -145,7 +150,7 @@ var itOCount="${itOCount}";
 						</div>
 					</c:if> --%>
 					<div class="search">
-						<form id="fmSearch" name="fmSearch" action="<c:url value='/search.do'/>" class="autoValidateForm"><p>
+						<form id="fmSearch" name="fmSearch" action="<c:url value='/search//view.do'/>" class="autoValidateForm"><p>
 							<input type="text" name="q" value="" fieldname="검색어" checkfunctionname="checkSpecialChar"
 							 restrictutf8bytes="45" class="__required" confirmmessage="특수문자로 검색하실수 없습니다." 
 							 autocomplete="off" focus="off"/></p>
