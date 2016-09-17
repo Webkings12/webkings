@@ -93,9 +93,10 @@ $(document).ready(function() {
 								"<div class='bg'></div>"+
 							"</a>"+
 						"</li>";
+						alert(idx);
 						sNo=item.sNo;
 						iNo=item.iNo;
-						
+						alert("iNo" + iNo);
 					});
 					$(".item-list").html(result);
 					
