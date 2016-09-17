@@ -11,9 +11,9 @@
 		select * from M_ITEMview
 			where m_no=#{m_no}
 	</select>
-	<select id="selectINO" parameterType="int" resultType="int">
+	<select id="selectINO" parameterType="MyitemVO" resultType="int">
 		select count(*) from M_ITEM	
-		where M_NO=#{mNo}
+		where M_NO=#{mNo} and i_NO=#{iNo}
 	</select>
 	
 </mapper>

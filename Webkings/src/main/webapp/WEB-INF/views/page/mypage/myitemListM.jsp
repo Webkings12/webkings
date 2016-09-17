@@ -18,7 +18,7 @@
 	</c:if>
 	<c:if test="${!empty myitemList }">
 		<c:forEach var="item" items="${myitemList }">
-	<li class="prod '+item.itGender+' ia" id="prod2">
+	<li class="prod ${gender} ia" id="prod2" style="list-style: none;">
 		<a href="" sseq="121" seq="1349867" maindate="20160908">
 			<img src="../../itemImage/${item.iImage}" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"
 				style="height: 340px; display: block;" class="item">

@@ -27,4 +27,6 @@ public interface ItemDAO {
 	//아이템 검색
 	public List<ItemViewVO> itemSearch(ItemSearchVO itemSearchVo);
 	
+	// 최근 본상품
+	public List<ItemViewVO> itemSelectiNo(int iNo);
 }

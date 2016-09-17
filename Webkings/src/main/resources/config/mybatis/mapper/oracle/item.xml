@@ -191,4 +191,10 @@
 	<select id="AllCount" resultType="int">
 		select count(*) from itemView
 	</select>
+	<!-- 최근 본 상품 -->
+	<select id="itemSelectiNo" parameterType="int" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and i_no=#{iNo}
+	</select>
 </mapper>

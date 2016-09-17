@@ -4,6 +4,7 @@
 $(document).ready(function() {
 	var iNo="";
 	var sNo="";
+	
 			 $.ajax({
 				url:url,
 				type:"GET",
@@ -50,7 +51,6 @@ $(document).ready(function() {
 									"</li>";
 					
 					if(nItemSel!=null){
-						
 						$.each(nItemSel, function(idx, item) {
 							result+=
 							"<li class='prod "+item.itGender+" ia' id='prod1'>"+
@@ -76,14 +76,13 @@ $(document).ready(function() {
 									"</div>"+
 									"</li>";
 					$.each(itemSel, function(idx, item) {
-						iNo=item.iNo;
-						sNo=item.sNo;
+						
 						result+=
 						"<li class='prod "+item.itGender+" ia' id='prod2'>"+
-							"<a href='"+item.sDomain+"' sseq='121' seq='1349867' maindate='20160908'>"+
+							"<a id='aaa' href='"+item.sDomain+"' sseq='121' seq='1349867' maindate='20160908'>"+
 								"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 								"style='height: 340px; display: block;' class='item'>"+
-								"<span class='favor' id='favor'>관심상품</span>"+
+								"<span class='favor'>관심상품</span><input type='text' id='iINo' name='iINo' value='"+item.iNo+"'></span>"
 								"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 									"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em><i>"+
 									item.iSalePrice+"</i>"+		
@@ -94,6 +93,8 @@ $(document).ready(function() {
 								"<div class='bg'></div>"+
 							"</a>"+
 						"</li>";
+						sNo=item.sNo;
+						
 					});
 					$(".item-list").html(result);
 					
@@ -103,6 +104,7 @@ $(document).ready(function() {
 				}
 				
 			});
+			 
 					 
 			 /*날짜구하기*/
 			 var today = new Date();
@@ -121,25 +123,45 @@ $(document).ready(function() {
 		     }
 		     $(".item-list li#date2 em").append(itOCount);
 		     
-		     // 클릭 이벤트
-
+		     // 즐겨찾기 이벤트
+		     $(".item-list>li.prod #aaa").click(function () {
+		    	 alert("최근목록");
+		    	 iNo = $("#iINo").val();
+		    		alert(iNo);
+		    		alert(sNo);
+		    		$.ajax({
+							url:"/Webkings/product.do",
+							type:"GET",
+							data:"iNo="+iNo,
+							dataType:"text",
+							success:function(res){
+								alert(iNo);
+							},
+						error:function(xhr, status, error){
+							}
+					});
+		    	}); 
+		     
 		    $(".item-list>li.prod .favor").click(function () {
-		    	alert("ㅎㅎ");
+		    	alert("즐겨찾기");
+		    	iNo = $("#iINo").val();
+		    	alert(iNo);
 		    	alert(sNo);
 		    	$.ajax({
 						url:"/Webkings/myitem.do",
 						type:"GET",
-						data:"iNo="+iNo,
+						data:"iNo="+iNo+"&sNo="+sNo,
 						dataType:"text",
 						success:function(res){
-							alert("저장");
+		
 						},
 						error:function(xhr, status, error){
 						}
-				});
-
-			});
-		     
+					});
+		    });
+		    	
+		    	// 최근 본 목록 이벤트
+		    	
 		});
 function gbn(){
 	if($(".list-top-1 p").hasClass("notice-1")){

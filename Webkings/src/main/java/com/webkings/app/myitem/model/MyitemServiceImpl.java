@@ -14,8 +14,8 @@ public class MyitemServiceImpl implements MyitemService{
 	
 
 	@Override
-	public int selectINO(int mNo) {
-		return myitemDAO.selectINO(mNo);
+	public int selectINO(MyitemVO vo) {
+		return myitemDAO.selectINO(vo);
 	}
 
 	@Override

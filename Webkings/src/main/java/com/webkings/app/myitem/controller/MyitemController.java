@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.webkings.app.item.model.ItemService;
+import com.webkings.app.item.model.ItemViewVO;
 import com.webkings.app.item.model.Item_TypeVO;
 import com.webkings.app.member.model.MemberService;
 import com.webkings.app.myitem.model.MyItemviewVO;
@@ -47,11 +49,11 @@ public class MyitemController {
 	@ResponseBody
 	public void insertMyitem(HttpSession session, @ModelAttribute MyitemVO vo,Model model){
 		int mNo=(Integer)session.getAttribute("mNo");
-		logger.info("myitem 처리 mNo={}",mNo);
+		logger.info("myitem 처리 vo={}",vo);
 		vo.setmNo(mNo);
 		logger.info("myitem insert 처리 vo={}",vo );
 		
-			int count= myitemService.selectINO(mNo);
+			int count= myitemService.selectINO(vo);
 			logger.info("count={}",count);
 			if(count<1){
 				int cnt=myitemService.insertMyitem(vo);
@@ -83,5 +85,38 @@ public class MyitemController {
 		
 		return "page/mypage/myitemList"+gender;
 
+	}
+	
+	@RequestMapping("/product.do")
+	public void product(@RequestParam int iNo,HttpServletRequest request){
+		logger.info("product  iNo={}",iNo);
+		
+		HttpSession session= request.getSession();
+		
+		session.setAttribute("i_No", iNo);
+		
+		
+	}
+	@RequestMapping("/prodList.do")
+	public String prodList(HttpSession session,@RequestParam(defaultValue="F") String gender, Model model){
+		int iNo=(Integer)session.getAttribute("i_No");
+		logger.info("prodList 목록 i_No={}",iNo);
+		
+		List<ItemViewVO> alist= itemService.itemSelectiNo(iNo);
+		logger.info("prodList 목록 alist={}",alist.size());
+		
+		model.addAttribute("prodList", alist);
+		
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("gender", gender);
+
+		model.addAttribute("myitemList",alist);
+		model.addAttribute("list",alist.size());
+		
+		return "page/mypage/prodList"+gender;
 	}
 }

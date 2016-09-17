@@ -75,4 +75,9 @@ public class ItemServiceImpl implements ItemService{
 	public int itemAllCount() {
 		return itemDao.itemAllCount();
 	}
+
+	@Override
+	public List<ItemViewVO> itemSelectiNo(int iNo) {
+		return itemDao.itemSelectiNo(iNo);
+	}
 }

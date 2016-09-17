@@ -5,6 +5,6 @@ import java.util.Map;
 
 public interface MyitemDAO {
 	public int insertMyitem(MyitemVO vo);
-	public int selectINO(int mNo);
+	public int selectINO(MyitemVO vo);
 	public List<MyItemviewVO> selectMiTEMview(int mNo);
 }

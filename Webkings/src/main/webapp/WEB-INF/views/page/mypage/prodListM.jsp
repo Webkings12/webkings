@@ -13,19 +13,19 @@
 <br>
 <br>
 <br>
-<h1 style="text-align: center;">관심상품   <span style="color:#0fb6c5;">${list}</span></h1>
-	<c:if test="${empty myitemList }">
+<h1 style="text-align: center;">최근본상품<span style="color:#0fb6c5;">${list}</span></h1>
+	<c:if test="${empty prodList }">
 	</c:if>
-	<c:if test="${!empty myitemList }">
-		<c:forEach var="item" items="${myitemList }">
+	<c:if test="${!empty prodList }">
+		<c:forEach var="item" items="${prodList }">
 	<li class="prod ${gender} ia" id="prod2" style="list-style: none;">
 		<a href="" sseq="121" seq="1349867" maindate="20160908">
 			<img src="../../itemImage/${item.iImage}" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"
 				style="height: 340px; display: block;" class="item">
 				<span class="favor" id="favor">관심상품</span>
-				<div class="info">	<span class="shop" style="color:#e6178f;">${item.sName}</span>		
+				<div class="info">	<span class="shop">${item.sName}</span>		
 				<span class="name">${item.iName}</span>	<em class='cate' cate="101">${item.itName}</em>
-				 <i>${item.iSaleprice}</i>	
+				<i>${item.iSalePrice}</i>	
 					<div class="btn">
 					<span class="fb"></span><i>페이스북 공유</i><span class="tw"></span><i>트위터 공유</i>
 									</div>	

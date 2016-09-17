@@ -12,8 +12,8 @@ public class MyitemDAOMybatis extends SqlSessionDaoSupport implements MyitemDAO{
 	
 
 	@Override
-	public int selectINO(int mNo) {
-		return getSqlSession().selectOne(namespace+".selectINO", mNo);
+	public int selectINO(MyitemVO vo) {
+		return getSqlSession().selectOne(namespace+".selectINO", vo);
 	}
 
 	@Override
