@@ -94,6 +94,7 @@ $(document).ready(function() {
 							"</a>"+
 						"</li>";
 						sNo=item.sNo;
+						iNo=item.iNo;
 						
 					});
 					$(".item-list").html(result);
