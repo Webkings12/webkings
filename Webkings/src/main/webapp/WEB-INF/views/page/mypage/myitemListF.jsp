@@ -20,12 +20,12 @@
 		<c:forEach var="item" items="${myitemList }">
 	<li class="prod '+item.itGender+' ia" id="prod2">
 		<a href="" sseq="121" seq="1349867" maindate="20160908">
-			<img src="../../itemImage/${item.mIImage}" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"
+			<img src="../../itemImage/${item.iImage}" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"
 				style="height: 340px; display: block;" class="item">
 				<span class="favor" id="favor">관심상품</span>
-				<div class="info">	<span class="shop">${item.mIName}</span>		
-				<span class="name">${item.mIName}</span>	<em class='cate' cate="101">${item.mIName}</em>
-				<!-- <i>item.iSalePrice+"</i>	 -->	
+				<div class="info">	<span class="shop" style="color:#e6178f;">${item.sName}</span>		
+				<span class="name">${item.iName}</span>	<em class='cate' cate="101">${item.itName}</em>
+				 <i>${item.iSaleprice}</i>	
 					<div class="btn">
 					<span class="fb"></span><i>페이스북 공유</i><span class="tw"></span><i>트위터 공유</i>
 									</div>	

@@ -198,3 +198,31 @@ span.psw {
 .certify{
 	text-align: center;
 }
+.divQuit1{
+	margin:0 auto;
+	margin-top: 200px;
+	text-align: center;
+	width: 330px;
+	border: 0.5px solid silver;
+	background-color: white;
+	height: 500px;
+	
+}
+.divp{
+	margin: 0 auto;
+	margin-top: 70px;
+	border: 2px solid silver;
+	width: 300px;
+}
+
+.divp p{
+	text-align:center;
+	font-size: 13px;
+}
+.h2{
+	text-align: center;
+}
+#inquit{
+	margin: 0 auto;
+}
+

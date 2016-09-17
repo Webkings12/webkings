@@ -87,10 +87,6 @@ $(document).ready(function(){
 			return false
 		}
 	
-		var mEmail=$("#mEmail").val();
-		alert("이메일로 인증번호를 보냈습니다");
-		location.href="/Webkings/certify/certifyNo.do?mEmail="+mEmail;
-		$("#divreg").css("display","block");
 	});
 	
 	

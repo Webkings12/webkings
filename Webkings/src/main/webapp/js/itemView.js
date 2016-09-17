@@ -3,6 +3,7 @@
  */
 $(document).ready(function() {
 	var iNo="";
+	var sNo="";
 			 $.ajax({
 				url:url,
 				type:"GET",
@@ -76,6 +77,7 @@ $(document).ready(function() {
 									"</li>";
 					$.each(itemSel, function(idx, item) {
 						iNo=item.iNo;
+						sNo=item.sNo;
 						result+=
 						"<li class='prod "+item.itGender+" ia' id='prod2'>"+
 							"<a href='"+item.sDomain+"' sseq='121' seq='1349867' maindate='20160908'>"+
@@ -123,8 +125,9 @@ $(document).ready(function() {
 
 		    $(".item-list>li.prod .favor").click(function () {
 		    	alert("ㅎㅎ");
+		    	alert(sNo);
 		    	$.ajax({
-						url:"<c:url value='/myitem.do'/>",
+						url:"/Webkings/myitem.do",
 						type:"GET",
 						data:"iNo="+iNo,
 						dataType:"text",

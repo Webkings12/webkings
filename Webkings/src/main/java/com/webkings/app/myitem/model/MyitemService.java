@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface MyitemService {
-	public int insertMyitem(Map<String, Object> map);
-	public List<MyitemVO> selectMyitem(int mNo);
+	public int insertMyitem(MyitemVO vo);
 	public int selectINO(int mNo);
+	public List<MyItemviewVO> selectMiTEMview(int mNo);
 }

@@ -22,8 +22,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.webkings.app.common.FileUploadWabUtil;
+import com.webkings.app.item.model.ItemService;
+import com.webkings.app.item.model.Item_TypeVO;
 import com.webkings.app.member.model.MemberService;
 import com.webkings.app.member.model.MemberVo;
+import com.webkings.app.style.model.StyleService;
+import com.webkings.app.style.model.StyleVO;
 
 
 
@@ -32,6 +36,7 @@ import com.webkings.app.member.model.MemberVo;
 public class MemberController {
 	private static final Logger logger
 	=LoggerFactory.getLogger(MemberController.class);
+	
 	
 	@Autowired
 	private MemberService memberService;
@@ -118,21 +123,9 @@ public class MemberController {
 		
 		return "redirect:/page.do";
 	}
-	@RequestMapping(value="/memberEdit.do", method=RequestMethod.GET)
-	public String memberEdit_get(HttpSession session, Model model){
-		
-		String mEmail=(String)session.getAttribute("mEmail");
-		logger.info("회원수정화면 보여주기, 파라미터 mEmail={}",mEmail);
-		
-		MemberVo vo= memberService.selectmEmail(mEmail);
-		logger.info("회원정보 조회 결과 vo={}",vo);
-		
-		model.addAttribute("membervo",vo);
-
-		return "member/memberEdit";
-	}
 	
-	@RequestMapping(value="/memberEdit.do", method=RequestMethod.POST)
+	
+	@RequestMapping("/memberEdit.do")
 	public String memberEdit_post(@ModelAttribute MemberVo membervo, 
 			@RequestParam(defaultValue="") String oldmImage,
 			@RequestParam(defaultValue="") String chgmpwd,
@@ -183,13 +176,8 @@ public class MemberController {
 		return "common/message";
 	}
 	
-	@RequestMapping(value="/memberQuit.do", method=RequestMethod.GET)
-	public String memberQuit_get(){
-		logger.info("회원탈퇴화면 보여주기");
-		
-		return "member/memberQuit";
-	}
-	@RequestMapping(value="/memberQuit.do", method=RequestMethod.POST)
+	
+	@RequestMapping("/memberQuit.do")
 	public String memberQuit_post(HttpSession session,HttpServletRequest request,
 			@RequestParam(defaultValue="") String oldmImage){
 		String mEmail=(String)session.getAttribute("mEmail");
@@ -205,6 +193,10 @@ public class MemberController {
 				boolean bool= delfile.delete();
 				logger.info("파일 삭제 결과={}",bool);	
 			}
+			
+		
+
+			
 		session.removeAttribute("mEmail");
 		session.removeAttribute("mNick");
 		session.removeAttribute("mNo");
