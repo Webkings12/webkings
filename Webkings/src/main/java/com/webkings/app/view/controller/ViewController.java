@@ -106,9 +106,12 @@ public class ViewController {
 		logger.info("pageNum, page, age={},{}",pageNum, page);
 		logger.info("styleList={}", styleList);
 		model.addAttribute("pageNum",pageNum);
+		
+		
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("searchVal", searchVal);
+
 		model.addAttribute("gender", gender);
 		model.addAttribute("style", style);
 		model.addAttribute("itNCount", itNCount);
