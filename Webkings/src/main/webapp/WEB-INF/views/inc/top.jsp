@@ -1,3 +1,5 @@
+<%@page import="java.util.function.Function"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -34,6 +36,7 @@
 <title>오늘뭐입지?</title>
 <script type="text/javascript">
 var searchUrl="<c:url value='/search/list.do'/>";
+var deleteUrl="<c:url value='/search/delete.do'/>";
 var gender = "${gender}";
 var itNCount="${itNCount}";
 var itOCount="${itOCount}";
@@ -42,6 +45,7 @@ var itCount="";
 var shopCount="";
 var searchList="";
 </script>
+<script type="text/javascript" src="<c:url value='/js/search.js'/>"></script>
 </head>
 <body class="F">
 	<div class="header">
@@ -163,11 +167,7 @@ var searchList="";
 									<li class="active"><a href="javascript:;">최근 검색어</a></li>
 								</ul>
 								<div class="con disnone" style="display: block;">
-									<ul class="noData"><li class="noData">최근 검색어가 없습니다.</li></ul>
-									<p>
-										<a href="#" onclick="saveSearch()" class="save">검색어 저장</a>
-										<a href="javascript:;" class="del">전체삭제</a>
-									</p>
+									
 								</div>
 							</div>
 							<div class="bg"></div>

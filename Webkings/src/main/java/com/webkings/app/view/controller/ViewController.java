@@ -64,7 +64,6 @@ public class ViewController {
 		int itOCount= itemService.itemSelectCount(itemSearchVo);
 		
 		logger.info("alist.size(),ageSel={},{}", itemList.size(), ageSel);
-		logger.info("styleList1.size()={}", styleList.size());
 		
 		/*age sel*/
 		String age="";
