@@ -32,12 +32,16 @@ public class ViewController {
 	
 	@RequestMapping("/page.do")
 	public String page(@RequestParam(defaultValue="/item") String page, @RequestParam(defaultValue="all") String ageSel,
-			@RequestParam(defaultValue="F") String gender, @RequestParam(defaultValue="all") String style, Model model){
+			@RequestParam(defaultValue="F") String gender,@RequestParam(required=false) String searchVal,  @RequestParam(defaultValue="all") String style, Model model){
 		logger.info("page,gender={},{}",page,gender);
 		
+		if(page.equals("/search")){
+			page="/search/search";
+		}
 		if(page.equals("/product" )|| page.equals("/item" )|| page.equals("/shop" )|| page.equals("/mypage")){
  			page+=page+gender;
  		}
+		
 		if(gender==""){
 			gender="F";
 		}
@@ -104,6 +108,7 @@ public class ViewController {
 		model.addAttribute("pageNum",pageNum);
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
+		model.addAttribute("searchVal", searchVal);
 		model.addAttribute("gender", gender);
 		model.addAttribute("style", style);
 		model.addAttribute("itNCount", itNCount);

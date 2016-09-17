@@ -1,16 +1,6 @@
 /**
  * 
  */
-/*검색어 저장*/
-function saveSearch() {
-	if($("body>div.header div.search div.keyword .con>p a.save").hasClass("save")){
-		if($("body>div.header div.search div.keyword .con>p a.save.active").hasClass("save active")){
-			$("body>div.header div.search div.keyword .con>p a.save").attr("class","save");
-		}else{
-		$("body>div.header div.search div.keyword .con>p a.save").attr("class","save active");
-		}
-	}
-}	
 $(document).ready(function() {
 	$.ajax({
 		url:searchUrl,
@@ -24,13 +14,13 @@ $(document).ready(function() {
 			itCount= res.itCount;
 			shopCount= res.shopCount;
 			searchList= res.searchList;
-			var result="<div class='tit-sec-1 tit-sec-full shop-search' style='display: block;'><div class='in'>"+
-							"<strong>'<em>s</em>' 샵 검색결과 <i>294</i></strong>"+
-							"<a href='javascript:;' class='more' style='display: inline;'>더보기</a>"+
-							"</div></div>";
 			var noResult="";
-			if(shopList!=null && itemSel!=null){
-				if(shopList!=null){
+			if(shopList!=null && shopList!="" && itemSel!=null && itemSel!=""){
+				if(shopList!=null && shopList!=""){
+					var result="<div class='tit-sec-1 tit-sec-full shop-search' style='display: block;'><div class='in'>"+
+					"<strong>'<em>"+searchVal+"</em>' 샵 검색결과 <i>"+shopCount+"</i></strong>"+
+					"<a href='javascript:;' class='more' style='display: inline;'>더보기</a>"+
+					"</div></div>";
 					result+="<ul class='item-list shop-search' style='display: block;'>";
 				$.each(shopList, function(idx, item) {
 					result+=
@@ -45,6 +35,7 @@ $(document).ready(function() {
 				});
 					result+="</ul>";
 				}
+				if(itemSel!=null && itemSel!=""){
 				result+="<div class='tit-sec-1 tit-sec-full prod-search' style='display: block;'><div class='in'>"+
 				"<div class='tit'>"+
 				"<strong>'<em>s</em>' 상품 검색결과 <i>6,000</i></strong>"+
@@ -90,7 +81,7 @@ $(document).ready(function() {
 			"</div>"+
 		"</div>"+
 		"</div>";
-				if(itemSel!=null){
+				
 					result+="<ul class='item-list abs-list prod-search' style='display: block;'>";
 				$.each(shopList, function(idx, item) {
 					result+=
@@ -108,6 +99,7 @@ $(document).ready(function() {
 				$("div.body-sec>div.in-sec>div.not-top").html(result);
 				}
 			}else{
+				
 				noResult+="<div class='not-item'>검색 결과가 없습니다.</div></div></div>";
 				$("div.body-sec>div.in-sec>div.not-top").html(noResult);
 			}

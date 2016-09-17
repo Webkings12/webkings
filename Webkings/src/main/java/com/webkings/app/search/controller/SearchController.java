@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,7 @@ import com.webkings.app.shop.model.ShopService;
 import com.webkings.app.shop.model.ShopViewVO;
 import com.webkings.app.style.model.StyleService;
 import com.webkings.app.style.model.StyleVO;
+import com.webkings.app.view.controller.ViewController;
 
 @Controller
 @RequestMapping("/search")
@@ -36,14 +39,17 @@ public class SearchController {
 	@Autowired
 	private ShopService shopService;
 	
+	private static final Logger logger= LoggerFactory.getLogger(ViewController.class);
 	
 	@RequestMapping("/view.do")
-	public String searchView(@RequestParam(defaultValue="F") String gender, @RequestParam String searchVal,
+	public String searchView(@RequestParam(defaultValue="F") String gender, @RequestParam(required=false) String searchVal,
 			Model model){
 		
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
 		
+		int pageNum=0;
+		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("searchVal", searchVal);
 		model.addAttribute("gender", gender);
 		model.addAttribute("styleList", styleList);
@@ -53,7 +59,8 @@ public class SearchController {
 	
 	@RequestMapping("/list.do")
 	@ResponseBody
-	public  Map<String, Object> searchList(@RequestParam String gender, @RequestParam String searchVal, HttpSession session){
+	public  Map<String, Object> searchList(@RequestParam String gender, @RequestParam(required=false) String searchVal,
+			HttpSession session){
 		List<String> list = (List<String>)session.getAttribute("searchList");
 		
 		if(list==null){
@@ -61,11 +68,25 @@ public class SearchController {
 			session.setAttribute("searchList", list);
 		}
 		list.add(searchVal);
+		 if(searchVal==null){
+			searchVal="";
+		}
 		
 		/*아이템 검색*/
 		ItemSearchVO itemSearchVo= new ItemSearchVO();
 		itemSearchVo.setSw2(searchVal);
+		logger.info("searchVal={}",searchVal);
+		logger.info("sw2={}", itemSearchVo.getSw2());
 		itemSearchVo.setGender(gender);
+		
+		itemSearchVo.setCate("");
+		itemSearchVo.setOrderVal("");
+		itemSearchVo.setSsp("");
+		itemSearchVo.setSep("");
+		itemSearchVo.setSac("");
+		itemSearchVo.setnItem("");
+		
+		
 		List<ItemViewVO> selItemList = itemService.itemSearch(itemSearchVo);
 		
 		/*아이템 검색 갯수*/
@@ -76,8 +97,12 @@ public class SearchController {
 		ShopViewVO shopViewVo = new ShopViewVO();
 		shopViewVo.setStGender(gender);
 		shopViewVo.setSearchKeyword(searchVal);
+		
+		shopViewVo.setStName("all");
+		
 		List<ShopViewVO> shopList = shopService.shopStyle(shopViewVo);
 		int shopCount = shopService.shopSelect(searchVal);
+		
 		
 		
 		Map<String, Object> resMap = new HashMap<String, Object>();

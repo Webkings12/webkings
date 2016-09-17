@@ -3,6 +3,16 @@
  */
 var gender ="";
 var page = "";
+/*검색어 저장*/
+function saveSearch() {
+	if($("body>div.header div.search div.keyword .con>p a.save").hasClass("save")){
+		if($("body>div.header div.search div.keyword .con>p a.save.active").hasClass("save active")){
+			$("body>div.header div.search div.keyword .con>p a.save").attr("class","save");
+		}else{
+		$("body>div.header div.search div.keyword .con>p a.save").attr("class","save active");
+		}
+	}
+}	
 $(document).ready(function() {
 		
 		$("body").attr("class","F");
@@ -25,6 +35,10 @@ $(document).ready(function() {
 			gender="M";
 			page=$(".active #gnbPage").val();
 			
+			if(page==null || page==""){
+				
+				page="/search";
+			}
 			if($(".list-top-1 p").hasClass("notice-2")){
 				page="/product";
 			}
@@ -58,7 +72,7 @@ $(document).ready(function() {
 		 		}else if(page=="/product"){
 		 			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
 		 		}else{
-		 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=M");
+		 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
 		 		}
 			}
 		});

@@ -14,6 +14,31 @@ div.body-sec>div.in-sec>div.not-top {
 .tit-sec-1.tit-sec-full>.in {
     margin: 0 3px;
 }
+.not-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.not-item:before {
+    content: "";
+    background-image: url(../images/chat.png);
+    -webkit-background-size: 48px 54px;
+    -moz-background-size: 48px 54px;
+    -o-background-size: 48px 54px;
+    background-size: 48px 54px;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 54px;
+    display: block;
+    margin: 0 auto 15px;
+}
 
 .tit-sec-1 {
     position: relative;

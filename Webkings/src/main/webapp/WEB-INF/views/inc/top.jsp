@@ -42,7 +42,6 @@ var itCount="";
 var shopCount="";
 var searchList="";
 </script>
-<script type="text/javascript" src="<c:url value='/js/search.js'/>"></script>
 </head>
 <body class="F">
 	<div class="header">
@@ -150,8 +149,9 @@ var searchList="";
 						</div>
 					</c:if> --%>
 					<div class="search">
-						<form id="fmSearch" name="fmSearch" action="<c:url value='/search//view.do'/>" class="autoValidateForm"><p>
-							<input type="text" name="q" value="" fieldname="검색어" checkfunctionname="checkSpecialChar"
+						<form id="fmSearch" name="fmSearch" action="<c:url value='/search/view.do'/>" class="autoValidateForm"><p>
+							<input type="hidden" name="gender" value="${gender}">
+							<input type="text" name="searchVal" value="" fieldname="검색어" checkfunctionname="checkSpecialChar"
 							 restrictutf8bytes="45" class="__required" confirmmessage="특수문자로 검색하실수 없습니다." 
 							 autocomplete="off" focus="off"/></p>
 						</form>

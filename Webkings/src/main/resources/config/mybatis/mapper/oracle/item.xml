@@ -62,7 +62,7 @@
 		<if test="cate !=null and cate neq'' and cate neq 'ALL'">
 			and it_name = #{cate}
 		</if>
-		<if test="sw2 != null and sw2 neq ''">
+		<if test='sw2 != null and sw2 neq ""'>
 			and i_name like '%' || #{sw2} || '%'
 		</if>
 		<if test='ssp!=null and ssp neq "" and sep!=null and sep neq ""'>
@@ -152,7 +152,7 @@
 		select * from itemview
 		where 1=1
 		and it_gender = #{gender}
-		<if test="sw2 != null and sw2 neq ''">
+		<if test='sw2 != null and sw2 neq ""'>
 			and i_name like '%' || #{sw2} || '%'
 		</if>
 		<if test='ssp neq "" and sep neq ""'>
