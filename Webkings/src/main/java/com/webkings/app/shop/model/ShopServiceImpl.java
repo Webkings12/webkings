@@ -25,5 +25,10 @@ public class ShopServiceImpl implements ShopService{
 	public int shopSelect(String searchVal) {
 		return shopDao.shopSelect(searchVal);
 	}
+
+	@Override
+	public int shopClickUpdate(int sNo) {
+		return shopDao.shopClickUpdate(sNo);
+	}
 	
 }

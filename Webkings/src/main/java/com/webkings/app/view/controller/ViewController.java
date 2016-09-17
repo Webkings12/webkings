@@ -109,7 +109,7 @@ public class ViewController {
 		
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
-		model.addAttribute("searchVal", searchVal);
+		/*model.addAttribute("searchVal", searchVal);*/
 
 		model.addAttribute("gender", gender);
 		model.addAttribute("style", style);

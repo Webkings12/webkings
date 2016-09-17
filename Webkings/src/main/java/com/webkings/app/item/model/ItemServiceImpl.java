@@ -80,4 +80,9 @@ public class ItemServiceImpl implements ItemService{
 	public List<ItemViewVO> itemSelectiNo(int iNo) {
 		return itemDao.itemSelectiNo(iNo);
 	}
+
+	@Override
+	public int itemClick(int iNo) {
+		return itemDao.itemClick(iNo);
+	}
 }

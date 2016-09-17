@@ -39,9 +39,9 @@ public class FooterViewController {
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("gender",gender);
 		
-		
-		return "page/mypage/companyF";
+		return "page/mypage/company"+gender;
 	}
 	
 	@RequestMapping("/service.do")
@@ -56,7 +56,8 @@ public class FooterViewController {
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("gender",gender);
 		
-		return "page/mypage/serviceF";
+		return "page/mypage/service"+gender;
 	}
 }

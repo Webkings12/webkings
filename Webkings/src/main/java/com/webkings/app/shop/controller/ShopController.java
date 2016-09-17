@@ -79,4 +79,11 @@ public class ShopController {
 		resMap.put("shopNewList", shopNew);
 		return resMap;
 	}
+	
+	/*샵눌렀을때 사이트로 넘어가기*/
+	@RequestMapping("/shopGo.do")
+	public String shopGo(){
+		
+		return "gg";
+	}
 }

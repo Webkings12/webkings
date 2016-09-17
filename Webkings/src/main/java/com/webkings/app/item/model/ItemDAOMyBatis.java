@@ -79,6 +79,11 @@ public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
 	public List<ItemViewVO> itemSelectiNo(int iNo) {
 		return getSqlSession().selectList(namespace+".itemSelectiNo", iNo);
 	}
+
+	@Override
+	public int itemClick(int iNo) {
+		return getSqlSession().update(namespace+".itemClickUpdate", iNo);
+	}
 	
 	
 	

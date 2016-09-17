@@ -39,7 +39,6 @@ $(document).ready(function() {
 				if(page==null || page==""){
 					page="/search";
 				}
-				alert(page);
 				if($(".list-top-1 p").hasClass("notice-2")){
 					page="/product";
 				}
@@ -68,14 +67,20 @@ $(document).ready(function() {
 					}
 					return;
 				}
-				else if(page=="/shop" || page=="/mypage"){
+				else if(page=="/shop"){
 		 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=F");
 		 			return;
 		 		}else if(page=="/product"){
 		 			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
 		 		}else if(page=="/search"){
 		 			alert("여자로 갈때 gender"+gender);
-				$(location).attr('href', "/Webkings/search/view.do?searchVal="+searchVal+"&gender="+gender);
+		 			$(location).attr('href', "/Webkings/search/view.do?searchVal="+searchVal+"&gender="+gender);
+		 		}else if(page=="/mypage"){
+		 			if($(".body-sec .in-sec #myPageVal").val()=="service"){
+		 				$(location).attr('href', "/Webkings/service.do?gender="+gender);
+		 			}else if($(".body-sec .in-sec #myPageVal").val()=="company"){
+		 				$(location).attr('href', "/Webkings/company.do?gender="+gender);
+		 			}
 		 		}
 			}
 		});

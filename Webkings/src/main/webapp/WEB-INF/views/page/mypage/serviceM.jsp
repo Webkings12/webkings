@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mypage.css"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
-<script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
@@ -282,8 +282,6 @@ $(document).ready(function() {
 
 
 </div>
-		
-		
 	<%@ include file="footer-sec.jsp" %>
 	</div>
 </div>

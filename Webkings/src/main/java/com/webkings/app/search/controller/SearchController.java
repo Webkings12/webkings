@@ -39,7 +39,7 @@ public class SearchController {
 	@Autowired
 	private ShopService shopService;
 	
-	private static final Logger logger= LoggerFactory.getLogger(ViewController.class);
+	private static final Logger logger= LoggerFactory.getLogger(SearchController.class);
 	
 	@RequestMapping("/view.do")
 	public String searchView(@RequestParam(defaultValue="F") String gender, @RequestParam(required=false) String searchVal,
@@ -61,17 +61,17 @@ public class SearchController {
 	@ResponseBody
 	public  Map<String, Object> searchList(@RequestParam String gender, @RequestParam(required=false) String searchVal,
 			HttpSession session){
+	
 		List<String> list = (List<String>)session.getAttribute("searchList");
-		
 		if(list==null){
 			list = new ArrayList<String>();
 			session.setAttribute("searchList", list);
+		}else{
+			if(!searchVal.equals("")){
+				
+				list.add(searchVal);
+			}
 		}
-		list.add(searchVal);
-		 if(searchVal==null){
-			searchVal="";     
-		}
-		
 		/*아이템 검색*/
 		ItemSearchVO itemSearchVo= new ItemSearchVO();
 		itemSearchVo.setSw2(searchVal);
@@ -112,8 +112,8 @@ public class SearchController {
 		logger.info("sCount={}", shopCount);
 		
 		
-		
 		Map<String, Object> resMap = new HashMap<String, Object>();
+	
 		resMap.put("searchList", list);
 		resMap.put("shopList", shopList);
 		resMap.put("itemList", selItemList);
@@ -125,6 +125,9 @@ public class SearchController {
 	@RequestMapping("/delete.do")
 	@ResponseBody
 	public void deleteSesion(HttpSession session){
+		
 		session.removeAttribute("searchList");
+		
+		
 	}
 }

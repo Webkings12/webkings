@@ -233,4 +233,10 @@ public class ItemController {
 		logger.info("ajax itemList={}", selItemList);
 		return resMap;
 	}
+	
+	/*아이템 사이트 넘어가기*/
+	@RequestMapping("/itemGo.do")
+	public String itemGo(){
+		return "gg";
+	}
 }

@@ -26,4 +26,7 @@ public interface ItemService {
 	
 	// 최근 본상품
 	public List<ItemViewVO> itemSelectiNo(int iNo);
+	
+	//아이템 클릭수 올리기
+	public int itemClick(int iNo);
 }
