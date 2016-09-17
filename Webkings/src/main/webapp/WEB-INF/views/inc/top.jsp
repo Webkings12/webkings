@@ -16,6 +16,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/member.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/item.css"/>	
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/shop.css"/>	
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/search.css"/>	
+
 <script type="text/javascript" src="<c:url value='/js/login.js'/>"></script>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -143,7 +145,7 @@ var itOCount="${itOCount}";
 						</div>
 					</c:if> --%>
 					<div class="search">
-						<form id="fmSearch" name="fmSearch" action="#" class="autoValidateForm"><p>
+						<form id="fmSearch" name="fmSearch" action="<c:url value='/search.do'/>" class="autoValidateForm"><p>
 							<input type="text" name="q" value="" fieldname="검색어" checkfunctionname="checkSpecialChar"
 							 restrictutf8bytes="45" class="__required" confirmmessage="특수문자로 검색하실수 없습니다." 
 							 autocomplete="off" focus="off"/></p>

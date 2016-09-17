@@ -68,6 +68,7 @@ body>div.header div.search div.keyword .tab li.active a {
     border-color: #e6178f;
     color: #202022;
     font-weight: bold;
+    cursor: default;
 }
 body>div.header div.search:hover div.keyword, body>div.header div.search.active div.keyword {
     display: block;

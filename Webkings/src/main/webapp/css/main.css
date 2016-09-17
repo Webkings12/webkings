@@ -8,11 +8,24 @@ body>div.header {
 body>div.header ul.logout li {
     float: left;
 }
+div.body-sec>div.in-sec {
+    width: 1440px;
+    min-height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+@media screen and (max-width: 1460px)
+{div.body-sec>div.in-sec {
+    width: 950px;
+}}
 body>div.header ul.logout li a {
     display: block;
     padding: 0 9px 0 10px;
     line-height: 20px;
     position: relative;
+}
+body>div.header div.search:hover p input, body>div.header div.search.active p input {
+    display: block;
 }
 body>div.header ul.logout {
     overflow: hidden;
