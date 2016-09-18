@@ -81,10 +81,7 @@ public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
 	}
 
 	@Override
-	public int itemClick(int iNo) {
+	public int itemClick(String iNo) {
 		return getSqlSession().update(namespace+".itemClickUpdate", iNo);
 	}
-	
-	
-	
 }

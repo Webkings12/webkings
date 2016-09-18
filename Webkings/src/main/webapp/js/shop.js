@@ -2,6 +2,7 @@
  * 
  */
 $(document).ready(function() {
+	var sNo="";
 			 $.ajax({
 				url:url,
 				type:"GET",
@@ -15,11 +16,11 @@ $(document).ready(function() {
 					if(sNewList!=null){
 					$.each(sNewList, function(idx, item) {
 					 result+=
-					"<li class='shop sec-2  F ia'>"+
+					"<li class='shop sec-2  "+gender+" ia'>"+
 					"<a href='http://"+item.sDomain+"'  target='_blank' seq='121'>"+	
 					"<img src='"+item.sBimage+"' data-original='http://img.sta1.kr/_up/shop/logo/2016/09/1473406293970_a1.jpg' class='item'" +
 					" style='display: block;'>"+
-					"<div class='over'>		<div class='btn'>" +
+					"<div class='over'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'>		<div class='btn'>" +
 					"<span class='fb sns'>" +
 					"</span><i>페이스북 공유</i>" +
 					"<span class='tw sns'>" +
@@ -35,10 +36,10 @@ $(document).ready(function() {
 					if(styleSel!=null){
 						$.each(styleSel, function(idx, item) {
 							result+=
-						"<li class='shop  F ia'><a href='http://"+item.sDomain+"'  target='_blank' seq='271'>"	+
+						"<li class='shop  "+gender+" ia'><a href='http://"+item.sDomain+"'  target='_blank' seq='271'>"	+
 						"<img src='"+item.sSimage+"' " +
 						"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1471857259160_n1.jpg' class='item' style='display: block;'>"+
-						"<div class='over'>		<div class='btn'>" +
+						"<div class='over'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'>		<div class='btn'>" +
 						"<span class='fb sns'>" +
 						"<input type='hidden' id='fbTitle' value='"+item.sName+"'/>"+
 						"<input type='hidden' id='fbUrl' value='"+item.sDomain+"'/>" +
@@ -64,6 +65,23 @@ $(document).ready(function() {
 			 if($(".option-sec-2 input[type=text]").val()!=""){
 				 $(".option-sec-2 input[type=text]").focus();
 			 }
+			 
+			/* 샵 클릭 업데이트
+			 $(".item-list>li.shop>a").click(function() {
+				sNo = $(this).find("#inputsNo").val();
+				 $.ajax({
+					 url:shopUpdateUrl,
+					 type:"GET", 
+					 data: "sNo="+sNo,
+					 async:false,
+					 dataType:"json",
+					 success:function(res){
+					 },error:function(xhr, status, error){
+							alert(error);
+					}
+					 
+				 });
+			});*/ 
 			 
 			 /*트위터*/
 			 $(".item-list>li.shop .over .btn .tw.sns").click(function(e) {

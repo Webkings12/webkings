@@ -49,6 +49,9 @@ var fbImage="";
 <script type="text/javascript">
 var searchUrl="<c:url value='/search/list.do'/>";
 var deleteUrl="<c:url value='/search/delete.do'/>";
+var itemUpdateUrl="<c:url value='/item/itemClick.do'/>";
+var shopUpdateUrl="<c:url value='/shop/shopClick.do'/>";
+
 var gender = "${gender}";
 var itNCount="${itNCount}";
 var itOCount="${itOCount}";

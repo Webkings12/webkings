@@ -235,8 +235,10 @@ public class ItemController {
 	}
 	
 	/*아이템 사이트 넘어가기*/
-	@RequestMapping("/itemGo.do")
-	public String itemGo(){
-		return "gg";
+	@RequestMapping("/itemClick.do")
+	@ResponseBody
+	public int itemClick(@RequestParam String iNo){
+		int cnt = itemService.itemClick(iNo);
+		return cnt;
 	}
 }

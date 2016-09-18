@@ -43,8 +43,10 @@ $(document).ready(function() {
 									}
 									result+="<div class='btn'>"+
 										"<span class='fb'>" +
-										
-										
+										"<input type='hidden' id='fbTitle' value='"+item.iName+"'/>"+
+										"<input type='hidden' id='fbUrl' value='"+item.iDomain+"'/>" +
+										"<input type='hidden' id='fbImage' value='"+item.iImage+"'/>" +
+										"<input type='hidden' id='fbContent' value='"+item.itName+"'/>" +
 										"</span>" +
 										"<i>페이스북 공유</i>" +
 										"<span class='tw'>" +
@@ -83,8 +85,10 @@ $(document).ready(function() {
 									result +=
 									"<div class='btn'>"+
 										"<span class='fb' >" +
-										
-										
+										"<input type='hidden' id='fbTitle' value='"+item.iName+"'/>"+
+										"<input type='hidden' id='fbUrl' value='"+item.iDomain+"'/>" +
+										"<input type='hidden' id='fbImage' value='"+item.iImage+"'/>" +
+										"<input type='hidden' id='fbContent' value='"+item.itName+"'/>" +
 										"</span>" +
 										"<i>페이스북 공유</i>" +
 										"<span class='tw'>" +
@@ -105,7 +109,24 @@ $(document).ready(function() {
 					alert(error);
 				}
 			});
-			
+			/* 아이템 클릭 업데이트
+			 $(".item-list>li.prod>a").click(function() {
+				iNo = $(this).find("#inputiNo").val();
+				 $.ajax({
+					 url:itemUpdateUrl,
+					 type:"GET", 
+					 data: "iNo="+iNo,
+					 async:false,
+					 dataType:"json",
+					 success:function(res){
+					 },error:function(xhr, status, error){
+							alert(error);
+					}
+					 
+				 });
+			});*/
+			 
+			/*트위터*/
 			 $(".item-list>li#prod2 .info .btn .tw").click(function(e) {
 				e.stopPropagation();
 				e.preventDefault();
@@ -129,6 +150,34 @@ $(document).ready(function() {
 					    wp.focus();
 					  }   
 				});
+			 /*페이스북*/
+			 $(".item-list>li#prod1 .info .btn .fb").click(function(e) {
+					e.stopPropagation();
+					e.preventDefault();
+					
+					fbTitle=$(this).find("#fbTitle").val();
+					fbUrl= $(this).find("#fbUrl").val();
+					fbImage= $(this).find("#fbImage").val();
+					fbContent=$(this).find("#fbContent").val();
+					
+					
+				  var popOption = "width=600, height=400, resizable=no, scrollbars=no, status=no;";
+				  window.open("http://www.facebook.com/sharer/sharer.php?u="+fbUrl, "share",popOption); 
+			});
+			 
+			 $(".item-list>li#prod2 .info .btn .fb").click(function(e) {
+					e.stopPropagation();
+					e.preventDefault();
+					
+					fbTitle=$(this).find("#fbTitle").val();
+					fbUrl= $(this).find("#fbUrl").val();
+					fbImage= $(this).find("#fbImage").val();
+					fbContent=$(this).find("#fbContent").val();
+					
+					
+				  var popOption = "width=600, height=400, resizable=no, scrollbars=no, status=no;";
+				  window.open("http://www.facebook.com/sharer/sharer.php?u="+fbUrl, "share",popOption); 
+			});
 			 /*날짜구하기*/
 			 var today = new Date();
 			 var year= today.getFullYear();
@@ -179,9 +228,6 @@ $(document).ready(function() {
 						}
 					});
 		    });
-		    	
-		    	
-		    	
 		});
 function gbn(){
 	if($(".list-top-1 p").hasClass("notice-1")){

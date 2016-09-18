@@ -30,10 +30,10 @@
 		and s_name like '%' || #{searchVal} || '%'
 	</select>
 	
-	<update id="clickUp" parameterType="int">
+	<update id="clickUp" parameterType="String">
 		update shop
 		set s_click = s_click+1
 		where 1=1
-		and s_no = #{sNo};
+		and s_no = #{sNo}
 	</update>
 </mapper>

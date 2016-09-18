@@ -198,10 +198,10 @@
 		and i_no=#{iNo}
 	</select>
 	
-	<update id="itemClickUpdate" parameterType="int">
+	<update id="itemClickUpdate" parameterType="string">
 		update item
 		set i_click = i_click+1
 		where 1=1
-		and i_no = #{iNo};
+		and i_no = #{iNo}
 	</update>
 </mapper>

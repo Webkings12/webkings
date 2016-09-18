@@ -81,9 +81,10 @@ public class ShopController {
 	}
 	
 	/*샵눌렀을때 사이트로 넘어가기*/
-	@RequestMapping("/shopGo.do")
-	public String shopGo(){
-		
-		return "gg";
+	@RequestMapping("/shopClick.do")
+	@ResponseBody
+	public int shopClick(@RequestParam String sNo){
+		int cnt = shopService.shopClickUpdate(sNo);
+		return cnt;
 	}
 }
