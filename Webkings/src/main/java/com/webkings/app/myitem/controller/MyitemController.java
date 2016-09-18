@@ -119,4 +119,16 @@ public class MyitemController {
 		
 		return "page/mypage/prodList"+gender;
 	}
+	@RequestMapping("myitemdelete.do")
+	public void myitemdelete( @RequestParam int iNo,@RequestParam int mNo,Model model){
+		logger.info("관심 목록 삭제 iNo={},mNo={}",iNo,mNo);
+		
+		MyitemVO vo= new MyitemVO();
+		vo.setiNo(iNo);
+		vo.setmNo(mNo);
+		
+		int cnt=myitemService.deleteMyitem(vo);
+		logger.info("관심 목록 삭제결과 cnt={}",cnt);
+		
+	}
 }

@@ -28,4 +28,9 @@ public class MyitemServiceImpl implements MyitemService{
 		return myitemDAO.selectMiTEMview(mNo);
 	}
 
+	@Override
+	public int deleteMyitem(MyitemVO vo) {
+		return myitemDAO.deleteMyitem(vo);
+	}
+
 }

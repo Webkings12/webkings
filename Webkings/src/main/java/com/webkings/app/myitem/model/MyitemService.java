@@ -7,4 +7,5 @@ public interface MyitemService {
 	public int insertMyitem(MyitemVO vo);
 	public int selectINO(MyitemVO vo);
 	public List<MyItemviewVO> selectMiTEMview(int mNo);
+	public int deleteMyitem(MyitemVO vo);
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top.jsp" %>
+
 <div class="body-sec">
 <div class="in-sec">
 <div class="item-list">
@@ -18,6 +19,7 @@
 	</c:if>
 	<c:if test="${!empty prodList }">
 		<c:forEach var="item" items="${prodList }">
+		
 	<li class="prod ${gender} ia" id="prod2" style="list-style: none;">
 		<a href="" sseq="121" seq="1349867" maindate="20160908">
 			<img src="../../itemImage/${item.iImage}" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"

@@ -26,4 +26,9 @@ public class MyitemDAOMybatis extends SqlSessionDaoSupport implements MyitemDAO{
 		return getSqlSession().selectList(namespace+".selectMiTEMview", mNo);
 	}
 
+	@Override
+	public int deleteMyitem(MyitemVO vo) {
+		return getSqlSession().delete(namespace+".deleteMyitem", vo);
+	}
+
 }
