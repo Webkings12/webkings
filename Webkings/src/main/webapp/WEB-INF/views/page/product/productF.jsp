@@ -74,10 +74,10 @@ $(document).ready(function() {
 				<li class="order">
 					<a href="#"	class="aw-1"></a>
 					<ul>
-						<li><a href="#"><input type="hidden" value="0">신상품순</a></li>
-						<li><a href="#"><input type="hidden" value="1">클릭순</a></li>
-						<li><a href="#"><input type="hidden" value="2">높은 가격순</a></li>
-						<li><a href="#"><input type="hidden" value="3">낮은 가격순</a></li>
+						<li><a href="javascript:;"><input type="hidden" value="0">신상품순</a></li>
+						<li><a href="javascript:;"><input type="hidden" value="1">클릭순</a></li>
+						<li><a href="javascript:;"><input type="hidden" value="2">높은 가격순</a></li>
+						<li><a href="javascript:;"><input type="hidden" value="3">낮은 가격순</a></li>
 					</ul>
 				</li>
 

@@ -144,15 +144,14 @@ div.body-sec div.in-sec-2 {
     height: 35px;
 }
 .mypage-btn li.coupon a:before {
-    background-image: url("/rsc/front/img/sprite.png?_1471437666714");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/percent.png");
+    -webkit-background-size: 36px 35px;
+    -moz-background-size: 36px 35px;
+    -o-background-size:36px 35px;
+    background-size: 36px 36px;
     background-repeat: no-repeat;
-    background-position: -36px -166px;
     width: 36px;
-    height: 35px;
+    height: 36px;
 }
 .mypage-btn li.favor a:before {
     background-image: url("../images/starB.png");

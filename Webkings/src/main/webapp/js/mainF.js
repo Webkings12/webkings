@@ -45,7 +45,6 @@ $(document).ready(function() {
 			}else{
 				age="all";
 			}
-			alert("페이지는여자꺼"+page);
 			if($("body").hasClass("F")){
 				$("body").removeClass("F");
 				$("body").attr("class","M");

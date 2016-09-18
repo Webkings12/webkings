@@ -17,6 +17,10 @@ $(document).ready(function() {
 		$(this).removeClass("active");
 		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
 	});
+	
+	$("#coupon").click(function() {
+		alert("서비스 준비중입니다");
+	});
 });
 </script>
 	<!-- 회원 정보 수정 끝-->
@@ -69,7 +73,7 @@ $(document).ready(function() {
 		</c:if>
 			<li class="recent-prod"><a href="/recent/prod">최근 본 상품<em></em></a></li>
 			<li class="recent-shop"><a href="/recent/shop">최근 본 샵<em></em></a></li>
-			<li class="coupon"><a href="#login">쿠폰북</a></li>
+			<li class="coupon"><a href="javascript:;"  id="coupon">쿠폰북</a></li>
 			<li class="favor"><a href="<c:url value='/myitemList.do'/>">관심상품</a></li>
 			<li class="follow"><a href="#login">내팔로잉<em></em></a></li>
 		</ul>

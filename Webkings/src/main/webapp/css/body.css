@@ -65,7 +65,7 @@ div.body-sec>div.in-sec p.privacy-fixed {
 
 /* banner select search */
 .notice-1 {
-    padding-left: 9px;
+    padding-left: 12px;
     position: absolute;
     top: 57%;
     -webkit-transform: translate(0,-50%);
@@ -86,15 +86,15 @@ div.body-sec>div.in-sec p.privacy-fixed {
     -o-transform: translate(0,-50%);
     transform: translate(0,-50%);
     left: 0;
-    background-image: url("/rsc/front/img/sprite.png?_1471437666698");
-    -webkit-background-size: 252px 234px;
-    -moz-background-size: 252px 234px;
-    -o-background-size: 252px 234px;
-    background-size: 252px 234px;
+    background-image: url("../images/warning-sign.png");
+    -webkit-background-size:3px 12px;
+    -moz-background-size: 3px 12px;
+    -o-background-size:5px 12px;
+    background-size: 9px 12px;
     background-repeat: no-repeat;
-    background-position: -249px -98px;
-    width: 3px;
+    width: 12px;
     height: 12px;
+    
 }
 .notice-1 em {
     color: #e6178f;

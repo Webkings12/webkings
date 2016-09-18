@@ -110,6 +110,12 @@ $(document).ready(function() {
 				  var popOption = "width=600, height=400, resizable=no, scrollbars=no, status=no;";
 				  window.open("http://www.facebook.com/sharer/sharer.php?u="+fbUrl, "share",popOption); 
 			});
+			 
+			 
+			$(".item-list>li.shop .info em").click(function(e) {
+				e.preventDefault();
+				alert("서비스 준비중입니다");
+			});
 });
 function enterSearch(){
 	searchName = $(".option-sec-2 input[type=text]").val();
