@@ -51,10 +51,12 @@ $(document).ready(function() {
 					result+="<ul class='item-list abs-list prod-search' style='display: block;'>";
 				$.each(itemSel, function(idx, item) {
 					result+=
-					"<li class='prod "+gender+"' style='left: 0px; top: 0px;'><a href='http://"+item.iDomain+"' target='_blank' sseq='11' seq='1388374'>"+
+					"<li class='prod "+gender+"' style='left: 0px; top: 0px;'><a id='aaaa' href='http://"+item.iDomain+"' target='_blank' sseq='11' seq='1388374'>"+
+					"<input type='hidden' id='inputiNo1' name='iINo' value='"+item.iNo+"'>"+
 					"<img src='"+item.iImage+"' " +
 					"data-original='http://img.sta1.kr/_up/prod/thmb/w/2016/09/17/03/1474048911831_AL.jpg' style='height: 310px; display: block;' " +
-					"class='item'>	<span class='favor'>관심상품</span>"+
+					"class='item'>	<span class='favor'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
+					"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
 					"<div class='info'>		<span class='shop'>"+item.sName+"</span>" +
 					"<span class='name'>"+item.iName+"</span>		<em class='cate' cate='104'>"+item.itName+"</em><i>"+item.iSalePrice+"</i>"+
 					"<div class='btn'><span class='fb'>"+
@@ -124,4 +126,38 @@ $(document).ready(function() {
 			    wp.focus();
 			  }   
 	});
+	 
+	// 최근 본 목록 이벤트
+     $(".item-list>li.prod #aaaa").click(function () {
+    	 iNo = $(this).find("#inputiNo1").val();
+    	 $.ajax({
+					url:"/Webkings/product.do",
+					type:"GET",
+					data:"iNo="+iNo,
+					dataType:"text",
+					success:function(res){
+						
+					},
+				error:function(xhr, status, error){
+					}
+			});
+    	}); 
+     // 즐겨찾기 이벤트  
+    $(".item-list>li.prod .favor").click(function (e) {
+    	e.stopPropagation();
+		e.preventDefault();
+    	iNo = $(this).find("#inputiNo").val();
+    	sNo = $(this).find("#inputsNo").val();
+    	$.ajax({
+				url:"/Webkings/myitem.do",
+				type:"GET",
+				data:"iNo="+iNo+"&sNo="+sNo,
+				dataType:"text",
+				success:function(res){
+
+				},
+				error:function(xhr, status, error){
+				}
+			});
+    });
 });
