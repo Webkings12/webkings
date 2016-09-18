@@ -82,7 +82,7 @@ public class ItemServiceImpl implements ItemService{
 	}
 
 	@Override
-	public int itemClick(int iNo) {
+	public int itemClick(String iNo) {
 		return itemDao.itemClick(iNo);
 	}
 }

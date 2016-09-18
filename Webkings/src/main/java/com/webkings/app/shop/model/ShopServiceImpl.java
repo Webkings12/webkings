@@ -27,7 +27,7 @@ public class ShopServiceImpl implements ShopService{
 	}
 
 	@Override
-	public int shopClickUpdate(int sNo) {
+	public int shopClickUpdate(String sNo) {
 		return shopDao.shopClickUpdate(sNo);
 	}
 	

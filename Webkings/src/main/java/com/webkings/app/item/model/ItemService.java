@@ -28,5 +28,5 @@ public interface ItemService {
 	public List<ItemViewVO> itemSelectiNo(int iNo);
 	
 	//아이템 클릭수 올리기
-	public int itemClick(int iNo);
+	public int itemClick(String iNo);
 }

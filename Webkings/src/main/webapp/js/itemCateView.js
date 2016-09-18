@@ -23,12 +23,17 @@ $(document).ready(function() {
 						"<a href='http://"+item.iDomain+"'  target='_blank' sseq='121' seq='1349867' maindate='20160908'>"+
 							"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 							"style='height: 340px; display: block;' class='item'>"+
-							"<span class='favor'>관심상품</span>"+
+							"<span class='favor'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'></span>"+
 							"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em><i>"+
 								item.iSalePrice+"</i>"+		
 								"<div class='btn'>"+
-									"<span class='fb'></span><i>페이스북 공유</i>" +
+									"<span class='fb'>" +
+									"<input type='hidden' id='fbTitle' value='"+item.iName+"'/>"+
+									"<input type='hidden' id='fbUrl' value='"+item.iDomain+"'/>" +
+									"<input type='hidden' id='fbImage' value='"+item.iImage+"'/>" +
+									"<input type='hidden' id='fbContent' value='"+item.itName+"'/>" +
+									"</span><i>페이스북 공유</i>" +
 									"<span class='tw'>" +
 										"<input type='hidden' id='itN' value='"+item.iName+"'/>"+
 										"<input type='hidden' id='doma' value='"+item.iDomain+"'/>" +
@@ -101,6 +106,25 @@ $(document).ready(function() {
 			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age3]").prop("checked", false);
 		});
 		
+/*		 아이템 클릭 업데이트
+		 $(".item-list>li.prod>a").click(function() {
+			
+			iNo = $(this).find("#inputiNo").val();
+			 $.ajax({
+				 url:itemUpdateUrl,
+				 type:"GET", 
+				 data: "iNo="+iNo,
+				 async:false,
+				 dataType:"json",
+				 success:function(res){
+					 alert("gg");
+				 },error:function(xhr, status, error){
+						alert(error);
+				}
+			 });
+		});*/
+		
+		/*트위터*/
 		$(".item-list>li.prod .info .btn .tw").click(function(e) {
 			e.stopPropagation();
 			e.preventDefault(); 
@@ -112,6 +136,20 @@ $(document).ready(function() {
 			    wp.focus();
 			  }   
 		});
+		 /*페이스북*/
+		$(".item-list>li.prod .info .btn .fb").click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			
+			fbTitle=$(this).find("#fbTitle").val();
+			fbUrl= $(this).find("#fbUrl").val();
+			fbImage= $(this).find("#fbImage").val();
+			fbContent=$(this).find("#fbContent").val();
+			
+			
+		  var popOption = "width=600, height=400, resizable=no, scrollbars=no, status=no;";
+		  window.open("http://www.facebook.com/sharer/sharer.php?u="+fbUrl, "share",popOption); 
+	});
 });
 function gbn(){
 	if($(".list-top-1 p").hasClass("notice-1")){

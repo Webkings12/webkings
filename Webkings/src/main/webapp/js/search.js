@@ -29,8 +29,13 @@ $(document).ready(function() {
 					"<li class='shop "+gender+" ia' style='display: list-item;'><a href='http://"+item.sDomain+"'  target='_blank' seq='121'>"+	
 					"<img src='"+item.sSimage+"'"+ 
 					"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1472529181667_n1.jpg' class='item' style='display: block;'>"+
-						"<div class='over'>		<div class='btn'>"+
-						"<span class='fb sns'></span><i>페이스북 공유</i>" +
+						"<div class='over'>	<input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'>	<div class='btn'>"+
+						"<span class='fb sns'>" +
+						"<input type='hidden' id='fbTitle' value='"+item.sName+"'/>"+
+						"<input type='hidden' id='fbUrl' value='"+item.sDomain+"'/>" +
+						"<input type='hidden' id='fbImage' value='"+item.sSimage+"'/>" +
+						"<input type='hidden' id='fbContent' value='"+item.stName+"'/>" +
+						"</span><i>페이스북 공유</i>" +
 						"<span class='tw sns'>" +
 						"<input type='hidden' id='itN' value='"+item.sName+"'/>"+
 						"<input type='hidden' id='doma' value='"+item.sDomain+"'/>" +
@@ -54,10 +59,14 @@ $(document).ready(function() {
 					"<li class='prod "+gender+"' style='left: 0px; top: 0px;'><a href='http://"+item.iDomain+"' target='_blank' sseq='11' seq='1388374'>"+
 					"<img src='"+item.iImage+"' " +
 					"data-original='http://img.sta1.kr/_up/prod/thmb/w/2016/09/17/03/1474048911831_AL.jpg' style='height: 310px; display: block;' " +
-					"class='item'>	<span class='favor'>관심상품</span>"+
+					"class='item'>	<span class='favor'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'></span>"+
 					"<div class='info'>		<span class='shop'>"+item.sName+"</span>" +
 					"<span class='name'>"+item.iName+"</span>		<em class='cate' cate='104'>"+item.itName+"</em><i>"+item.iSalePrice+"</i>"+
 					"<div class='btn'><span class='fb'>"+
+					"<input type='hidden' id='fbTitle' value='"+item.iName+"'/>"+
+					"<input type='hidden' id='fbUrl' value='"+item.iDomain+"'/>" +
+					"<input type='hidden' id='fbImage' value='"+item.iImage+"'/>" +
+					"<input type='hidden' id='fbContent' value='"+item.itName+"'/>" +
 					"</span><i>페이스북 공유</i>" +
 					"<span class='tw'>" +
 					"<input type='hidden' id='itN' value='"+item.iName+"'/>"+
@@ -101,6 +110,40 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	 /*아이템 클릭 업데이트*/
+	 $(".item-list>li.prod>a").click(function() {
+		var iNo = $(this).find("#inputiNo").val();
+		 $.ajax({
+			 url:itemUpdateUrl,
+			 type:"GET", 
+			 data: "iNo="+iNo,
+			 async:false,
+			 dataType:"json",
+			 success:function(res){
+			 },error:function(xhr, status, error){
+					alert(error);
+			}
+		 });
+	});
+	 
+	 /*샵 클릭 업데이트*/
+	 $(".item-list>li.shop>a").click(function() {
+		var sNo = $(this).find("#inputsNo").val();
+		 $.ajax({
+			 url:shopUpdateUrl,
+			 type:"GET", 
+			 data: "sNo="+sNo,
+			 async:false,
+			 dataType:"json",
+			 success:function(res){
+			 },error:function(xhr, status, error){
+					alert(error);
+			}
+			 
+		 });
+	});
+	/*트위터*/
 	 $(".item-list>li.prod .info .btn .tw").click(function(e) {
 			e.stopPropagation();
 			e.preventDefault();
@@ -124,4 +167,33 @@ $(document).ready(function() {
 			    wp.focus();
 			  }   
 	});
+	 /*페이스북*/
+	 $(".item-list>li.shop .over .btn .fb.sns").click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			
+			fbTitle=$(this).find("#fbTitle").val();
+			fbUrl= $(this).find("#fbUrl").val();
+			fbImage= $(this).find("#fbImage").val();
+			fbContent=$(this).find("#fbContent").val();
+			
+			
+		  var popOption = "width=600, height=400, resizable=no, scrollbars=no, status=no;";
+		  window.open("http://www.facebook.com/sharer/sharer.php?u="+fbUrl, "share",popOption); 
+	});
+	 
+	 $(".item-list>li.prod .info .btn .fb").click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			
+			fbTitle=$(this).find("#fbTitle").val();
+			fbUrl= $(this).find("#fbUrl").val();
+			fbImage= $(this).find("#fbImage").val();
+			fbContent=$(this).find("#fbContent").val();
+			
+			
+		  var popOption = "width=600, height=400, resizable=no, scrollbars=no, status=no;";
+		  window.open("http://www.facebook.com/sharer/sharer.php?u="+fbUrl, "share",popOption); 
+	});
+	 
 });
