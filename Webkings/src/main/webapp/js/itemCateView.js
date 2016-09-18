@@ -20,9 +20,14 @@ $(document).ready(function() {
 					$.each(itemSel, function(idx, item) {
 					result+=
 					"<li class='prod "+gender+"'>"+
-						"<a href='http://"+item.iDomain+"'  target='_blank' sseq='121' seq='1349867' maindate='20160908'>"+
+						"<a id='aaa1' href='http://"+item.iDomain+"'  target='_blank' sseq='121' seq='1349867' maindate='20160908'>"+
+						"<input type='hidden' id='inputiNo1' name='iINo' value='"+item.iNo+"'>"+
 							"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 							"style='height: 340px; display: block;' class='item'>"+
+
+							"<span class='favor'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
+										"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
+
 							"<span class='favor'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'></span>"+
 							"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em><i>"+
@@ -136,6 +141,40 @@ $(document).ready(function() {
 			    wp.focus();
 			  }   
 		});
+		 // 최근 본 목록 이벤트
+	     $(".item-list>li.prod #aaa1").click(function () {
+	    	 iNo = $(this).find("#inputiNo1").val();
+	    	 $.ajax({
+						url:"/Webkings/product.do",
+						type:"GET",
+						data:"iNo="+iNo,
+						dataType:"text",
+						success:function(res){
+							
+						},
+					error:function(xhr, status, error){
+						}
+				});
+	    	}); 
+	  // 즐겨찾기 이벤트  
+	    $(".item-list>li.prod .favor").click(function (e) {
+	    	e.stopPropagation();
+			e.preventDefault();
+	    	iNo = $(this).find("#inputiNo").val();
+	    	sNo = $(this).find("#inputsNo").val();
+	    	$.ajax({
+					url:"/Webkings/myitem.do",
+					type:"GET",
+					data:"iNo="+iNo+"&sNo="+sNo,
+					dataType:"text",
+					success:function(res){
+	
+					},
+					error:function(xhr, status, error){
+					}
+				});
+	    });
+		
 		 /*페이스북*/
 		$(".item-list>li.prod .info .btn .fb").click(function(e) {
 			e.stopPropagation();
