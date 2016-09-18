@@ -30,7 +30,12 @@ $(document).ready(function() {
 					"<img src='"+item.sSimage+"'"+ 
 					"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1472529181667_n1.jpg' class='item' style='display: block;'>"+
 						"<div class='over'>		<div class='btn'>"+
-						"<span class='fb sns'></span><i>페이스북 공유</i><span class='tw sns'></span><i>트위터 공유</i></div>"+
+						"<span class='fb sns'></span><i>페이스북 공유</i>" +
+						"<span class='tw sns'>" +
+						"<input type='hidden' id='itN' value='"+item.sName+"'/>"+
+						"<input type='hidden' id='doma' value='"+item.sDomain+"'/>" +
+						"</span>" +
+						"<i>트위터 공유</i></div>"+
 						"<p><i>316,800</i> 회 포털검색</p>		<div class='bg'></div>	</div>	<div class='info'>		<strong>"+item.sName+"</strong>"+
 						"<span><i cate='201'>"+item.stName+"</i></span>		<em class=''>팔로우</em>	</div></a></li>";
 				});
@@ -53,7 +58,11 @@ $(document).ready(function() {
 					"<div class='info'>		<span class='shop'>"+item.sName+"</span>" +
 					"<span class='name'>"+item.iName+"</span>		<em class='cate' cate='104'>"+item.itName+"</em><i>"+item.iSalePrice+"</i>"+
 					"<div class='btn'><span class='fb'>"+
-					"</span><i>페이스북 공유</i><span class='tw'></span><i>트위터 공유</i></div>"+
+					"</span><i>페이스북 공유</i>" +
+					"<span class='tw'>" +
+					"<input type='hidden' id='itN' value='"+item.iName+"'/>"+
+					"<input type='hidden' id='doma' value='"+item.iDomain+"'/>" +
+					"</span><i>트위터 공유</i></div>"+
 					"</div>	<div class='bg'></div></a></li>";
 				});
 				result+="</ul>";
@@ -91,5 +100,28 @@ $(document).ready(function() {
 				alert(error);
 			}
 		});
+	});
+	 $(".item-list>li.prod .info .btn .tw").click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			var content = $(this).find("#itN").val();
+			  var link = $(this).find("#doma").val();
+			  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+			  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
+			  if ( wp ) {
+			    wp.focus();
+			  }   
+		});
+	 
+	 $(".item-list>li.shop .over .btn .tw.sns").click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			var content = $(this).find("#itN").val();
+			  var link = $(this).find("#doma").val();
+			  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+			  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
+			  if ( wp ) {
+			    wp.focus();
+			  }   
 	});
 });

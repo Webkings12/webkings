@@ -19,8 +19,20 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/item.css"/>	
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/shop.css"/>	
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/search.css"/>	
-
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/login.js'/>"></script>
+<script type="text/javascript">
+var fbTitle="";
+var fbUrl="";
+var fbContent="";
+var fbImage="";
+</script>
+<!-- 페이스북 공유-->
+<meta property="og:title" content="${fbTitle}" />
+<meta property="og:url" content="${fbUrl}" />
+<meta property="og:description" content="${fbContent}" />
+<meta property="og:image" content="${fbImage}" />
+
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
