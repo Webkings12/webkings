@@ -16,7 +16,7 @@ $(document).ready(function() {
 				nItemSel = res.nItemList;
 					var result =	
 					"<li class='bnr-1'>"+
-						"<a href='https://play.google.com/store/apps/details?id=com.sta1.front&amp;hl=ko' target='_blank'>"+
+						"<a href='http://naver.com' target='_blank'>"+
 						"<img src='http://img.sta1.info/rsc/front/img/bnr-1.png' class='item'></a>"+
 					"</li>";
 					

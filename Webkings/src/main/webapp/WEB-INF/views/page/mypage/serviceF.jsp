@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mypage.css"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../../inc/top.jsp" %>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
@@ -38,7 +39,7 @@ $(document).ready(function() {
 	    });
 	  } );
   </script>
-<%@ include file="../../inc/top.jsp" %>
+
 <div class="body-sec">
 <div class="in-sec">
 <input type="hidden" id="myPageVal" value="service">
