@@ -18,6 +18,5 @@
 	<delete id="deleteMyitem" parameterType="MyitemVO">
 		delete from M_ITEM
 		 where M_NO=#{mNo} and i_NO=#{iNo}
-	</delete>
-	
+	</delete>	
 </mapper>
