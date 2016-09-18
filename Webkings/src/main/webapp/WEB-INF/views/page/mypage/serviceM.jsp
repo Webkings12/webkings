@@ -33,8 +33,10 @@ $(document).ready(function() {
   
   <script>
   $( function() {
-    $( "#accordion" ).accordion();
-  } );
+	    $( "#accordion" ).accordion({
+	      heightStyle: "content"
+	    });
+	  } );
   </script>
 <%@ include file="../../inc/top.jsp" %>
 <div class="body-sec">
