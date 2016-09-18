@@ -1,5 +1,6 @@
 package com.webkings.app.myitem.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,24 +89,41 @@ public class MyitemController {
 	}
 	
 	@RequestMapping("/product.do")
-	public void product(@RequestParam int iNo,HttpServletRequest request){
+	public void product(@RequestParam int iNo,HttpServletRequest request,HttpSession session){
 		logger.info("product  iNo={}",iNo);
 		
-		HttpSession session= request.getSession();
+		List<Integer> list = (List<Integer>)session.getAttribute("iNoList");
+		if(list==null){
+			list = new ArrayList<Integer>();
+			session.setAttribute("iNoList", list);
+		}else{
+			if(iNo>=0){
+				logger.info("product123  iNo={}",iNo);
+					list.add(iNo);
+			
+			}
+		}
 		
-		session.setAttribute("i_No", iNo);
+		/*HttpSession session= request.getSession();
+		
+		session.setAttribute("i_No", iNo);*/
 		
 		
 	}
 	@RequestMapping("/prodList.do")
 	public String prodList(HttpSession session,@RequestParam(defaultValue="F") String gender, Model model){
-		int iNo=(Integer)session.getAttribute("i_No");
-		logger.info("prodList 목록 i_No={}",iNo);
 		
-		List<ItemViewVO> alist= itemService.itemSelectiNo(iNo);
-		logger.info("prodList 목록 alist={}",alist.size());
+		List<Integer> iNoList = (List<Integer>)session.getAttribute("iNoList");
+		logger.info("prodList 목록 iNoList={}",iNoList);
+		Map<String, Object> map= new HashMap<String, Object>();
+		List<ItemViewVO> alist= new ArrayList<ItemViewVO>();
+		for(int a:iNoList ){
+			 alist= itemService.itemSelectiNo(a);
+			 map.put("list"+a,alist);
+
+		}
+		logger.info("prodList 목록 list={}",map.size());
 		
-		model.addAttribute("prodList", alist);
 		
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
@@ -114,8 +132,8 @@ public class MyitemController {
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("gender", gender);
 
-		model.addAttribute("myitemList",alist);
-		model.addAttribute("list",alist.size());
+		model.addAttribute("myitemmap",map);
+		model.addAttribute("size",map.size());
 		
 		return "page/mypage/prodList"+gender;
 	}

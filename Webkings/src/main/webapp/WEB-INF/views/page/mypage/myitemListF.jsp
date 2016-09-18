@@ -6,7 +6,6 @@
 $(document).ready(function() {
 	
 	$(".item-list>li.prod #favor1").click(function () {
-		alert("여기.123");
 		$.ajax({
 			url:"/Webkings/myitemdelete.do",
 			type:"GET",
@@ -19,6 +18,19 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	 $(".item-list>li#prod2 .info .btn .tw").click(function(e) {
+		 alert("여기.12323");
+			e.stopPropagation();
+			e.preventDefault();
+			var content = $(this).find("#itN").val();
+			  var link = $(this).find("#doma").val();
+			  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+			  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
+			  if ( wp ) {
+			    wp.focus();
+			  }   
+		});
 });
 
 </script>
@@ -42,7 +54,7 @@ $(document).ready(function() {
 		<input type="hidden" id="itemiNo" name="iNo" value="${item.iNo }">
 		<input type="hidden" id="itemmNo" name="mNo" value="${item.mNo }">
 	<li class="prod ${gender} ia" id="prod2" style="list-style: none;">
-		<a href="" sseq="121" seq="1349867" maindate="20160908">
+		<a href="http://${ item.sDomain}" target="_blank" sseq="121" seq="1349867" maindate="20160908">
 			<img src="../../itemImage/${item.iImage}" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"
 				style="height: 340px; display: block;" class="item">
 				<span class="favor" id="favor1">관심상품</span>
@@ -50,10 +62,14 @@ $(document).ready(function() {
 				<span class="name">${item.iName}</span>	<em class='cate' cate="101">${item.itName}</em>
 				 <i>${item.iSaleprice}</i>	
 					<div class="btn">
-					<span class="fb"></span><i>페이스북 공유</i><span class="tw"></span><i>트위터 공유</i>
+					<span class="fb"></span><i>페이스북 공유</i>
+					<span class="tw">
+						<input type="hidden" id="itN" value="${item.iName}"/>
+						<input type="hidden" id="doma" value="${ item.sDomain}"/>
+					</span><i>트위터 공유</i>
 									</div>	
 								</div>	
-								<div class='bg'></div>
+								<div class="bg"></div>
 							</a>
 						</li>
 			</c:forEach>
