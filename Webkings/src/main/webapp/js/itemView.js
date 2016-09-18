@@ -17,7 +17,7 @@ $(document).ready(function() {
 					var result =	
 					"<li class='bnr-1'>"+
 						"<a href='http://naver.com' target='_blank'>"+
-						"<img src='http://img.sta1.info/rsc/front/img/bnr-1.png' class='item'></a>"+
+						"<img src='' class='item'></a>"+
 					"</li>";
 					
 					result +="<li class='date' id='date1'>"+
