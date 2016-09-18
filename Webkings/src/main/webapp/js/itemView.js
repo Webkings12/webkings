@@ -42,8 +42,16 @@ $(document).ready(function() {
 										result+="<i>"+item.iPrice+"</i>";
 									}
 									result+="<div class='btn'>"+
-										"<span class='fb'></span><i>페이스북 공유</i><span class='tw'>" +
-										"<input type='hidden' value='"+item.iDomain+"'/></span><i>트위터 공유</i>"+
+										"<span class='fb'>" +
+										
+										
+										"</span>" +
+										"<i>페이스북 공유</i>" +
+										"<span class='tw'>" +
+										"<input type='hidden' id='doma' value='"+item.iDomain+"'/>" +
+										"<input type='hidden' id='itN' value='"+item.iName+"'/>"+
+										"</span>"+
+										"<i>트위터 공유</i>"+
 									"</div>"+	
 								"</div>"+	
 								"<div class='bg'></div>"+
@@ -72,7 +80,15 @@ $(document).ready(function() {
 									}
 									result +=
 									"<div class='btn'>"+
-										"<span class='fb' ></span><i>페이스북 공유</i><span class='tw'><input type='hidden' id='doma' value='"+item.iDomain+"'/></span>" +
+										"<span class='fb' >" +
+										
+										
+										"</span>" +
+										"<i>페이스북 공유</i>" +
+										"<span class='tw'>" +
+											"<input type='hidden' id='itN' value='"+item.iName+"'/>"+
+											"<input type='hidden' id='doma' value='"+item.iDomain+"'/>" +
+										"</span>" +
 												"<i>트위터 공유</i>"+
 									"</div>"+	
 								"</div>"+	
@@ -90,20 +106,31 @@ $(document).ready(function() {
 				error:function(xhr, status, error){
 					alert(error);
 				}
-				
 			});
 			
-			 $(".item-list>li.prod .info .btn .tw").click(function(e) {
+			 $(".item-list>li#prod2 .info .btn .tw").click(function(e) {
 				e.stopPropagation();
 				e.preventDefault();
-				var content = "트윗트윗 트윗트윗\r\n\r\n";
-				  var link = $(".item-list>li.prod .info .btn .tw input").val();
+				var content = $(this).find("#itN").val();
+				  var link = $(this).find("#doma").val();
 				  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
 				  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
 				  if ( wp ) {
 				    wp.focus();
 				  }   
 			});
+			 
+			 $(".item-list>li#prod1 .info .btn .tw").click(function(e) {
+					e.stopPropagation();
+					e.preventDefault();
+					var content = $(this).find("#itN").val();
+					  var link = $(this).find("#doma").val();
+					  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+					  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
+					  if ( wp ) {
+					    wp.focus();
+					  }   
+				});
 			 /*날짜구하기*/
 			 var today = new Date();
 			 var year= today.getFullYear();

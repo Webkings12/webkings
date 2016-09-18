@@ -28,7 +28,12 @@ $(document).ready(function() {
 								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em><i>"+
 								item.iSalePrice+"</i>"+		
 								"<div class='btn'>"+
-									"<span class='fb'></span><i>페이스북 공유</i><span class='tw'></span><i>트위터 공유</i>"+
+									"<span class='fb'></span><i>페이스북 공유</i>" +
+									"<span class='tw'>" +
+										"<input type='hidden' id='itN' value='"+item.iName+"'/>"+
+										"<input type='hidden' id='doma' value='"+item.iDomain+"'/>" +
+									"</span>" +
+									"<i>트위터 공유</i>"+
 								"</div>"+	
 							"</div>"+	
 							"<div class='bg'></div>"+
@@ -94,6 +99,18 @@ $(document).ready(function() {
 			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age1]").prop("checked", false);
 			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age2]").prop("checked", false);
 			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age3]").prop("checked", false);
+		});
+		
+		$(".item-list>li.prod .info .btn .tw").click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			var content = $(this).find("#itN").val();
+			  var link = $(this).find("#doma").val();
+			  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+			  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
+			  if ( wp ) {
+			    wp.focus();
+			  }   
 		});
 });
 function gbn(){
