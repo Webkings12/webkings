@@ -42,7 +42,8 @@ $(document).ready(function() {
 										result+="<i>"+item.iPrice+"</i>";
 									}
 									result+="<div class='btn'>"+
-										"<span class='fb'></span><i>페이스북 공유</i><span class='tw'></span><i>트위터 공유</i>"+
+										"<span class='fb'></span><i>페이스북 공유</i><span class='tw'>" +
+										"<input type='hidden' value='"+item.iDomain+"'/></span><i>트위터 공유</i>"+
 									"</div>"+	
 								"</div>"+	
 								"<div class='bg'></div>"+
@@ -71,7 +72,7 @@ $(document).ready(function() {
 									}
 									result +=
 									"<div class='btn'>"+
-										"<span class='fb' ></span><i>페이스북 공유</i><span class='tw'></span>" +
+										"<span class='fb' ></span><i>페이스북 공유</i><span class='tw'><input type='hidden' id='doma' value='"+item.iDomain+"'/></span>" +
 												"<i>트위터 공유</i>"+
 									"</div>"+	
 								"</div>"+	
@@ -96,7 +97,7 @@ $(document).ready(function() {
 				e.stopPropagation();
 				e.preventDefault();
 				var content = "트윗트윗 트윗트윗\r\n\r\n";
-				  var link = "https://www.google.co.kr";
+				  var link = $(".item-list>li.prod .info .btn .tw input").val();
 				  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
 				  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
 				  if ( wp ) {
