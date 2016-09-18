@@ -4,7 +4,7 @@
 $(document).ready(function() {
 	var iNo="";
 	var sNo="";
-	
+	var itemDo="";
 			 $.ajax({
 				url:url,
 				type:"GET",
@@ -30,7 +30,7 @@ $(document).ready(function() {
 						$.each(nItemSel, function(idx, item) {
 							result+=
 							"<li class='prod "+item.itGender+" ia' id='prod1'>"+
-							"<a id='a123' href='"+item.sDomain+"' sseq='121' seq='1349867' maindate='20160908'>"+
+							"<a id='a123' href='http://"+item.iDomain+"'  target='_blank' sseq='121' seq='1349867' maindate='20160908'>"+
 								"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 								"style='height: 340px; display: block;' class='item'>"+
 								"<span class='favor' id='myitem'>관심상품</span>"+
@@ -58,7 +58,7 @@ $(document).ready(function() {
 					$.each(itemSel, function(idx, item) {
 						result+=
 						"<li class='prod "+item.itGender+" ia' id='prod2'>"+
-							"<a id='aaa' href='"+item.sDomain+"' sseq='121' seq='1349867' maindate='20160908'>"+
+							"<a id='aaa' href='http://"+item.iDomain+"' target='_blank' sseq='121' seq='1349867' maindate='20160908'>"+
 								"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 								"style='height: 340px; display: block;' class='item'>"+
 								"<span class='favor'>관심상품</span><input type='text' id='iINo' name='iINo' value='"+item.iNo+"'></span>"+
@@ -71,7 +71,8 @@ $(document).ready(function() {
 									}
 									result +=
 									"<div class='btn'>"+
-										"<span class='fb'></span><i>페이스북 공유</i><span class='tw'></span><i>트위터 공유</i>"+
+										"<span class='fb' ></span><i>페이스북 공유</i><span class='tw'></span>" +
+												"<i>트위터 공유</i>"+
 									"</div>"+	
 								"</div>"+	
 								"<div class='bg'></div>"+
@@ -90,8 +91,18 @@ $(document).ready(function() {
 				}
 				
 			});
-			 
-					 
+			
+			 $(".item-list>li.prod .info .btn .tw").click(function(e) {
+				e.stopPropagation();
+				e.preventDefault();
+				var content = "트윗트윗 트윗트윗\r\n\r\n";
+				  var link = "https://www.google.co.kr";
+				  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+				  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
+				  if ( wp ) {
+				    wp.focus();
+				  }   
+			});
 			 /*날짜구하기*/
 			 var today = new Date();
 			 var year= today.getFullYear();
@@ -108,6 +119,7 @@ $(document).ready(function() {
 		    	 $(".item-list li#date2 strong").append("전체상품");
 		     }
 		     $(".item-list li#date2 em").append(itOCount);
+		     
 		     
 		     // 즐겨찾기 이벤트
 		     $(".item-list>li.prod #aaa").click(function () {
@@ -159,3 +171,12 @@ function gbn(){
 		$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
 	}
 }
+function share_tw(){
+	  var content = "트윗트윗 트윗트윗\r\n\r\n";
+	  var link = "https://www.google.co.kr";
+	  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
+	  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
+	  if ( wp ) {
+	    wp.focus();
+	  }     
+	}

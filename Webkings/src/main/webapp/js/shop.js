@@ -16,7 +16,7 @@ $(document).ready(function() {
 					$.each(sNewList, function(idx, item) {
 					 result+=
 					"<li class='shop sec-2  F ia'>"+
-					"<a href='javascript:;' seq='121'>"+	
+					"<a href='http://"+item.sDomain+"'  target='_blank' seq='121'>"+	
 					"<img src='"+item.sBimage+"' data-original='http://img.sta1.kr/_up/shop/logo/2016/09/1473406293970_a1.jpg' class='item'" +
 					" style='display: block;'>"+
 					"<div class='over'>		<div class='btn'>" +
@@ -31,8 +31,8 @@ $(document).ready(function() {
 					if(styleSel!=null){
 						$.each(styleSel, function(idx, item) {
 							result+=
-						"<li class='shop  F ia'><a href='javascript:;' seq='271'>"	+
-						"<img src='"+item.sBimage+"' " +
+						"<li class='shop  F ia'><a href='http://"+item.sDomain+"'  target='_blank' seq='271'>"	+
+						"<img src='"+item.sSimage+"' " +
 						"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1471857259160_n1.jpg' class='item' style='display: block;'>"+
 						"<div class='over'>		<div class='btn'><span class='fb sns'>" +
 						"</span><i>페이스북 공유</i><span class='tw sns'></span><i>트위터 공유</i></div>"+

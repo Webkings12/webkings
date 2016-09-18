@@ -26,8 +26,8 @@ $(document).ready(function() {
 					result+="<ul class='item-list shop-search' style='display: block;'>";
 				$.each(shopList, function(idx, item) {
 					result+=
-					"<li class='shop "+gender+" ia' style='display: list-item;'><a href='javascript:;' seq='121'>"+	
-					"<img src='"+item.sDomain+"'"+ 
+					"<li class='shop "+gender+" ia' style='display: list-item;'><a href='http://"+item.sDomain+"'  target='_blank' seq='121'>"+	
+					"<img src='"+item.sSimage+"'"+ 
 					"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1472529181667_n1.jpg' class='item' style='display: block;'>"+
 						"<div class='over'>		<div class='btn'>"+
 						"<span class='fb sns'></span><i>페이스북 공유</i><span class='tw sns'></span><i>트위터 공유</i></div>"+
@@ -46,8 +46,8 @@ $(document).ready(function() {
 					result+="<ul class='item-list abs-list prod-search' style='display: block;'>";
 				$.each(itemSel, function(idx, item) {
 					result+=
-					"<li class='prod "+gender+"' style='left: 0px; top: 0px;'><a href='javascript:;' sseq='11' seq='1388374'>"+
-					"<img src='"+item.sDomain+"' " +
+					"<li class='prod "+gender+"' style='left: 0px; top: 0px;'><a href='http://"+item.iDomain+"' target='_blank' sseq='11' seq='1388374'>"+
+					"<img src='"+item.iImage+"' " +
 					"data-original='http://img.sta1.kr/_up/prod/thmb/w/2016/09/17/03/1474048911831_AL.jpg' style='height: 310px; display: block;' " +
 					"class='item'>	<span class='favor'>관심상품</span>"+
 					"<div class='info'>		<span class='shop'>"+item.sName+"</span>" +

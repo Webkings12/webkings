@@ -20,7 +20,7 @@ $(document).ready(function() {
 					$.each(itemSel, function(idx, item) {
 					result+=
 					"<li class='prod "+gender+"'>"+
-						"<a href='"+item.sDomain+"' sseq='121' seq='1349867' maindate='20160908'>"+
+						"<a href='http://"+item.iDomain+"'  target='_blank' sseq='121' seq='1349867' maindate='20160908'>"+
 							"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 							"style='height: 340px; display: block;' class='item'>"+
 							"<span class='favor'>관심상품</span>"+

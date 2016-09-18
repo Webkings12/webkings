@@ -4,8 +4,16 @@ public class ItemViewVO {
 	
 	/*카테고리 아이템 select*/
 	private int iNo;
-	private String sDomain; 
+	private String iDomain; 
 	private int sNo;
+	public String getiDomain() {
+		return iDomain;
+	}
+
+	public void setiDomain(String iDomain) {
+		this.iDomain = iDomain;
+	}
+
 	public int getsNo() {
 		return sNo;
 	}
@@ -56,12 +64,6 @@ public class ItemViewVO {
 	public void setiNo(int iNo) {
 		this.iNo = iNo;
 	}
-	public String getsDomain() {
-		return sDomain;
-	}
-	public void setsDomain(String sDomain) {
-		this.sDomain = sDomain;
-	}
 	public String getiImage() {
 		return iImage;
 	}
@@ -107,7 +109,7 @@ public class ItemViewVO {
 	
 	@Override
 	public String toString() {
-		return "ItemViewVO [iNo=" + iNo + ", sDomain=" + sDomain + ", sNo=" + sNo + ", iImage=" + iImage + ", iName="
+		return "ItemViewVO [iNo=" + iNo + ", iDomain=" + iDomain + ", sNo=" + sNo + ", iImage=" + iImage + ", iName="
 				+ iName + ", iSalePrice=" + iSalePrice + ", sName=" + sName + ", sAge=" + sAge + ", itGender="
 				+ itGender + ", itName=" + itName + ", iClick=" + iClick + ", dateType=" + dateType + ", iPrice="
 				+ iPrice + "]";
