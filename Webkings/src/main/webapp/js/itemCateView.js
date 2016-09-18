@@ -103,7 +103,7 @@ $(document).ready(function() {
 		
 		$(".item-list>li.prod .info .btn .tw").click(function(e) {
 			e.stopPropagation();
-			e.preventDefault();
+			e.preventDefault(); 
 			var content = $(this).find("#itN").val();
 			  var link = $(this).find("#doma").val();
 			  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
