@@ -25,7 +25,6 @@ $(document).ready(function() {
 	});
 	
 });
-
 </script>
 <%@ include file="../../inc/top.jsp" %>
 <div class="body-sec">

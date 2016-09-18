@@ -30,7 +30,7 @@ public class FooterViewController {
 	@RequestMapping("/company.do")
 	public String company(@RequestParam(defaultValue="F") String gender, Model model){
 		//1.
-		
+		logger.info("company gender={}",gender);
 		//2.
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);

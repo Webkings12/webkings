@@ -3,16 +3,7 @@
  */
 var gender ="";
 var page = "";
-/*검색어 저장*/
-function saveSearch() {
-	if($("body>div.header div.search div.keyword .con>p a.save").hasClass("save")){
-		if($("body>div.header div.search div.keyword .con>p a.save.active").hasClass("save active")){
-			$("body>div.header div.search div.keyword .con>p a.save").attr("class","save");
-		}else{
-		$("body>div.header div.search div.keyword .con>p a.save").attr("class","save active");
-		}
-	}
-}	
+
 $(document).ready(function() {
 		
 		$("body").attr("class","F");
@@ -54,7 +45,7 @@ $(document).ready(function() {
 			}else{
 				age="all";
 			}
-			
+			alert("페이지는여자꺼"+page);
 			if($("body").hasClass("F")){
 				$("body").removeClass("F");
 				$("body").attr("class","M");
@@ -74,7 +65,10 @@ $(document).ready(function() {
 		 		}else if(page=="/search"){
 		 			$(location).attr('href', "/Webkings/search/view.do?searchVal="+searchVal+"&gender="+gender);
 		 		}else if(page=="/mypage"){
-		 			if($(".body-sec .in-sec #myPageVal").val()=="service"){
+		 			if($(".body-sec .in-sec #myPageVal").val()==null){
+						$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
+		 			}
+		 			else if($(".body-sec .in-sec #myPageVal").val()=="service"){
 		 				$(location).attr('href', "/Webkings/service.do?gender="+gender);
 		 			}else if($(".body-sec .in-sec #myPageVal").val()=="company"){
 		 				$(location).attr('href', "/Webkings/company.do?gender="+gender);

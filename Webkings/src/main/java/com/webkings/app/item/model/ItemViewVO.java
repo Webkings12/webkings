@@ -23,7 +23,16 @@ public class ItemViewVO {
 	private String itName;
 	private int iClick;
 	private String dateType;	
+	private String iPrice;
 	
+	public String getiPrice() {
+		return iPrice;
+	}
+
+	public void setiPrice(String iPrice) {
+		this.iPrice = iPrice;
+	}
+
 	public String getDateType() {
 		return dateType;
 	}
@@ -100,7 +109,8 @@ public class ItemViewVO {
 	public String toString() {
 		return "ItemViewVO [iNo=" + iNo + ", sDomain=" + sDomain + ", sNo=" + sNo + ", iImage=" + iImage + ", iName="
 				+ iName + ", iSalePrice=" + iSalePrice + ", sName=" + sName + ", sAge=" + sAge + ", itGender="
-				+ itGender + ", itName=" + itName + ", iClick=" + iClick + ", dateType=" + dateType + "]";
+				+ itGender + ", itName=" + itName + ", iClick=" + iClick + ", dateType=" + dateType + ", iPrice="
+				+ iPrice + "]";
 	}
 	
 }
