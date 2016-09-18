@@ -63,8 +63,6 @@ $(document).ready(function() {
 					"class='item'>	<span class='favor'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
 					"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
 
-					"class='item'>	<span class='favor'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'></span>"+
-
 					"<div class='info'>		<span class='shop'>"+item.sName+"</span>" +
 					"<span class='name'>"+item.iName+"</span>		<em class='cate' cate='104'>"+item.itName+"</em><i>"+item.iSalePrice+"</i>"+
 					"<div class='btn'><span class='fb'>"+
