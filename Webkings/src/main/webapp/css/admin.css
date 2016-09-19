@@ -28,8 +28,8 @@ body>div.header div.shadow div.in-sec {
    background-color: #fefefe;
     margin: 9% auto 15% auto;
     border: 1px solid #888;
-    width: 480;
-    height: 480;
+    width: 440;
+    height: 340;
     border-radius: 10px 10px 10px 10px;
 }
 .imgcontainer {
@@ -65,6 +65,7 @@ body>div.header div.shadow div.in-sec {
     padding: 10px 18px;
     background-color: #c0c0c0;
     text-align: center;
+    margin-left: 60px;
 }
 button {
     background-color: #4CAF50;
