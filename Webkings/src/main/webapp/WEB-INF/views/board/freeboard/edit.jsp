@@ -75,11 +75,11 @@ $(document).ready(function() {
 			<textarea id="bContent" name="bContent">${vo.bContent }</textarea>
 		</div>
 		<div>
-			<input type="file" name="upfile">
+			<input type="file" name="upfile" accept=".jpg,.png,.gif">
 			<c:if test="${!empty vo.bFilename }">
          		<p style="color:green;">
          			※첨부파일을 새로 지정할 경우 기존파일
-         			<img src="<c:url value='/images/file.gif'/>" alt="파일이미지">${vo.bOriginalfilename } 은삭제됩니다.
+         			<img src="<c:url value='/images/file.gif'/>" alt="파일이미지" >${vo.bOriginalfilename } 은삭제됩니다.
          		</p>
          	</c:if>
 		</div>	
