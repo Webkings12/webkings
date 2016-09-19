@@ -109,6 +109,7 @@ public class MyitemController {
 	public String prodList(HttpSession session,@RequestParam(defaultValue="F") String gender, Model model){
 		
 		List<Integer> iNoList = (List<Integer>)session.getAttribute("iNoList");
+		if(iNoList!=null){
 		logger.info("prodList 목록 iNoList={}",iNoList);
 		Map<String, Object> map= new HashMap<String, Object>();
 		List<ItemViewVO> alist= new ArrayList<ItemViewVO>();
@@ -134,6 +135,7 @@ public class MyitemController {
 		model.addAttribute("pageNum",pageNum);
 		model.addAttribute("myitemmap",map);
 		model.addAttribute("size",map.size());
+		}
 		
 		return "page/mypage/prodList"+gender;
 	}
