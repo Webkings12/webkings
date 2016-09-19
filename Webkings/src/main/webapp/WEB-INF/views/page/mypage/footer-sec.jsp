@@ -8,7 +8,7 @@
 		<ul>
 			<li><a href="<c:url value='/company.do?gender=${gender}'/>">회사소개</a></li>
 			<li><a href="<c:url value='/service.do?gender=${gender}'/>">이용약관</a></li>
-			<li><a href="/policy/privacy">개인정보처리방침</a></li>
+			<li><a href="<c:url value='/privacy.do?gender=${gender}'/>">개인정보처리방침</a></li>
 			<li><a href="<c:url value='/qna/write.do?gender=${gender}'/>">1:1문의</a></li>
 			<li><a href="http://mkc.sta1.com/" target="_blank">마케팅센터</a></li>
 			<li><a href="/propose">제휴문의</a></li>
