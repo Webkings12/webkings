@@ -14,7 +14,7 @@ $(document).ready(function() {
 			alert("관리자 비밀번호를 입력하세요.");
 			$("#mPwd1").focus();
 			return false;
-		}else{				
+		}else{			
 			$.ajax({
 				url:loginURL,
 				type:"POST",
@@ -22,6 +22,7 @@ $(document).ready(function() {
 				data:$(this).serialize(), //요청 파라미터
 				dataType:"json",
 				success:function(res){
+					alert(res);
 					if(res==1){
 					}else if (res==2) {
 						alert("비밀번호가 다릅니다");
@@ -36,7 +37,8 @@ $(document).ready(function() {
 			});
 		}
 		if(loginCheck=="1"){
-			$("#divLogin").css("display","none");
+			alert("두번째"+loginCheck);
+			$(".modal2").attr("css","display:none;");
 			return true; 
 		}else{
 			alert("로그인 실패");

@@ -31,7 +31,7 @@ public class AdminLoginController {
 			HttpServletRequest request, Model model){
 		logger.info("로그인 파라미터, memberVo={}", memberVo);
 		
-		int result=memberService.loginCheck(memberVo);
+		int result=memberService.adminCheck(memberVo);
 		
 		if(result==MemberService.LOGIN_OK){
 			
@@ -41,7 +41,6 @@ public class AdminLoginController {
 			session.setAttribute("mNick", memberVo.getmNick());
 			session.setAttribute("mNo", memberVo.getmNo());
 			session.setAttribute("mType", memberVo.getmType());
-			
 		}
 		logger.info("result="+result);
 		return result;

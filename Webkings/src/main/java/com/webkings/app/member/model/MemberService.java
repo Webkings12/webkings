@@ -12,4 +12,7 @@ public interface MemberService {
 	public int updateMember(MemberVo memberVo);
 	public int deleteMember(String mEmail);
 	public int updatePwd(MemberVo vo);
+	
+	
+	public int adminCheck(MemberVo vo);
 }

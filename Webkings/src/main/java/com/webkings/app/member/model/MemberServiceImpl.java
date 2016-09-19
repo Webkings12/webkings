@@ -57,4 +57,21 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.updatePwd(vo);
 	}
 
+	@Override
+	public int adminCheck(MemberVo vo) {
+		int result=0;
+		
+		String pwd =memberDAO.adminCheck(vo);
+		if(pwd==null || pwd.isEmpty()){
+			result=ID_NONE;
+		}else{
+			if(pwd.equals(vo.getmPwd())){
+				result=LOGIN_OK;
+			}else{
+				result=PWD_DISAGREE; 
+			}
+		}
+		return result;
+	}
+
 }

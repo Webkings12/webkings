@@ -36,5 +36,11 @@ public class MemberDAOMybatis extends SqlSessionDaoSupport implements MemberDAO 
 	public int updatePwd(MemberVo vo) {
 		return getSqlSession().update(namespace+".updatePwd",vo);
 	}
+	
+	
+	@Override
+	public String adminCheck(MemberVo vo) {
+		return getSqlSession().selectOne(namespace+".adminSelectPwd", vo);
+	}
 
 }

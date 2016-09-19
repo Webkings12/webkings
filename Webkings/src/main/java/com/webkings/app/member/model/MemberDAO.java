@@ -9,4 +9,6 @@ public interface MemberDAO {
 	public int deleteMember(String mEmail);
 	public int updatePwd(MemberVo vo);
 	
+	/*관리자*/
+	public String adminCheck(MemberVo vo);
 }

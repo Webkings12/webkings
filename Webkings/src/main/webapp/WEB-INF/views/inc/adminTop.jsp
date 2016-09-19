@@ -39,13 +39,11 @@
 										<input type="password" placeholder="관리자 비밀번호" name="mPwd"
 											id="mPwd1">
 									</div>
-									<button type="submit" class="cancelbtn" >로그인</button>
+									<button type="submit" class="cancelbtn">로그인</button>
 								</div>
 							</form>
 						</div>
 					</div>
-	
-	
 	<!-- 성별 선택 -->
 		<div id="genderSel" class="modal">
 			<span onclick="document.getElementById('genderSel').style.display='none'" class="close" title="Close Modal">&times;</span>
