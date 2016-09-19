@@ -270,18 +270,21 @@ public class MemberController {
 	@RequestMapping("/memberEditfind.do")
 	public String Pwdupdate(@RequestParam String mMPwd,@RequestParam String mEmail,HttpSession session, Model model){
 		logger.info("비밀번호 변경처리 mPwd={} mEmail={}",mMPwd,mEmail);
-		MemberVo membervo= new MemberVo();
-		membervo.setmPwd(mMPwd);
-		membervo.setmEmail(mEmail);
-		int cnt=memberService.updateMember(membervo);
-		session.setAttribute("mPwd", membervo.getmPwd());
+		
+		
+		MemberVo vo= new MemberVo();
+		vo.setmEmail(mEmail);
+		vo.setmPwd(mMPwd);
+		
+		int cnt=memberService.updatePwd(vo);
+		session.setAttribute("mPwd", vo.getmPwd());
 		String msg="";
 		if(cnt>0){
 			msg="비밀번호를 변경하였습니다";
 		}else {
 			msg="비밀번호 실패";
 		}
-		model.addAttribute("url=","/page.do");
+		model.addAttribute("url","/page.do");
 		model.addAttribute("msg", msg);
 		
 		return "common/message";
