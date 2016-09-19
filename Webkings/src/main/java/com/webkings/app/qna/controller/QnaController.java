@@ -15,12 +15,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.webkings.app.common.PaginationInfo;
 import com.webkings.app.common.SearchVO;
+import com.webkings.app.item.model.ItemService;
+import com.webkings.app.item.model.Item_TypeVO;
 import com.webkings.app.qna.model.QnaService;
 import com.webkings.app.qna.model.QnaVO;
 import com.webkings.app.qna.model.QnaViewVo;
+import com.webkings.app.style.model.StyleService;
+import com.webkings.app.style.model.StyleVO;
 
 @Controller
 @RequestMapping("/qna")
@@ -32,18 +37,33 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@Autowired
+	private ItemService itemService;
+	
+	@Autowired
+	private StyleService styleService;
+	
 	
 	@RequestMapping(value="/write.do",method=RequestMethod.GET)
-	public String qnaView(QnaVO qnaVO){
+	public String qnaView(@RequestParam(defaultValue="F") String gender,Model model){
 		//1.
 		logger.info("QnA창 보이기");
 		//2.
+		
+		int pageNum=4;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
 		//3.
 		return "board/qna/write";
 	}
 	
 	@RequestMapping(value="/write.do",method=RequestMethod.POST)
-	public String qnaSend(@ModelAttribute QnaVO qnaVo,HttpSession session,Model model){
+	public String qnaSend(@ModelAttribute QnaVO qnaVo,HttpSession session,@RequestParam(defaultValue="F") String gender,Model model){
 		//1.
 		
 		String mEmail=(String)session.getAttribute("mEmail");
@@ -63,18 +83,29 @@ public class QnaController {
 		String msg="", url="";
 		if(cnt>0){
 			msg="문의전송";
-			url="/qna/write.do";
+			url="/qna/list.do?gender="+gender;
 		}else{
 			msg="전송실패";
-			url="/qna/write.do";
+			url="/qna/write.do?gender="+gender;
 		}
+		
+		int pageNum=4;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
+		
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);
 		return "common/message";
 	}
 	
 	@RequestMapping("/list.do")
-	public String qnaList(SearchVO searchVo,HttpSession session,Model model){
+	public String qnaList(SearchVO searchVo,HttpSession session,@RequestParam(defaultValue="F") String gender,Model model){
 		//1. 파라미터 읽어오기
 		
 		String mType=(String)session.getAttribute("mType");
@@ -109,11 +140,21 @@ public class QnaController {
 		model.addAttribute("alist", alist);
 		model.addAttribute("pagingInfo", pagingInfo);
 		
+		int pageNum=4;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
+		
 		
 		return "board/qna/list";
 	}
 	@RequestMapping("/listView.do")
-	public String qnaListView(SearchVO searchVo,Model model){
+	public String qnaListView(SearchVO searchVo,@RequestParam(defaultValue="F") String gender,Model model){
 		//1. 파라미터 읽어오기
 		logger.info("글목록 조회, 파라미터 searchVo={}",
 				searchVo);
@@ -136,6 +177,16 @@ public class QnaController {
 		int totalRecord 
 			= qnaService.selectTotalCount(searchVo);
 		pagingInfo.setTotalRecord(totalRecord);
+		
+		int pageNum=4;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
 				
 		//3. 결과 저장, 뷰페이지 리턴
 		model.addAttribute("alist", alist);
@@ -144,13 +195,13 @@ public class QnaController {
 	}
 	
 	@RequestMapping("/detail.do")
-	public String qnaDetail(@RequestParam(defaultValue="0") int no,HttpSession session,Model model){
+	public String qnaDetail(@RequestParam(defaultValue="0") int no,HttpSession session,@RequestParam(defaultValue="F") String gender,Model model){
 		//1.파라미터 읽기
 		logger.info("qna상세보기 파라미터 no={}",no);
 		//1.파라미터가 x
 		if(no==0){
 			model.addAttribute("msg","잘못된 url입니다");
-			model.addAttribute("url","/freeboard/list.do");
+			model.addAttribute("url","/qna/list.do"+"&gender="+gender);
 			
 			return "common/message";
 		}
@@ -176,16 +227,25 @@ public class QnaController {
 		model.addAttribute("nextNo",nextNo);
 		model.addAttribute("beforeNo",beforeNo);
 		
+		int pageNum=4;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
 		return "board/qna/detail";
 	}
 	
 	@RequestMapping("/delete.do")
-	public String delete(@RequestParam(defaultValue="0") int qNo,Model model){
+	public String delete(@RequestParam(defaultValue="0") int qNo,@RequestParam(defaultValue="F") String gender,Model model){
 		//1.
 		logger.info("qna삭제 파라미터 qNo={}",qNo);
 		if(qNo==0){
 			model.addAttribute("msg","잘못된 url입니다");
-			model.addAttribute("url","/qna/list.do");
+			model.addAttribute("url","/qna/list.do"+"&gender="+gender);
 			
 			return "common/message";
 		}
@@ -196,21 +256,31 @@ public class QnaController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="삭제 완료";
-			url="/qna/list.do";
+			url="/qna/list.do"+"&gender="+gender;
 		}else{
 			msg="삭제 실패";
-			url="/qna/detail.do?no="+qNo;
+			url="/qna/detail.do?no="+qNo+"&gender="+gender;
 		}
+		
+		int pageNum=4;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		
 		return "common/message";
 	}
 	@RequestMapping(value="/edit.do",method=RequestMethod.GET)
-	public String edit_get(@RequestParam(defaultValue="0") int qNo,HttpSession session,Model model){
+	public String edit_get(@RequestParam(defaultValue="0") int qNo,HttpSession session,@RequestParam(defaultValue="F") String gender,Model model){
 		if(qNo==0){
 			model.addAttribute("msg","잘못된 url입니다");
-			model.addAttribute("url","/qna/list.do");
+			model.addAttribute("url","/qna/list.do"+"&gender="+gender);
 			
 			return "common/message";
 		}
@@ -222,17 +292,26 @@ public class QnaController {
 		
 		if(vo.getmNo()!=mNo && !mType.equals("0")){
 			model.addAttribute("msg","권한이 없습니다");
-			model.addAttribute("url","/qna/list.do");
+			model.addAttribute("url","/qna/list.do"+"&gender="+gender);
 			
 			return "common/message";
 		}
+		
+		int pageNum=4;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
 		
 		model.addAttribute("qVo",vo);
 		return "board/qna/edit";
 	}
 	
 	@RequestMapping(value="/edit.do",method=RequestMethod.POST)
-	public String edit_post(@ModelAttribute QnaVO vo, Model model){
+	public String edit_post(@ModelAttribute QnaVO vo,@RequestParam(defaultValue="F") String gender, Model model){
 		logger.info("qna 수정 파라미터 vo={}",vo);
 		
 		int cnt=qnaService.updateQna(vo);
@@ -240,13 +319,22 @@ public class QnaController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="수정 완료";
-			url="/qna/detail.do?no="+vo.getqNo();
+			url="/qna/detail.do?no="+vo.getqNo()+"&gender="+gender;
 		}else{
 			msg="수정 실패";
-			url="/qna/edit.do?qNo="+vo.getqNo();
+			url="/qna/edit.do?qNo="+vo.getqNo()+"&gender="+gender;
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
+		
+		int pageNum=4;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
 		
 		return "common/message";
 	}

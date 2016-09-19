@@ -44,7 +44,7 @@
 			<textarea  name="bContent" id="bContent"></textarea>
 		</div>
 		<div>
-			<input type="file" name="upfile">
+			<input type="file" name="upfile" accept=".jpg,.png,.gif">
 		</div>	
 		<br>			
 		<div class="btn">

@@ -2,7 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
-<script type="text/javascript" src="<c:url value='/js/boardTop.js'/>"></script>
+
+
+<c:if test="${gender=='M' }">
+<script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
+</c:if>
+<c:if test="${gender=='F' }">
+<script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
+</c:if>
 <script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
@@ -17,6 +24,9 @@ $(document).ready(function() {
 		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
 	});
 });
+
+
+
 
 </script>
 <%@ include file="../../inc/top.jsp" %>
@@ -113,7 +123,7 @@ function pageProc(curPage){
 		<tr style="text-align: center">
 			 	 	<td>${vo.bNo }</td>
 			 		<td><a
-			 			href="<c:url value='/freeboard/detail.do?no=${vo.bNo }&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }'/>" 
+			 			href="<c:url value='/freeboard/detail.do?no=${vo.bNo }&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }&gender=${gender }'/>" 
 			 			<%-- <c:if test="${empty searchVo.searchKeyword }" >
 			 			href="<c:url value='/freeboard/detail.do?no=${vo.bNo }&curP=${pagingInfo.currentPage}'/>"		 			
 			 			</c:if>
@@ -203,8 +213,8 @@ function pageProc(curPage){
 			<input type="submit" value="검색" id="btSearch2">
 	    </form>
 	    	<div class="align_right">
-	    		<a href='<c:url value="/freeboard/list.do"/>' class="btn_default btn_light size_M" >목록</a>
-			    <a href='<c:url value="/freeboard/write.do"/>' class="btn_default btn_light size_M" >글쓰기</a>
+	    		<a href='<c:url value="/freeboard/list.do?gender=${gender }"/>' class="btn_default btn_light size_M" >목록</a>
+			    <a href='<c:url value="/freeboard/write.do?gender=${gender }"/>' class="btn_default btn_light size_M" >글쓰기</a>
 			</div>
 	</div>
 	

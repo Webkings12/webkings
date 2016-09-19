@@ -48,10 +48,21 @@ public class FreeboardController {
 	private StyleService styleService;
 	
 	@RequestMapping(value="/write.do",method=RequestMethod.GET)
-	public String write_get(){
+	public String write_get(@RequestParam(defaultValue="F") String gender, Model model){
 		//1.
 		logger.info("자게 글쓰기창 띄우기");
 		//2.
+		
+		/* [헤더관련 필요한것 승수] 헤더에 라인달기*/
+		int pageNum=3;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
 		
 		//3.
 		return "board/freeboard/write";
@@ -60,7 +71,7 @@ public class FreeboardController {
 	@RequestMapping(value="/write.do",method=RequestMethod.POST)
 	public String write_post(@ModelAttribute FreeBoardVO fboardVo,
 			HttpServletRequest request,
-			HttpSession session,Model model){
+			HttpSession session,@RequestParam(defaultValue="F") String gender,Model model){
 		//1.
 		logger.info("자게 글쓰기 파라미터 fboardVo={}",fboardVo);
 		
@@ -92,20 +103,35 @@ public class FreeboardController {
 		int cnt=fBoardService.insertFreeBoard(fboardVo);
 		logger.info("글쓰기 결과cnt={}",cnt);
 		
+		
+		/* [헤더관련 필요한것 승수] 헤더에 라인달기*/
+		int pageNum=3;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
+		
+		String msg="", url="";
 		if(cnt>0){
-			logger.info("글쓰기 결과cnt={}",cnt);
-			return "redirect:/freeboard/list.do";
+			msg="";
+			url="/freeboard/list.do?gender="+gender;
 		}else{
-			logger.info("글쓰기 결과cnt={}",cnt);
-			return "redirect:/freeboard/write.do";
-			
+			msg="";
+			url="/freeboard/write.do?gender="+gender;
 		}
 		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		return "common/message";
 	
 	}
 	
 	@RequestMapping("/list.do")
-	public String freeBoardList(FreeboardSearchVO searchVo, @RequestParam String gender, Model model){
+	public String freeBoardList(FreeboardSearchVO searchVo, @RequestParam(defaultValue="F") String gender, Model model){
 		/*3. 글목록 조회
 		
 		reBoard/list.do => ReBoardListController
@@ -113,7 +139,7 @@ public class FreeboardController {
 		//1. 파라미터 읽어오기*/
 		logger.info("글목록 조회, 파라미터 searchVo={}",
 				searchVo);
-		logger.info("여긴 들어오니?gender={}",gender);
+		
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(10); //블록사이즈
 		pagingInfo.setRecordCountPerPage(15); //페이지에 보여줄 레코드수
@@ -134,6 +160,11 @@ public class FreeboardController {
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
 		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
 		
 		
 		//전체 레코드 개수 조회하기
@@ -146,7 +177,7 @@ public class FreeboardController {
 		model.addAttribute("searchVo", searchVo);
 		model.addAttribute("pagingInfo", pagingInfo);
 		
-		model.addAttribute("gender", gender);
+		
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("pageNum", pageNum);
@@ -209,8 +240,8 @@ public class FreeboardController {
 	}
 	
 	@RequestMapping("/detail.do")
-	public String boardDetail(@RequestParam(defaultValue="0") int no, @RequestParam String gender,
-			Model model){
+	public String boardDetail(@RequestParam(defaultValue="0") int no
+			,@RequestParam String gender,Model model){
 		//1.파라미터 읽기
 		logger.info("글상세보기 파라미터 no={}",no);
 		
@@ -221,7 +252,7 @@ public class FreeboardController {
 		//1.파라미터가 x
 		if(no==0){
 			model.addAttribute("msg","잘못된zzz url입니다");
-			model.addAttribute("url","/freeboard/list.do?gender="+gender);
+			model.addAttribute("url","/freeboard/list.do");
 			
 			return "common/message";
 		}
@@ -230,6 +261,16 @@ public class FreeboardController {
 		BoardViewVO vo=fBoardService.selectByNo(no);
 		int beforeNo=fBoardService.selectBefore(no);
 		int nextNo=fBoardService.selectNext(no);
+		
+		int pageNum=3;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
 		
 		//3. 결과저장, 뷰페이지 리턴
 		model.addAttribute("vo",vo);
@@ -240,12 +281,21 @@ public class FreeboardController {
 	}
 	
 	@RequestMapping(value="/edit.do",method=RequestMethod.GET)
-	public String editBoard(@RequestParam(defaultValue="0")int no,Model model){
+	public String editBoard(@RequestParam(defaultValue="0")int no,@RequestParam(defaultValue="F") String gender, Model model){
 		//1.
 		logger.info("수정화면 보이기 파라미터 no={}",no);
 		//2.
 		BoardViewVO vo=fBoardService.selectByNo(no);
 		logger.info("수정 파라미터 vo={}",vo);
+		
+		int pageNum=3;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
 		//3. 결과저장, 뷰페이지 리턴
 		model.addAttribute("vo",vo);
 		
@@ -258,7 +308,7 @@ public class FreeboardController {
 	@RequestMapping(value="/edit.do",method=RequestMethod.POST)
 	public String edit_post(@ModelAttribute FreeBoardVO fboardVo,HttpServletRequest request,
 			@RequestParam String oldFilename,@RequestParam String oldOriginfilename,@RequestParam long oldFilesize
-			,Model model){
+			,@RequestParam(defaultValue="F") String gender,Model model){
 		
 		
 		//1.
@@ -299,11 +349,21 @@ public class FreeboardController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="수정 완료";
-			url="/freeboard/detail.do?no="+fboardVo.getbNo();
+			url="/freeboard/detail.do?no="+fboardVo.getbNo()+"&gender="+gender;
 		}else{
 			msg="수정 실패";
-			url="/freeboard/edit.do?no="+fboardVo.getbNo();
+			url="/freeboard/edit.do?no="+fboardVo.getbNo()+"&gender="+gender;
 		}
+		
+		int pageNum=3;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		
@@ -312,12 +372,12 @@ public class FreeboardController {
 	}
 	
 	@RequestMapping("/delete.do")
-	public String delete(@RequestParam(defaultValue="0") int bNo,Model model){
+	public String delete(@RequestParam(defaultValue="0") int bNo,@RequestParam(defaultValue="F") String gender,Model model){
 		//1.
 		logger.info("삭제 파라미터 bNo={}",bNo);
 		if(bNo==0){
 			model.addAttribute("msg","잘못된 url입니다");
-			model.addAttribute("url","/freeboard/list.do");
+			model.addAttribute("url","/freeboard/list.do?gender="+gender);
 			
 			return "common/message";
 		}
@@ -328,11 +388,22 @@ public class FreeboardController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="삭제 완료";
-			url="/freeboard/list.do";
+			url="/freeboard/list.do?gender="+gender;
 		}else{
 			msg="삭제 실패";
 			url="/freeboard/detail.do?no="+bNo;
 		}
+		
+		int pageNum=3;
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("gender",gender);
+		
+		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		

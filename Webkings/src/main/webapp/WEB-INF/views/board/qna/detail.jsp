@@ -1,7 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mypage.css"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
+<script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	var pageNum = ${pageNum};
+	$(".gnb li:nth-child("+pageNum+")").addClass("active");
+	
+	$(".gnb li").mouseenter(function() {
+		$(".gnb li").removeClass("active");
+		$(this).addClass("active");
+	})
+	$(".gnb li").mouseleave(function() {
+		$(this).removeClass("active");
+		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
+	});
+	
+	// 회원 탈퇴
+	$("#memberQuit").click(function () {
+		$("#divEdit").css("display","none");
+		$("#divQuit1").css("display","block");
+	});
+	
+});
+</script>
 <%@ include file="../../inc/top.jsp" %>
-<script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
+<div class="body-sec">
+<div class="in-sec">
+		<div class="footer">
+		
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <style type="text/css">
 	.divFrm2{
@@ -89,3 +118,9 @@
 	</div>
 <!--  -------------------------------------------------------------------------------------------------->
 	<c:import url="/qna/listView.do"></c:import>
+	
+	<%@ include file="../../page/mypage/footer-sec.jsp" %>
+
+</div>
+</div>
+</div>

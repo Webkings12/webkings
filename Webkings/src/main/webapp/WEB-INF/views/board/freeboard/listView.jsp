@@ -93,7 +93,7 @@ function pageProc(curPage){
 		<tr style="text-align: center">
 			 	 	<td>${vo.bNo }</td>
 			 		<td><a 
-			 			href="<c:url value='/freeboard/detail.do?no=${vo.bNo }&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }'/>"
+			 			href="<c:url value='/freeboard/detail.do?no=${vo.bNo }&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }&gender=${gender }'/>"
 			 			>
 			 		<!-- 제목이 긴경우 일부만 보여주기 -->
 			 		<c:if test="${fn:length(vo.bTitle)>20 }">
@@ -177,8 +177,8 @@ function pageProc(curPage){
 			<input type="submit" value="검색" id="btSearch2">
 	    </form>
 	    	<div class="align_right">
-	    		<a href='<c:url value="/freeboard/list.do"/>' class="btn_default btn_light size_M" >목록</a>
-			    <a href='<c:url value="/freeboard/write.do"/>' class="btn_default btn_light size_M" >글쓰기</a>
+	    		<a href='<c:url value="/freeboard/list.do?gender=${gender }"/>' class="btn_default btn_light size_M" >목록</a>
+			    <a href='<c:url value="/freeboard/write.do?gender=${gender }"/>' class="btn_default btn_light size_M" >글쓰기</a>
 			</div>
 	</div>
 	
