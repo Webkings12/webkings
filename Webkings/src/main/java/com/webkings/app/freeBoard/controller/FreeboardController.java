@@ -241,7 +241,7 @@ public class FreeboardController {
 	
 	@RequestMapping("/detail.do")
 	public String boardDetail(@RequestParam(defaultValue="0") int no
-			,@RequestParam String gender,Model model){
+			,@RequestParam(defaultValue="F") String gender,Model model){
 		//1.파라미터 읽기
 		logger.info("글상세보기 파라미터 no={}",no);
 		

@@ -97,7 +97,7 @@
 		 			</span>
 		 			<div style="display: none;" id="toggle${qrVo.qrNo }" style="margin-top: 15px">
 		 			
-		 				<form action="<c:url value='/reply/write2.do'/>" name="rereplyWrite${qrVo.qrNo }" id="rereplyWrite${qrVo.qrNo }" method="post">
+		 				<form action="<c:url value='/qnaReply/write2.do'/>" name="rereplyWrite${qrVo.qrNo }" id="rereplyWrite${qrVo.qrNo }" method="post">
 		 					<input type="hidden"  name="qrGbn" value="${qrVo.qrGbn }"  />
 		 					<input type="hidden"  name="qrNoGroup" value="${qrVo.qrNoGroup }"  />
 		 					<input type="hidden"  name="qNo" value="${qrVo.qNo }"  />
