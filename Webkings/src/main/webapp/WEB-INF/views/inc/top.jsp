@@ -380,8 +380,8 @@ $(document).ready(function(event){
 									</div>
 									<button type="submit" class="cancelbtn" >로그인</button>
 									<div class="searchBox">
-									<label for="chkId">아이디 저장</label> 
 									<input type="checkbox" checked="checked" id="chkId" name="chkId"> 
+									<label for="chkId">아이디 저장</label> 
 									<a href="#" id="find"	class="a">비밀번호 찾기</a>
 									</div>
 								</div>
