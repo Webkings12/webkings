@@ -60,4 +60,20 @@ public class FooterViewController {
 		
 		return "page/mypage/service"+gender;
 	}
+	@RequestMapping("/privacy.do")
+	public String privacy(@RequestParam(defaultValue="F") String gender, Model model){
+		//1.
+		
+		//2.
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		int pageNum=4;
+		//3.
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("pageNum",pageNum);
+		model.addAttribute("gender",gender);
+		
+		return "page/mypage/privacy"+gender;
+	}
 }
