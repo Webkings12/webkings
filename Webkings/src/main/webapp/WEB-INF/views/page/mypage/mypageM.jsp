@@ -18,37 +18,25 @@ $(document).ready(function() {
 		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
 	});
 	
+	// 회원 탈퇴
+	$("#memberQuit").click(function () {
+		$("#divEdit").css("display","none");
+		$("#divQuit1").css("display","block");
+	});
+	
+	$("#favorprod").click(function () {
+		if($("#semail").val().length<1){
+			$("#divLogin").css("display","block");
+			return false;
+		}
+	});
+	
 	$("#coupon").click(function() {
 		alert("서비스 준비중입니다");
 	});
 });
 </script>
-	<!-- 회원 정보 수정 끝-->
-	<!-- 회원 탈퇴 -->
-		<div id="divQuit1" class="modal">
-			<span
-				onclick="document.getElementById('divQuit1').style.display='none'"
-				class="close" title="Close Modal">&times;</span>
-		<div class="amodel">
-		<form  action="<c:url value="/member/memberQuit.do"/>" method="post" id="formQuit">
-			<div class="divp">
-			<h2 class="h2">다음 안내사항을 확인해주세요</h2>
-			<p>
-				탈퇴 후 회원정보 및 개인형 서비스 정보는<br>
-				 모두 삭제 됩니다.<br>
-				가입시 입력한 정보 : 이메일, 닉네임, 생년월일, 성별<br> 
-				서비스 이용 정보 : Point, 친구쇼핑몰목록, 관심상품<br>
-				삭제된 정보는 복구 불가능합니다</p>
-			</div>
-			<div>
-				<input type="checkbox" id="inquit" name="inquit">
-				<label for="inquit">내용을 확인하였으며, 이에 동의합니다.</label>
-			</div>
-			<button type="submit" class="cancelbtn" id="cancelbtn">회원탈퇴</button>
-		</form>
-		</div>
-	</div>
-	<!-- 회원 탈퇴 끝 -->		
+	
 
 <%@ include file="../../inc/top.jsp" %>
 <div class="body-sec">
@@ -65,6 +53,7 @@ $(document).ready(function() {
 			</div>
 	<div class="in-sec-2">
 		<ul class="mypage-btn">
+		
 		<c:if test="${empty sessionScope.mEmail }">
 			<li class="login"><a onclick="document.getElementById('divLogin').style.display='block'">로그인</a></li>
 		</c:if >
@@ -74,7 +63,7 @@ $(document).ready(function() {
 			<li class="recent-prod"><a href="<c:url value='/prodList.do'/>">최근 본 상품<em></em></a></li>
 			<li class="recent-shop"><a href="<c:url value='/shop/latelyShopList.do'/>">최근 본 샵<em></em></a></li>
 			<li class="coupon"><a href="javascript:;"  id="coupon">쿠폰북</a></li>
-			<li class="favor"><a href="<c:url value='/myitemList.do'/>">관심상품</a></li>
+			<li class="favor" id="favorprod"><a href="<c:url value='/myitemList.do'/>">관심상품</a></li>
 			<li class="follow"><a href="#login">내팔로잉<em></em></a></li>
 		</ul>
 	</div>
@@ -94,7 +83,7 @@ $(document).ready(function() {
 					<div class="imgfile1">
 
 						<div class="imgfile">
-							<img id="UploadImg" src="" />
+							<img id="UploadedImg1" src="<c:url value='/images/person-icon.png'/>" />
 						</div>
 						<div>
 							<input type='file' name="upFile1" id="upFile1"
@@ -105,10 +94,6 @@ $(document).ready(function() {
 					<div id="divedit">
 					<div class="reg"><input type="text" name="mNick"
 							placeholder="닉네임" id="mNick">
-					</div>
-					<div class="reg">
-						<input type="text" name="chgmpwd" placeholder="바꾸실 비밀번호"
-							id="chgmpwd"><br>
 					</div>
 							 <a id="memberQuit"><p>회원탈퇴</p></a>
 					</div>

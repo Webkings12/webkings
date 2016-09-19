@@ -144,6 +144,7 @@ $(document).ready(function() {
 			 },error:function(xhr, status, error){
 					alert(error);
 			}
+			 
 		 });
 	});
 	
@@ -209,9 +210,13 @@ $(document).ready(function() {
     $(".item-list>li.prod #addItem").click(function (e) {
     	e.stopPropagation();
 		e.preventDefault();
-    	iNo = $(this).find("#inputiNo").val();
-    	sNo = $(this).find("#inputsNo").val();
-    	$.ajax({
+		if($("#semail").val().length<1){
+			$("#divLogin").css("display","block");
+			return false;
+		}else {
+			iNo = $(this).find("#inputiNo").val();
+	    	sNo = $(this).find("#inputsNo").val();
+	    	$.ajax({
 				url:"/Webkings/myitem.do",
 				type:"GET",
 				data:"iNo="+iNo+"&sNo="+sNo,
@@ -219,9 +224,10 @@ $(document).ready(function() {
 				success:function(res){
 					alert("관심상품 목록에 등록되었습니다");
 				},
-				error:function(xhr, status, error){
+					error:function(xhr, status, error){
 				}
 			});
+		}
     });
 	 /*페이스북*/
 	 $(".item-list>li.shop .over .btn .fb.sns").click(function(e) {

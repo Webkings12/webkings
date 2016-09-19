@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.regexp.recompile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,6 +101,8 @@ public class MemberController {
 			session.setAttribute("mNick", memberVo.getmNick());
 			session.setAttribute("mNo", memberVo.getmNo());
 			session.setAttribute("mType", memberVo.getmType());
+			session.setAttribute("mImage", memberVo.getmImage());
+			session.setAttribute("mPwd", memberVo.getmPwd());
 			
 			Cookie ck= new Cookie("ck_mEmail", memberVo.getmEmail());
 			if(chkId!=null){
@@ -109,7 +112,6 @@ public class MemberController {
 				ck.setMaxAge(0);
 				response.addCookie(ck);
 			}
-		
 		}
 		return result;
 	}
@@ -120,6 +122,10 @@ public class MemberController {
 		session.removeAttribute("mEmail");
 		session.removeAttribute("mNick");
 		session.removeAttribute("mNo");
+		session.removeAttribute("mImage");
+		session.removeAttribute("mType");
+		session.removeAttribute("mPwd");
+		
 		
 		return "redirect:/page.do";
 	}
@@ -135,9 +141,6 @@ public class MemberController {
 		logger.info("회원수정처리 membervo={}mEmail={}",membervo,mEmail);
 		
 		membervo.setmEmail(mEmail);
-		if(chgmpwd!=null && !chgmpwd.isEmpty()){
-			membervo.setmPwd(chgmpwd);
-		}
 		
 		int uploadTpye=fileUtil.IMAGE_UPLOAD;
 		
@@ -152,7 +155,8 @@ public class MemberController {
 		
 		if(oldmImage!=""){
 			String upPath=fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
-		
+			logger.info("oldmImage이름={}",oldmImage);
+			
 			File delfile= new File(upPath, oldmImage);
 			if(delfile.exists()){
 				boolean bool= delfile.delete();
@@ -160,8 +164,10 @@ public class MemberController {
 		}	
 	
 		}
-		String msg="", url="/member/memberEdit.do";
+		String msg="", url="/page.do";
 		int cnt=memberService.updateMember(membervo);
+		session.setAttribute("mImage", membervo.getmImage());
+		logger.info("세션 mImage={}",membervo.getmImage());
 		logger.info("회원수정처리결과 cnt={}",cnt);
 		
 		if(cnt>0){
@@ -244,6 +250,7 @@ public class MemberController {
 				session.setAttribute("mNick", memberVo.getmNick());
 				session.setAttribute("mNo", memberVo.getmNo());
 				session.setAttribute("mType", memberVo.getmType());
+				session.setAttribute("mPwd", memberVo.getmPwd());
 			}else {
 				logger.info("회원가입처리 실패");
 			}
@@ -255,10 +262,29 @@ public class MemberController {
 			session.setAttribute("mNick", memberVo.getmNick());
 			session.setAttribute("mNo", memberVo.getmNo());
 			session.setAttribute("mType", memberVo.getmType());
+			session.setAttribute("mPwd", memberVo.getmPwd());
 		}
 		
 		return "redirect:/page.do";
 	}
-	
+	@RequestMapping("/memberEditfind.do")
+	public String Pwdupdate(@RequestParam String mMPwd,@RequestParam String mEmail,HttpSession session, Model model){
+		logger.info("비밀번호 변경처리 mPwd={} mEmail={}",mMPwd,mEmail);
+		MemberVo membervo= new MemberVo();
+		membervo.setmPwd(mMPwd);
+		membervo.setmEmail(mEmail);
+		int cnt=memberService.updateMember(membervo);
+		session.setAttribute("mPwd", membervo.getmPwd());
+		String msg="";
+		if(cnt>0){
+			msg="비밀번호를 변경하였습니다";
+		}else {
+			msg="비밀번호 실패";
+		}
+		model.addAttribute("url=","/page.do");
+		model.addAttribute("msg", msg);
+		
+		return "common/message";
+	}
 	
 }

@@ -36,18 +36,7 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
-	 /* $(".item-list>li#prod2 .info .btn .tw").click(function(e) {
-			e.stopPropagation();
-			e.preventDefault();
-			var content = $(this).find("#itN").val();
-			  var link = $(this).find("#doma").val();
-			  var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;";
-			  var wp = window.open("http://twitter.com/share?url=" + encodeURIComponent(link) + "&text=" + encodeURIComponent(content), 'twitter', popOption); 
-			  if ( wp ) {
-			    wp.focus();
-			  }   
-		}); */
+	}
 });
 
 
