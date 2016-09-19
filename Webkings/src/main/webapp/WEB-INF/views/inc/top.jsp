@@ -357,7 +357,6 @@ $(document).ready(function(event){
 	});
 });
 </script>
-
 					<div id="divLogin" class="modal">
 						<span
 							onclick="document.getElementById('divLogin').style.display='none'"
