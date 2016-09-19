@@ -77,7 +77,7 @@
 		 		</td>
 		 		<td>
 		 			<fmt:formatDate value="${qrVo.qrRegdate }" pattern="yyyy-MM-dd"/>
-		 			<c:if test="${ sessionScope.mNo.equals(qrVo.mNo)}">
+		 			<c:if test="${ sessionScope.mNo.equals(qrVo.mNo) or sessionScope.mType=='0'}">
 		 				<a id="replyDel" href="<c:url value='/qnaReply/delete.do?qrNo=${qrVo.qrNo }&qNo=${qrVo.qNo }'/>">X</a>
 		 			</c:if>
 		 		</td>
@@ -91,7 +91,7 @@
 		 			<a id="rereply${qrVo.qrNo }"  onclick="reToggle(${qrVo.qrNo })" style="font-size: 0.8em;color: #CC66FF;" >-답글</a>
 		 			<span class="dateSpan">
 		 			|<fmt:formatDate value="${qrVo.qrRegdate }" pattern="yyyy-MM-dd"/>
-		 			<c:if test="${ sessionScope.mNo.equals(qrVo.mNo)}">
+		 			<c:if test="${ sessionScope.mNo.equals(qrVo.mNo) or sessionScope.mType=='0'}">
 		 				<a id="replyDel" href="<c:url value='/qnaReply/delete.do?qrNo=${qrVo.qrNo }&qNo=${qrVo.qNo }'/>">X</a>
 		 			</c:if>
 		 			</span>
