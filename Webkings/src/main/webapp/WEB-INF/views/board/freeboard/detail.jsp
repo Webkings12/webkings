@@ -97,7 +97,7 @@ $(document).ready(function() {
 				</c:if>
 			</div>
 			<div class="float_right">
-				<c:if test="${sessionScope.mNo==vo.mNo }">
+				<c:if test="${sessionScope.mNo==vo.mNo or sessionScope.mType=='0' }">
 					<a class="btn_default btn_light size_S"  href='<c:url value="/freeboard/edit.do?no=${vo.bNo}&gender=${gender }"/>'>수정</a> |
 		        	<a class="btn_default btn_light size_S" id="sendDel" href='#'>삭제</a> |
 	        	</c:if>
