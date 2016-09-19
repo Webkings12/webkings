@@ -66,7 +66,7 @@ public class MyitemController {
 	@RequestMapping("/myitemList.do")
 	public String myitemList(HttpSession session,@RequestParam(defaultValue="F") String gender, Model model){
 		logger.info("myitem 목록");
-		
+		int pageNum=4;
 		int mNo=(Integer)session.getAttribute("mNo");
 		logger.info("myitem 목록 mNo={}",mNo);
 		List<MyItemviewVO> alist= myitemService.selectMiTEMview(mNo);
@@ -78,17 +78,16 @@ public class MyitemController {
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("gender", gender);
-
+		model.addAttribute("pageNum",pageNum);
 		model.addAttribute("myitemList",alist);
 		model.addAttribute("list",alist.size());
-		
-		
 		
 		return "page/mypage/myitemList"+gender;
 
 	}
 	
 	@RequestMapping("/product.do")
+	@ResponseBody
 	public void product(@RequestParam int iNo,HttpServletRequest request,HttpSession session){
 		logger.info("product  iNo={}",iNo);
 		
@@ -96,12 +95,8 @@ public class MyitemController {
 		if(list==null){
 			list = new ArrayList<Integer>();
 			session.setAttribute("iNoList", list);
-		}else{
-			if(iNo>=0){
-				logger.info("product123  iNo={}",iNo);
-					list.add(iNo);
-			
-			}
+		}
+				list.add(iNo);
 		}
 		
 		/*HttpSession session= request.getSession();
@@ -109,7 +104,7 @@ public class MyitemController {
 		session.setAttribute("i_No", iNo);*/
 		
 		
-	}
+	
 	@RequestMapping("/prodList.do")
 	public String prodList(HttpSession session,@RequestParam(defaultValue="F") String gender, Model model){
 		
@@ -117,11 +112,14 @@ public class MyitemController {
 		logger.info("prodList 목록 iNoList={}",iNoList);
 		Map<String, Object> map= new HashMap<String, Object>();
 		List<ItemViewVO> alist= new ArrayList<ItemViewVO>();
-		int i=0;
+		
+		
+		
+		
+		
 		for(int a:iNoList ){
 			 alist= itemService.itemSelectiNo(a);
-			 map.put("list"+i,alist);
-			 i++;
+			 map.put("list"+a,alist);
 
 		}
 		logger.info("prodList 목록 list={}",map.size());
@@ -129,18 +127,19 @@ public class MyitemController {
 		
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
-		
+		int pageNum=4;
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("gender", gender);
-
+		model.addAttribute("pageNum",pageNum);
 		model.addAttribute("myitemmap",map);
 		model.addAttribute("size",map.size());
 		
 		return "page/mypage/prodList"+gender;
 	}
 	@RequestMapping("myitemdelete.do")
-	public void myitemdelete( @RequestParam int iNo,@RequestParam int mNo,Model model){
+	@ResponseBody
+	public int myitemdelete( @RequestParam int iNo,@RequestParam int mNo,Model model){
 		logger.info("관심 목록 삭제 iNo={},mNo={}",iNo,mNo);
 		
 		MyitemVO vo= new MyitemVO();
@@ -150,5 +149,6 @@ public class MyitemController {
 		int cnt=myitemService.deleteMyitem(vo);
 		logger.info("관심 목록 삭제결과 cnt={}",cnt);
 		
+		return cnt;
 	}
 }

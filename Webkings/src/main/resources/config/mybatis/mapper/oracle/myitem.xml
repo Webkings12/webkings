@@ -5,7 +5,7 @@
 <mapper namespace="com.mybatis.mapper.oracle.myitem">
 	<insert id="insertMyitem" parameterType="MyitemVO">
 		insert into M_ITEM(I_NO,m_NO,s_no)
-		values(#{iNo},#{mNo},0)
+		values(#{iNo},#{mNo},#{sNo})
 	</insert>
 	<select id="selectMiTEMview" resultType="MyItemviewVO" parameterType="int">
 		select * from M_ITEMview

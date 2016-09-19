@@ -71,6 +71,10 @@ $(document).ready(function() {
 		 				$(location).attr('href', "/Webkings/service.do?gender="+gender);
 		 			}else if($(".body-sec .in-sec #myPageVal").val()=="company"){
 		 				$(location).attr('href', "/Webkings/company.do?gender="+gender);
+		 			}else if($(".body-sec .in-sec #myPageVal").val()=="myitemList"){
+		 				$(location).attr('href', "/Webkings/myitemList.do?gender="+gender);
+		 			}else if($(".body-sec .in-sec #myPageVal").val()=="prodList"){
+		 				$(location).attr('href', "/Webkings/prodList.do?gender="+gender);
 		 			}
 		 		}
 			}

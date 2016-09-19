@@ -362,7 +362,7 @@ $(document).ready(function(event){
 						<span
 							onclick="document.getElementById('divLogin').style.display='none'"
 							class="close" title="Close Modal">&times;</span>
-						<div class="amodel">
+						<div class="amodel2">
 							<form class="modal-content animate" id="formLogin" name="formLogin" method="post">
 								<div class="imgcontainer">
 									<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
@@ -370,7 +370,6 @@ $(document).ready(function(event){
 								</div>
 
 								<div class="container">
-									<hr>
 									<div class="reg">
 										<input type="text" placeholder="이메일" name="mEmail" id="mEmail1"
 											value="${cookie.ck_mEmail.value}">
@@ -379,14 +378,15 @@ $(document).ready(function(event){
 										<input type="password" placeholder="비밀번호" name="mPwd"
 											id="mPwd1">
 									</div>
-									<button type="submit" class="cancelbtn" >로그인</button><label
-										for="chkId">아이디 저장</label> <input type="checkbox"
-										checked="checked" id="chkId" name="chkId"> <a href="#" id="find"
-										class="a">비밀번호 찾기</a>
+									<button type="submit" class="cancelbtn" >로그인</button>
+									<div class="searchBox">
+									<label for="chkId">아이디 저장</label> 
+									<input type="checkbox" checked="checked" id="chkId" name="chkId"> 
+									<a href="#" id="find"	class="a">비밀번호 찾기</a>
+									</div>
 								</div>
 
 							</form>
-							<hr>
 							<h4 id="h4">빠른로그인</h4>
 							<div class="regdiv">
 

@@ -57,10 +57,10 @@ $(document).ready(function() {
 				$.each(itemSel, function(idx, item) {
 					result+=
 					"<li class='prod "+gender+"' style='left: 0px; top: 0px;'><a id='aaaa' href='http://"+item.iDomain+"' target='_blank' sseq='11' seq='1388374'>"+
-					"<input type='hidden' id='inputiNo1' name='iINo' value='"+item.iNo+"'>"+
+					"<input type='hidden' id='itemiNo' name='iINo' value='"+item.iNo+"'>"+
 					"<img src='"+item.iImage+"' " +
 					"data-original='http://img.sta1.kr/_up/prod/thmb/w/2016/09/17/03/1474048911831_AL.jpg' style='height: 310px; display: block;' " +
-					"class='item'>	<span class='favor'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
+					"class='item'>	<span class='favor' id='addItem'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
 					"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
 
 					"<div class='info'>		<span class='shop'>"+item.sName+"</span>" +
@@ -116,7 +116,7 @@ $(document).ready(function() {
 	
 	 /*아이템 클릭 업데이트*/
 	 $(".item-list>li.prod>a").click(function() {
-		var iNo = $(this).find("#inputiNo").val();
+		var iNo = $(this).find("#itemiNo").val();
 		 $.ajax({
 			 url:itemUpdateUrl,
 			 type:"GET", 
@@ -172,8 +172,9 @@ $(document).ready(function() {
 	});
 	 
 	// 최근 본 목록 이벤트
-     $(".item-list>li.prod #aaaa").click(function () {
-    	 iNo = $(this).find("#inputiNo1").val();
+     $(".item-list>li.prod>a").click(function () {
+    	 alert("최근본");
+    	 iNo = $(this).find("#itemiNo").val();
     	 $.ajax({
 					url:"/Webkings/product.do",
 					type:"GET",
@@ -186,8 +187,9 @@ $(document).ready(function() {
 					}
 			});
     	}); 
+     
      // 즐겨찾기 이벤트  
-    $(".item-list>li.prod .favor").click(function (e) {
+    $(".item-list>li.prod #addItem").click(function (e) {
     	e.stopPropagation();
 		e.preventDefault();
     	iNo = $(this).find("#inputiNo").val();
@@ -198,7 +200,7 @@ $(document).ready(function() {
 				data:"iNo="+iNo+"&sNo="+sNo,
 				dataType:"text",
 				success:function(res){
-
+					alert("관심상품 목록에 등록되었습니다");
 				},
 				error:function(xhr, status, error){
 				}

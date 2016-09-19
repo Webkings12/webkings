@@ -11,7 +11,7 @@ public class MyItemviewVO {
 	private int iSaleprice;
 	private int iPrice;
 	private String sName;
-	private String sDomain;
+	private String iDomain;
 	private String itGender;
 	private String itName;
 	
@@ -64,11 +64,11 @@ public class MyItemviewVO {
 	public void setsName(String sName) {
 		this.sName = sName;
 	}
-	public String getsDomain() {
-		return sDomain;
+	public String getiDomain() {
+		return iDomain;
 	}
-	public void setsDomain(String sDomain) {
-		this.sDomain = sDomain;
+	public void setiDomain(String iDomain) {
+		this.iDomain = iDomain;
 	}
 	public String getItGender() {
 		return itGender;
@@ -86,7 +86,7 @@ public class MyItemviewVO {
 	public String toString() {
 		return "MyItemviewVO [iNo=" + iNo + ", mNo=" + mNo + ", mIRegdate=" + mIRegdate + ", iName=" + iName
 				+ ", iImage=" + iImage + ", iSaleprice=" + iSaleprice + ", iPrice=" + iPrice + ", sName=" + sName
-				+ ", sDomain=" + sDomain + ", itGender=" + itGender + ", itName=" + itName + "]";
+				+ ", iDomain=" + iDomain + ", itGender=" + itGender + ", itName=" + itName + "]";
 	}
 	
 	
