@@ -1,11 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../../inc/top.jsp" %>
-<script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
-<style type="text/css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 
-</style>
+<c:if test="${gender=='M' }">
+<script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
+</c:if>
+<c:if test="${gender=='F' }">
+<script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
+</c:if>
+<script type="text/javascript">
+var style="${style}";
+var url ="<c:url value='/shop/shopStyle.do'/>";
+var searchName="${searchName}";
+</script>
+<script type="text/javascript" src="<c:url value='/js/shop.js'/>"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	var pageNum = ${pageNum};
+	$(".gnb li:nth-child("+pageNum+")").addClass("active");
+	
+	$(".gnb li").mouseenter(function() {
+		$(".gnb li").removeClass("active");
+		$(this).addClass("active");
+	})
+	$(".gnb li").mouseleave(function() {
+		$(this).removeClass("active");
+		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
+	});
+});
+</script>
+<%@ include file="../../inc/top.jsp" %>
+<div class="body-sec">
+<div class="in-sec">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#edit_form").submit(function(event){
@@ -47,11 +75,11 @@
 			<textarea id="bContent" name="bContent">${vo.bContent }</textarea>
 		</div>
 		<div>
-			<input type="file" name="upfile">
+			<input type="file" name="upfile" accept=".jpg,.png,.gif">
 			<c:if test="${!empty vo.bFilename }">
          		<p style="color:green;">
          			※첨부파일을 새로 지정할 경우 기존파일
-         			<img src="<c:url value='/images/file.gif'/>" alt="파일이미지">${vo.bOriginalfilename } 은삭제됩니다.
+         			<img src="<c:url value='/images/file.gif'/>" alt="파일이미지" >${vo.bOriginalfilename } 은삭제됩니다.
          		</p>
          	</c:if>
 		</div>	
@@ -63,3 +91,7 @@
 	</form>
 
 	</div>
+	
+	</div>
+	</div>
+	

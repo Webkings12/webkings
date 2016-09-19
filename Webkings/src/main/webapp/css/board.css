@@ -134,6 +134,7 @@
 		background: white;
 		padding: 15px;
 		margin-top: 5px;
+		text-align: left;
 }
 .listTable{
 	background: #fff;
@@ -160,6 +161,9 @@
 }
 .listTable td:nth-child(1){
 	font-size: 0.8em;
+}
+.listTable td:nth-child(4){
+	font-size: 0.7em;
 }
 .noneDeco a{
 	text-decoration: none;
@@ -206,6 +210,7 @@
 .replyList td:nth-child(3){
 	font-size: 0.7em;
 }
+
 .replyList td:nth-child(1){
 	font-size: 0.8em;
 	font-weight:bold;
@@ -287,4 +292,8 @@
 .topPadding{
 	padding-top: 15px;
 }
+div.body-sec>div.in-sec>div {
+    min-height: 0;
+}
+
 

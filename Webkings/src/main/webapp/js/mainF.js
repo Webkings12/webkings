@@ -78,6 +78,9 @@ $(document).ready(function() {
 		 			else if($(".body-sec .in-sec #myPageVal").val()=="prodList"){
 		 				$(location).attr('href', "/Webkings/prodList.do?gender="+gender);
 		 			}
+		 			else if($(".body-sec .in-sec #myPageVal").val()=="latelyShopList"){
+		 				$(location).attr('href', "/Webkings/shop/latelyShopList.do?gender="+gender);
+		 			}
 		 		}
 			}
 		});

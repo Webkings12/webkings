@@ -32,7 +32,6 @@ $(document).ready(function() {
 <br>
 <br>
 <h1 style="text-align: center;">최근본상품<span style="color:#0fb6c5;">${size}</span></h1>
-	<c:set var="i" value="0"></c:set>
 	<c:if test="${empty myitemmap }">
 	</c:if>
 	<c:if test="${!empty myitemmap }">

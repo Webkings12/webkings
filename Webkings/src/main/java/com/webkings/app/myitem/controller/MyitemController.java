@@ -114,10 +114,6 @@ public class MyitemController {
 		Map<String, Object> map= new HashMap<String, Object>();
 		List<ItemViewVO> alist= new ArrayList<ItemViewVO>();
 		
-		
-		
-		
-		
 		for(int a:iNoList ){
 			 alist= itemService.itemSelectiNo(a);
 			 map.put("list"+a,alist);

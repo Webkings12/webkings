@@ -29,4 +29,9 @@ public class ShopDAOMybatis extends SqlSessionDaoSupport implements ShopDAO{
 	public int shopClickUpdate(String sNo) {
 		return getSqlSession().update(namespace+".clickUp", sNo);
 	}
+
+	@Override
+	public List<ShopViewVO> latelyshoplist(int sNo) {
+		return getSqlSession().selectList(namespace+".latelyshoplist", sNo);
+	}
 }

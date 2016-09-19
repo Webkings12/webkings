@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/mypage.css"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
@@ -16,9 +17,21 @@ $(document).ready(function() {
 		$(this).removeClass("active");
 		$(".gnb li:nth-of-type("+pageNum+")").addClass("active");
 	});
+	
+	// 회원 탈퇴
+	$("#memberQuit").click(function () {
+		$("#divEdit").css("display","none");
+		$("#divQuit1").css("display","block");
+	});
+	
 });
 </script>
-<%@ include file="../../inc/top.jsp"  %>
+<%@ include file="../../inc/top.jsp" %>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/qna.css"/>
+<div class="body-sec">
+<div class="in-sec">
+		<div class="footer">
 <!-- ------------------------------------------------------------------------여기부터 위는 인클루드 -->
 <script type="text/javascript">
 $(document).ready(function(){
@@ -36,7 +49,6 @@ function pageProc(curPage){
 	document.frmPage.submit();
 }
 </script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <form name="frmPage" method="post" 
 	action="<c:url value='/qna/list.do'/>">
 	<input type="hidden" name="currentPage">
@@ -182,5 +194,11 @@ function pageProc(curPage){
 	</div>
 </div>
 </div>
+<%@ include file="../../page/mypage/footer-sec.jsp" %>
+
+</div>
+</div>
+</div>
+
 </body>
 </html>
