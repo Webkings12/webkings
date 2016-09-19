@@ -388,7 +388,7 @@ $(document).ready(function(event){
 
 							</form>
 							<h4 id="h4">빠른로그인</h4>
-							<div class="regdiv">
+							<div class="regdiv" style="margin-left: 75px;">
 
 								<a id="custom-login-btn" href="javascript:loginWithKakao()">
 									<img alt="카카오" src="<c:url value='/images/kakaolink.png'/>"
@@ -409,7 +409,6 @@ $(document).ready(function(event){
 									alt="회원가입" src="<c:url value='/images/email.png'/>"
 									class="img1" /></a>
 							</div>
-
 						</div>
 					</div>
 
