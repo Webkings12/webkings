@@ -10,7 +10,6 @@ $(document).ready(function() {
 		/*헤더 상단 카테고리 클릭시 페이지 연결자*/
 		$(".gnb li").click(function() {
 			page=$(".active #gnbPage").val();
-			
 			if(page=="/item" || page=="/shop" || page=="/mypage"){
 	 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
 	 		}else if(page=="/product"){
@@ -54,17 +53,17 @@ $(document).ready(function() {
 					}else{
 						$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=F");
 					}
-					return;
 				}
 				else if(page=="/shop"){
 		 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender=F");
-		 			return;
 		 		}else if(page=="/product"){
 		 			$(location).attr('href', "/Webkings/item/itemCate.do?page=/product&gender="+gender+"&cate="+itemCate+"&orderVal="+orderVal+"&sw2="+sw2+"&ssp="+ssp+"&sep="+sep+"&sac="+sac);
 		 		}else if(page=="/search"){
-		 			alert("여자로 갈때 gender"+gender);
 		 			$(location).attr('href', "/Webkings/search/view.do?searchVal="+searchVal+"&gender="+gender);
-		 		}else if(page=="/mypage"){
+		 		}else if(page=="/info"){
+		 			$(location).attr('href', "/Webkings/freeboard/list.do?gender="+gender);
+		 		}
+		 		else if(page=="/mypage"){
 		 			if($(".body-sec .in-sec #myPageVal").val()==null){
 						$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
 		 			}

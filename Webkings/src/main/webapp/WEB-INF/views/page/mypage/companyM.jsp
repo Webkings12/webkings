@@ -108,15 +108,14 @@ $(document).ready(function() {
 
 			<div class="in-sec-2">
 				<div class="company-sec">
-					<img src="http://img.sta1.info/rsc/front/img/img-company-1.png">
+					<img src="<c:url value='/images/WEBKINGS LOGO.png'/>" style="width: 480px; height: 240px;">
 					<ul>
-						<li><strong>회사명</strong><span>(주)오늘뭐입지</span></li>
+						<li><strong>회사명</strong><span>(주)WEBKINGS</span></li>
 						<li><strong>사업자번호</strong><span>123-12-1234</span></li>
 						<li><strong>설립일</strong><span>2016년 9월 17일</span></li>
 						<li><strong>대표</strong><span>하승숴이</span></li>
 						<li><strong>대표전화</strong><span>02.3456.7890</span></li>
-						<li class="map"><strong>주소</strong><span>서울시 강남구 선릉로
-								131길 하나빌딩 2층 (주)스타일닷컴</span>
+						<li class="map"><strong>주소</strong><span>서울특별시 영등포구 당산동6가동화빌딩 8층 (주)WEBKINGS</span>
 							<div class="map">
 								<p id="map"></p>
 							</div></li>

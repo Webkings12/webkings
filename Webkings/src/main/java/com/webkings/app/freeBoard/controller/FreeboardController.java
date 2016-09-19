@@ -113,7 +113,7 @@ public class FreeboardController {
 		//1. 파라미터 읽어오기*/
 		logger.info("글목록 조회, 파라미터 searchVo={}",
 				searchVo);
-		
+		logger.info("여긴 들어오니?gender={}",gender);
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(10); //블록사이즈
 		pagingInfo.setRecordCountPerPage(15); //페이지에 보여줄 레코드수
@@ -146,7 +146,7 @@ public class FreeboardController {
 		model.addAttribute("searchVo", searchVo);
 		model.addAttribute("pagingInfo", pagingInfo);
 		
-		
+		model.addAttribute("gender", gender);
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("pageNum", pageNum);
@@ -209,8 +209,8 @@ public class FreeboardController {
 	}
 	
 	@RequestMapping("/detail.do")
-	public String boardDetail(@RequestParam(defaultValue="0") int no
-			,Model model){
+	public String boardDetail(@RequestParam(defaultValue="0") int no, @RequestParam String gender,
+			Model model){
 		//1.파라미터 읽기
 		logger.info("글상세보기 파라미터 no={}",no);
 		
@@ -221,7 +221,7 @@ public class FreeboardController {
 		//1.파라미터가 x
 		if(no==0){
 			model.addAttribute("msg","잘못된zzz url입니다");
-			model.addAttribute("url","/freeboard/list.do");
+			model.addAttribute("url","/freeboard/list.do?gender="+gender);
 			
 			return "common/message";
 		}
