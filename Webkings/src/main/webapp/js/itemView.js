@@ -127,7 +127,6 @@ $(document).ready(function() {
 					 
 				 });
 			});*/
-			 
 			/*트위터*/
 			 $(".item-list>li#prod2 .info .btn .tw").click(function(e) {
 				e.stopPropagation();

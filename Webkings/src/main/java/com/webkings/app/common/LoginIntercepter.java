@@ -35,7 +35,6 @@ public class LoginIntercepter extends HandlerInterceptorAdapter{
 	 
 	*/
 	
-
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
 		logger.info("컨트롤러 실행 전 먼저 preHandle()메서드가 실행됨");

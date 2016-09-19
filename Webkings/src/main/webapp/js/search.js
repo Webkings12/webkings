@@ -143,7 +143,6 @@ $(document).ready(function() {
 			 },error:function(xhr, status, error){
 					alert(error);
 			}
-			 
 		 });
 	});
 	/*트위터*/

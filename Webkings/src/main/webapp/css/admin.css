@@ -1,0 +1,280 @@
+@CHARSET "UTF-8";
+@media screen and (max-width: 1460px)
+{body>div.header div.shadow div.in-sec {
+    width: 950px;
+}}
+
+body>div.header div.shadow div.in-sec {
+    width: 1460px;
+    margin: 0 auto;
+    position: relative;
+    height: 71px;
+}
+
+body>div.header div.shadow>div {
+    border-bottom: 1px solid #d0d0d0;
+}
+body>div.header div.shadow {
+    padding-bottom: 3px;
+    background: url(/rsc/front/img/bg-gnb-1.png) repeat-x bottom;
+    position: relative;
+    z-index: 1;
+}
+body>div.header {
+    position: fixed;
+    width: 100%;
+    z-index: 6;
+    top: 0;
+}
+body>div.header h1 {
+    position: absolute;
+    left: 115px;
+    top: 7px;
+}
+body>div.header h1 a {
+    background-image: url(../images/logo.png);
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 120px 28px;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 30px;
+    font-size: 0;
+    line-height: 0;
+    display: block;
+}
+
+div.body-sec {
+    height: 100%;
+    position: relative;
+}
+div.body-sec>div.in-sec {
+    width: 1440px;
+    min-height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+div.body-sec>div.in-sec>div.footer {
+    padding-bottom: 62px;
+}
+
+div.body-sec>div.in-sec>div {
+    min-height: 660px;
+    padding-bottom: 20px;
+}
+
+div.body-sec>div.in-sec>div {
+    min-height: 660px;
+    padding-bottom: 20px;
+}
+.list-top-2>.in {
+    padding-top: 75px;
+    height: 117px;
+}
+.tab-type-2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin-top: 37px;
+}
+.tab-type-2 ul {
+    overflow: hidden;
+}
+.tab-type-2 ul li.single {
+    float: none;
+    height: 22;
+}
+.tab-type-2 ul li.active a {
+    color: #202022;
+}
+
+div.body-sec>div.in-sec>div.footer div.in-sec-2 {
+    bottom: 52px;
+}
+
+div.body-sec div.in-sec-2 {
+    position: absolute;
+    left: 0;
+    top: 192px;
+    right: 0;
+    bottom: 0;
+}
+.mypage-btn {
+    width: 600px;
+    margin: -100px auto 0;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+a:link, a:visited {
+    color: #202022;
+    text-decoration: none;
+    cursor: pointer;
+}
+div.footer-sec>div>.in-sec {
+    width: 1410px;
+    margin: 0 auto;
+    border-top: 1px solid #e0e0e0;
+}
+div.footer-sec>div {
+    width: 1440px;
+    margin: 0 auto;
+}
+.list-top-2 {
+    position: relative;
+    z-index: 2;
+}
+.tab-type-2 ul li a {
+    font-size: 18px;
+    display: block;
+    padding: 0 13px 0 17px;
+    line-height: 100%;
+    position: relative;
+    color: #a2a2a5;
+}
+.mypage-btn li {
+    float: left;
+    padding: 0 5px 10px;
+}
+div.footer-sec {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 48px;
+}
+@media screen and (max-width: 1460px)
+{div.footer-sec>div {
+    width: 950px;
+}}
+body>div.header div.shadow div.in-sec div{
+	position: absolute;
+    left: 23%;
+    font-size:20px;
+    font-weight:400;
+    -webkit-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
+    -ms-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+    top: 26px;
+}
+.mypage-btn li a {
+    display: block;
+    width: 110px;
+    height: 110px;
+    background-color: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 13px;
+    overflow: hidden;
+    position: relative;
+}
+
+.mypage-btn li a em {
+    position: absolute;
+    min-width: 23px;
+    line-height: 23px;
+    color: #fff;
+    font-family: DINPro_M,sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    background-color: #e6178f;
+    top: 12px;
+    right: 12px;
+    -webkit-border-radius: 13px;
+    -moz-border-radius: 13px;
+    border-radius: 13px;
+    font-size: 12px;
+}
+body .mypage-btn li.login a:before {
+    background-image: url(../images/command.png);
+    -webkit-background-size: 36px, 38px;
+    -moz-background-size: 36px, 35px;
+    -o-background-size: 36px, 38px;
+    background-size: 36px, 36px;
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+}
+
+
+.mypage-btn li.recent-prod a:before {
+    background-image: url(../images/price-tag.png);
+    -webkit-background-size: 36px 35px;
+    -moz-background-size: 36px 35px;
+    -o-background-size: 36px 35px;
+    background-size: 36px 35px;
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 35px;
+}
+.mypage-btn li a:before {
+    content: "";
+    margin: 25px auto 16px;
+    display: block;
+}
+.mypage-btn li.login a:before {
+    margin-top: 24px;
+}
+.mypage-btn li.recent-shop a:before {
+    background-image: url(../images/store.png);
+    -webkit-background-size: 36px 35px;
+    -moz-background-size: 36px 35px;
+    -o-background-size: 36px 35px;
+    background-size: 36px 35px;
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 35px;
+}
+
+.mypage-btn li.coupon a:before {
+    background-image: url(../images/percent.png);
+    -webkit-background-size: 36px 35px;
+    -moz-background-size: 36px 35px;
+    -o-background-size: 36px 35px;
+    background-size: 36px 36px;
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 36px;
+}
+@media screen and (max-width: 1460px)
+{div.footer-sec>div>.in-sec {
+    width: 920px;
+}}
+div.footer-sec>div>.in-sec>div {
+    border-top: 1px solid #fff;
+}
+body>div.header div.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 3px;
+    background-color: #fff;
+    opacity: .97;
+}
+div.footer-sec p.copyright {
+    float: right;
+    font-size: 11px;
+    font-family: DINPro_R,sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 50px;
+    letter-spacing: 0;
+    word-spacing: 0;
+}
