@@ -44,7 +44,7 @@ $(document).ready(function() {
 <div class="in-sec">
 <input type="hidden" id="myPageVal" value="service">
 	<div class="footer topMargin">
-		<h1>이용약관</h1>
+		<h1>개인정보 처리방침</h1><br>
 		<h3>(주)WEBKINGS(webkings.com 이하 "회사" 또는 "(주)WEBKINGS"이라 함)는 통신비밀보호법, 전기통신사업법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 등 정보통신서비스제공자가 준수하여야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.
 (주)WEBKINGS의 개인정보처리 방침은 다음과 같은 내용을 담고 있습니다.</h3>
 			<div id="accordion">
