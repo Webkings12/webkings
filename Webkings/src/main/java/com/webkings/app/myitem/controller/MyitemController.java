@@ -117,9 +117,11 @@ public class MyitemController {
 		logger.info("prodList 목록 iNoList={}",iNoList);
 		Map<String, Object> map= new HashMap<String, Object>();
 		List<ItemViewVO> alist= new ArrayList<ItemViewVO>();
+		int i=0;
 		for(int a:iNoList ){
 			 alist= itemService.itemSelectiNo(a);
-			 map.put("list"+a,alist);
+			 map.put("list"+i,alist);
+			 i++;
 
 		}
 		logger.info("prodList 목록 list={}",map.size());
