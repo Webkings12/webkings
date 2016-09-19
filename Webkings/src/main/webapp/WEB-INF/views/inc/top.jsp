@@ -357,7 +357,7 @@ $(document).ready(function(event){
 	});
 });
 </script>
-					<div id="divLogin" class="modal">
+				<div id="divLogin" class="modal">
 						<span
 							onclick="document.getElementById('divLogin').style.display='none'"
 							class="close" title="Close Modal">&times;</span>

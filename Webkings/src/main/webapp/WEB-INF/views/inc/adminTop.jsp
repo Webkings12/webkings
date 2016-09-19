@@ -23,8 +23,7 @@
 			<div class="in-sec">
 	<h1><a href="/home"></a></h1>
 	<div class="title">관리자 페이지</div>
-	
-	<div id="divLogin" class="modal2">
+	<div id="divLogin" class="modal2" style="display: block;">
 						<div class="amodel2">
 							<form class="modal-content animate" id="formLogin" name="formLogin" method="post">
 								<div class="imgcontainer">

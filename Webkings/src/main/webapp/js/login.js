@@ -17,8 +17,6 @@ $(document).ready(function(){
 		}
 		
 		$("#divLogin").css("display","none");
-		
-		
 	});
 	
 	$("#reg").click(function () {
