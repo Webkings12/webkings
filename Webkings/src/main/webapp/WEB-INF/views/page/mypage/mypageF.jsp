@@ -51,7 +51,7 @@ $(document).ready(function() {
 			<li class="login"><a onclick="document.getElementById('divEdit').style.display='block'">내정보 관리</a></li>
 		</c:if>
 			<li class="recent-prod"><a href="<c:url value='/prodList.do'/>">최근 본 상품<em></em></a></li>
-			<li class="recent-shop"><a href="/recent/shop">최근 본 샵<em></em></a></li>
+			<li class="recent-shop"><a href="<c:url value='/shop/latelyShopList.do'/>">최근 본 샵<em></em></a></li>
 			<li class="coupon"><a href="javascript:;" id="coupon">쿠폰북</a></li>
 			<li class="favor"><a href="<c:url value='/myitemList.do'/>">관심상품</a></li>
 			<li class="follow"><a href="#login">내팔로잉<em></em></a></li>
@@ -96,7 +96,7 @@ $(document).ready(function() {
 					</div>
 							 <a id="memberQuit"><p>회원탈퇴</p></a>
 					</div>
-					<button type="submit" class="cancelbtn">수정완료</button>
+					<button type="submit" class="cancelbtn" style="width: 100%;">수정완료</button>
 				</form>
 			</div>
 	</div>
@@ -122,7 +122,7 @@ $(document).ready(function() {
 				<input type="checkbox" id="inquit" name="inquit">
 				<label for="inquit">내용을 확인하였으며, 이에 동의합니다.</label>
 			</div>
-			<button type="submit" class="cancelbtn" id="cancelbtn">회원탈퇴</button>
+			<button type="submit" class="cancelbtn" id="cancelbtn" style="width: 100%;">회원탈퇴</button>
 		</form>
 		</div>
 	</div>

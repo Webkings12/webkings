@@ -16,6 +16,7 @@ $(document).ready(function() {
 			itCount= res.itCount;
 			shopCount= res.shopCount;
 			searchList= res.searchList;
+			
 			var noResult="";
 			var result="";
 			if(shopList!=null && shopList!="" || itemSel!=null && itemSel!=""){
@@ -146,6 +147,8 @@ $(document).ready(function() {
 			 
 		 });
 	});
+	
+	 
 	/*트위터*/
 	 $(".item-list>li.prod .info .btn .tw").click(function(e) {
 			e.stopPropagation();
@@ -171,9 +174,24 @@ $(document).ready(function() {
 			  }   
 	});
 	 
-	// 최근 본 목록 이벤트
+	// 최근 본 샵 이벤트
+     $(".item-list>li.shop>a").click(function () {
+    	 var sNo = $(this).find("#inputsNo").val();
+    	 $.ajax({
+					url:"/Webkings/shop/latelyShop.do",
+					type:"GET",
+					data:"sNo="+sNo,
+					dataType:"text",
+					success:function(res){
+						
+					},
+				error:function(xhr, status, error){
+					}
+			});
+    	}); 
+	 
+	// 최근 본 상품 이벤트
      $(".item-list>li.prod>a").click(function () {
-    	 alert("최근본");
     	 iNo = $(this).find("#itemiNo").val();
     	 $.ajax({
 					url:"/Webkings/product.do",
