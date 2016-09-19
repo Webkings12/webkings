@@ -67,8 +67,19 @@ textarea::-webkit-input-placeholder { color: #FF00CC; }
     display: inline-block;
 }
 .back_color {
-    background-color: #FF00CC;
+    /* background-color: #FF00CC; */
+    border : 1px solid #B2B2B2;
+    background-color: #C9C9C9;
+    color:#FF00CC;
+}
+
+.back_color2 {
+	border : 1px solid #B2B2B2;
+	margin-top: 15px;
+    background-color: #C9C9C9;
     color:white;
+    width: 100px;
+   	float: right;
 }
 .after {
     content: "";

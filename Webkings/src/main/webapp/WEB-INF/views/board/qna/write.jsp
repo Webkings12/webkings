@@ -72,6 +72,7 @@ $(document).ready(function() {
 	}
 </script>
 <div class="divFrm1" style="text-align: center">
+	
 	<form id="frmQna" name="frmQna" method="post" action="<c:url value='/qna/write.do' />" >
 		<ul id="list">
 			<li><input name="qTitle" type="text" id="qTitle" placeholder="제목"></li>
@@ -86,6 +87,7 @@ $(document).ready(function() {
 		</div>
 		<input type="submit" class="btn_default btn_light back_color" id="btQsubMit" value="문의 보내기">
 	</form>
+	<a class="btn_default btn_light back_color2" href="<c:url value='/qna/list.do'/>" >문의내역</a>
 </div>
 
 <%@ include file="../../page/mypage/footer-sec.jsp" %>
