@@ -6,5 +6,3 @@
 			<div>
 		<p class="copyright">COPYRIGHT@2016 BY WEBKINGS.COM.,LTD. ALL RIGHT RESERVED.</p>
 </div></div></div></div>
-</body>
-</html>

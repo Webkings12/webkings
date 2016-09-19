@@ -22,7 +22,9 @@
 			<li class="favor"><a href="javascript:;">문의 관리</a></li>
 		</ul>
 	</div>
+	 <%@ include file="../../inc/adminFooter.jsp" %>
 </div>
 </div>
 </div>
- <%@ include file="../../inc/adminFooter.jsp" %>
+</body>
+</html>
