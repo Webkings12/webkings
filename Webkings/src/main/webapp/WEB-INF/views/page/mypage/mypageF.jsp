@@ -24,6 +24,39 @@ $(document).ready(function() {
 		$("#divQuit1").css("display","block");
 	});
 	
+	
+	
+	//비밀번호 변경
+	$("#memberfind").click(function () {
+		$("#divEdit").css("display","none");
+		$("#divEditfind").css("display","block");
+	});
+	
+	
+	$("#formEditfind").submit(function(){
+		if($("#oldPwd").val().length<1){
+			alert("비밀번호를 입력하세요");
+			$("#divEditfind").css("display","block");
+			$("#oldPwd").focus();
+			return false;
+		}else if($("#oldPwd").val()!= $("#chkPwd").val()){
+			alert("비밀번호가 다릅니다.");
+			$("#divEditfind").css("display","block");
+			$("#oldPwd").focus();
+			return false;
+		}else if ($("#m_Pwd").val().length<1) {
+			alert("바꾸실비밀번호를 입력하세요");
+			return false;
+		}
+	});
+	
+	$("#favorprod").click(function () {
+		if($("#semail").val().length<1){
+			$("#divLogin").css("display","block");
+			return false;
+		}
+	});
+	
 	$("#coupon").click(function() {
 		alert("서비스 준비중입니다");
 	});
@@ -53,7 +86,7 @@ $(document).ready(function() {
 			<li class="recent-prod"><a href="<c:url value='/prodList.do'/>">최근 본 상품<em></em></a></li>
 			<li class="recent-shop"><a href="<c:url value='/shop/latelyShopList.do'/>">최근 본 샵<em></em></a></li>
 			<li class="coupon"><a href="javascript:;" id="coupon">쿠폰북</a></li>
-			<li class="favor"><a href="<c:url value='/myitemList.do'/>">관심상품</a></li>
+			<li class="favor" id="favorprod"><a href="<c:url value='/myitemList.do'/>">관심상품</a></li>
 			<li class="follow"><a href="#login">내팔로잉<em></em></a></li>
 		</ul>
 	</div>
@@ -78,22 +111,25 @@ $(document).ready(function() {
 					<div class="imgfile1">
 
 						<div class="imgfile">
-							<img id="UploadImg" src="" />
+							<c:set var="image" value="${sessionScope.mImage}"/>
+							<c:if test="${empty image}">
+								<img id="UploadedImg1" src="<c:url value='/images/person-icon.png'/>" />
+							</c:if>
+							<c:if test="${!empty image}">
+								<img id="UploadedImg1" src="<c:url value='/user_images/${image}'/>" />
+							</c:if>
 						</div>
 						<div>
 							<input type='file' name="upFile1" id="upFile1"
 								onchange="readURL1(this)" /> <input type="hidden"
-								name="oldmImage" value="${membervo.mImage }">
+								name="oldmImage" value="${image}">
 						</div>
 					</div>
 					<div id="divedit">
 					<div class="reg"><input type="text" name="mNick"
 							placeholder="닉네임" id="mNick">
 					</div>
-					<div class="reg">
-						<input type="text" name="chgmpwd" placeholder="바꾸실 비밀번호"
-							id="chgmpwd"><br>
-					</div>
+							<a id="memberfind"><p>비밀번호 변경</p></a>
 							 <a id="memberQuit"><p>회원탈퇴</p></a>
 					</div>
 					<button type="submit" class="cancelbtn" style="width: 100%;">수정완료</button>
@@ -101,6 +137,28 @@ $(document).ready(function() {
 			</div>
 	</div>
 	<!-- 회원 정보 수정 끝-->
+	<!-- 비밀번호 변경 -->
+	<div id="divEditfind" class="modal">
+			
+		<div class="amodel">
+		<span
+				onclick="document.getElementById('divEditfind').style.display='none'"
+				class="close1" title="Close Modal">&times;</span>
+		<form  action="<c:url value="/member/memberEditfind.do"/>" method="post" id="formEditfind">
+			<div class="reg">
+				<input type="text" placeholder="예전비밀번호" name="oldPwd" id="oldPwd">
+				<input type="hidden" name="chkPwd" id="chkPwd" value="${sessionScope.mPwd}">
+			</div>
+			<div class="reg">
+				<input type="text" placeholder="바꾸실비밀번호" name="mMPwd" id="m_Pwd">
+				<input type="hidden" name="mEmail" id="mEmail" value="${sessionScope.mEmail}">
+			</div>
+			<button type="submit" class="cancelbtn" id="cancelbtn" style="width: 100%;">비밀번호 변경</button>
+		</form>
+		</div>
+	</div>
+	
+	<!-- 비밀번호 변경 끝-->
 	<!-- 회원 탈퇴 -->
 		<div id="divQuit1" class="modal">
 			

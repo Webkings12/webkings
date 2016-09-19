@@ -51,7 +51,6 @@ var searchUrl="<c:url value='/search/list.do'/>";
 var deleteUrl="<c:url value='/search/delete.do'/>";
 var itemUpdateUrl="<c:url value='/item/itemClick.do'/>";
 var shopUpdateUrl="<c:url value='/shop/shopClick.do'/>";
-
 var gender = "${gender}";
 var itNCount="${itNCount}";
 var itOCount="${itOCount}";
@@ -63,6 +62,7 @@ var searchList="";
 <script type="text/javascript" src="<c:url value='/js/search.js'/>"></script>
 </head>
 <body class="F">
+<input type="hidden" name="semail" id="semail" value="${sessionScope.mEmail}">
 	<div class="header">
 		<div class="shadow">
 			<div>
@@ -265,7 +265,7 @@ var searchList="";
 							<hr>
 							<div class="reg">
 								<div class="imgfile">
-									<img id="UploadedImg" src="" />
+									<img id="UploadedImg" src="<c:url value='/images/person-icon.png'/>" />
 								</div>
 								<div>
 									<input type='file' name="upFile" onchange="readURL(this)" ;/>
@@ -357,7 +357,12 @@ $(document).ready(function(event){
 	});
 });
 </script>
+<<<<<<< HEAD
 				<div id="divLogin" class="modal">
+=======
+
+					<div id="divLogin" class="modal">
+>>>>>>> branch 'master' of https://github.com/Webkings12/webkings.git
 						<span
 							onclick="document.getElementById('divLogin').style.display='none'"
 							class="close" title="Close Modal">&times;</span>

@@ -38,8 +38,17 @@ function readURL(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             $('#UploadedImg').attr('src', e.target.result);
-            $('#UploadedImg').css({"width":"80px"},{"height":"80px"});
-            $('#UploadedImg').css("border-radius","40px");
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+//회원수정 사진
+function readURL1(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#UploadedImg1').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }
@@ -126,7 +135,9 @@ $(document).ready(function(){
 		$("#divLogin").css("display","block");
 	});
 });
-			
+
+
+
 function chkEmail(mEmail)
 {
  var reg_email =new RegExp(/^[a-zA-Z0-9]([-_\.]?[0-9a-zA-Z])*@[a-zA-Z]([-_\.]?[a-zA-Z])*\.[a-zA-Z]{2,3}$/i); 
