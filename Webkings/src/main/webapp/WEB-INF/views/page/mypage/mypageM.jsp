@@ -78,17 +78,22 @@ $(document).ready(function() {
 				onclick="document.getElementById('divEdit').style.display='none'"
 				class="close1" title="Close Modal">&times;</span>
 				<form id="formEdit" name="formEdit" target="_iFrmForAction"
-					method="post" action="<c:url value='/member/memberEdit.do'/>"
+					method="post" action="<c:url value='/member/memberEdit.do?gender=${gender}'/>"
 					enctype="multipart/form-data">
 					<div class="imgfile1">
 
 						<div class="imgfile">
-							<img id="UploadedImg1" src="<c:url value='/images/person-icon.png'/>" />
+							<c:if test="${!empty sessionScope.mImage}">
+								<img id="UploadedImg1" src="<c:url value='/user_images/${sessionScope.mImage}'/>" />
+							</c:if>
+							<c:if test="${empty sessionScope.mImage}">
+								<img id="UploadedImg1" src="<c:url value='/user_images/person-icon.png'/>" />
+							</c:if>
 						</div>
 						<div>
 							<input type='file' name="upFile1" id="upFile1"
 								onchange="readURL1(this)" /> <input type="hidden"
-								name="oldmImage" value="${membervo.mImage }">
+								name="oldmImage" value="${sessionScope.mImage}"> 
 						</div>
 					</div>
 					<div id="divedit">
@@ -122,6 +127,8 @@ $(document).ready(function() {
 			<div class="reg">
 				<input type="checkbox" id="inquit" name="inquit">
 				<label for="inquit">내용을 확인하였으며, 이에 동의합니다.</label>
+				 <input type="hidden" name="mEmail" value="${sessionScope.mEmail}">
+				 <input type="hidden" name="mImage" value="${sessionScope.mImage }">
 			</div>
 			<button type="submit" class="cancelbtn" id="cancelbtn" style="width: 100%;">회원탈퇴</button>
 		</form>

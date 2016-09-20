@@ -60,6 +60,7 @@ $(document).ready(function() {
 	$("#coupon").click(function() {
 		alert("서비스 준비중입니다");
 	});
+
 });
 </script>
 <%@ include file="../../inc/top.jsp" %>
@@ -106,30 +107,28 @@ $(document).ready(function() {
 				onclick="document.getElementById('divEdit').style.display='none'"
 				class="close1" title="Close Modal">&times;</span>
 				<form id="formEdit" name="formEdit" target="_iFrmForAction"
-					method="post" action="<c:url value='/member/memberEdit.do'/>"
+					method="post" action="<c:url value='/member/memberEdit.do?gender=${gender}'/>"
 					enctype="multipart/form-data">
 					<div class="imgfile1">
 
 						<div class="imgfile">
-							<c:set var="image" value="${sessionScope.mImage}"/>
-							<c:if test="${empty image}">
-								<img id="UploadedImg1" src="<c:url value='/images/person-icon.png'/>" />
+							<c:if test="${!empty sessionScope.mImage}">
+								<img id="UploadedImg1" src="<c:url value='/user_images/${sessionScope.mImage}'/>"/>
 							</c:if>
-							<c:if test="${!empty image}">
-								<img id="UploadedImg1" src="<c:url value='/user_images/${image}'/>" />
+							<c:if test="${empty sessionScope.mImage}">
+								<img id="UploadedImg1" src="<c:url value='/user_images/person-icon.png'/>" />
 							</c:if>
 						</div>
 						<div>
 							<input type='file' name="upFile1" id="upFile1"
 								onchange="readURL1(this)" /> <input type="hidden"
-								name="oldmImage" value="${image}">
+								name="oldmImage" value="${sessionScope.mImage}"> 
 						</div>
 					</div>
 					<div id="divedit">
 					<div class="reg"><input type="text" name="mNick"
 							placeholder="닉네임" id="mNick">
 					</div>
-							<a id="memberfind"><p>비밀번호 변경</p></a>
 							 <a id="memberQuit"><p>회원탈퇴</p></a>
 					</div>
 					<button type="submit" class="cancelbtn" style="width: 100%;">수정완료</button>
@@ -137,28 +136,6 @@ $(document).ready(function() {
 			</div>
 	</div>
 	<!-- 회원 정보 수정 끝-->
-	<!-- 비밀번호 변경 -->
-	<div id="divEditfind" class="modal">
-			
-		<div class="amodel">
-		<span
-				onclick="document.getElementById('divEditfind').style.display='none'"
-				class="close1" title="Close Modal">&times;</span>
-		<form  action="<c:url value="/member/memberEditfind.do"/>" method="post" id="formEditfind">
-			<div class="reg">
-				<input type="text" placeholder="예전비밀번호" name="oldPwd" id="oldPwd">
-				<input type="hidden" name="chkPwd" id="chkPwd" value="${sessionScope.mPwd}">
-			</div>
-			<div class="reg">
-				<input type="text" placeholder="바꾸실비밀번호" name="mMPwd" id="m_Pwd">
-				<input type="hidden" name="mEmail" id="mEmail" value="${sessionScope.mEmail}">
-			</div>
-			<button type="submit" class="cancelbtn" id="cancelbtn" style="width: 100%;">비밀번호 변경</button>
-		</form>
-		</div>
-	</div>
-	
-	<!-- 비밀번호 변경 끝-->
 	<!-- 회원 탈퇴 -->
 		<div id="divQuit1" class="modal">
 			
@@ -179,6 +156,8 @@ $(document).ready(function() {
 			<div class="reg">
 				<input type="checkbox" id="inquit" name="inquit">
 				<label for="inquit">내용을 확인하였으며, 이에 동의합니다.</label>
+				 <input type="hidden" name="mEmail" value="${sessionScope.mEmail}">
+				 <input type="hidden" name="mImage" value="${sessionScope.mImage }">
 			</div>
 			<button type="submit" class="cancelbtn" id="cancelbtn" style="width: 100%;">회원탈퇴</button>
 		</form>

@@ -34,7 +34,7 @@ $(document).ready(function(){
 <title>관리자 페이지</title>
 </head>
 <body>
-<input type="hidden" name="semail" id="semail" value="${sessionScope.mEmail}">
+<input type="hidden" name="semail" id="semail" value="${sessionScope.adminmEmail}">
 <div class="header">
 	<div class="shadow">
 		<div>

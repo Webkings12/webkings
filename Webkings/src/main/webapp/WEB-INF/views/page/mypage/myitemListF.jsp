@@ -73,7 +73,7 @@ $(document).ready(function() {
 		<a href="http://${ item.iDomain}" target="_blank" sseq="121" seq="1349867" maindate="20160908">
 		<input type="hidden" id="itemiNo" name="iNo" value="${item.iNo }">
 		<input type="hidden" id="itemmNo" name="mNo" value="${item.mNo }">
-			<img src="../../itemImage/${item.iImage}" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"
+			<img src="<c:url value='/ItemImage/${item.iImage}'/>" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"
 				style="height: 340px; display: block;" class="item">
 				<span class="favor" id="favor1">관심상품</span>
 				<div class="info">	<span class="shop" style="color:#e6178f;">${item.sName}</span>		

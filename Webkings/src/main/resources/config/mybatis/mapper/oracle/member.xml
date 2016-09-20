@@ -32,7 +32,7 @@
 	</select>
 	<update id="updateMember" parameterType="MemberVo">
 		update member
-			set m_image=#{mImage},m_nick=#{mNick},m_chgdate=sysdate,m_Pwd=#{mPwd}
+			set m_image=#{mImage},m_nick=#{mNick},m_chgdate=sysdate
 		where m_Email=#{mEmail}
 	</update>
 	<delete id="deleteMember" parameterType="string">
@@ -45,6 +45,8 @@
 		where m_Email=#{mEmail}
 	</update>
 	<select id="selectList"  resultType="MemberVo" >
-		select * from member order by m_no desc
+		select * from member 
+		where m_type=1
+		order by m_no desc
 	</select>
 </mapper>

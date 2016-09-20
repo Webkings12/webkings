@@ -27,6 +27,8 @@ import com.webkings.app.freeBoard.model.FreeBoardVO;
 import com.webkings.app.freeBoard.model.FreeboardListVO;
 import com.webkings.app.item.model.ItemService;
 import com.webkings.app.item.model.Item_TypeVO;
+import com.webkings.app.reply.model.ReplyService;
+import com.webkings.app.reply.model.ReplyViewVO;
 import com.webkings.app.style.model.StyleService;
 import com.webkings.app.style.model.StyleVO;
 
@@ -222,7 +224,7 @@ public class AdminFreeboardController {
 		model.addAttribute("pagingInfo", pagingInfo);
 		
 		
-		return "board/freeboard/listView";
+		return "/page/admin/board/freeboardListView";
 	}
 	
 	
@@ -376,10 +378,10 @@ public class AdminFreeboardController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="삭제 완료";
-			url="/freeboard/list.do?gender="+gender;
+			url="/admin/freeboard/list.do?gender="+gender;
 		}else{
 			msg="삭제 실패";
-			url="/freeboard/detail.do?no="+bNo;
+			url="/admin/freeboard/detail.do?no="+bNo;
 		}
 		
 		int pageNum=3;

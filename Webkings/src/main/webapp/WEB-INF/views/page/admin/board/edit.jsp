@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@include file="../../../inc/adminTop.jsp" %>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -35,7 +30,7 @@
 </script>
 
 
-<div class="divFrm2 topMargin">
+<div class="divFrm2 topMargin bottomMargin">
 		
 	<form id="edit_form" method="post" name="edit_form" action="<c:url value='/admin/freeboard/edit.do'/>" enctype="multipart/form-data" >
 			<input type="hidden" name="bNo" value="${vo.bNo}">
@@ -68,5 +63,4 @@
 
 	</div>
 	
-</body>
-</html>
+<%@ include file="../../../inc/adminFooter.jsp" %>
