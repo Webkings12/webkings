@@ -134,7 +134,7 @@ public class MemberController {
 	
 	@RequestMapping("/memberEdit.do")
 	public String memberEdit_post(@ModelAttribute MemberVo membervo, 
-			@RequestParam(defaultValue="") String oldmImage,
+			@RequestParam(defaultValue="") String oldmImage, @RequestParam String gender,
 			HttpSession session, HttpServletRequest request, Model model){
 		
 		String mEmail=(String)session.getAttribute("mEmail");
@@ -163,14 +163,15 @@ public class MemberController {
 				logger.info("파일 삭제 결과={}",bool);
 			}	
 		}
-		String msg="", url="/page.do";
+		String msg="", url="/page.do?gender="+gender;
 		int cnt=memberService.updateMember(membervo);
-		session.setAttribute("mImage", membervo.getmImage());
 		logger.info("세션 mImage={}",membervo.getmImage());
 		logger.info("회원수정처리결과 cnt={}",cnt);
 		
 		if(cnt>0){
 			msg="회원정보가 수정되었습니다";
+			session.removeAttribute("mImage");
+			session.setAttribute("mImage", membervo.getmImage());
 		}else{
 			msg="회원정보 수정이 실패 되었습니다";
 		}

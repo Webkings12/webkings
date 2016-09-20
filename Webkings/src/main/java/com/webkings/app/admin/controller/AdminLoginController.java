@@ -37,7 +37,7 @@ public class AdminLoginController {
 			
 			memberVo =memberService.selectmEmail(memberVo.getmEmail());
 			HttpSession session= request.getSession();
-			session.setAttribute("mEmail", memberVo.getmEmail());
+			session.setAttribute("adminmEmail", memberVo.getmEmail());
 			session.setAttribute("mNick", memberVo.getmNick());
 			session.setAttribute("mNo", memberVo.getmNo());
 			session.setAttribute("mType", memberVo.getmType());
@@ -49,7 +49,7 @@ public class AdminLoginController {
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session){
 		
-		session.removeAttribute("mEmail");
+		session.removeAttribute("adminmEmail");
 		session.removeAttribute("mNick");
 		session.removeAttribute("mNo");
 		session.removeAttribute("mType");
