@@ -11,7 +11,7 @@
 			and st_name = #{stName}
 		</if>
 		<if test="searchKeyword neq ''">
-		 	and s_name like '%' || #{searchKeyword} || '%'
+		 	and s_name like upper('%' || #{searchKeyword} || '%')
 		</if>
 		order by s_click desc
 	</select>
@@ -27,7 +27,7 @@
 	<select id="shopSelCount" parameterType="String" resultType="int">
 		select count(*) from shopview
 		where 1=1
-		and s_name like '%' || #{searchVal} || '%'
+		and s_name like upper('%' || #{searchVal} || '%')
 	</select>
 	
 	<update id="clickUp" parameterType="String">

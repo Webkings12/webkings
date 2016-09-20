@@ -58,6 +58,7 @@ public class QnaController {
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("gender",gender);
+		
 		//3.
 		return "board/qna/write";
 	}

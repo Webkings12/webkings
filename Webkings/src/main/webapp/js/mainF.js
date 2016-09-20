@@ -12,7 +12,6 @@ $(document).ready(function() {
 		/*헤더 상단 카테고리 클릭시 페이지 연결자*/
 		$(".gnb li").click(function() {
 			page=$(".gnb li.active #gnbPage").val();
-			
 			if(page=="/item" || page=="/shop" || page=="/mypage"){
 	 			$(location).attr('href', "/Webkings/page.do?page="+page+"&gender="+gender);
 	 		}else if(page=="/product"){

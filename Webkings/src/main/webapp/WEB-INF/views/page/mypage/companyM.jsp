@@ -102,7 +102,6 @@ $(document).ready(function() {
 							<li class="active"><a href="javascript:;" class="nlink">회사소개</a></li>
 						</ul>
 					</div>
-					<a href="javascript:;" class="back">이전</a>
 				</div>
 			</div>
 

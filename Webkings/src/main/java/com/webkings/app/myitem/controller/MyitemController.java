@@ -117,13 +117,12 @@ public class MyitemController {
 		for(int a:iNoList ){
 			 alist= itemService.itemSelectiNo(a);
 			 map.put("list"+a,alist);
-
 		}
 		logger.info("prodList 목록 list={}",map.size());
 		
-		
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
+		
 		int pageNum=4;
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);

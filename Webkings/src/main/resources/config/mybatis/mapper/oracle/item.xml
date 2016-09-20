@@ -63,7 +63,7 @@
 			and it_name = #{cate}
 		</if>
 		<if test='sw2 != null and sw2 neq ""'>
-			and i_name like '%' || #{sw2} || '%'
+			and i_name like upper('%' || #{sw2} || '%')
 		</if>
 		<if test='ssp!=null and ssp neq "" and sep!=null and sep neq ""'>
 			and i_salePrice  between #{ssp} and #{sep}
@@ -153,7 +153,7 @@
 		where 1=1
 		and it_gender = #{gender}
 		<if test='sw2 != null and sw2 neq ""'>
-			and i_name like '%' || #{sw2} || '%'
+			and i_name like upper('%' || #{sw2} || '%')
 		</if>
 		<if test='ssp neq "" and sep neq ""'>
 			and i_salePrice  between #{ssp} and #{sep}

@@ -20,7 +20,6 @@ $(document).ready(function() {
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
-	
 	$(".item-list>li.prod #favor1").click(function (e) {
 		e.stopPropagation();
 		e.preventDefault();
@@ -51,7 +50,6 @@ $(document).ready(function() {
 			  }   
 		});
 });
-
 </script>
 <div class="body-sec">
 <div class="in-sec">
