@@ -24,9 +24,13 @@ $(document).ready(function() {
 							"<img src='/Webkings/ItemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 							"style='height: 340px; display: block;' class='item'>"+
 							"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
-								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em><i>"+
-								item.iSalePrice+"</i>"+		
-								"<div class='btn'>"+
+								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em>";
+								if(item.iSalePrice!=null){
+									result+="<i><s>"+item.iPrice+"</s>"+item.iSalePrice+"</i>";
+								}else{
+									result+="<i>"+item.iPrice+"</i>";
+								}	
+								result+="<div class='btn'>"+
 									"<span class='fb'><input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
 									"</span><i>삭제</i>" +
 								"</div>"+	
@@ -92,4 +96,14 @@ $(document).ready(function() {
 			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age2]").prop("checked", false);
 			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age3]").prop("checked", false);
 		});
+		
+		$(".item-list>li.prod>a .info .btn span").click(function() {
+			var iNo= $(this).find("input").val();
+				if (confirm("정말 삭제하시겠습니까?") == true){    //확인
+					$(location).attr('href', "/Webkings/adminItemDel.do?iNo="+iNo+"&gender="+gender);
+				}else{   //취소
+				    return;
+				}
+		});
+		
 });

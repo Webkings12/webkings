@@ -66,16 +66,16 @@
 			and i_name like upper('%' || #{sw2} || '%')
 		</if>
 		<if test='ssp!=null and ssp neq "" and sep!=null and sep neq ""'>
-			and i_salePrice  between #{ssp} and #{sep}
+			and decode(i_salePrice, null, i_price, i_salePrice)  between #{ssp} and #{sep}
 		</if>
 		<if test='ssp != null and ssp neq "" and (sep==null or sep eq "")'>
 		<![CDATA[
-			and i_salePrice >= #{ssp}
+			and decode(i_salePrice, null, i_price, i_salePrice) >= #{ssp}
 		]]>
 		</if>
 		<if test='sep !=null and sep neq "" and (ssp==null or ssp eq "")'>
 		<![CDATA[
-			and i_salePrice <= #{sep}
+			anddecode(i_salePrice, null, i_price, i_salePrice) <= #{sep}
 		]]>
 		</if> 
 		<if test='sac != null and sac neq " " and sac neq "" and sac neq "all"'>
@@ -156,16 +156,16 @@
 			and i_name like upper('%' || #{sw2} || '%')
 		</if>
 		<if test='ssp neq "" and sep neq ""'>
-			and i_salePrice  between #{ssp} and #{sep}
+			and decode(i_salePrice, null, i_price, i_salePrice)  between #{ssp} and #{sep}
 		</if>
 		<if test='ssp neq "" and (sep==null or sep eq "")'>
 		<![CDATA[
-			and i_salePrice  >= #{ssp}
+			and decode(i_salePrice, null, i_price, i_salePrice)  >= #{ssp}
 		]]>
 		</if>
 		<if test='sep neq "" and (ssp==null or ssp eq "")'>
 		<![CDATA[
-			and i_salePrice <= #{sep}
+			and decode(i_salePrice, null, i_price, i_salePrice) <= #{sep}
 		]]>
 		</if> 
 		<if test='sac!=null and sac neq " " and sac neq ""'>
@@ -204,4 +204,10 @@
 		where 1=1
 		and i_no = #{iNo}
 	</update>
+	
+	<delete id="itemDel" parameterType="int">
+		delete from item
+		where 1=1 
+		and i_no=#{iNo}
+	</delete>
 </mapper>

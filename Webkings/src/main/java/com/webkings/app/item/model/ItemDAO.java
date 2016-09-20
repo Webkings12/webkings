@@ -32,4 +32,7 @@ public interface ItemDAO {
 	
 	//아이템 클릭수 올리기
 	public int itemClick(String iNo);
+	
+	//아이템 삭제
+	public int itemDel(int iNo);
 }

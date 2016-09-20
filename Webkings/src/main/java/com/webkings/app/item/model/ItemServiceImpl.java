@@ -85,4 +85,9 @@ public class ItemServiceImpl implements ItemService{
 	public int itemClick(String iNo) {
 		return itemDao.itemClick(iNo);
 	}
+
+	@Override
+	public int itemDel(int iNo) {
+		return itemDao.itemDel(iNo);
+	}
 }

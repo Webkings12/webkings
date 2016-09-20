@@ -71,6 +71,7 @@ public class AdminItemController {
 			@RequestParam(defaultValue="ALL") String cate, @RequestParam String orderVal,
 			@RequestParam(required=false) String sw2, @RequestParam(required=false) String ssp, @RequestParam(required=false) String sep,
 			@RequestParam(required=false) String sac){
+		
 			if(orderVal==""){
 				orderVal="0";
 			}
@@ -89,6 +90,8 @@ public class AdminItemController {
 			itemSearchVo.setCate(cate);
 			itemSearchVo.setSsp(ssp);
 			itemSearchVo.setSep(sep);
+			itemSearchVo.setOrderVal(orderVal);
+			itemSearchVo.setGender(gender);
 			
 			if(!sw2.equals("") && !sw2.isEmpty() || !ssp.equals("") && !ssp.isEmpty() || !sep.equals("") && !sep.isEmpty() || !sac.equals("") && !sac.isEmpty()){
 				
@@ -144,5 +147,23 @@ public class AdminItemController {
 			resMap.put("itAllCount", itAllCount);
 			logger.info("ajax itemList={}", selItemList);
 			return resMap;
+	}
+	@RequestMapping("/adminItemDel.do")
+	public String adminItemView(@RequestParam int iNo, @RequestParam String gender, Model model){
+		
+		int cnt = itemService.itemDel(iNo);
+		
+		String msg="";
+		String url="";
+		if(cnt>0){
+			msg="삭제 성공";
+			url="/adminItemView.do?gender="+gender;
+		}else{
+			msg="삭제 실패";
+			url="/adminItemView.do?gender="+gender;
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		return "common/message";
 	}
 }

@@ -30,9 +30,13 @@ $(document).ready(function() {
 
 							"<span class='favor' id='addItem'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'></span>"+
 							"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
-								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em><i>"+
-								item.iSalePrice+"</i>"+		
-								"<div class='btn'>"+
+								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em>" ;
+									if(item.iSalePrice!=null){
+										result+="<i><s>"+item.iPrice+"</s>"+item.iSalePrice+"</i>";
+									}else{
+										result+="<i>"+item.iPrice+"</i>";
+									}	
+									result+="<div class='btn'>"+
 									"<span class='fb'>" +
 									"<input type='hidden' id='fbTitle' value='"+item.iName+"'/>"+
 									"<input type='hidden' id='fbUrl' value='"+item.iDomain+"'/>" +

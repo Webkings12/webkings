@@ -14,6 +14,11 @@ body>div.header div.shadow div.in-sec {
     top: 0;
     z-index: 3;
 }
+.item-list>li.prod .info i s {
+    display: inline-block;
+    margin-right: 5px;
+    opacity: .5;
+}
 .item-list>li.prod .info {
     position: absolute;
     bottom: 0;
@@ -28,6 +33,9 @@ body>div.header div.shadow div.in-sec {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-top: -30px;
+}
+body .detail-search input:checked+label{
+	    color: #e6178f !important;
 }
 .item-list>li.prod>a:hover .info>span.shop {
     font-size: 14px;
