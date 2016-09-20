@@ -22,7 +22,6 @@ $(document).ready(function() {
 				data:$(this).serialize(), //요청 파라미터
 				dataType:"json",
 				success:function(res){
-					alert(res);
 					if(res==1){
 					}else if (res==2) {
 						alert("비밀번호가 다릅니다");
