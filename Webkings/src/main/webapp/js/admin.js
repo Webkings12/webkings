@@ -37,7 +37,7 @@ $(document).ready(function() {
 			});
 		}
 		if(loginCheck=="1"){
-			$(".modal2").css("display","none");
+			/*$(".modal2").css("display","none");*/
 		}else{
 			return false;
 		}

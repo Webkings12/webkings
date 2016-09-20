@@ -120,7 +120,7 @@ public class ViewController {
 		
 	}
 	
-	@RequestMapping("admin.do")
+	@RequestMapping("/admin.do")
 	public String adminView(){
 		return "page/admin/admin";
 		

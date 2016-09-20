@@ -10,6 +10,9 @@ body>div.header div.shadow div.in-sec {
     position: relative;
     height: 71px;
 }
+.modal2{
+	display: none;
+}
 .item-list>li.prod>a:hover .info {
     top: 0;
     z-index: 3;

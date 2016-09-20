@@ -12,20 +12,22 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
-	var loginURL="<c:url value='/login.do'/>";
-	var gender="${gender}";
+var loginURL="<c:url value='/login.do'/>";
+var gender="${gender}";
+</script>
+<script type="text/javascript">
 $(document).ready(function(){	
-	if($("#semail").val().length<1){
-		$(".modal2").css("display","block");		
-	}else {
+	var adminId=$("#semail").val();
+	if(adminId!=null && adminId!=""){
 		$("#aLogout").append("로그아웃");	
 		$(".modal2").css("display","none");
+	}else{
+		$(".modal2").css("display","block");
 	}
-	
 	$(".mypage-btn li a").click(function() {
-		if($("#semail").val().length<1){
+		if(adminId!=null && adminId!=""){
+		}else{
 			$(".modal2").css("display","block");
-			return false;
 		}
 	});
 });
