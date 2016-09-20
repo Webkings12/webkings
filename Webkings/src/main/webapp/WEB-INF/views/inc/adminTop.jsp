@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
-	var loginURL="<c:url value='/member/login.do'/>";
+	var loginURL="<c:url value='/login.do'/>";
 $(document).ready(function(){	
 	if($("#semail").val().length<1){
 		$(".modal2").css("display","block");		

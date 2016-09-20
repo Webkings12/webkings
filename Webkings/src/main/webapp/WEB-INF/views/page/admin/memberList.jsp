@@ -2,6 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/adminTop.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("input[name='allchk']").click(function() {
+		$("tbody input[type='checkbox']").prop("checked", this.checked);
+	});
+	
+	$(".cancelbtn").click(function() {
+		var count= $("tbody input[type='checkbox']:checked").length;
+		if(count==0){
+			alert("삭제하려는 상품을 먼저 체크하세요");
+			return false;
+		}
+	});	
+});
+
+
+</script>
 <div class="body-sec">
 <div class="in-sec">
 		<div class="footer">
@@ -27,7 +45,7 @@
 					</colgroup>
 					<thead>
 						<tr>
-							<th><input type="checkbox" name="" id=""></th>
+							<th><input type="checkbox" name="allchk" id="allchk"></th>
 							<th>회원번호</th>
 							<th>회원이메일</th>
 							<th>회원닉네임</th>
@@ -47,7 +65,7 @@
 						<c:if test="${!empty memberList }">
 							<c:forEach var="vo" items="${memberList }">
 							<tr class="tr_center">
-								<td><input type="checkbox" name="" id=""></td>
+								<td><input type="checkbox" name="${vo.mNo}" value="${vo.mNo}"></td>
 								<td>${vo.mNo}</td>
 								<td>${vo.mEmail}</td>
 								<td>${vo.mNick}</td>
@@ -68,6 +86,7 @@
 						</c:if>
 					</tbody>
 				</table>
+				<button type="button" class="cancelbtn">선택한 회원삭제</button>
 			</div>
 
 
