@@ -28,7 +28,7 @@ $(document).ready(function() {
 				$.each(shopList, function(idx, item) {
 					result+=
 					"<li class='shop "+gender+" ia' style='display: list-item;'><a href='http://"+item.sDomain+"'  target='_blank' seq='121'>"+	
-					"<img src='../Webkings/shopImage/"+item.sSimage+"'"+ 
+					"<img src='/Webkings/shopImage/"+item.sSimage+"'"+ 
 					"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1472529181667_n1.jpg' class='item' style='display: block;'>"+
 						"<div class='over'>	<input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'>	<div class='btn'>"+
 						"<span class='fb sns'>" +
