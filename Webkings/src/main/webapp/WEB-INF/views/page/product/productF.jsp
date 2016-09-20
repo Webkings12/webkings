@@ -115,7 +115,7 @@ $(document).ready(function() {
 			</ul>
 		</div>
 	</div>
-	<ul class="item-list abs-list" style="height: 4879px;">
+	<ul class="item-list abs-list">
 		
 	</ul>
 </div>

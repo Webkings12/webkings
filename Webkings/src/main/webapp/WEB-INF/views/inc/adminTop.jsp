@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/clear.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/basic.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/body.css"/>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
 	var loginURL="<c:url value='/member/login.do'/>";
@@ -64,7 +65,4 @@ $(document).ready(function(){
 					</div>
 				</div>
 		</div>	
-		
-		
-		
 </div></div></div><div class="bg"></div></div>

@@ -6,7 +6,6 @@
     width: 950px !important;
 }}
 .item-list.abs-list {
-    height:600px;
     margin-top: 20px;
 }
 .item-list>li.prod>a>img {
