@@ -53,13 +53,13 @@ $(document).ready(function() {
 				"<strong>'<em>"+searchVal+"</em>' 상품 검색결과 <i>"+itCount+"</i></strong>"+
 			"</div>"+
 		"</div>"+
-		"</div>";
+		"</div>"
 					result+="<ul class='item-list abs-list prod-search' style='display: block;'>";
 				$.each(itemSel, function(idx, item) {
 					result+=
 					"<li class='prod "+gender+"' style='left: 0px; top: 0px;'><a id='aaaa' href='http://"+item.iDomain+"' target='_blank' sseq='11' seq='1388374'>"+
 					"<input type='hidden' id='itemiNo' name='iINo' value='"+item.iNo+"'>"+
-					"<img src='../Webkings/ItemImage/"+item.iImage+"' " +
+					"<img src='/Webkings/ItemImage/"+item.iImage+"' " +
 					"data-original='http://img.sta1.kr/_up/prod/thmb/w/2016/09/17/03/1474048911831_AL.jpg' style='height: 310px; display: block;' " +
 					"class='item'>	<span class='favor' id='addItem'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
 					"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
