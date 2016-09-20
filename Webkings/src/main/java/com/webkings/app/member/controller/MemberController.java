@@ -135,7 +135,6 @@ public class MemberController {
 	@RequestMapping("/memberEdit.do")
 	public String memberEdit_post(@ModelAttribute MemberVo membervo, 
 			@RequestParam(defaultValue="") String oldmImage,
-			@RequestParam(defaultValue="") String chgmpwd,
 			HttpSession session, HttpServletRequest request, Model model){
 		
 		String mEmail=(String)session.getAttribute("mEmail");
@@ -185,28 +184,27 @@ public class MemberController {
 	
 	
 	@RequestMapping("/memberQuit.do")
-	public String memberQuit_post(HttpSession session,HttpServletRequest request,
-			@RequestParam(defaultValue="") String oldmImage){
-		String mEmail=(String)session.getAttribute("mEmail");
-		logger.info("회원탈퇴처리");
+	public String memberQuit_post(HttpServletRequest request,HttpSession session ,@RequestParam(defaultValue="") String mImage,
+			@RequestParam(defaultValue="") String mEmail){
+		logger.info("회원탈퇴처리 mEmail={},mImage={}",mEmail,mImage);
 		
 		int cnt=memberService.deleteMember(mEmail);
 		logger.info("회원탈퇴처리결과 cnt={}",cnt);
 		
 			String upPath=fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
 		
-			File delfile= new File(upPath, oldmImage);
+			File delfile= new File(upPath, mImage);
 			if(delfile.exists()){
 				boolean bool= delfile.delete();
 				logger.info("파일 삭제 결과={}",bool);	
 			}
 			
-		
-
-			
-		session.removeAttribute("mEmail");
-		session.removeAttribute("mNick");
-		session.removeAttribute("mNo");
+			session.removeAttribute("mEmail");
+			session.removeAttribute("mNick");
+			session.removeAttribute("mNo");
+			session.removeAttribute("mImage");
+			session.removeAttribute("mType");
+			session.removeAttribute("mPwd");
 		
 		
 		return "redirect:/page.do";

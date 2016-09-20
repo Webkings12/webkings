@@ -80,7 +80,7 @@ $(document).ready(function() {
 								</c:if>
 								</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.mRegdate}"/></td>
-								<td><a>회원삭제</a></td>
+								<td><a href="<c:url value='/admin/memberQuit.do?mEmail=${vo.mEmail}&mImage=${vo.mImage}'/>">회원삭제</a></td>
 							</tr>
 							</c:forEach>	
 						</c:if>

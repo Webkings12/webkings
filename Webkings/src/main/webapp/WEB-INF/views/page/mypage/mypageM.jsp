@@ -34,6 +34,7 @@ $(document).ready(function() {
 	$("#coupon").click(function() {
 		alert("서비스 준비중입니다");
 	});
+	
 });
 </script>
 	
@@ -88,7 +89,8 @@ $(document).ready(function() {
 						<div>
 							<input type='file' name="upFile1" id="upFile1"
 								onchange="readURL1(this)" /> <input type="hidden"
-								name="oldmImage" value="${membervo.mImage }">
+								name="oldmImage" value="${sessionScope.mImage }">
+								
 						</div>
 					</div>
 					<div id="divedit">
@@ -122,6 +124,8 @@ $(document).ready(function() {
 			<div class="reg">
 				<input type="checkbox" id="inquit" name="inquit">
 				<label for="inquit">내용을 확인하였으며, 이에 동의합니다.</label>
+				 <input type="hidden"name="delmEamil" value="${sessionScope.mEamil }">
+				 <input type="hidden"name="delmImage" value="${sessionScope.mImage }">
 			</div>
 			<button type="submit" class="cancelbtn" id="cancelbtn" style="width: 100%;">회원탈퇴</button>
 		</form>

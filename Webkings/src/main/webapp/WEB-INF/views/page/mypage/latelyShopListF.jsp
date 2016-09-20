@@ -40,7 +40,7 @@ $(document).ready(function() {
 		<c:forEach var="shop" items="${shopmap}">
 			<c:forEach var="s" items="${shop.value}">		
 					<li class="shop ${gender} ia" style="display: list-item;"><a href="http://${s.sDomain}" target="_blank" seq="121">	
-					<img src="${s.sSimage}" 
+					<img src="<c:url value='/shopImage/${s.sSimage}'/>" 
 					data-original="http://img.sta1.kr/_up/shop/logo/2016/08/1472529181667_n1.jpg" class="item" style="display: block;">
 						<div class='over'>	<input type='hidden' id='inputsNo' name='sNo' value="${s.sNo}">	<div class="btn">
 						<span class="fb sns">
