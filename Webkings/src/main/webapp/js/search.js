@@ -53,7 +53,7 @@ $(document).ready(function() {
 				"<strong>'<em>"+searchVal+"</em>' 상품 검색결과 <i>"+itCount+"</i></strong>"+
 			"</div>"+
 		"</div>"+
-		"</div>"
+		"</div>";
 					result+="<ul class='item-list abs-list prod-search' style='display: block;'>";
 				$.each(itemSel, function(idx, item) {
 					result+=
@@ -90,7 +90,7 @@ $(document).ready(function() {
 			if(searchList!=null && searchList.length>0){
 				searchS+="<ul>";
 				$.each(searchList, function(idx, item) {
-						searchS+="<li><a href='javascript:;'>"+item+"</a></li>";
+						searchS+="<li><input type='hidden' value='"+item+"'/><a href='javascript:;'>"+item+"</a></li>";
 				});
 				searchS+="</ul>";
 			}else{
@@ -102,6 +102,10 @@ $(document).ready(function() {
 		},error:function(xhr, status, error){
 			alert(error);
 		}
+	});
+	$("body>div.header div.search div.keyword .con ul li").click(function() {
+		var searchId = $(this).find("input").val();
+		$(location).attr('href', "/Webkings/search/view.do?gender="+gender+"&searchVal="+searchId);
 	});
 	$("body>div.header div.search div.keyword .con>p a.del").click(function() {
 		$.ajax({

@@ -53,7 +53,9 @@ public class SearchController {
 		model.addAttribute("searchVal", searchVal);
 		model.addAttribute("gender", gender);
 		model.addAttribute("styleList", styleList);
+		logger.info("view styleList={}", styleList);
 		model.addAttribute("itemList", itemList);
+		logger.info("view itemList={}", itemList);
 		return "page/search/search"+gender;
 	}
 	
