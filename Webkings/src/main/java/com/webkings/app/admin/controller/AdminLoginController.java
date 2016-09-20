@@ -45,4 +45,15 @@ public class AdminLoginController {
 		logger.info("result="+result);
 		return result;
 	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session){
+		
+		session.removeAttribute("mEmail");
+		session.removeAttribute("mNick");
+		session.removeAttribute("mNo");
+		session.removeAttribute("mType");
+		
+		return "redirect:/admin.do";
+	}
 }

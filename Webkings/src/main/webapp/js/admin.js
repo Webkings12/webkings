@@ -37,10 +37,8 @@ $(document).ready(function() {
 			});
 		}
 		if(loginCheck=="1"){
-			alert("두번째"+loginCheck);
 			$(".modal2").css("display","none");
 		}else{
-			alert("로그인 실패");
 			return false;
 		}
 	});

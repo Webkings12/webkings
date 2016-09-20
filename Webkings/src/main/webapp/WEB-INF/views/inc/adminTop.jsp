@@ -12,18 +12,27 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
 	var loginURL="<c:url value='/member/login.do'/>";
+$(document).ready(function(){	
+	if($("#semail").val().length<1){
+		$(".modal2").css("display","block");		
+	}else {
+		$(".modal2").css("display","none");		
+	}
+});
 </script>
 <script type="text/javascript" src="<c:url value='/js/admin.js'/>"></script>
 <title>관리자 페이지</title>
 </head>
 <body>
+<input type="hidden" name="semail" id="semail" value="${sessionScope.mEmail}">
 <div class="header">
 	<div class="shadow">
 		<div>
 			<div class="in-sec">
 	<h1><a href="/home"></a></h1>
 	<div class="title">관리자 페이지</div>
-	<div id="divLogin" class="modal2" style="display: block;">
+	<div class="logout"><a href="<c:url value='/logout.do'/>">로그아웃</a></div>
+	<div id="divLogin" class="modal2">
 						<div class="amodel2">
 							<form class="modal-content animate" id="formLogin" name="formLogin" method="post">
 								<div class="imgcontainer">

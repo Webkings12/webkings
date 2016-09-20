@@ -410,3 +410,9 @@ div.footer-sec p.copyright {
     letter-spacing: 0;
     word-spacing: 0;
 }
+
+.logout{
+	float: right;
+	font-size: 20px;
+	margin-top: 27px;
+}
