@@ -13,6 +13,7 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
 	var loginURL="<c:url value='/login.do'/>";
+	var gender="${gender}";
 $(document).ready(function(){	
 	if($("#semail").val().length<1){
 		$(".modal2").css("display","block");		
@@ -27,6 +28,7 @@ $(document).ready(function(){
 			return false;
 		}
 	});
+	
 });
 </script>
 <script type="text/javascript" src="<c:url value='/js/admin.js'/>"></script>
@@ -38,7 +40,7 @@ $(document).ready(function(){
 	<div class="shadow">
 		<div>
 			<div class="in-sec">
-	<h1><a href="/home"></a></h1>
+	<h1><a href="<c:url value='/admin.do'/>"></a></h1>
 	<div class="title">관리자 페이지</div>
 	<div class="logout"><a id=aLogout href="<c:url value='/logout.do'/>"></a></div>
 	<div id="divLogin" class="modal2">
@@ -61,16 +63,27 @@ $(document).ready(function(){
 							</form>
 						</div>
 					</div>
-	<!-- 성별 선택 -->
-		<div id="genderSel" class="modal">
-			<span onclick="document.getElementById('genderSel').style.display='none'" class="close" title="Close Modal">&times;</span>
+	<!--아이템 성별 선택 -->
+		<div id="ItemGenderSel" class="modal">
+			<span onclick="document.getElementById('ItemGenderSel').style.display='none'" class="close" title="Close Modal">&times;</span>
 				<div class="amodel">
 					<div class="adF">
-						<span>여성</span>
+						<span><input type="hidden" value="F">여성</span>
 					</div>
 					<div class="adM">
-						<span>남성</span>
+						<span><input type="hidden" value="M">남성</span>
 					</div>
 				</div>
 		</div>	
+		<div id="ShopGenderSel" class="modal">
+			<span onclick="document.getElementById('ShopGenderSel').style.display='none'" class="close" title="Close Modal">&times;</span>
+				<div class="amodel">
+					<div class="adF">
+						<span><input type="hidden" value="F">여성</span>
+					</div>
+					<div class="adM">
+						<span><input type="hidden" value="M">남성</span>
+					</div>
+				</div>
+		</div>
 </div></div></div><div class="bg"></div></div>

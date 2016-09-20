@@ -161,8 +161,7 @@ public class MemberController {
 			if(delfile.exists()){
 				boolean bool= delfile.delete();
 				logger.info("파일 삭제 결과={}",bool);
-		}	
-	
+			}	
 		}
 		String msg="", url="/page.do";
 		int cnt=memberService.updateMember(membervo);

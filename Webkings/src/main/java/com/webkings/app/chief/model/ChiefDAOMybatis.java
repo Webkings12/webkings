@@ -17,4 +17,9 @@ public class ChiefDAOMybatis extends SqlSessionDaoSupport implements ChiefDAO {
 	public int insertChief(ChiefVo vo) {
 		return getSqlSession().insert(namespace+".insertchief", vo);
 	}
+
+	@Override
+	public int selectChiefId(String reqParam) {
+		return getSqlSession().insert(namespace+".selectChiefId", reqParam);
+	}
 }

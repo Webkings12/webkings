@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/adminTop.jsp" %>
 <div class="body-sec">
+<script type="text/javascript">
+	alert("성별"+gender);
+</script>
 <div class="in-sec">
 	<div>
 		<div class="list-top-1">

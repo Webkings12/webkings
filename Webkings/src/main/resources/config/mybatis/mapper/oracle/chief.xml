@@ -11,8 +11,9 @@
 			           values(#{cNo},  #{C_NUMBER}, #{C_EMAIL}, #{C_PWD}, #{C_NAME}, #{C_CNAME}, #{C_ADD}, #{C_REGDATE}, #{C_CHGDATE}, #{C_TYPE})
 	</insert>
 	
-	<!-- select id="selectChiefId" parameterType="String" resultType="int" >
+	<select id="selectChiefId" parameterType="String" resultType="int" >
 		select count(*) from chief
-		 where c_id = #{reqParam}
-	</select -->
+		 where 1 = 1
+		   and c_email = #{reqParam}
+	</select>
 </mapper>

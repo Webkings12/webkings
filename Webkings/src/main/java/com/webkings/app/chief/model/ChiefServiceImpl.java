@@ -1,11 +1,12 @@
 package com.webkings.app.chief.model;
 
-import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ChiefServiceImpl extends SqlSessionDaoSupport implements ChiefService{	
-	private String namespace="com.mybatis.mapper.oracle.chief";
+public class ChiefServiceImpl implements ChiefService{
+	@Autowired
+	private ChiefDAO chiefDAO;
 	
 	@Override
 	public int loginCheck(ChiefVo vo) {
@@ -14,12 +15,12 @@ public class ChiefServiceImpl extends SqlSessionDaoSupport implements ChiefServi
 
 	@Override
 	public int insertChief(ChiefVo vo) {
-		return getSqlSession().insert(namespace+".insertchief", vo);
+		return 0;
 	}
 
-//	@Override
-//	public int selectChiefId(String reqParam) {
-//		return getSqlSession().insert(namespace+".selectChiefId", reqParam);
-//	}
+	@Override
+	public int selectChiefId(String reqParam) {
+		return chiefDAO.selectChiefId(reqParam);
+	}
 
 }

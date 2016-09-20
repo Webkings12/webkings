@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class AdminItemController {
+public class AdminShopController {
 
-	@RequestMapping("/adminItemView.do")
-	public String adminItemView(@RequestParam String gender, Model model){
+	@RequestMapping("/adminShopView.do")
+	public String adminShopView(@RequestParam String gender, Model model){
 		
 		model.addAttribute("gender", gender);
-		return "page/admin/item";
+		return "page/admin/shop";
 	}
 }

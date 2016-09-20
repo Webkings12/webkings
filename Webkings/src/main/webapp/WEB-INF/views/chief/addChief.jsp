@@ -16,13 +16,13 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	alert("arrive");
-	var idDuplicateCheck="";
 	$("#idcheck").click(function () {
-		var idlength = $("#id").val();
-		if((idlength < 1 && idlength == null)){
+		if($("#id").val().length < 1) {
 			alert("사용하실 아이디를 입력해주세요.");
 			$("#id").focus();
-			return false
+			return false;
+		} else if(!chkEmail($("#id").val())) {
+			alert("이메일 형식에 맞춰주세요.\r\n aaa@naver.com");
 		}
 		
 		$.ajax({
@@ -31,11 +31,23 @@ $(document).ready(function() {
 			data:"id="+$("#id").val(),
 			dataType:"text",
 			success:function(res){
-				$("#").val(res); // "사용 가능합니다" or "이미 사용중인 아이디입니다."
+				alert("success");
+				// "사용 가능합니다." or "이미 사용중인 아이디입니다."
+				if(res.val().equals("사용 가능합니다.")) {
+					$("#idChkResult").val(res);
+				} else {
+					$("#idChkResult").val(res);
+				}				
 			},
 			error:function(xhr, status, error){
+				alert("error");
 			}
 		});
+
+		function chkEmail(mEmail) {
+			var reg_email =new RegExp(/^[a-zA-Z0-9]([-_\.]?[0-9a-zA-Z])*@[a-zA-Z]([-_\.]?[a-zA-Z])*\.[a-zA-Z]{2,3}$/i); 
+			return reg_email.test(mEmail);
+		}
 	});
 });
 </script>
@@ -84,8 +96,9 @@ $(document).ready(function() {
 										<tr>
 											<th><strong>회원 ID</strong><span class="required">*</span></th>
 											<td><div class="inSec">
-												<input name="id" value="" type="text" fieldname="아이디" maxlength="20" minlength="4" restrictutf8bytes="20" class="htxt1 __required __onlyAlphaNum __toLowerCase __noSpace __noStartNumber" onkeyup="this.form.checkId.value = 'N'" style="width: 200px; text-transform: lowercase;">
+												<input id="id" value="" type="text" fieldname="아이디" maxlength="20" minlength="4" restrictutf8bytes="20" class="htxt1 __required __onlyAlphaNum __toLowerCase __noSpace __noStartNumber" onkeyup="this.form.checkId.value = 'N'" style="width: 200px; text-transform: lowercase;">
 												<a href="javascript:;" id="idcheck" name="idcheck" class="sys-btn sys-btn-type3">중복검사</a>
+												<span id="idChkResult" class="mgl10">id를 입력 후 중복검사를 진행해 주세요.</span>
 											</div></td>
 										</tr>
 										<tr>
