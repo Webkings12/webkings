@@ -2,6 +2,7 @@ package com.webkings.app.freeBoard.model;
 
 import java.util.List;
 
+
 import com.webkings.app.common.SearchVO;
 
 public interface FreeBoardService {
@@ -14,5 +15,7 @@ public interface FreeBoardService {
 	public int deleteBoard(int bNo);
 	public int selectNext(int bNo);
 	public int selectBefore(int bNo);
+	public int deleteboard(List<BoardViewVO> listVo);
+	
 	
 }

@@ -189,7 +189,7 @@
 }
 #searchKey{
 	width:150px;
-	height: 10px; 
+	height: 20px;
 	
 }
 .replyList{
@@ -296,4 +296,35 @@ div.body-sec>div.in-sec>div {
     min-height: 0;
 }
 
+.adminlistTable{
+	background: #fff;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #CECECE;
+}
+.adminlistTable tr td{
+	border-bottom: 1px solid #CECECE;
+	border-top: 1px solid #CECECE;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.adminlistTable th{
+	background: #747474;
+	color: #fff;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	font-size: 15px;
+}
+.adminlistTable td:nth-child(3){
+	padding-left:7px;
+	text-align: left;
+}
+.adminlistTable td:nth-child(2){
+	font-size: 0.8em;
+}
+.adminlistTable td:nth-child(5){
+	font-size: 0.7em;
+}
 
+	
+}
