@@ -7,6 +7,12 @@
      border: 0; 
      box-sizing: inherit; 
 }
+
+div.body-sec .item-list>div.not-top {
+    padding-top: 75px;
+        height: 530;
+}
+
 .item-list>li.shop:hover .over {
     display: block;
 }
@@ -14,7 +20,7 @@
     margin-top: 49px;
 }
 .item-list>li.shop.sec-2 a {
-    width: 430px;
+    width: 466px;
 }
 .item-list>li.shop>a {
     display: block;

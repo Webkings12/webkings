@@ -36,7 +36,7 @@ $(document).ready(function() {
 <%@ include file="../../inc/top.jsp" %>
 <div class="body-sec">
 <div class="in-sec">
-<p class="privacy-fixed"><a href="/policy/privacy">개인정보처리방침</a></p><div>
+<p class="privacy-fixed"><a href="privacy.do?gender=M">개인정보처리방침</a></p><div>
 	<div class="list-top-1">
 		<p class="notice-2"><strong>카테고리 전체 : </strong> <em>${itCount}</em> <i>total</i></p>
 		<div class="tab-type-1 tab-type-main">

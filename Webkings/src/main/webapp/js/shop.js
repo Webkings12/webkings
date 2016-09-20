@@ -12,8 +12,10 @@ $(document).ready(function() {
 				success:function(res){
 					styleSel = res.shopList;
 					var result="";
+					var noResult="";
 					sNewList =res.shopNewList;
-					if(sNewList!=null){
+			if(styleSel!=null && styleSel!="" || sNewList!=null && sNewList!=""){
+				if(sNewList!=null){
 					$.each(sNewList, function(idx, item) {
 					 result+=
 					"<li class='shop sec-2  "+gender+" ia'>"+
@@ -56,6 +58,10 @@ $(document).ready(function() {
 						});
 					}
 					$(".item-list").html(result);
+				}else{
+						noResult+="<div class='not-top'><div class='not-item'>검색 결과가 없습니다.</div></div>";
+						$(".item-list").html(noResult);
+					}
 				},
 				error:function(xhr, status, error){
 					alert(error);

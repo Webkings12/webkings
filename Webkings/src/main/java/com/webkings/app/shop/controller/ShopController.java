@@ -59,25 +59,28 @@ public class ShopController {
 		return "page/shop/shop"+gender;
 	}
 
-
 	@RequestMapping("/shopStyle.do")
 	@ResponseBody
 	public Map<String, Object> shopStyle(@RequestParam String gender, @RequestParam String style, 
 			@RequestParam(required=false) String searchName, Model model){
 		
 		logger.info("샵 param data ={},{}",gender , style);
+		logger.info("shopSearchName={}",searchName);
 		ShopViewVO shopViewVo = new ShopViewVO();
 		shopViewVo.setStGender(gender);
 		shopViewVo.setStName(style);
-		
-		if(searchName == null){
+		List<ShopViewVO> shopNew =null;
+		if(searchName == null || searchName.equals("")){
 			searchName="";
+			shopViewVo.setSearchKeyword(searchName);
+			shopNew = shopService.shopNew(shopViewVo);
+		}else{
+			shopViewVo.setSearchKeyword(searchName);
 		}
-		shopViewVo.setSearchKeyword(searchName);
-		logger.info("어디까지니?");
+		
 		List<ShopViewVO> shopList = shopService.shopStyle(shopViewVo);
-		List<ShopViewVO> shopNew = shopService.shopNew(shopViewVo);
 		logger.info("샵 셀렉터={}", shopList);
+		logger.info("뉴샵 셀렉터={}", shopNew);
 		
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		resMap.put("shopList", shopList);

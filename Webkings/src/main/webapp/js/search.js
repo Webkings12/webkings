@@ -79,8 +79,8 @@ $(document).ready(function() {
 					"</div>	<div class='bg'></div></a></li>";
 				});
 				result+="</ul>";
-				$("div.body-sec>div.in-sec>div.not-top").html(result);
 				}
+				$("div.body-sec>div.in-sec>div.not-top").html(result);
 			}else{
 				noResult+="<div class='not-item'>검색 결과가 없습니다.</div></div></div>";
 				$("div.body-sec>div.in-sec>div.not-top").html(noResult);

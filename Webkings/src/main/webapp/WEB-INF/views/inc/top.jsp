@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.function.Function"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -21,6 +22,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/search.css"/>	
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/login.js'/>"></script>
+<% 	DecimalFormat df = new DecimalFormat("###,###"); %>
 <script type="text/javascript">
 var fbTitle="";
 var fbUrl="";

@@ -63,7 +63,6 @@ public class FooterViewController {
 	@RequestMapping("/privacy.do")
 	public String privacy(@RequestParam(defaultValue="F") String gender, Model model){
 		//1.
-		
 		//2.
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
