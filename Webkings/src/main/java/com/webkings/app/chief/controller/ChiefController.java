@@ -36,7 +36,20 @@ public class ChiefController {
 		return "chief/addChief";
 	}
 	
-	@RequestMapping(value="/insertChief.do", method=RequestMethod.POST)
+	@RequestMapping(value="/insertChiefChkId.do", method=RequestMethod.POST)
+	public String insertChiefChkId_post(HttpServletRequest request){
+		logger.info("insertChiefChkId 기업회원 가입요청 IdChk, 파라미터 request={}",request);
+		String reqParam = request.getParameter("id");
+		
+		int count = chiefService.selectChiefId(reqParam);
+		if (count == 0) {
+			return "사용 가능합니다.";
+		} else {
+			return "이미 사용중인 아이디입니다.";
+		}
+	}
+	
+	@RequestMapping(value="/insertChief.do", method=RequestMethod.GET)
 	public String insertChief_post(@ModelAttribute ChiefVo chiefVo, HttpServletRequest request, Model model){
 		logger.info("insertChief 기업회원 가입, 파라미터 ChiefVo={}",chiefVo);
 		
@@ -48,14 +61,4 @@ public class ChiefController {
 			return "redirect:/chief/addChief.do"; 
 		}
 	}
-	
-//	@RequestMapping(value="/insertChiefChkId.do", method=RequestMethod.POST)
-//	public String insertChiefChkId_post(HttpServletRequest request){
-//		logger.info("insertChiefChkId 기업회원 가입요청 IdChk, 파라미터 request={}",request);
-//		String reqParam = request.getParameter("id");
-//		
-//		int count = chiefService.selectChiefId(reqParam);
-//		
-//		return "redirect:/chief/m_center.do";
-//	} 
 }

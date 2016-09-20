@@ -17,9 +17,9 @@ public class ChiefServiceImpl extends SqlSessionDaoSupport implements ChiefServi
 		return getSqlSession().insert(namespace+".insertchief", vo);
 	}
 
-//	@Override
-//	public int selectChiefId(String reqParam) {
-//		return getSqlSession().insert(namespace+".selectChiefId", reqParam);
-//	}
+	@Override
+	public int selectChiefId(String reqParam) {
+		return getSqlSession().insert(namespace+".selectChiefId", reqParam);
+	}
 
 }

@@ -10,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/skin.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/base.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Marketing center</title>
 </head>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <body>
