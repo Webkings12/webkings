@@ -28,7 +28,7 @@ $(document).ready(function() {
 				$.each(shopList, function(idx, item) {
 					result+=
 					"<li class='shop "+gender+" ia' style='display: list-item;'><a href='http://"+item.sDomain+"'  target='_blank' seq='121'>"+	
-					"<img src='"+item.sSimage+"'"+ 
+					"<img src='../Webkings/shopImage/"+item.sSimage+"'"+ 
 					"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1472529181667_n1.jpg' class='item' style='display: block;'>"+
 						"<div class='over'>	<input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'>	<div class='btn'>"+
 						"<span class='fb sns'>" +
@@ -59,7 +59,7 @@ $(document).ready(function() {
 					result+=
 					"<li class='prod "+gender+"' style='left: 0px; top: 0px;'><a id='aaaa' href='http://"+item.iDomain+"' target='_blank' sseq='11' seq='1388374'>"+
 					"<input type='hidden' id='itemiNo' name='iINo' value='"+item.iNo+"'>"+
-					"<img src='"+item.iImage+"' " +
+					"<img src='../Webkings/ItemImage/"+item.iImage+"' " +
 					"data-original='http://img.sta1.kr/_up/prod/thmb/w/2016/09/17/03/1474048911831_AL.jpg' style='height: 310px; display: block;' " +
 					"class='item'>	<span class='favor' id='addItem'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
 					"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+

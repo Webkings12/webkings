@@ -18,7 +18,7 @@ $(document).ready(function() {
 					 result+=
 					"<li class='shop sec-2  "+gender+" ia'>"+
 					"<a href='http://"+item.sDomain+"'  target='_blank' seq='121'>"+	
-					"<img src='"+item.sBimage+"' data-original='http://img.sta1.kr/_up/shop/logo/2016/09/1473406293970_a1.jpg' class='item'" +
+					"<img src='../Webkings/shopImage/"+item.sBimage+"' data-original='http://img.sta1.kr/_up/shop/logo/2016/09/1473406293970_a1.jpg' class='item'" +
 					" style='display: block;'>"+
 					"<div class='over'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'>		<div class='btn'>" +
 					"<span class='fb sns'>" +
@@ -37,7 +37,7 @@ $(document).ready(function() {
 						$.each(styleSel, function(idx, item) {
 							result+=
 						"<li class='shop  "+gender+" ia'><a href='http://"+item.sDomain+"'  target='_blank' seq='271'>"	+
-						"<img src='"+item.sSimage+"' " +
+						"<img src='../Webkings/shopImage/"+item.sSimage+"' " +
 						"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1471857259160_n1.jpg' class='item' style='display: block;'>"+
 						"<div class='over'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'>		<div class='btn'>" +
 						"<span class='fb sns'>" +

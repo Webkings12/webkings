@@ -32,7 +32,7 @@ $(document).ready(function() {
 							"<li class='prod "+item.itGender+" ia' id='prod1'>"+
 							"<a id='a123' href='http://"+item.iDomain+"'  target='_blank' sseq='121' seq='1349867' maindate='20160908'>"+
 							"<input type='hidden' id='itemiNo' name='iINo' value='"+item.iNo+"'>"+
-								"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
+								"<img src='../Webkings/ItemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 								"style='height: 340px; display: block;' class='item'>"+
 								"<span class='favor' id='addItem'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
 										"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
@@ -73,7 +73,7 @@ $(document).ready(function() {
 						"<li class='prod "+item.itGender+" ia' id='prod2'>"+
 							"<a id='aaa' href='http://"+item.iDomain+"' target='_blank' sseq='121' seq='1349867' maindate='20160908'>"+
 								"<input type='hidden' id='itemiNo' name='iINo' value='"+item.iNo+"'>"+
-								"<img src='../../itemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
+								"<img src='../Webkings/ItemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 								"style='height: 340px; display: block;' class='item'>"+
 								"<span class='favor' id='addItem'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
 										"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+

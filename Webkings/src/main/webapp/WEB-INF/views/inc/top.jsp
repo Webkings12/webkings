@@ -357,12 +357,9 @@ $(document).ready(function(event){
 	});
 });
 </script>
-<<<<<<< HEAD
-				<div id="divLogin" class="modal">
-=======
+
 
 					<div id="divLogin" class="modal">
->>>>>>> branch 'master' of https://github.com/Webkings12/webkings.git
 						<span
 							onclick="document.getElementById('divLogin').style.display='none'"
 							class="close" title="Close Modal">&times;</span>
