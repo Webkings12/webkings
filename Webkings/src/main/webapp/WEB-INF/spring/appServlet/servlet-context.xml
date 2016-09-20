@@ -42,7 +42,6 @@
 			<mapping path="/reply/write.do" />
 			<mapping path="/reply/write2.do" />
 			<mapping path="/reply/delete.do" />
-			<mapping path="/qna/write.do" />
 			<mapping path="/qna/list.do" />
 			<mapping path="/qna/edit.do" />
 			<beans:ref bean="loginIntercepter" />

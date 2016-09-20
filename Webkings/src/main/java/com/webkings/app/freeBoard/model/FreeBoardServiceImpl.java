@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.webkings.app.common.SearchVO;
 
@@ -55,5 +56,23 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		}else{
 			return fbDao.selectBefore(bNo);
 		}
+	}
+	
+	@Transactional
+	public int deleteboard(List<BoardViewVO> listVo){
+		int cnt=0;
+		try{
+			for(BoardViewVO vo: listVo){
+				int productNo=vo.getbNo();
+				if(productNo!=0){
+					cnt=fbDao.deleteBoard(vo.getbNo());
+				}
+			}
+		}catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt=-1;
+		}
+		
+		return cnt; 
 	}
 }
