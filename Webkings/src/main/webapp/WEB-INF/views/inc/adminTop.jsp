@@ -17,8 +17,16 @@ $(document).ready(function(){
 	if($("#semail").val().length<1){
 		$(".modal2").css("display","block");		
 	}else {
-		$(".modal2").css("display","none");		
+		$("#aLogout").append("로그아웃");	
+		$(".modal2").css("display","none");
 	}
+	
+	$(".mypage-btn li a").click(function() {
+		if($("#semail").val().length<1){
+			$(".modal2").css("display","block");
+			return false;
+		}
+	});
 });
 </script>
 <script type="text/javascript" src="<c:url value='/js/admin.js'/>"></script>
@@ -32,7 +40,7 @@ $(document).ready(function(){
 			<div class="in-sec">
 	<h1><a href="/home"></a></h1>
 	<div class="title">관리자 페이지</div>
-	<div class="logout"><a href="<c:url value='/logout.do'/>">로그아웃</a></div>
+	<div class="logout"><a id=aLogout href="<c:url value='/logout.do'/>"></a></div>
 	<div id="divLogin" class="modal2">
 						<div class="amodel2">
 							<form class="modal-content animate" id="formLogin" name="formLogin" method="post">
@@ -48,7 +56,7 @@ $(document).ready(function(){
 										<input type="password" placeholder="관리자 비밀번호" name="mPwd"
 											id="mPwd1">
 									</div>
-									<button type="submit" class="cancelbtn">로그인</button>
+										<button type="submit" class="cancelbtn">로그인</button>
 								</div>
 							</form>
 						</div>
