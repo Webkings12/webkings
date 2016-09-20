@@ -1,0 +1,684 @@
+@CHARSET "utf-8";
+
+.headSec {
+    position: relative;
+    min-width: 990px;
+    height: 60px;
+    background-color: #415b76;
+    z-index: 1002;
+}
+
+.headSec h1 a {
+    display: block;
+    width: 215px;
+    height: 60px;
+}
+
+.headSec .fleft {
+    position: absolute;
+    left: 215px;
+    top: 0;
+    float: none !important;
+    height: 60px;
+}
+
+.headSec .fleft a.icon, .headSec .fleft .name, .headSec .fleft .moneyInfo {
+    display: none;
+}
+
+.headSec .fleft ul {
+    padding-left: 25px;
+}
+
+.headSec .fleft li {
+    float: left;
+    padding: 24px 25px 0 25px;
+}
+
+.boxRD5 {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.headSec .fleft li a {
+    color: #fff;
+    font-weight: bold;
+}
+
+.bodySec {
+    min-width: 990px;
+    min-height: 100%;
+    margin-top: -121px;
+    background: url(/rsc/admin/img/skin/bg_left_1.gif) repeat-y 0 0;
+}
+
+.bodySec .bodyInSec {
+    padding-top: 121px;
+    overflow: hidden;
+}
+
+.bodySec .leftSec {
+    float: left;
+    width: 215px;
+    padding-top: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.bodySec .leftSec .tbtnSec {
+    height: 58px;
+}
+
+.bodySec .leftSec .tbtnSec .inSec {
+    padding: 19px 0 18px 0;
+    word-spacing: 5px;
+    text-align: center;
+}
+
+.sys-btn {
+    display: inline-block;
+    color: #fff !important;
+    font-weight: bold;
+    line-height: 100%;
+    border: 0 none;
+    cursor: pointer;
+}
+
+.sys-btn-type2 {
+    background-color: #1abc9c;
+    font-size: 20px;
+    padding: 12px !important;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.sys-btn-type3 {
+    background-color: #dbdbdb;
+    color: #838383 !important;
+    font-weight: normal;
+    font-size: 11px;
+    padding: 9px 10px 10px 10px !important;
+}
+
+.sys-btn-type4 {
+    padding: 0 !important;
+    background-color: #415b76;
+    color: #ffffff;
+    line-height: 1.8;
+    border: 1px solid #34495e;
+    -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+    -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.sys-btn-type4 span {
+    width: 50px;
+    font-weight: normal;
+    font-size: 11px;
+    padding: 0 7px !important;
+    display: inline-block;
+    word-spacing: -1px;
+    letter-spacing: -1px;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.lnbSec {
+    padding: 0 0 0 0;
+}
+
+.lnbSec li {
+    border-bottom: 1px solid #fff;
+}
+
+.lnbSec li a {
+    display: block;
+    font-weight: bold;
+    color: #fff;
+    background-color: #00a8b4;
+    line-height: 100%;
+}
+
+.lnbSec li a em {
+    display: inline-block;
+    width: 57px;
+    height: 58px;
+    background-color: #168c96;
+    vertical-align: middle;
+}
+
+.lnbSec li a.l46 i {
+    background-position: -192px -168px;
+}
+
+.lnbSec li a em i {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url(/rsc/admin/img/icon/icon_1.gif) no-repeat;
+    text-indent: -100000px;
+    margin: 21px auto 0 auto;
+}
+
+.lnbSec li a strong {
+    display: inline-block;
+    padding: 2px 0 0 19px;
+}
+
+.lnbSec li dl {
+    display: none;
+    border-top: 1px solid #fff;
+}
+
+.lnbSec li dd {
+    border-top: 1px solid #229cab;
+}
+
+.lnbSec li dd a {
+    background-color: #00a8b4 !important;
+    font-weight: normal;
+    padding: 14px 0 14px 76px;
+}
+
+.leftSec .txt1 {
+    font-size: 11px;
+    color: #d4d4d4;
+    border-bottom: 1px solid #fff;
+    padding: 18px 0 16px 19px;
+}
+
+.leftSec .txt1 strong {
+    color: #fff;
+    display: block;
+    font-size: 12px;
+}
+
+.leftSec .txt2 {
+    font-size: 11px;
+    color: #d4d4d4;
+    padding: 18px 0 16px 19px;
+}
+
+.leftSec .txt2 strong {
+    color: #fff;
+    display: block;
+    font-size: 12px;
+}
+
+.bodySec .rightSec {
+    padding: 0 0 30px 0;
+}
+
+.contentSec {
+    padding: 0 0 0 216px;
+    position: relative;
+}
+
+.bodySec .rightSec .locationSec {
+    height: 20px;
+    padding: 21px 20px 17px 0;
+}
+
+.bodySec .rightSec .locationSec ul {
+    overflow: hidden;
+    float: right;
+}
+
+.bodySec .rightSec .locationSec li {
+    float: left;
+}
+
+.contType2Sec {
+    overflow: hidden;
+}
+
+.contType2Sec .sec1 {
+    float: left;
+    width: 50%;
+    margin-right: -10px;
+}
+
+.contType2Sec .sec1 .inSec {
+    padding: 0 10px 0 0;
+}
+
+.titTabSec {
+    position: relative;
+    height: 40px;
+    background-color: #e7e7e7;
+    z-index: 9;
+}
+
+.titTabSec h2 {
+    float: left;
+    padding: 12px 0 0 20px;
+}
+
+.titTabSec ul {
+    float: right;
+}
+
+.titTabSec li {
+    float: left;
+    width: 128px;
+    border-left: 1px solid #fff;
+}
+
+.contType2Sec .titTabSec li {
+    width: 55px;
+}
+
+.contType2Sec .titTabSec li.b2 {
+    width: 80px;
+}
+
+.titTabSec li a {
+    display: block;
+    font-size: 11px;
+    text-align: center;
+    padding: 13px 0 11px 0;
+}
+
+.titTabSec li.on a, .contentInSec .titSec li a:hover {
+    background-color: #a7a7a7;
+    color: #fff;
+}
+
+.boardList1 table.list {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.boardList1 table.list1 {
+    border: 1px #ecf0f1;
+    border-style: none solid;
+}
+
+.boardList1 table.list th, .boardList1 table.list td {
+    border: 1px solid #ccc;
+    text-align: center;
+    height: 40px;
+}
+
+.boardList1 table.list1 th, .boardList1 table.list1 td {
+    border-style: solid none;
+}
+
+.contType2Sec table.list th, .contType2Sec table.list td {
+    height: 38px;
+}
+
+.boardList1 table.list td.tleft a {
+    padding-left: 10px;
+}
+
+.contType2Sec .sec2 {
+    float: right;
+    width: 50%;
+}
+
+.contType2Sec .sec2 .inSec {
+    padding: 0 0 0 10px;
+}
+
+.titTabSec {
+    position: relative;
+    height: 40px;
+    background-color: #e7e7e7;
+    z-index: 9;
+}
+
+.titTabSec h2 {
+    float: left;
+    padding: 12px 0 0 20px;
+}
+
+.boardList1 table.list {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.boardList1 table.list th, .boardList1 table.list td {
+    border: 1px solid #ccc;
+    text-align: center;
+    height: 40px;
+}
+
+.boardList1 table.list th {
+    background-color: #f7f7f7;
+    border-top: 1px solid #ddd;
+}
+
+.contType2Sec table.list th, .contType2Sec table.list td {
+    height: 38px;
+}
+
+.contType2Sec {
+    overflow: hidden;
+}
+
+.contType2Sec .sec1 {
+    float: left;
+    width: 50%;
+    margin-right: -10px;
+}
+
+.contType2Sec .sec1 .inSec {
+    padding: 0 10px 0 0;
+}
+
+.titTabSec {
+    position: relative;
+    height: 40px;
+    background-color: #e7e7e7;
+    z-index: 9;
+}
+
+.titTabSec h2 {
+    float: left;
+    padding: 12px 0 0 20px;
+}
+
+.titTabSec p.txt {
+    float: right;
+    font-size: 11px;
+    color: #777;
+    padding: 13px 9px 0 0;
+}
+
+.boardList1 table.list1 {
+    border: 1px #ecf0f1;
+    border-style: none solid;
+}
+
+.boardList1 table.list {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.boardList1 table.list td.tleft p {
+    padding-left: 10px;
+}
+
+.boardList1 table.list td.tright span {
+    display: block;
+    padding-right: 8px;
+}
+
+.contType2Sec .sec2 {
+    float: right;
+    width: 50%;
+}
+
+.contType2Sec .sec2 .inSec {
+    padding: 0 0 0 10px;
+}
+
+.titTabSec {
+    position: relative;
+    height: 40px;
+    background-color: #e7e7e7;
+    z-index: 9;
+}
+
+.titTabSec h2 {
+    float: left;
+    padding: 12px 0 0 20px;
+}
+
+.titTabSec p.txt {
+    float: right;
+    font-size: 11px;
+    color: #777;
+    padding: 13px 9px 0 0;
+}
+
+.footSec {
+    min-width: 990px;
+    height: 60px;
+    background-color: #415b76;
+}
+
+div.dimLayer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    filter: alpha(Opacity=60);
+    -ms-filter: "alpha(Opacity=60)";
+    opacity: 0.6;
+    z-index: 2000;
+}
+
+.loadingPageSec {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: -25px 0 0 -25px;
+    display: none;
+    z-index: 2001;
+}
+
+.loginLayerSec {
+    display: none;
+    position: absolute;
+    width: 310px;
+    left: 50%;
+    top: 50%;
+    margin: -115px 0 0 -155px;
+    z-index: 2001;
+}
+
+.loginLayerSec .inSec {
+    position: relative;
+    background-color: #34495e;
+    height: 230px;
+}
+
+.loginLayerSec .inSec h2 {
+    padding: 19px 0 20px 26px;
+}
+
+.loginLayerSec .sec {
+    position: relative;
+    width: 265px;
+    margin: 0 auto;
+}
+
+.loginLayerSec .sec li {
+    padding-bottom: 1px;
+}
+
+label.hd-lab {
+    position: absolute;
+    display: inline-block;
+    margin: 8px 0 0 11px;
+}
+
+.loginLayerSec .sec label.hd-lab {
+    font-weight: bold;
+    color: #34495e;
+    margin-top: 13px;
+}
+
+input.htxt1 {
+    border: 1px solid #dbdbdb;
+    height: 25px;
+    padding: 2px 0 1px 10px;
+}
+
+.loginLayerSec .sec .htxt1 {
+    width: 165px;
+    height: 38px;
+    border: 0 none;
+}
+
+.loginLayerSec .login {
+    position: absolute;
+    border: 0 none;
+    width: 83px;
+    height: 83px;
+    background-color: #fff;
+    right: 0;
+    top: 0;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.loginLayerSec .opt {
+    position: relative;
+    padding: 10px 0 10px 0;
+    font-size: 11px;
+    color: #fff;
+}
+
+.loginLayerSec .opt input {
+    width: 12px;
+    position: relative;
+    top: -1px;
+}
+
+.sys-btn-type7 {
+    padding: 0 !important;
+    width: 265px;
+    height: 32px;
+    background: #1abc9c url(/rsc/admin/img/icon/icon_1.gif) no-repeat right -519px;
+}
+
+.loginLayerSec .inSec .close {
+    position: absolute;
+    right: -42px;
+    top: 0;
+    display: block;
+    width: 42px;
+    height: 42px;
+    background: #1abc9c url(/rsc/admin/img/icon/icon_1.gif) no-repeat 0 -925px;
+    font-size: 0;
+    text-indent: -100000px;
+}
+
+.inquiryLayerSec {
+    display: none;
+    position: absolute;
+    width: 600px;
+    left: 50%;
+    top: 50%;
+    margin: -342px 0 0 -300px;
+    z-index: 2001;
+}
+
+.inquiryLayerSec .inSec {
+    position: relative;
+    background-color: #34495e;
+    height: 685px;
+}
+
+.inquiryLayerSec .inSec h2 {
+    padding: 19px 0 0 20px;
+}
+
+.inquiryLayerSec .sec {
+    width: 570px;
+    margin: 0 auto;
+    padding: 20px 0 0 0;
+}
+
+.inquiryLayerSec .sec table {
+    width: 100%;
+}
+
+.inquiryLayerSec .sec table td {
+    padding-bottom: 9px;
+}
+
+label.hd-lab {
+    position: absolute;
+    display: inline-block;
+    margin: 8px 0 0 11px;
+}
+
+.inquiryLayerSec .sec label.hd-lab {
+    margin: 13px 0 0 11px;
+    font-weight: bold;
+    color: #34495e;
+}
+
+.inquiryLayerSec .sec .htxt1 {
+    border: 0 none;
+    height: 39px;
+    margin: 0 auto;
+    background: #fff url(/rsc/admin/img/icon/icon_1.gif) no-repeat;
+}
+
+.inquiryLayerSec .sec input.l1 {
+    background-position: right -234px;
+}
+
+.inquiryLayerSec .sec table td {
+    padding-bottom: 9px;
+}
+
+.inquiryLayerSec .sec .htxt2 {
+    border: 0 none;
+    margin: 0 auto;
+    padding: 2px 0 1px 10px;
+}
+
+.inquiryLayerSec .sec textarea.htxt2 {
+    padding: 10px 0 10px 10px;
+}
+
+.tcenter {
+    text-align: center !important;
+}
+
+.inquiryLayerSec .inSec .close {
+    position: absolute;
+    right: -42px;
+    top: 0;
+    display: block;
+    width: 42px;
+    height: 42px;
+    background: #1abc9c url(/rsc/admin/img/icon/icon_1.gif) no-repeat 0 -925px;
+    font-size: 0;
+    text-indent: -100000px;
+}
+
+.footSec h1 {
+    float: left;
+    background-color: #34495e;
+}
+
+.footSec h1 a {
+    display: block;
+    width: 215px;
+    height: 60px;
+}
+
+.footSec h1 img {
+    padding: 10px 0 0 54px;
+}
+
+.footSec .fleft {
+    padding: 23px 0 0 15px;
+}
+
+.footSec .fright {
+    width: 325px;
+    padding-top: 25px;
+}
+
+.headSec h1 a {
+    display: block;
+    width: 215px;
+    height: 60px;
+}
+
+.headSec h1 img {
+    padding: 10px 0 0 54px;
+}
+
