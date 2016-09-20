@@ -83,10 +83,10 @@ $(document).ready(function() {
 		<c:if test="${!empty sessionScope.mEmail }">
 			<li class="login"><a onclick="document.getElementById('divEdit').style.display='block'">내정보 관리</a></li>
 		</c:if>
-			<li class="recent-prod"><a href="<c:url value='/prodList.do'/>">최근 본 상품<em></em></a></li>
-			<li class="recent-shop"><a href="<c:url value='/shop/latelyShopList.do'/>">최근 본 샵<em></em></a></li>
+			<li class="recent-prod"><a href="<c:url value='/prodList.do?gender=${gender}'/>">최근 본 상품<em></em></a></li>
+			<li class="recent-shop"><a href="<c:url value='/shop/latelyShopList.do?gender=${gender}'/>">최근 본 샵<em></em></a></li>
 			<li class="coupon"><a href="javascript:;" id="coupon">쿠폰북</a></li>
-			<li class="favor" id="favorprod"><a href="<c:url value='/myitemList.do'/>">관심상품</a></li>
+			<li class="favor" id="favorprod"><a href="<c:url value='/myitemList.do?gender=${gender}'/>">관심상품</a></li>
 			<li class="follow"><a href="#login">내팔로잉<em></em></a></li>
 		</ul>
 	</div>

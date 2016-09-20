@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/top.jsp" %>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};

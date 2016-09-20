@@ -111,8 +111,8 @@ public class ShopController {
 	
 	/*최근 본 샵 리스트*/
 	@RequestMapping("/latelyShopList.do")
-	public String prodList(HttpSession session,@RequestParam(defaultValue="F") String gender, Model model){
-		
+	public String prodList(HttpSession session, @RequestParam(defaultValue="F") String gender, Model model){
+		logger.info("젠더={}",gender);
 		List<Integer> sNoList = (List<Integer>)session.getAttribute("sNoList");
 		if(sNoList!=null){
 		logger.info("prodList 목록 sNoList={}",sNoList);
@@ -125,18 +125,18 @@ public class ShopController {
 
 		}
 		
+		model.addAttribute("shopmap",map);
+		model.addAttribute("size",map.size());
+		}
 		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
 		List<StyleVO> styleList = styleService.selectStyle(gender);
 		int pageNum=4;
+		
+		
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("itemList", itemList);
 		model.addAttribute("gender", gender);
 		model.addAttribute("pageNum",pageNum);
-		
-		model.addAttribute("shopmap",map);
-		model.addAttribute("size",map.size());
-		}
-		
 		return "page/mypage/latelyShopList"+gender;
 	}
 }

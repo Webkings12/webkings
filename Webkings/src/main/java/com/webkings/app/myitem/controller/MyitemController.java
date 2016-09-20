@@ -109,6 +109,7 @@ public class MyitemController {
 	public String prodList(HttpSession session,@RequestParam(defaultValue="F") String gender, Model model){
 		
 		List<Integer> iNoList = (List<Integer>)session.getAttribute("iNoList");
+		
 		if(iNoList!=null){
 		logger.info("prodList 목록 iNoList={}",iNoList);
 		Map<String, Object> map= new HashMap<String, Object>();
@@ -120,20 +121,20 @@ public class MyitemController {
 		}
 		logger.info("prodList 목록 list={}",map.size());
 		
-		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
-		List<StyleVO> styleList = styleService.selectStyle(gender);
-		
-		int pageNum=4;
-		model.addAttribute("styleList", styleList);
-		model.addAttribute("itemList", itemList);
-		model.addAttribute("gender", gender);
-		model.addAttribute("pageNum",pageNum);
 		model.addAttribute("myitemmap",map);
 		model.addAttribute("size",map.size());
 		}
+		int pageNum=4;
 		
+		model.addAttribute("pageNum",pageNum);
+		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
+		List<StyleVO> styleList = styleService.selectStyle(gender);
+		model.addAttribute("styleList", styleList);
+		model.addAttribute("itemList", itemList);
+		model.addAttribute("gender", gender);
 		return "page/mypage/prodList"+gender;
 	}
+	
 	@RequestMapping("myitemdelete.do")
 	@ResponseBody
 	public int myitemdelete( @RequestParam int iNo,@RequestParam int mNo,Model model){
