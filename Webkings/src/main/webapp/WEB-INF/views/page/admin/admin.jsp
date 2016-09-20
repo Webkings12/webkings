@@ -18,7 +18,7 @@
 			<li class="login"><a href="<c:url value='/admin/memberList.do'/>">회원 관리</a></li>
 			<li class="recent-prod"><a href="javascript:;" onclick="document.getElementById('ItemGenderSel').style.display='block'">상품 관리<em></em></a></li>
 			<li class="recent-shop"><a href="javascript:;" onclick="document.getElementById('ShopGenderSel').style.display='block'">샵 관리<em></em></a></li>
-			<li class="coupon"><a href="javascript:;" id="coupon">게시판 관리</a></li>
+			<li class="coupon"><a href="<c:url value='/admin/freeboard/list.do'/>" id="coupon">게시판 관리</a></li>
 			<li class="favor"><a href="javascript:;">문의 관리</a></li>
 		</ul>
 	</div>

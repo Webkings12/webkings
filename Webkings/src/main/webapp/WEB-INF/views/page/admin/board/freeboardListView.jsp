@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@include file="../../../inc/adminTop.jsp" %>
- <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
- <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -34,7 +39,7 @@
 
 <body>
 	
-	<div class="topMargin">
+	<div class="">
 		<form name="frmPage" method="post" 
 	action="<c:url value='/admin/freeboard/list.do'/>">
 	<input type="hidden" name="currentPage">
@@ -192,8 +197,8 @@
 			<input type="submit" value="검색" id="btSearch2">
 	    </form>
 	    	<div class="align_right">
-	    		<a href='<c:url value="/admin/freeboard/list.do?gender=${gender }"/>' class="btn_default btn_light size_M" >목록</a>
-			    <a href='<c:url value="/admin/freeboard/write.do?gender=${gender }"/>' class="btn_default btn_light size_M" >글쓰기</a>
+	    		<a href='<c:url value="/freeboard/list.do?gender=${gender }"/>' class="btn_default btn_light size_M" >목록</a>
+			    <a href='<c:url value="/freeboard/write.do?gender=${gender }"/>' class="btn_default btn_light size_M" >글쓰기</a>
 			    <a href="#" class="btn_default btn_light size_M" id="btDel">삭제</a>
 			</div>
 	</div>
@@ -204,4 +209,6 @@
 		
 	</div>
 	
-<%@ include file="../../../inc/adminFooter.jsp" %>
+	
+</body>
+</html>

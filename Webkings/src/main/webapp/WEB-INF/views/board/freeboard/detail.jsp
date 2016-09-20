@@ -113,8 +113,10 @@ $(document).ready(function() {
 		<%@include file="../reply/replyWrite.jsp" %>
 	</div> 
 		<c:import url="/freeboard/listView.do"></c:import>
-		</div>
-		</div>
+	
+	
+	</div>
+</div>
 		
 </body>
 </html>
