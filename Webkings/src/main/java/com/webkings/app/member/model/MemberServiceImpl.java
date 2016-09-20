@@ -15,7 +15,6 @@ public class MemberServiceImpl implements MemberService{
 	public int insertMember(MemberVo vo) {
 		return memberDAO.insertMember(vo);
 	}
-
 	@Override
 	public int loginCheck(MemberVo vo) {
 		int result=0;
@@ -30,10 +29,27 @@ public class MemberServiceImpl implements MemberService{
 				result=PWD_DISAGREE; 
 			}
 		}
+		return result;
+	}
+	
+	@Override
+	public int adminCheck(MemberVo vo) {
+		int result=0;
 		
+		String pwd =memberDAO.adminCheck(vo);
+		if(pwd==null || pwd.isEmpty()){
+			result=ID_NONE;
+		}else{
+			if(pwd.equals(vo.getmPwd())){
+				result=LOGIN_OK;
+			}else{
+				result=PWD_DISAGREE; 
+			}
+		}
 		return result;
 	}
 
+	
 	@Override
 	public MemberVo selectmEmail(String mEmail) {
 		return memberDAO.selectmEmail(mEmail);
@@ -59,23 +75,7 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.updatePwd(vo);
 	}
 
-	@Override
-	public int adminCheck(MemberVo vo) {
-		int result=0;
-		
-		String pwd =memberDAO.adminCheck(vo);
-		if(pwd==null || pwd.isEmpty()){
-			result=ID_NONE;
-		}else{
-			if(pwd.equals(vo.getmPwd())){
-				result=LOGIN_OK;
-			}else{
-				result=PWD_DISAGREE; 
-			}
-		}
-		return result;
-	}
-
+	
 	@Override
 	public List<MemberVo> selectList() {
 		return memberDAO.selectList();

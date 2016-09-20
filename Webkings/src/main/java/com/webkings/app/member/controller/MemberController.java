@@ -93,6 +93,7 @@ public class MemberController {
 		
 		int result=memberService.loginCheck(memberVo);
 		
+		logger.info("result={}",result);
 		if(result==MemberService.LOGIN_OK){
 			
 			memberVo =memberService.selectmEmail(memberVo.getmEmail());
