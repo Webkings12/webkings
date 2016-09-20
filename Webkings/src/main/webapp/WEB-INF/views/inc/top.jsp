@@ -120,13 +120,13 @@ var searchList="";
 								<dl class="shop-sel">
 									<dt>스타일전체</dt>
 									<dd>
-										<a href="#">
+										<a href="/Webkings/shop/shopView.do?gender=F&searchName=${searchName}">
 											<em>쇼핑몰전체</em>
 										</a>
 									</dd>
 									 <c:forEach var="StyleVO" items="${styleList}">
 										<dd>
-											<a href="#">
+											<a href="/Webkings/shop/shopView.do?gender=${gender}&style=${StyleVO.stName}&searchName=${searchName}">
 												<em>${StyleVO.stName}</em>
 											</a>
 										</dd>
