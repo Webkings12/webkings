@@ -13,6 +13,7 @@
 	
 	<select id="selectChiefId" parameterType="String" resultType="int" >
 		select count(*) from chief
-		 where c_email = #{reqParam}
+		 where 1 = 1
+		   and c_email = #{reqParam}
 	</select>
 </mapper>

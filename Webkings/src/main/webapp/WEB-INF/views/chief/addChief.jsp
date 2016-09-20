@@ -31,6 +31,7 @@ $(document).ready(function() {
 			data:"id="+$("#id").val(),
 			dataType:"text",
 			success:function(res){
+				alert("success");
 				// "사용 가능합니다." or "이미 사용중인 아이디입니다."
 				if(res.val().equals("사용 가능합니다.")) {
 					$("#idChkResult").val(res);
@@ -39,6 +40,7 @@ $(document).ready(function() {
 				}				
 			},
 			error:function(xhr, status, error){
+				alert("error");
 			}
 		});
 
