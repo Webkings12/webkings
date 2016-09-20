@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC>
 <html>
 <head>
-<link rel="icon" href="${pageContext.request.contextPath}/images/tab logo.png"/>
+<link rel="icon" href="${pageContext.request.contextPath}/images/tab logo.png">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/skin.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/base.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

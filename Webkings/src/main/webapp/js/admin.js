@@ -43,10 +43,15 @@ $(document).ready(function() {
 		}
 	});
 	
-	$(".amodel .adF").click(function() {
-		alert("선택여자");
+	//관리자 아이템 성별 선택자
+	$("#ItemGenderSel .amodel div span").click(function() {
+		gender=$(this).find("input[type='hidden']").val();
+		$(location).attr('href', "/Webkings/adminItemView.do?gender="+gender);
 	});
-	$(".amodel .adM").click(function() {
-		alert("선택남자");
+	
+	//관리자 샵 성별 선택자
+	$("#ShopGenderSel .amodel div span").click(function() {
+		gender=$(this).find("input[type='hidden']").val();
+		$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender);
 	});
 });
