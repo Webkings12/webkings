@@ -1,5 +1,7 @@
 package com.webkings.app.member.model;
 
+import java.util.List;
+
 public interface MemberService {
 	public static final int LOGIN_OK=1; //로그인 성공
 	public static final int PWD_DISAGREE=2;//비밀번호 불일치
@@ -15,4 +17,5 @@ public interface MemberService {
 	
 	
 	public int adminCheck(MemberVo vo);
+	public List<MemberVo> selectList();
 }

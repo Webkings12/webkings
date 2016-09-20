@@ -12,9 +12,9 @@
 			values(#{mNo},#{mEmail},#{mNick},#{mPwd},#{mImage})
 	</insert>
 	<select id="selectPwd" parameterType="MemberVo"
-		resultType="string">
-		select m_Pwd from member
-		where m_Email=#{mEmail}
+		resultType="MemberVo">
+		select m_Pwd,m_Nick from member
+		where m_Email=#{mEmail}and m_Nick=1
 	</select>
 	<select id="adminSelectPwd" parameterType="MemberVo"
 		resultType="string">
@@ -44,4 +44,7 @@
 		set m_Pwd=#{mPwd}
 		where m_Email=#{mEmail}
 	</update>
+	<select id="selectList"  resultType="MemberVo" >
+		select * from member order by m_no desc
+	</select>
 </mapper>

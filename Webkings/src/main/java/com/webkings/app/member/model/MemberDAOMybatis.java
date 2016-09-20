@@ -1,5 +1,7 @@
 package com.webkings.app.member.model;
 
+import java.util.List;
+
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -41,6 +43,10 @@ public class MemberDAOMybatis extends SqlSessionDaoSupport implements MemberDAO 
 	@Override
 	public String adminCheck(MemberVo vo) {
 		return getSqlSession().selectOne(namespace+".adminSelectPwd", vo);
+	}
+	@Override
+	public List<MemberVo> selectList() {
+		return getSqlSession().selectList(namespace+".selectList");
 	}
 
 }

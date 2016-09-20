@@ -416,3 +416,26 @@ div.footer-sec p.copyright {
 	font-size: 20px;
 	margin-top: 27px;
 }
+.divList{
+	width:700px;
+	margin: 0 auto;
+}
+.tr_center{
+	text-align: center;
+}
+table.List{
+	width:700px;
+	margin: 0;
+	padding: 0;
+	border: solid silver 1px;
+	border-collapse: collapse;
+}
+
+table.List th{
+	background-color: #c0c0c0;
+	border: solid silver 1px;
+}
+
+table.List td{
+	border: solid silver 1px;	
+}
