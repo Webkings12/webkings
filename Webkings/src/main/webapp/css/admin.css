@@ -10,7 +10,11 @@ body>div.header div.shadow div.in-sec {
     position: relative;
     height: 71px;
 }
-
+div.body-sec>div.in-sec .footer-sec{
+	    min-height: 48px;
+    padding-bottom: 0px;
+    position: absolute;
+}
 .modal2 {
     position: fixed;
     z-index: 1;
@@ -410,11 +414,15 @@ div.footer-sec p.copyright {
     letter-spacing: 0;
     word-spacing: 0;
 }
-
+div.body-sec>div.in-sec>div.admin {
+    min-height: 660px;
+    padding-bottom: 150px;
+}
 .logout{
 	float: right;
 	font-size: 20px;
 	margin-top: 27px;
+	margin-right: 190px;
 }
 .divList{
 	width:700px;
