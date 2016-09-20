@@ -198,7 +198,6 @@
 	    </form>
 	    	<div class="align_right">
 	    		<a href='<c:url value="/freeboard/list.do?gender=${gender }"/>' class="btn_default btn_light size_M" >목록</a>
-			    <a href='<c:url value="/freeboard/write.do?gender=${gender }"/>' class="btn_default btn_light size_M" >글쓰기</a>
 			    <a href="#" class="btn_default btn_light size_M" id="btDel">삭제</a>
 			</div>
 	</div>
