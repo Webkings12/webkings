@@ -4,13 +4,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC>
 <html>
 <head>
+<link rel="icon" href="${pageContext.request.contextPath}/images/tab logo.png"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/skin.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/base.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Marketing center</title>
+<title>마케팅센터</title>
 </head>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <body>

@@ -38,7 +38,7 @@ $(document).ready(function(){
 	<div class="shadow">
 		<div>
 			<div class="in-sec">
-	<h1><a href="/home"></a></h1>
+	<h1><a href="<c:url value='/admin.do'/>"></a></h1>
 	<div class="title">관리자 페이지</div>
 	<div class="logout"><a id=aLogout href="<c:url value='/logout.do'/>"></a></div>
 	<div id="divLogin" class="modal2">
