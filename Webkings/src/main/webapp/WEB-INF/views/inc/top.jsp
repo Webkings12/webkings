@@ -554,8 +554,7 @@ $(document).ready(function(event){
 			</div>
 		<div class="bg"></div>
 	</div>
-
-
+	
 <!-- 구글 -->
 <script type="text/javascript">
 var GoogleApp = {
@@ -605,18 +604,30 @@ var GoogleApp = {
 	var state = naver_id_login.getUniqState();
 	naver_id_login.setButton("white", 1,50);
 	naver_id_login.setDomain(".service.com");
+	/* naver_id_login.setPopup(); */
 	naver_id_login.setState(state);
 	naver_id_login.init_naver_id_login();
+	 
 	
+
+	/* //상태토큰생성
+	function generate_state(){
+	 	$mt = microtime();
+	 	$rand = mt_rand();
+	 	return md5($mt . $rand);
+	} 
+	//로그인 팝업띄우기
 	function naverlogin(){
-	 	url = "https://nid.naver.com/oauth2.0/authorize?client_id=hnHk72nmxpcjD70Gfi0M&response_type=code";
-		popWindow(url, "winZip", 500, 500, "no");
-	}
+		url = "https://nid.naver.com/oauth2.0/authorize?client_id=앱의클라이언트아이디&response_type=code&redirect_uri=로그인후경로&state=상태토큰";
+	 	popWindow(url, "winZip", 500, 500, "no");
+	} */
+	
 	
 	function naverSignInCallback() {
 		// naver_id_login.getProfileData('프로필항목명');
 		// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
 		location.href="/Webkings/member/apiLogin.do?mEmail="+naver_id_login.getProfileData('email')+"&mNick="+naver_id_login.getProfileData('nickname');
+
 	}
 
 	// 네이버 사용자 프로필 조회
