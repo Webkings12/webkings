@@ -22,4 +22,6 @@ public interface MemberService {
 	
 	//회원 여러명 삭제
 	public int deletememberList(List<MemberVo> memberDelList);
+	// 회원정보 수정
+	public int updateAdmin(MemberVo vo);
 }

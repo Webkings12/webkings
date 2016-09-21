@@ -53,4 +53,6 @@ $(document).ready(function() {
 		gender=$(this).find("input[type='hidden']").val();
 		$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender);
 	});
+	
+	
 });

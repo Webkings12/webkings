@@ -3,6 +3,7 @@ package com.webkings.app.admin.controller;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -128,6 +129,49 @@ public class AdminMemberController {
 		//3.
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
+		return "common/message";
+	}
+	
+	@RequestMapping("/adminEdit.do")
+	public String memberEdit_post(@ModelAttribute MemberVo membervo, 
+			@RequestParam(defaultValue="") String oldmImage, HttpServletRequest request, Model model){
+		
+		logger.info("관리자-회원수정처리 membervo={}",membervo);
+		
+		int uploadTpye=fileUtil.IMAGE_UPLOAD;
+		
+		List<Map<String, Object>> fileList=
+				fileUtil.fileUPload(request, uploadTpye);
+		String fileName="";
+		for(Map<String, Object> mymap:fileList){
+			fileName=(String)mymap.get("fileName");
+		}
+		membervo.setmImage(fileName);
+		logger.info("관리자-fileName이름={}",fileName);
+		
+		if(oldmImage!=""){
+			String upPath=fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
+			logger.info("oldmImage이름={}",oldmImage);
+			
+			File delfile= new File(upPath, oldmImage);
+			if(delfile.exists()){
+				boolean bool= delfile.delete();
+				logger.info("관리자-파일 삭제 결과={}",bool);
+			}	
+		}
+		String msg="", url="/admin/memberList.do";
+		int cnt=memberService.updateAdmin(membervo);
+		logger.info("관리자-회원수정처리결과 cnt={}",cnt);
+		
+		if(cnt>0){
+			msg="회원정보가 수정되었습니다";
+		}else{
+			msg="회원정보 수정이 실패 되었습니다";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		
 		return "common/message";
 	}
 	

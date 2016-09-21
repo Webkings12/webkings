@@ -99,5 +99,9 @@ public class MemberServiceImpl implements MemberService{
 		}
 		return cnt;
 	}
+	@Override
+	public int updateAdmin(MemberVo vo) {
+		return memberDAO.updateAdmin(vo);
+	}
 
 }

@@ -49,4 +49,9 @@
 		where m_type=1
 		order by m_no desc
 	</select>
+	<update id="updateAdmin" parameterType="MemberVo">
+		update member
+		set m_Email=#{mEmail},m_nick=#{mNick},m_image=#{mImage}
+		where m_no=#{mNo}
+	</update>
 </mapper>
