@@ -68,7 +68,7 @@ $(document).ready(function() {
 						<c:if test="${!empty memberList }">
 							<c:forEach var="vo" items="${memberList }">
 							<tr class="tr_center">
-								<td><input type="checkbox" name="memberDelList[${i}].mEmail" value="${vo.mEmail}"></td>
+								<td><input type="checkbox" name="memberDelList[${i}].mEmail" value="${vo.mEmail}" id="chk_${i }"></td>
 								<input type="hidden" name="memberDelList[${i}].mImage" value="${vo.mImage}">
 								<td>${vo.mNo}</td>
 								<td>${vo.mEmail}</td>
