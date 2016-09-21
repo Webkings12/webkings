@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.webkings.app.item.controller.ItemController;
 import com.webkings.app.item.model.ItemService;
-import com.webkings.app.item.model.ItemViewVO;
 import com.webkings.app.item.model.Item_TypeVO;
 import com.webkings.app.shop.model.ShopService;
 import com.webkings.app.shop.model.ShopViewVO;
@@ -39,7 +37,7 @@ public class ShopController {
 	@Autowired
 	private StyleService styleService;
 	
-	public static final Logger logger = LoggerFactory.getLogger(ItemController.class);
+	public static final Logger logger = LoggerFactory.getLogger(ShopController.class);
 	
 	@RequestMapping("/shopView.do")
 	public String shopView(@RequestParam String gender, @RequestParam(defaultValue="all") String style, 

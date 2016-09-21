@@ -3,12 +3,220 @@
 {body>div.header div.shadow div.in-sec {
     width: 950px;
 }}
-
+.list-top-1 {
+    height: 74px;
+    position: relative;
+    z-index: 5;
+    padding-top: 75px;
+}
 body>div.header div.shadow div.in-sec {
     width: 1460px;
     margin: 0 auto;
     position: relative;
     height: 71px;
+}
+.item-list>li.shop>a>img.item {
+    width: 230px;
+    height: 340px;
+    background: url(/rsc/front/img/ajax-loader.gif) no-repeat center;
+}
+.item-list>li.shop:hover .over>div.bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000;
+    opacity: .6;
+}
+.item-list>li.shop>a {
+    display: block;
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #e4e7ea;
+}
+.item-list>li.shop .over {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 60px;
+    display: none;
+}
+.item-list>li.shop .over .btn {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+.item-list>li.shop .over .btn span {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #404040;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    font-size: 0;
+    line-height: 0;
+    margin: 0 1px;
+    position: relative;
+}
+.item-list>li.shop .over .btn i {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%,0);
+    -moz-transform: translate(-50%,0);
+    -ms-transform: translate(-50%,0);
+    -o-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+    width: 100%;
+    top: auto;
+    display: none;
+    font-family: 'Malgun Gothic','맑은 고딕','NanumBarunGothic','나눔바른고딕','NanumGothic','나눔고딕','Tahoma','Nanum Barun Gothic','Apple SD Gothic Neo Bold','Apple SD Gothic Neo','애플 SD 고딕 Neo','dotum',sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    top: 46px;
+    color: #a2a2a5;
+}
+.item-list>li.shop .info {
+    background-color: #fff;
+    position: relative;
+    height: 60px;
+    padding-left: 14px;
+    color: #a2a2a5;
+}
+.item-list>li.shop.F strong {
+    color: #e6178f;
+}
+.item-list>li.shop .info strong {
+    display: block;
+    padding-top: 13px;
+}
+.item-list>li.shop .info strong i {
+    color: #202022;
+    padding-right: 4px;
+}
+.item-list>li.shop .info span {
+    width: 125px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+.item-list>li.shop .info em {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 14px;
+    display: block;
+    width: 54px;
+    line-height: 32px;
+    padding: 0 0 0 11px;
+    -webkit-border-radius: 16px;
+    -moz-border-radius: 16px;
+    border-radius: 16px;
+    letter-spacing: -0.08em;
+    border: 1px solid #c5cdd5;
+    color: #202022;
+}
+.item-list>li.shop .info em:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    background-image: url(../images/add.png);
+    -webkit-background-size: 9px 9px;
+    -moz-background-size: 9px 9px;
+    -o-background-size: 9px 9px;
+    background-size: 9px 9px;
+    background-repeat: no-repeat;
+    width: 9px;
+    height: 10px;
+    right: 6px;
+}
+.item-list>li.shop.M strong {
+    color: #0fb6c5;
+}
+.item-list>li.shop:hover .over>div.bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000;
+    opacity: .6;
+}
+.item-list>li.shop:hover .over {
+    display: block;
+}
+.item-list>li.shop .over .btn span.fb:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background-image: url(../images/garbage.png);
+    -webkit-background-size: 20px 20px;
+    -moz-background-size: 20px 20px;
+    -o-background-size: 20px 20px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+.list-top-1 .sep{
+	padding-left: 10px;
+    position: absolute;
+    top:95;
+	font-size:x-large;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    left: 15px;
+    white-space: nowrap;
+}
+.list-top-1 .notice-2{
+	padding-top: 15px;
+}
+.list-top-1 .option-sec-2 {
+       top: 84;
+}
+.item-list>li.shop .over .btn span:hover {
+    background-color: #fff;
+}
+.item-list>li.shop .over .btn span:hover+i {
+    display: block;
+}
+
+.item-list {
+    overflow: hidden;
+    position: relative;
+    width: 1416px;
+   padding-top: 16px;
 }
 div.body-sec>div.in-sec p.privacy-fixed {
     position: fixed;
@@ -188,8 +396,8 @@ body .detail-search input:checked+label{
 .item-list>li.prod .info span.shop, .item-list>li.prod .info span.name {
     display: none;
 }
-.item-list.abs-list {
-    margin-top: 20px;
+.list-top-1 .option-sec-1{
+	top: 85px;
 }
 .item-list>li.prod>a {
     display: block;
@@ -305,7 +513,7 @@ button {
     background-color: #fefefe;
     margin: 15% auto;
     border: 1px solid #888;
-   width: 280px;
+   width: 250px;
     height: 100px;
     border-radius: 10px 10px 10px 10px;
 }
@@ -316,7 +524,7 @@ button {
 	width: 70px;
 	height: 80px;
 	border: 1px solid black;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 35px;
 }
 .amodel div span {
     float: left;
@@ -325,7 +533,7 @@ button {
 }
 
 .amodel .adF{
-	margin-left: 36px;
+	margin-left: 23px;
 	cursor: pointer;
 }
 .amodel .adM{
@@ -425,8 +633,8 @@ div.body-sec>div.in-sec>div {
 }
 .tab-type-2 ul li.active a {
     color: #202022;
+    cursor: default;
 }
-
 div.body-sec>div.in-sec>div.footer div.in-sec-2 {
     bottom: 52px;
 }

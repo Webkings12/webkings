@@ -35,5 +35,10 @@ public class ShopServiceImpl implements ShopService{
 	public List<ShopViewVO> latelyshoplist(int sNo) {
 		return shopDao.latelyshoplist(sNo);
 	}
+
+	@Override
+	public int shopDel(int sNo) {
+		return shopDao.shopDel(sNo);
+	}
 	
 }

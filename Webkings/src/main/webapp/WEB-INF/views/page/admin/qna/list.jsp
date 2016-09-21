@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../../../inc/adminTop.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -96,7 +97,7 @@ function pageProc(curPage){
 	<c:forEach var="vo" items="${alist }">
 	<tr style="text-align: center">
 				<td>
-					<input type="checkbox" name="boardItem[${i }].bNo" value="${vo.qNo }" id="chk_${i }">
+					<input type="checkbox" name="qnaList[${i }].qNo" value="${vo.qNo }" id="chk_${i }">
 				</td>
 		 	 	<td>${vo.qNo }</td>
 		 		<td><a href="<c:url value='/admin/qna/detail.do?no=${vo.qNo}&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }'/>">
@@ -160,11 +161,7 @@ function pageProc(curPage){
 </div>
 
 
-	<div class="divFrm3" 
-	<c:if test="${sessionScope.mType!='0' }">
-		style="display: none;"
-	</c:if>
-	>
+	<div class="divFrm3" >
 	   	<form name="frmSearch" method="post" action='<c:url value="/admin/qna/list.do"/>'>
 	        <select name="searchCondition">
 				<option value="q_Title"
@@ -199,5 +196,4 @@ function pageProc(curPage){
 	</div>
 
 
-</body>
-</html>
+<%@ include file="../../../inc/adminFooter.jsp" %>

@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../../inc/top.jsp" %>
-<script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
+ <%@include file="../../../inc/adminTop.jsp" %>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/> --%>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/qna.css"/>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -36,8 +39,8 @@
 		return pattern.test(hp);
 	}
 </script>
-<div class="divFrm1" style="text-align: center">
-	<form id="frmQna" name="frmQna" method="post" action="<c:url value='/qna/edit.do' />" >
+<div class="divFrm1 topMargin" style="text-align: center">
+	<form id="frmQna" name="frmQna" method="post" action="<c:url value='/admin/qna/edit.do' />" >
 		<ul id="list">
 			<li><input name="qNo" type="hidden"  value="${qVo.qNo }" ></li>
 			<li><input name="qTitle" type="text" id="qTitle" value="${qVo.qTitle }"></li>
@@ -48,5 +51,4 @@
 		<input type="submit" class="btn_default btn_light back_color" id="btQsubMit" value="수 정">
 	</form>
 </div>
-</body>
-</html>
+<%@ include file="../../../inc/adminFooter.jsp" %>	

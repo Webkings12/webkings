@@ -8,4 +8,5 @@ public interface ShopService {
 	public int shopSelect(String searchVal);
 	public int shopClickUpdate(String sNo);
 	public List<ShopViewVO>latelyshoplist(int sNo);
+	public int shopDel(int sNo);
 }
