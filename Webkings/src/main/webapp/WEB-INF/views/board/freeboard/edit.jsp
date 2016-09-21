@@ -38,7 +38,9 @@ $(document).ready(function() {
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		CKEDITOR.replace('bContent');
+		CKEDITOR.replace('bContent',{
+			skin:'moonocolor'
+		});
 		var instance = CKEDITOR.instances.bContent;
 		instance.updateElement();
 		CKEDITOR.config.height = 500;
