@@ -44,7 +44,6 @@
 		and s_no = #{sNo}
 	</select>
 	
-<<<<<<< HEAD
 	<update id="shopDel" parameterType="int">
 		update shop
 		set s_payyn = 'N' 
@@ -57,7 +56,6 @@
 		where 1=1
 		and s_no = #{sNo}
 	</select>	
-=======
 	<insert id="insertFreeBoard" parameterType="FreeBoardVO">
 		<selectKey order="BEFORE" keyProperty="sNo" resultType="int">
 			select SHOP_SEQ.NEXTVAL from dual
@@ -71,5 +69,4 @@
                     	 #{S_DEP}, #{S_PO#{SITION}, #{S_TEL}, #{S_PHONE}, #{S_EMAIL}, #{S_HIT},
                     	 #{S_ACCYN}, #{S_ACCDATE}, #{S_PAYYN}, #{S_REGDATE}, #{S_CHGDATE}, #{C_NO})
 	</insert>	
->>>>>>> branch 'master' of https://github.com/Webkings12/webkings.git
 </mapper>

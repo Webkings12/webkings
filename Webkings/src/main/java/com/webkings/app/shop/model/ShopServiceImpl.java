@@ -42,7 +42,6 @@ public class ShopServiceImpl implements ShopService{
 	}
 
 	@Override
-<<<<<<< HEAD
 	public ShopViewVO shopsNoSel(int sNo) {
 		return shopDao.shopsNoSel(sNo);
 	}
@@ -61,10 +60,9 @@ public class ShopServiceImpl implements ShopService{
 			cnt=-1;
 		}
 		return cnt;
-=======
+	}
 	public int insertShop(ShopVO shopVo) {
 		return shopDao.insertShop(shopVo);
->>>>>>> branch 'master' of https://github.com/Webkings12/webkings.git
 	}
 	
 }
