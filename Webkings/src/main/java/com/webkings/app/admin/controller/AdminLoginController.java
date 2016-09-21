@@ -38,9 +38,9 @@ public class AdminLoginController {
 			memberVo =memberService.selectmEmail(memberVo.getmEmail());
 			HttpSession session= request.getSession();
 			session.setAttribute("adminmEmail", memberVo.getmEmail());
-			session.setAttribute("mNick", memberVo.getmNick());
-			session.setAttribute("mNo", memberVo.getmNo());
-			session.setAttribute("mType", memberVo.getmType());
+			session.setAttribute("adminmNick", memberVo.getmNick());
+			session.setAttribute("adminmNo", memberVo.getmNo());
+			session.setAttribute("adminmType", memberVo.getmType());
 		}
 		logger.info("result="+result);
 		return result;
@@ -50,9 +50,9 @@ public class AdminLoginController {
 	public String logout(HttpSession session){
 		
 		session.removeAttribute("adminmEmail");
-		session.removeAttribute("mNick");
-		session.removeAttribute("mNo");
-		session.removeAttribute("mType");
+		session.removeAttribute("adminmNick");
+		session.removeAttribute("adminmNo");
+		session.removeAttribute("adminmType");
 		
 		return "redirect:/admin.do";
 	}
