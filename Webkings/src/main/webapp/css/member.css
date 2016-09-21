@@ -8,7 +8,56 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+.pwImgcontainer{
+	text-align: center;
+    margin: 40px 0 12px 0;
+    position: relative;
+}
+.pwAmodel{
+	background-color: #fefefe;
+    margin: 10% auto 15% auto;
+    border: 1px solid #888;
+    width: 480;
+    height:410;
+    border-radius: 10px;
+}
+.pwAmodel .container{
+	padding: 0;
+}
+.pwAmodel .tos{
+	margin: 0;
+    width: 481px;
+    margin-left: 71;
+    border: 0;
+}
+.pwAmodel .cancelbtn{
+	margin:0;
+	width: 70.4%;
+    padding: 12px 18px;
+    background-color: #c0c0c0;
+    text-align: center;
+}
+.pwAmodel span{
+	font-size: 18;
+    font-weight: bold;
+    width: 300px;
+    float: left;
+    margin-top: 40;
+    margin-left: 15;
+}
+.pwAmodel .tosP{
+	    margin-top: 0;
+}
 
+.pwAmodel .tosP p{
+	    font-size: 12px;
+    margin-left: 75px;
+}
+.pwAmodel .tosP #email2{
+	 margin-top: 5;
+    margin-bottom: 20px;
+	
+}
 .amodel2 input[type=text], input[type=password] {
     width: 70%;
     padding: 12px 20px;
@@ -19,7 +68,9 @@ input[type=text], input[type=password] {
     border: 1px solid #e4e6e9;
         margin-top: -1px;
 }
-
+.pwImgcontainer .h2{
+	    font-size: 28;
+}
 /* Set a style for all buttons */
 button {
     background-color: #4CAF50;
@@ -46,16 +97,40 @@ button {
     text-align: center;
 }
 /* Center the image and position the close button */
+.amodel .imgcontainer{
+	 margin: 40px 0 28px 0;
+}
+.amodel .imgcontainer h2{
+	font-size: 28;
+	margin-bottom: 20px;
+}	
+.tos label:after{
+	content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 12px;
+    background-image: url(../images/chkNo.png);
+    -webkit-background-size: 258px 223px;
+    -moz-background-size: 258px 223px;
+    -o-background-size: 258px 223px;
+    background-size: 13px 10px;
+    background-repeat: no-repeat;
+    width: 13px;
+    height: 10px;
+}
 .imgcontainer {
     text-align: center;
     margin: 60px 0 12px 0;
     position: relative;
 }
-
 img.avatar {
     width: 40%;
     border-radius: 10%;
-    
 }
 
 .amodel2 img.avatar {
@@ -152,19 +227,31 @@ span.psw {
 }
 
 .tos{
-	margin:10px;
-	text-align: center;	
+    text-align: left;
+    width: 372px;
+    border: 1px solid #e4e6e9;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin: 0 auto 10px;
+    cursor: pointer;
 }
 
 .iframe{
-	width:80%;
-	height:30%;
+	width:99.3%;
+	height:13%;
 }
 .container{
 	text-align: center;
 }
 
-
+.tos label{
+	margin-left:20;
+	  cursor: pointer;
+    line-height: 40px;
+    display: block;
+    position: relative;
+}
 .toss+label{
 	padding: 10px;
 }
@@ -196,13 +283,25 @@ span.psw {
 	width: 50px;
 	height:50px;
 }
+.tos input[type=checkbox]{
+	visibility: hidden;
+	position: absolute;
+}
 .amodel{
 	background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    margin: 10% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 480;
-    height: 510;
-	border-radius: 10px 10px 10px 10px;
+    height: 450;
+	border-radius: 10px;
+}
+.amodel .cancelbtn{
+	    margin: 0;
+    width: 83.4%;
+    padding: 12px 18px;
+    background-color: #c0c0c0;
+    text-align: center;
+        font-size: 14;
 }
 .amodel2 {
     background-color: #fefefe;
@@ -210,7 +309,7 @@ span.psw {
     border: 1px solid #888;
     width: 480;
     height: 510;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
 }
 .amodel2 .searchBox {
     font-size: 13px;

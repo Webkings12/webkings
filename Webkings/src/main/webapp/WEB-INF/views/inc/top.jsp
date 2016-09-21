@@ -420,18 +420,18 @@ $(document).ready(function(event){
 					<span
 						onclick="document.getElementById('divfind').style.display='none'"
 						class="close" title="Close Modal">&times;</span>
-					<div class="amodel">
-
+					<div class="pwAmodel">
 						<div class="modal2">
-							<div class="imgcontainer">
+							<div class="pwImgcontainer">
 								<h2 class="h2">비밀번호 찾기</h2>
 								<br>
 								<hr>
+								<span>이메일로 비밀번호 찾기</span>
 								<br><br><br><br>
 							</div>
-
-							<div class="tos">
-								<p>가입하신 회원님의 이메일 주소를 입력해 주세요. 임시비밀번호를 메일로 발송해 드립니다.</p>
+							<div class="tosP">
+								<p>회원님의 이메일 주소를 입력해 주세요.</p>
+								<p id="email2">입력하신 주소로 임시 비밀번호를 메일로 발송해 드립니다.</p>
 							</div>
 						<form  method="post" action="<c:url value='/email/emailFind.do'/>" id="frmFind">
 							<div class="tos">
