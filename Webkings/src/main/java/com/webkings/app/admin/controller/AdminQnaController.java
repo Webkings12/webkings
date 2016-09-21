@@ -110,10 +110,10 @@ public class AdminQnaController {
 		
 		String mType=(String)session.getAttribute("mType");
 		String mEmail=(String)session.getAttribute("mEmail");
-		if(!mType.equals("0")){
+		/*if(!mType.equals("0")){
 			searchVo.setSearchKeyword(mEmail);
 			searchVo.setSearchCondition("m_email");
-		}
+		}*/
 		logger.info("글목록 조회, 파라미터 searchVo={}",
 				searchVo);
 		
@@ -190,15 +190,14 @@ public class AdminQnaController {
 		//2. db작업
 		QnaViewVo vo=qnaService.selectByNo(no);
 		
-		int mNo=(Integer)session.getAttribute("mNo");
-		String mType=(String)session.getAttribute("mType");
+		/*String mType=(String)session.getAttribute("mType");
 		
-		if(vo.getmNo()!=mNo && !mType.equals("0")){
+		if(!mType.equals("0")){
 			model.addAttribute("msg","권한이 없습니다");
 			model.addAttribute("url","/qna/list.do");
 			
 			return "common/message";
-		}
+		}*/
 		
 		int nextNo=qnaService.selectNext(no);
 		int beforeNo=qnaService.selectBefore(no);
@@ -213,12 +212,12 @@ public class AdminQnaController {
 	}
 	
 	@RequestMapping("/delete.do")
-	public String delete(@RequestParam(defaultValue="0") int qNo,@RequestParam(defaultValue="F") String gender,Model model){
+	public String delete(@RequestParam(defaultValue="0") int qNo,Model model){
 		//1.
 		logger.info("qna삭제 파라미터 qNo={}",qNo);
 		if(qNo==0){
 			model.addAttribute("msg","잘못된 url입니다");
-			model.addAttribute("url","/admin/qna/list.do"+"&gender="+gender);
+			model.addAttribute("url","/admin/qna/list.do");
 			
 			return "common/message";
 		}
@@ -241,64 +240,48 @@ public class AdminQnaController {
 		return "common/message";
 	}
 	@RequestMapping(value="/edit.do",method=RequestMethod.GET)
-	public String edit_get(@RequestParam(defaultValue="0") int qNo,HttpSession session,@RequestParam(defaultValue="F") String gender,Model model){
+	public String edit_get(@RequestParam(defaultValue="0") int qNo,HttpSession session,Model model){
 		if(qNo==0){
 			model.addAttribute("msg","잘못된 url입니다");
-			model.addAttribute("url","/qna/list.do"+"&gender="+gender);
+			model.addAttribute("url","/admin/qna/list.do");
 			
 			return "common/message";
 		}
 		
 		QnaViewVo vo=qnaService.selectByNo(qNo);
 		
-		int mNo=(Integer)session.getAttribute("mNo");
-		String mType=(String)session.getAttribute("mType");
+		//int mNo=(Integer)session.getAttribute("mNo");
+		/*String mType=(String)session.getAttribute("mType");
 		
 		if(vo.getmNo()!=mNo && !mType.equals("0")){
 			model.addAttribute("msg","권한이 없습니다");
-			model.addAttribute("url","/qna/list.do"+"&gender="+gender);
+			model.addAttribute("url","/qna/list.do");
 			
 			return "common/message";
-		}
+		}*/
 		
-		int pageNum=4;
-		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
-		List<StyleVO> styleList = styleService.selectStyle(gender);
-		
-		model.addAttribute("styleList", styleList);
-		model.addAttribute("itemList", itemList);
-		model.addAttribute("pageNum", pageNum);
-		model.addAttribute("gender",gender);
 		
 		model.addAttribute("qVo",vo);
-		return "board/qna/edit";
+		return "page/admin/qna/edit";
 	}
 	
 	@RequestMapping(value="/edit.do",method=RequestMethod.POST)
-	public String edit_post(@ModelAttribute QnaVO vo,@RequestParam(defaultValue="F") String gender, Model model){
-		logger.info("qna 수정 파라미터 vo={}",vo);
+	public String edit_post(@ModelAttribute QnaVO vo, Model model){
+		logger.info("admin qna 수정 파라미터 vo={}",vo);
 		
 		int cnt=qnaService.updateQna(vo);
-		logger.info("qna 수정 파라미터 cnt={}",cnt);
+		logger.info("admin qna 수정 결과 cnt={}",cnt);
 		String msg="",url="";
 		if(cnt>0){
 			msg="수정 완료";
-			url="/qna/detail.do?no="+vo.getqNo()+"&gender="+gender;
+			url="/admin/qna/detail.do?no="+vo.getqNo();
 		}else{
 			msg="수정 실패";
-			url="/qna/edit.do?qNo="+vo.getqNo()+"&gender="+gender;
+			url="/admin/qna/edit.do?qNo="+vo.getqNo();
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", url);
 		
-		int pageNum=4;
-		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
-		List<StyleVO> styleList = styleService.selectStyle(gender);
-		
-		model.addAttribute("styleList", styleList);
-		model.addAttribute("itemList", itemList);
-		model.addAttribute("pageNum", pageNum);
-		model.addAttribute("gender",gender);
 		
 		return "common/message";
 	}
@@ -306,9 +289,11 @@ public class AdminQnaController {
 	@RequestMapping("/deleteMulti")
 	public String deleteMulti(@ModelAttribute QnaListVO listVo, Model model){
 		
-		logger.info("여러개 동시삭제");
+		logger.info("여러개 동시삭제 파라미터"+listVo);
 		
 		List<QnaViewVo> qnaList = listVo.getQnaList();
+		
+		
 		
 		int cnt=qnaService.deleteQna(qnaList);
 	

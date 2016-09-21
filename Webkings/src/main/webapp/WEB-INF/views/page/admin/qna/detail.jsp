@@ -25,7 +25,7 @@
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#sendDel").click(function(){
+		$("#sendDel2").click(function(){
 			if(confirm("삭제하시겠습니까?")){
 				$(location).attr('href', '<c:url value="/admin/qna/delete.do?qNo=${vo.qNo}" />');
 					
@@ -58,7 +58,7 @@
 					</div>
 					<div class="float_left user_info topPadding">
 					 <span class="nickName">${vo.mNick }</span><br><span class="eMail">(${vo.mEmail })</span><br>
-					  <a class="btn_light" href="<c:url value='/qna/list.do?searchKeyword=${vo.mEmail }&searchCondition=m_Email'/>">작성글보기</a><br>
+					  <a class="btn_light" href="<c:url value='/admin/qna/list.do?searchKeyword=${vo.mEmail }&searchCondition=m_Email'/>">작성글보기</a><br>
 					 <span class="sp1">작성일</span> <span><fmt:formatDate value="${vo.qRegdate }" pattern="yyyy-MM-dd(mm:ss)"/></span>
 					 </div>
 				</div>
@@ -77,19 +77,21 @@
 			</div> 
 			<div class="float_right">
 				<a class="btn_default btn_light size_S"  href='<c:url value="/admin/qna/edit.do?qNo=${vo.qNo}"/>'>수정</a> |
-	        	<a class="btn_default btn_light size_S" id="sendDel" href='#'>삭제</a> |
+	        	<a class="btn_default btn_light size_S" id="sendDel2" href='#'>삭제</a> |
 	        	<a class="btn_default btn_light size_S" href='<c:url value="/admin/qna/list.do"/>'>목록</a>			
 			</div>
 			<div class="float_clear"></div>
 		</div>
 	</div>
 	<div class="divReply">
-		<%-- <c:import url="/admin/qnaReply/list.do?qNo=${vo.qNo }"></c:import> --%>
+		<c:import url="/admin/qnaReply/list.do?qNo=${vo.qNo }"></c:import>
 	</div> 
 	<div class="divReply">
-		<%-- <%@include file="replyWrite.jsp" %> --%>
+		<%@include file="qnaReplyWrite.jsp" %>
 	</div>
 <!--  -------------------------------------------------------------------------------------------------->
+	
 	<c:import url="/admin/qna/listView.do"></c:import>
 	
 
+<%@ include file="../../../inc/adminFooter.jsp" %>	

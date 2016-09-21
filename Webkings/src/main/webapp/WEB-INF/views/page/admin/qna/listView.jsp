@@ -6,10 +6,29 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/qna.css"/>
 <!-- ------------------------------------------------------------------------여기부터 위는 인클루드 -->
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$(document).ready(function(){
+		$("input[name='chkAll']").click(function(){
+			$("tbody input[type=checkbox]").prop("checked",this.checked);
+		});
+		
+		//선택한 아이템 삭제처리
+		$("#btDel").click(function(){
+			var count=$("tbody input[type=checkbox]:checked").length;
+			if(count==0){
+				alert("삭제하려는 글을을 먼저 체크하세요");
+				return false;
+			}
+			
+			frmList.action="<c:url value='/admin/qna/deleteMulti.do' />"
+			frmList.submit();
+		});
+	});
+	
+	
 	$("tr")
 		.hover(function(){
 			$(this).css("background","skyblue")
@@ -32,8 +51,8 @@ function pageProc(curPage){
 	<input type="hidden" name="searchKeyword" 
 		value="${searchVO.searchKeyword }">	
 </form>
-	<div class="topMargin">
-		
+	
+	<div>
 <div class="divList2">
 <div class="align_left">
 	<h2>qna</h2>
@@ -45,17 +64,19 @@ function pageProc(curPage){
 		<p>전체조회 : ${pagingInfo.totalRecord }건 검색되었습니다</p>
 	</c:if>
 </div>
-<table class="listTable noneDeco"
+<table class="adminlistTable noneDeco"
 	 	summary="기본 게시판에 관한 표로써, 번호, 제목, 작성자, 작성일, 조회수에 대한 정보를 제공합니다.">
 	<colgroup>
+		<col style="width:5%;" />	
 		<col style="width:10%;" />
 		<col style="width:60%;" />
 		<col style="width:15%;" />
 		<col style="width:15%;" />
-		<col style="width:10%;" />		
+			
 	</colgroup>
 	<thead>
-	  <tr>
+		<tr>
+		<th><input type="checkbox" name="chkAll"></th>
 	    <th scope="col">번호</th>
 	    <th scope="col">제목</th>
 	    <th scope="col">작성자</th>
@@ -69,9 +90,14 @@ function pageProc(curPage){
 		</tr>
 	</c:if>
 	  <!--게시판 내용 반복문 시작  -->
+	  <form name="frmList" method="post">
+		<c:set  var="i" value="0" />  
 	<c:if test="${!empty alist }">
 	<c:forEach var="vo" items="${alist }">
 	<tr style="text-align: center">
+				<td>
+					<input type="checkbox" name="qnaList[${i }].qNo" value="${vo.qNo }" id="chk_${i }">
+				</td>
 		 	 	<td>${vo.qNo }</td>
 		 		<td><a href="<c:url value='/admin/qna/detail.do?no=${vo.qNo}&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }'/>">
 		 		<!-- 제목이 긴경우 일부만 보여주기 -->
@@ -97,9 +123,12 @@ function pageProc(curPage){
 			 		</c:if>
 				</td>
 		 	</tr>
+		 	<c:set var="i" value="${i+1 }" />
 	</c:forEach>
 	  <!--반복처리 끝  -->
 	</c:if>
+	
+	</form>
 	  </tbody>
 </table>	   
 
@@ -131,11 +160,7 @@ function pageProc(curPage){
 </div>
 
 
-	<div class="divFrm3" 
-	<c:if test="${sessionScope.mType!='0' }">
-		style="display: none;"
-	</c:if>
-	>
+	<div class="divFrm3" >
 	   	<form name="frmSearch" method="post" action='<c:url value="/admin/qna/list.do"/>'>
 	        <select name="searchCondition">
 				<option value="q_Title"
@@ -161,6 +186,9 @@ function pageProc(curPage){
 	           
 			<input type="submit" value="검색" id="btSearch2">
 	    </form>
+	    <div class="align_right">
+			    <a href="#" class="btn_default btn_light size_M" id="btDel">삭제</a>
+			</div>
 	</div>
 
 </div >
