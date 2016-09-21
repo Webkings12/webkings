@@ -11,7 +11,7 @@
 			and st_name = #{stName}
 		</if>
 		<if test="searchKeyword neq ''">
-		 	and s_name like upper('%' || #{searchKeyword} || '%')
+		 	and s_name like upper('%' || #{searchKeyword} ||  '%')
 		</if>
 		order by s_click desc
 	</select>
