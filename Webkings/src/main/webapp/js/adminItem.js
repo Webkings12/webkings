@@ -15,7 +15,8 @@ $(document).ready(function() {
 					$.each(itemSel, function(idx, item) {
 					result+=
 					"<li class='prod "+gender+"'>"+
-						"<a id='aaa1' href='javascript:;'  sseq='121' seq='1349867' maindate='20160908'>"+
+						"<a id='aaa1' href='javascript:;'  sseq='121' seq='1349867' maindate='20160908'>" +
+						"<input type='checkbox' id='chk' value='"+item.iNo+"' style='display:none;'/>"+
 						"<input type='hidden' id='itemiNo' name='iINo' value='"+item.iNo+"'>"+
 							"<img src='/Webkings/ItemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 							"style='height: 340px; display: block;' class='item'>"+
@@ -93,7 +94,9 @@ $(document).ready(function() {
 			$(".option-sec-1>ul>li.detail-search .sec div ul li input[id=age3]").prop("checked", false);
 		});
 		
-		$(".item-list>li.prod>a .info .btn span").click(function() {
+		$(".item-list>li.prod>a .info .btn span").click(function(e) {
+			e.stopPropagation();
+			e.preventDefault(); 
 			var iNo= $(this).find("input").val();
 				if (confirm("정말 삭제하시겠습니까?") == true){    //확인
 					$(location).attr('href', "/Webkings/adminItemDel.do?iNo="+iNo+"&gender="+gender);
@@ -101,5 +104,46 @@ $(document).ready(function() {
 				    return;
 				}
 		});
-		
+		/*다중 삭제*/
+		$("div.body-sec>div.in-sec p#adminDelete>a").click(function() {
+			var count = $(".item-list>li.prod>a input[type=checkbox]:checked").length;
+			
+			if(count==0){
+				alert("삭제하려는 상품을 먼저 체크하세요");
+				return false;
+			}
+			var itemArray=[];
+			$(".item-list.abs-list li a input:checkbox[id='chk']:checked").each(function() {
+				itemArray.push($(this).val());
+			});
+			if (confirm("정말 삭제하시겠습니까?") == true){    //확인
+				$.ajax({
+					url:MultiDelUrl,
+					type:"POST",
+					async:false,
+					data:"itemValArray="+itemArray+"&gender="+gender,
+					dataType:"json",
+					success:function(res){
+						alert(res);
+						$(location).attr('href', "/Webkings/adminItemView.do?gender="+gender);
+					},
+				error:function(xhr, status, error){
+					alert(error);
+				}
+				});
+			}else{   //취소
+			    return;
+			}
+		});
+			
+		/*선택삭제시 선택자*/
+		$(".item-list.abs-list li a").click(function() {
+			if($(this).find("input:checkbox[id='chk']").is(":checked")==true){
+				$(this).find("input:checkbox[id='chk']").prop("checked", false);
+				$(this).removeClass("active");
+			}else{
+				$(this).find("input:checkbox[id='chk']").prop("checked", true);
+				$(this).addClass("active");
+			}
+		});
 });

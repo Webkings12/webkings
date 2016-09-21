@@ -6,10 +6,12 @@
 var style="${style}";
 var url ="<c:url value='/adminShopSel.do'/>";
 var searchName="${searchName}";
+var MultiDelUrl="<c:url value='/adminShopMultiDel.do'/>";
 </script>
 <script type="text/javascript" src="<c:url value='/js/adminShop.js'/>"></script>
 <div class="body-sec">
 <div class="in-sec">
+<p class="privacy-fixed" id="adminDelete"><a href="javascript:;">삭제</a></p>
 <p class="privacy-fixed" id="adminPf"><a href="<c:url value='/admin.do'/>">홈으로</a></p>
 <div>
 <div class="list-top-1">

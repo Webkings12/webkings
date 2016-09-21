@@ -3,10 +3,16 @@ package com.webkings.app.item.model;
 import java.util.List;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+
+import com.webkings.app.admin.controller.AdminItemController;
 
 @Repository
 public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
+	
+	private static final Logger logger= LoggerFactory.getLogger(ItemDAOMyBatis.class);
 	
 	private String namespace="com.mybatis.mapper.oracle.item";
 	
@@ -88,5 +94,13 @@ public class ItemDAOMyBatis extends SqlSessionDaoSupport implements ItemDAO{
 	@Override
 	public int itemDel(int iNo) {
 		return getSqlSession().delete(namespace+".itemDel", iNo);
+	}
+
+	@Override
+	public ItemViewVO itemiNoSel(int iNo) {
+		logger.info("iNo배류={}",iNo);
+		ItemViewVO vo= getSqlSession().selectOne(namespace+".itemIno", iNo);
+		logger.info("vo배류={}",vo);
+		return getSqlSession().selectOne(namespace+".itemIno", iNo);
 	}
 }

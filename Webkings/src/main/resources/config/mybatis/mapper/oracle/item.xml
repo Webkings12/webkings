@@ -210,4 +210,10 @@
 		where 1=1 
 		and i_no=#{iNo}
 	</delete>
+	
+	<select id="itemIno" parameterType="int" resultType="ItemViewVO">
+		select * from itemview
+		where 1=1
+		and i_no=#{iNo}
+	</select>
 </mapper>

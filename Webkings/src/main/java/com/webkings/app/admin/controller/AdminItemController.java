@@ -1,8 +1,15 @@
 package com.webkings.app.admin.controller;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
+import java.awt.event.ItemListener;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.webkings.app.common.FileUploadWabUtil;
 import com.webkings.app.item.model.ItemSearchVO;
 import com.webkings.app.item.model.ItemService;
 import com.webkings.app.item.model.ItemViewVO;
@@ -23,6 +31,9 @@ public class AdminItemController {
 
 	private static final Logger logger= LoggerFactory.getLogger(AdminItemController.class);
 	
+	
+	@Autowired
+	private FileUploadWabUtil fileUp; 
 	
 	@Autowired
 	private ItemService itemService;
@@ -149,13 +160,38 @@ public class AdminItemController {
 			return resMap;
 	}
 	@RequestMapping("/adminItemDel.do")
-	public String adminItemView(@RequestParam int iNo, @RequestParam String gender, Model model){
+	public String adminItemView(@RequestParam int iNo, HttpServletRequest request,@RequestParam String gender, Model model){
 		
+		ItemViewVO vo = new ItemViewVO();
+		List<ItemViewVO> itemList=new ArrayList<ItemViewVO>();
+		
+		vo = itemService.itemiNoSel(iNo);
+		itemList.add(vo);
 		int cnt = itemService.itemDel(iNo);
 		
 		String msg="";
 		String url="";
-		if(cnt>0){
+			if(cnt>0){
+			
+					String imageURL = vo.getiImage();
+					
+					logger.info("iNO={}, imageURL={}",
+						iNo, imageURL);
+					
+					//체크한 상품만 파일 삭제
+			if(iNo!=0){
+						//업로드 경로
+						String upPath
+			=fileUp.getUploadPath(request, fileUp.ITEM_IMAGE_UPLOAD);
+							
+						//File객체 생성 후 파일 삭제
+						File delFile = new File(upPath, imageURL);
+						if(delFile.exists()){
+							boolean bool= delFile.delete();
+							logger.info("파일 삭제 결과={}", bool);
+						}
+					}//if
+			
 			msg="삭제 성공";
 			url="/adminItemView.do?gender="+gender;
 		}else{
@@ -165,5 +201,52 @@ public class AdminItemController {
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);
 		return "common/message";
+	}
+	
+	@RequestMapping("/adminItemMultiDel.do")
+	@ResponseBody
+	public int  itemMultiDel(@RequestParam List<Integer> itemValArray, HttpServletRequest request, Model model){
+		List<Integer> itList =itemValArray;
+		
+		ItemViewVO vo = new ItemViewVO();
+		List<ItemViewVO> itemList=new ArrayList<ItemViewVO>();
+		
+		for(int i=0;i<itList.size();i++){
+			vo = itemService.itemiNoSel(itList.get(i));
+			itemList.add(vo);
+		}
+		
+		int cnt = itemService.itemMultiDel(itList);
+		
+		if(cnt>0){
+			for(int i=0;i<itemList.size();i++){
+				logger.info("itList.get(i)의 값은={}",itemList.get(i).getiNo());
+				
+				int iNo = itemList.get(i).getiNo();
+				String imageURL = itemList.get(i).getiImage();
+				
+				logger.info("i={}", i);
+				logger.info("iNO={}, imageURL={}",
+					iNo, imageURL);
+				
+				//체크한 상품만 파일 삭제
+				if(iNo!=0){
+					//업로드 경로
+					String upPath
+		=fileUp.getUploadPath(request, fileUp.ITEM_IMAGE_UPLOAD);
+						
+					//File객체 생성 후 파일 삭제
+					File delFile = new File(upPath, imageURL);
+					if(delFile.exists()){
+						boolean bool= delFile.delete();
+						logger.info("파일 삭제 결과={}", bool);
+					}
+				}//if
+			}//for
+			
+		}else{
+		}//if
+		logger.info("다중 삭제 확인 cnt={}",cnt);
+		return cnt;
 	}
 }

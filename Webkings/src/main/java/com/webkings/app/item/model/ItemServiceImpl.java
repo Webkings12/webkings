@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ItemServiceImpl implements ItemService{
@@ -89,5 +90,27 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public int itemDel(int iNo) {
 		return itemDao.itemDel(iNo);
+	}
+
+	@Override
+	@Transactional
+	public int itemMultiDel(List<Integer> itList) {
+		int cnt =0;
+		
+		try {
+			for (int iNo : itList) {
+				cnt = itemDao.itemDel(iNo);
+			}
+			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt=-1;
+		}
+		return cnt;
+	}
+
+	@Override
+	public ItemViewVO itemiNoSel(int iNo) {
+		return itemDao.itemiNoSel(iNo);
 	}
 }

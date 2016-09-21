@@ -9,6 +9,34 @@
     z-index: 5;
     padding-top: 75px;
 }
+.item-list>li.prod>a.active>div.bg {
+    width: 100%;
+    position: absolute;
+    background-color: #000;
+    background-image: transparent;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    display: block;
+    opacity: .6;
+}
+
+div.body-sec>div.in-sec p#adminDelete>a {
+    background-image: url(../images/delete.png);
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    right: 77;
+    bottom: 210;
+    font-size: 0;
+    line-height: 0;
+}
+
 body>div.header div.shadow div.in-sec {
     width: 1460px;
     margin: 0 auto;
@@ -19,14 +47,6 @@ body>div.header div.shadow div.in-sec {
     width: 230px;
     height: 340px;
     background: url(/rsc/front/img/ajax-loader.gif) no-repeat center;
-}
-.item-list>li.shop:hover .over>div.bg {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #000;
-    opacity: .6;
 }
 .item-list>li.shop>a {
     display: block;
@@ -131,9 +151,47 @@ body>div.header div.shadow div.in-sec {
     -moz-border-radius: 16px;
     border-radius: 16px;
     letter-spacing: -0.08em;
-    border: 1px solid #c5cdd5;
     color: #202022;
 }
+.item-list>li.shop.F>a.active .info em:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    background-image: url(../images/chkF.png);
+    -webkit-background-size: 32px 32px;
+    -moz-background-size: 32px 32px;
+    -o-background-size: 32px 32px;
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    right: 6px;
+}
+.item-list>li.shop.M>a.active .info em:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    background-image: url(../images/chkM.png);
+    -webkit-background-size: 32px 32px;
+    -moz-background-size: 32px 32px;
+    -o-background-size: 32px 32px;
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    right: 6px;
+}
+
 .item-list>li.shop .info em:after {
     content: "";
     position: absolute;
@@ -143,14 +201,14 @@ body>div.header div.shadow div.in-sec {
     -ms-transform: translate(0,-50%);
     -o-transform: translate(0,-50%);
     transform: translate(0,-50%);
-    background-image: url(../images/add.png);
-    -webkit-background-size: 9px 9px;
-    -moz-background-size: 9px 9px;
-    -o-background-size: 9px 9px;
-    background-size: 9px 9px;
+    background-image: url(../images/chkNo.png);
+    -webkit-background-size: 32px 32px;
+    -moz-background-size: 32px 32px;
+    -o-background-size: 32px 32px;
+    background-size: 32px 32px;
     background-repeat: no-repeat;
-    width: 9px;
-    height: 10px;
+    width: 32px;
+    height: 32px;
     right: 6px;
 }
 .item-list>li.shop.M strong {
@@ -164,7 +222,7 @@ body>div.header div.shadow div.in-sec {
     background-color: #000;
     opacity: .6;
 }
-.item-list>li.shop:hover .over {
+.item-list>li.shop>a:hover .over {
     display: block;
 }
 .item-list>li.shop .over .btn span.fb:after {

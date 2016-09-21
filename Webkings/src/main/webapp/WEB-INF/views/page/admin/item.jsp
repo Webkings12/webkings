@@ -8,6 +8,7 @@ var itemSel=[];
 var orderVal="${orderVal}";
 var itAllCount;
 var orderName="${orderName}";
+var MultiDelUrl="<c:url value='/adminItemMultiDel.do'/>";
 var url="<c:url value='/adminItemSel.do'/>";
 var itemSearchVo = "${itemSearchVo}";
 //search
@@ -19,10 +20,11 @@ var sep="${param.sep}";
 <script type="text/javascript" src="<c:url value='/js/adminItem.js'/>"></script>
 <div class="body-sec">
 <div class="in-sec">
+<p class="privacy-fixed" id="adminDelete"><a href="javascript:;">삭제</a></p>
 <p class="privacy-fixed" id="adminPf"><a href="<c:url value='/admin.do'/>">홈으로</a></p>
 	<div class="admin">
 		<div class="list-top-1">
-			<p class="notice-2"><strong>카테고리 전체 : </strong> <em></em> <i>total</i></p>
+		<p class="sep">상품 관리</p>
 				<div class="tab-type-1 tab-type-main">
 				<ul>
 					<li>

@@ -1,8 +1,12 @@
 package com.webkings.app.admin.controller;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.webkings.app.item.model.ItemViewVO;
 import com.webkings.app.shop.model.ShopService;
 import com.webkings.app.shop.model.ShopViewVO;
 import com.webkings.app.style.model.StyleService;
@@ -86,4 +91,14 @@ public class AdminShopController {
 		return "common/message";
 	}
 	
+	@RequestMapping("/adminShopMultiDel.do")
+	@ResponseBody
+	public int  shopMultiDel(@RequestParam List<Integer> shopValArray, Model model){
+		List<Integer> spList =shopValArray;
+		
+		int cnt = shopService.shopMultiDel(spList);
+		
+		logger.info("다중 업데이트 확인 cnt={}",cnt);
+		return cnt;
+	}
 }

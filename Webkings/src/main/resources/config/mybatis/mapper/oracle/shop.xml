@@ -41,9 +41,17 @@
 		where 1=1
 		and s_no = #{sNo}
 	</select>
-	<delete id="shopDel" parameterType="int">
-		delete from shop
+	
+	<update id="shopDel" parameterType="int">
+		update shop
+		set s_payyn = 'N' 
 		where 1=1
-		and s_no =#{sNo}
-	</delete>
+		and s_no = #{sNo}
+	</update>
+	
+	<select id="shopNoSel" parameterType="int" resultType="ShopViewVO">
+	    select * from shopView
+		where 1=1
+		and s_no = #{sNo}
+	</select>	
 </mapper>

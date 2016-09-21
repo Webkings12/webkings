@@ -35,4 +35,7 @@ public interface ItemDAO {
 	
 	//아이템 삭제
 	public int itemDel(int iNo);
+	
+	//아이템 번호로 검색
+	public ItemViewVO itemiNoSel(int iNo);
 }

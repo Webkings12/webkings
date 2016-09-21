@@ -40,5 +40,26 @@ public class ShopServiceImpl implements ShopService{
 	public int shopDel(int sNo) {
 		return shopDao.shopDel(sNo);
 	}
+
+	@Override
+	public ShopViewVO shopsNoSel(int sNo) {
+		return shopDao.shopsNoSel(sNo);
+	}
+
+	@Override
+	public int shopMultiDel(List<Integer> spList) {
+		int cnt =0;
+		
+		try {
+			for (int sNo : spList) {
+				cnt = shopDao.shopDel(sNo);
+			}
+			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt=-1;
+		}
+		return cnt;
+	}
 	
 }
