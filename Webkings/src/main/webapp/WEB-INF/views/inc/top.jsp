@@ -458,25 +458,30 @@ $(document).ready(function(event){
 				<form id="formEdit" name="formEdit" target="_iFrmForAction"
 					method="post" action="<c:url value='/member/memberEdit.do?gender=${gender}'/>"
 					enctype="multipart/form-data">
+					<div class="imgcontainer">
+						<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
+								class="avatar">
+					</div>
+					
 					<div class="imgfile1">
 
-						<div class="imgfile">
+						<div class="imgfile" style="margin-top: 50px;">
 							<c:if test="${!empty sessionScope.mImage}">
-								<img id="UploadedImg1" src="<c:url value='/user_images/${sessionScope.mImage}'/>" />
+								<img id="UploadedImg1" src="<c:url value='/user_images/${sessionScope.mImage}'/>" style="width: 80px;height: 80px; border-radius: 40px"/>
 							</c:if>
 							<c:if test="${empty sessionScope.mImage}">
-								<img id="UploadedImg1" src="<c:url value='/user_images/person-icon.png'/>" />
+								<img id="UploadedImg2" src="<c:url value='/user_images/person-icon.png'/>" style="width: 80px;height: 80px; border-radius: 40px"/>
 							</c:if>
 						</div>
-						<div>
+						<div style="text-align: center;">
 							<input type='file' name="upFile1" id="upFile1"
 								onchange="readURL1(this)" /> <input type="hidden"
 								name="oldmImage" value="${sessionScope.mImage}"> 
 						</div>
 					</div>
-					<div id="divedit">
+					<div id="divedit" style="text-align: center;">
 					<div class="reg"><input type="text" name="mNick"
-							placeholder="닉네임" id="mNick">
+							placeholder="닉네임" id="mNick" value="${sessionScope.mNick}">
 					</div>
 							<a id="memberfind"><p>비밀번호 변경</p></a>
 							 <a id="memberQuit"><p>회원탈퇴</p></a>
@@ -494,9 +499,13 @@ $(document).ready(function(event){
 				onclick="document.getElementById('divEditfind').style.display='none'"
 				class="close" title="Close Modal">&times;</span>
 		<form  action="<c:url value="/member/memberEditfind.do"/>" method="post" id="formEditfind">
-			<div class="reg">
+			<div class="imgcontainer">
+				<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
+					class="avatar">
+			</div>
+			<div class="reg" style="margin-top: 50px;">
 				<input type="text" placeholder="예전비밀번호" name="oldPwd" id="oldPwd">
-				<input type="hidden" name="chkPwd" id="chkPwd" value="${sessionScope.mPwd}">
+				<input type="text" name="chkPwd" id="chkPwd" value="${sessionScope.mPwd}">
 			</div>
 			<div class="reg">
 				<input type="text" placeholder="바꾸실비밀번호" name="mMPwd" id="m_Pwd">
@@ -516,6 +525,10 @@ $(document).ready(function(event){
 				onclick="document.getElementById('divQuit1').style.display='none'"
 				class="close" title="Close Modal">&times;</span>
 		<form  action="<c:url value="/member/memberQuit.do"/>" method="post" id="formQuit">
+			<div class="imgcontainer">
+				<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
+					class="avatar">
+			</div>
 			<div class="divp">
 			<h2 class="h2">다음 안내사항을 확인해주세요</h2>
 			<p>
@@ -593,15 +606,17 @@ var GoogleApp = {
 	naver_id_login.setButton("white", 1,50);
 	naver_id_login.setDomain(".service.com");
 	naver_id_login.setState(state);
-	naver_id_login.setPopup();
 	naver_id_login.init_naver_id_login();
+	
+	function naverlogin(){
+	 	url = "https://nid.naver.com/oauth2.0/authorize?client_id=hnHk72nmxpcjD70Gfi0M&response_type=code";
+		popWindow(url, "winZip", 500, 500, "no");
+	}
 	
 	function naverSignInCallback() {
 		// naver_id_login.getProfileData('프로필항목명');
 		// 프로필 항목은 개발가이드를 참고하시기 바랍니다.
-		alert(naver_id_login.getProfileData('email'));
-		alert(naver_id_login.getProfileData('nickname'));
-		alert(naver_id_login.getProfileData('age'));
+		location.href="/Webkings/member/apiLogin.do?mEmail="+naver_id_login.getProfileData('email')+"&mNick="+naver_id_login.getProfileData('nickname');
 	}
 
 	// 네이버 사용자 프로필 조회

@@ -332,3 +332,7 @@ div.body-sec>div.in-sec>div {
 img, fieldset {
     border: 0 none transparent;
 }
+
+.bottomMargin{
+	margin-bottom: 200px;
+}

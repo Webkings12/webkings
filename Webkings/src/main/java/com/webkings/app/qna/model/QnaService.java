@@ -13,4 +13,5 @@ public interface QnaService {
 	public int selectNext(int qNo);
 	public int selectBefore(int qNo);
 	public int updateQna(QnaVO vo);
+	public int deleteQna(List<QnaViewVo> listVo);
 }

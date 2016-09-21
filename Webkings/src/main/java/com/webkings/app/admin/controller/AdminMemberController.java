@@ -34,16 +34,18 @@ public class AdminMemberController {
 	
 	@RequestMapping("/memberList.do")
 	public String memberList(HttpSession session, Model model) {
-		String m_Type=(String)session.getAttribute("mType"); 
+		String m_Type=(String)session.getAttribute("adminmType"); 
 		logger.info("회원리스트 보여주기 mType={}",m_Type);
 		List<MemberVo> memberList=new ArrayList<MemberVo>();
-		if(!m_Type.equals("0")){
-			model.addAttribute("msg","권한이 없습니다");
-			model.addAttribute("url","/admin.do");
-			return "common/message";
-		}else {
-			memberList=memberService.selectList();
-			logger.info("회원리스트 보여주기 memberList={}",memberList.size());
+		if(m_Type!=null && !m_Type.isEmpty()){
+			if(m_Type.equals("1")){
+				model.addAttribute("msg","권한이 없습니다");
+				model.addAttribute("url","/admin.do");
+				return "common/message";
+			}else if(m_Type.equals("0")){
+				memberList=memberService.selectList();
+				logger.info("회원리스트 보여주기 memberList={}",memberList.size());
+			}
 		}
 		model.addAttribute("memberList",memberList);
 		
@@ -52,12 +54,14 @@ public class AdminMemberController {
 	
 	@RequestMapping("/memberQuit.do")
 	public String memberQuit_post(HttpServletRequest request,HttpSession session ,@RequestParam(defaultValue="") String mImage,
-			@RequestParam(defaultValue="") String mEmail){
+			@RequestParam(defaultValue="") String mEmail, Model model){
 		logger.info("회원탈퇴처리 mEmail={},mImage={}",mEmail,mImage);
+		
+		String msg="",url="/admin/memberList.do";
 		
 		int cnt=memberService.deleteMember(mEmail);
 		logger.info("회원탈퇴처리결과 cnt={}",cnt);
-		
+		if(cnt>0){
 			String upPath=fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
 		
 			File delfile= new File(upPath, mImage);
@@ -66,15 +70,15 @@ public class AdminMemberController {
 				logger.info("파일 삭제 결과={}",bool);	
 			}
 			
-			session.removeAttribute("mEmail");
-			session.removeAttribute("mNick");
-			session.removeAttribute("mNo");
-			session.removeAttribute("mImage");
-			session.removeAttribute("mType");
-			session.removeAttribute("mPwd");
+			
+				msg="선택한 회원들을 삭제하였습니다.";
+			}else{
+				msg="선택한 회원들을  삭제하지 못했습니다.";
+			}//if	
 		
-		
-			return "page/admin/memberList";
+			model.addAttribute("msg", msg);
+			model.addAttribute("url", url);
+			return "common/message";
 	}
 	@RequestMapping("/memberDeleteList.do")
 	public String memberDeleteList(

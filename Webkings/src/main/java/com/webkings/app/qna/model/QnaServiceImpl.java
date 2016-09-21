@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.webkings.app.common.SearchVO;
+import com.webkings.app.freeBoard.model.BoardViewVO;
 
 @Service
 public class QnaServiceImpl implements QnaService{
@@ -52,4 +54,23 @@ public class QnaServiceImpl implements QnaService{
 	public int updateQna(QnaVO vo){
 		return qnaDao.updateQna(vo);
 	}
+	
+	@Transactional
+	public int deleteQna(List<QnaViewVo> listVo){
+		int cnt=0;
+		try{
+			for(QnaViewVo vo: listVo){
+				int qNo=vo.getqNo();
+				if(qNo!=0){
+					cnt=qnaDao.deleteQna(qNo);
+				}
+			}
+		}catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt=-1;
+		}
+		
+		return cnt; 
+	}
+	
 }
