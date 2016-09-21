@@ -75,10 +75,8 @@
 				</c:if>
 			</div>
 			<div class="float_right">
-				<c:if test="${sessionScope.mNo==vo.mNo or sessionScope.mType=='0' }">
 					<a class="btn_default btn_light size_S"  href='<c:url value="/admin/freeboard/edit.do?no=${vo.bNo}&gender=${gender }"/>'>수정</a> |
 		        	<a class="btn_default btn_light size_S" id="sendDel" href='#'>삭제</a> |
-	        	</c:if>
 	        	<a class="btn_default btn_light size_S" href='<c:url value="/admin/freeboard/list.do?gende=${gender }"/>'>목록</a>			
 			</div>
 			<div class="float_clear"></div>
