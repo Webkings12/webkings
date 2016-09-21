@@ -165,6 +165,9 @@
 .listTable td:nth-child(4){
 	font-size: 0.7em;
 }
+.listTable td:nth-child(4){
+	font-size: 0.7em;
+}
 .noneDeco a{
 	text-decoration: none;
 }
@@ -181,6 +184,7 @@
 	float: left;
 }
 .rContent{
+	width:90%;
 	padding:7px;
 	float: left;
 }
@@ -335,4 +339,13 @@ img, fieldset {
 
 .bottomMargin{
 	margin-bottom: 200px;
+}
+
+.boardContent img{
+	max-width: 670px;
+	
+}
+
+#bContent{
+	height: 600px;
 }

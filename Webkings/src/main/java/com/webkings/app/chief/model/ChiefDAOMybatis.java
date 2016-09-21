@@ -8,14 +8,14 @@ public class ChiefDAOMybatis extends SqlSessionDaoSupport implements ChiefDAO {
 	private String namespace="com.mybatis.mapper.oracle.chief";
 
 	@Override
-	public int loginCheck(ChiefVo vo) {
+	public int loginCheck(ChiefVO vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int insertChief(ChiefVo vo) {
-		return getSqlSession().insert(namespace+".insertchief", vo);
+	public int insertChief(ChiefVO vo) {
+		return getSqlSession().insert(namespace+".insertChief", vo);
 	}
 
 	@Override

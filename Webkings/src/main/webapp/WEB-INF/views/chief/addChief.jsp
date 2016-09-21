@@ -17,38 +17,84 @@
 $(document).ready(function() {
 	alert("arrive");
 	$("#idcheck").click(function () {
-		if($("#id").val().length < 1) {
+		/*
+			null chk
+		*/		
+		if($("#C_EMAIL").val().length < 1) {
 			alert("사용하실 아이디를 입력해주세요.");
-			$("#id").focus();
+			$("#C_EMAIL").focus();
 			return false;
-		} else if(!chkEmail($("#id").val())) {
+		} else if(!chkEmail($("#C_EMAIL").val())) {
 			alert("이메일 형식에 맞춰주세요.\r\n aaa@naver.com");
 		}
 		
+		var C_EMAIL = $("#C_EMAIL").val();
+		alert(C_EMAIL);
+		
+		/*
+			사용중인 email인지 확인
+		*/
 		$.ajax({
 			url:"<c:url value='/chief/insertChiefChkId.do'/>",
 			type:"GET",
-			data:"id="+$("#id").val(),
+			data:"id="+C_EMAIL,
 			dataType:"text",
 			success:function(res){
 				alert("success");
+				alert(res);
 				// "사용 가능합니다." or "이미 사용중인 아이디입니다."
 				if(res.val().equals("사용 가능합니다.")) {
-					$("#idChkResult").val(res);
+					$("#idChkResult").appendTo($(res));
+					/*$("#idChkResult").css("style='color:red'", "#0000ff");*/
+					$('#idChkResult').css('background-color','blue');
+					/*document.getElementById('idChkResult').innerHTML = res;
+					$("#idChkResult").html(res);*/
 				} else {
-					$("#idChkResult").val(res);
+					$("#idChkResult").appendTo($(res));
+					$('#idChkResult').css('background-color','red');
+					/*$("#idChkResult").css("color", "#ff0000");*/
 				}				
 			},
 			error:function(xhr, status, error){
-				alert("error");
+				alert(error);
 			}
 		});
-
+		
+		/*
+			email 형식 확인
+		*/
 		function chkEmail(mEmail) {
 			var reg_email =new RegExp(/^[a-zA-Z0-9]([-_\.]?[0-9a-zA-Z])*@[a-zA-Z]([-_\.]?[a-zA-Z])*\.[a-zA-Z]{2,3}$/i); 
 			return reg_email.test(mEmail);
 		}
 	});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(function() {
+		$(".input_click_init").focus(function() {
+			$(this).val('');
+		}).blur(function() {
+			if( $(this).attr('id') == "C_PWD-re" || $(this).attr('id') == "C_PWD" ) {
+				/*$(this).val(''); 비밀번호와 비밀번호 확인의 경우는 지우는 동작이 아닌 아무동작도 하지 않도록*/
+			} else if ( $(this).val() == "" ) {
+				$(this).val("값을 입력하세요.");
+			}
+			
+			var C_PWD = $('#C_PWD').val();
+			var C_PWD_re = $('#C_PWD-re').val();
+			
+			alert("C_PWD = " + C_PWD);
+			
+			if( $(this).attr('id') == "C_PWD" || $(this).attr('id') == "C_PWD-re" ) {
+				if( C_PWD ==  C_PWD_re ) {
+					$('#C_PWD_RESULT').html("일치");
+				} else {
+					$('#C_PWD_RESULT').html("불일치");
+				}
+			}
+		});
+	})
 });
 </script>
 <body>
@@ -82,7 +128,7 @@ $(document).ready(function() {
 						<div class="tWidth"></div>
 						
 						<!-- addChiefInfo start -->
-						<form id="formLogin" name="" method="post" confirmmessage="입력하신 정보로 가입하시겠습니까?" enctype="multipart/form-data" class="_autoValidateForm">
+						<form id="formLogin" action="<c:url value='/chief/chiefNShopInsertFrom.do'/>" name="chiefNShopInsertFrom" method="post" confirmmessage="입력하신 정보로 가입하시겠습니까?" enctype="multipart/form-data" class="_autoValidateForm">
 							<div class="titTabSec">
 								<h2>로그인 정보</h2>
 							</div>
@@ -94,9 +140,9 @@ $(document).ready(function() {
 									</colgroup>
 									<tbody>
 										<tr>
-											<th><strong>회원 ID</strong><span class="required">*</span></th>
+											<th><strong>회원 ID(Email)</strong><span class="required">*</span></th>
 											<td><div class="inSec">
-												<input id="id" value="" type="text" fieldname="아이디" maxlength="20" minlength="4" restrictutf8bytes="20" class="htxt1 __required __onlyAlphaNum __toLowerCase __noSpace __noStartNumber" onkeyup="this.form.checkId.value = 'N'" style="width: 200px; text-transform: lowercase;">
+												<input id="C_EMAIL" value="ID를 입력해주세요." type="text" fieldname="아이디(email)" maxlength="20" minlength="4" restrictutf8bytes="20" class="input_click_init" onkeyup="this.form.checkId.value = 'N'" style="width: 200px; text-transform: lowercase;">
 												<a href="javascript:;" id="idcheck" name="idcheck" class="sys-btn sys-btn-type3">중복검사</a>
 												<span id="idChkResult" class="mgl10">id를 입력 후 중복검사를 진행해 주세요.</span>
 											</div></td>
@@ -105,10 +151,10 @@ $(document).ready(function() {
 											<th><strong>비밀번호</strong><span class="required">*</span></th>
 											<td><div class="inSec">
 												<div class="inp2Sec">
-													<div class="fleft"><input name="passwd" value="" type="password" fieldname="비밀번호" maxlength="20" minlength="4" restrictutf8bytes="20" class="htxt1 mgr5 __required __noSpace" style="width: 200px;"></div>
 													<div class="fleft">
-														<label for="label-pw" class="label-pw hd-lab">비밀번호 확인</label>
-														<input name="passwd-re" value="" type="password" id="label-pw" fieldname="비밀번호 확인" maxlength="20" minlength="4" restrictutf8bytes="20" equaltoel="passwd" class="htxt1 hd-lab __required __noSpace" style="width: 200px;">
+														<input id="C_PWD" name="C_PWD" value="" type="password" fieldname="비밀번호" maxlength="20" minlength="4" restrictutf8bytes="20" class="input_click_init" style="width: 200px;">
+														<input id="C_PWD-re" name="C_PWD-re" value="" type="password" id="label-pw" maxlength="20" minlength="4" restrictutf8bytes="20" equaltoel="passwd" class="input_click_init" style="width: 200px;">
+														<label id="C_PWD_RESULT">비밀번호 확인 결과</label>
 													</div>
 												</div>
 											</div></td>
@@ -128,11 +174,11 @@ $(document).ready(function() {
 									<tbody>
 										<tr>
 											<th><strong>쇼핑몰명</strong><span class="required">*</span></th>
-											<td><div class="inSec"><input name="shopName" value="" type="text" fieldname="쇼핑몰명" restrictutf8bytes="45" class="htxt1 __required" style="width: 50%;"></div></td>
+											<td><div class="inSec"><input id="S_NAME" name="shopName" value="" type="text" fieldname="쇼핑몰명" restrictutf8bytes="45" class="input_click_init" style="width: 50%;"></div></td>
 										</tr>
 										<tr>
 											<th><strong>쇼핑몰 도메인</strong><span class="required">*</span></th>
-											<td><div class="inSec"><input name="shopDomain" value="" type="text" fieldname="쇼핑몰 도메인" checkfunctionname="checkDomain" maxlength="50" class="htxt1 __required __toLowerCase mgb10" style="width: 400px; text-transform: lowercase;">
+											<td><div class="inSec"><input id="S_DOMAIN" name="shopDomain" value="" type="text" fieldname="쇼핑몰 도메인" checkfunctionname="checkDomain" maxlength="50" class="input_click_init" style="width: 400px; text-transform: lowercase;">
 												<br>※ <strong>http://</strong> 및 <strong>www.</strong> 미포함
 												<br>http://www.sta1.com (<strong style="color:#ff0000">X</strong>)
 												<br>http://sta1.com (<strong style="color:#ff0000">X</strong>)
@@ -144,8 +190,8 @@ $(document).ready(function() {
 											<th><strong>모바일 사이트 유무</strong><span class="required">*</span></th>
 											<td colspan="3"><div class="inSec">
 												<ul>
-													<li><label><input name="mobYn" value="Y" type="radio" fieldname="모바일 사이트 유무" checked="checked" class="__required" onclick="changeMobYn('Y')"> 모바일 사이트가 있습니다.</label></li>
-													<li><label><input name="mobYn" value="N" type="radio" fieldname="모바일 사이트 유무" class="__required" onclick="changeMobYn('N')"> 모바일 사이트가 없거나 운영하지 않습니다.</label></li>
+													<li><label><input id="S_MSYN" name="mobYn" value="Y" type="radio" fieldname="모바일 사이트 유무" checked="checked" class="__required" onclick="changeMobYn('Y')"> 모바일 사이트가 있습니다.</label></li>
+													<li><label><input id="S_MSYN" name="mobYn" value="N" type="radio" fieldname="모바일 사이트 유무" class="__required" onclick="changeMobYn('N')"> 모바일 사이트가 없거나 운영하지 않습니다.</label></li>
 												</ul>
 											</div></td>
 										</tr>

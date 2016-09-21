@@ -5,7 +5,6 @@
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	
 	$("input[name='allchk']").click(function() {
 		$("tbody input[type='checkbox']").prop("checked", this.checked);
 	});
@@ -16,9 +15,8 @@ $(document).ready(function() {
 			alert("삭제하려는 상품을 먼저 체크하세요");
 			return false;
 		}
-	});	
+	});
 });
-
 
 </script>
 <form name="frmList" method="post" action="<c:url value= '/admin/memberDeleteList.do'/>">
@@ -66,13 +64,18 @@ $(document).ready(function() {
 							</tr>
 						</c:if>
 						<c:set var="i" value="0"/>
+								<input type="hidden" id="length" value="${memberList.size()}">
 						<c:if test="${!empty memberList }">
-							<c:forEach var="vo" items="${memberList }">
+							<c:forEach var="vo" items="${memberList }" varStatus="vs">
 							<tr class="tr_center">
 								<td><input type="checkbox" name="memberDelList[${i}].mEmail" value="${vo.mEmail}" id="chk_${i }"></td>
 								<input type="hidden" name="memberDelList[${i}].mImage" value="${vo.mImage}">
 								<td>${vo.mNo}</td>
-								<td>${vo.mEmail}</td>
+								<td><a href="#" id="memEdit${vs.index }">${vo.mEmail}</a>
+								<input type="hidden" value="${vo.mEmail}">
+								<input type="hidden" value="${vo.mNick}">
+								<input type="hidden" value="${vo.mImage}">
+								<input type="hidden" value="${vo.mNo}"></td>
 								<td>${vo.mNick}</td>
 								<td>
 								<c:if test="${!empty vo.mImage}">
@@ -95,10 +98,12 @@ $(document).ready(function() {
 				<button type="submit" class="cancelbtn">선택한 회원삭제</button>
 			</div>
 </form>
-
-			<%@ include file="../../inc/adminFooter.jsp" %>
+		<%@ include file="../../inc/adminFooter.jsp" %>
+		
+		
 </div>
 </div>
 </div>
+	
 </body>
 </html>

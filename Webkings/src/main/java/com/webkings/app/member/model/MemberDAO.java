@@ -14,4 +14,5 @@ public interface MemberDAO {
 	/*관리자*/
 	public String adminCheck(MemberVo vo);
 	public List<MemberVo> selectList();
+	public int updateAdmin(MemberVo vo);
 }

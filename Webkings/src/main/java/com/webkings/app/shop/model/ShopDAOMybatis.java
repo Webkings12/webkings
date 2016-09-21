@@ -41,8 +41,14 @@ public class ShopDAOMybatis extends SqlSessionDaoSupport implements ShopDAO{
 	}
 
 	@Override
+<<<<<<< HEAD
 	public ShopViewVO shopsNoSel(int sNo) {
 		return getSqlSession().selectOne(namespace+".shopNoSel",sNo);
 	}
 
+=======
+	public int insertShop(ShopVO shopVo) {
+		return getSqlSession().insert(namespace+".insertShop",shopVo);
+	}
+>>>>>>> branch 'master' of https://github.com/Webkings12/webkings.git
 }

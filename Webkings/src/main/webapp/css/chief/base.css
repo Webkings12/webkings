@@ -85,6 +85,16 @@ label {
     cursor: pointer;
 }
 
+label.hd-lab {
+    position: absolute;
+    display: inline-block;
+    margin: 8px 0 0 11px;
+}
+
+.boardList1 table.form .inp2Sec label.hd-lab {
+    margin-top: 7px;
+}
+
 input, select, textarea {
     font-family: Dotum, "돋움", sans-serif;
     vertical-align: middle;
@@ -92,6 +102,9 @@ input, select, textarea {
     color: #888;
     word-spacing: -0.2em;
     line-height: 136%;
+    border: 1px solid #dbdbdb;
+    height: 25px;
+    padding: 2px 0 1px 10px;
 }
 
 .fleft {
