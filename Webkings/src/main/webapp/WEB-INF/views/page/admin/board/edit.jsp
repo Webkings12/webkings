@@ -14,8 +14,6 @@
 		var instance = CKEDITOR.instances.bContent;
 		instance.updateElement();
 		CKEDITOR.config.height = 500;
-		
-
 
 		$("#edit_form").submit(function(event){
 			if($("#bTitle").val()==""){
