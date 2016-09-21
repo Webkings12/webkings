@@ -536,7 +536,7 @@ $(document).ready(function(event){
 				 모두 삭제 됩니다.<br>
 				가입시 입력한 정보 : 이메일, 닉네임, 생년월일, 성별<br> 
 				서비스 이용 정보 : Point, 친구쇼핑몰목록, 관심상품<br>
-				삭제된 정보는 복구 불가능합니다</p>
+				삭제된 정보는 복구 불가능합니다.</p>
 			</div>
 			<div class="reg">
 				<input type="checkbox" id="inquit" name="inquit">
