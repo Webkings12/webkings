@@ -24,6 +24,7 @@ $(document).ready(function() {
 <form name="frmList" method="post" action="<c:url value= '/admin/memberDeleteList.do'/>">
 <div class="body-sec">
 <div class="in-sec">
+<p class="privacy-fixed" id="adminPf"><a href="<c:url value='/admin.do'/>">홈으로</a></p>
 		<div class="footer">
 			<div class="list-top-2">
 				<div class="in">

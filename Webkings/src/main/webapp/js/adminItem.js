@@ -12,10 +12,6 @@ $(document).ready(function() {
 					itemSel = res.itemList;
 					itAllCount = res.itAllCount;
 					var result="";
-					if(itemCate!=null && itemCate!="" && itemCate !="ALL"){
-					result += "<li class='tit-cate "+gender+"' style='left: 0px; top: 0px;'>" +
-							"<div><strong></strong><span><em></em>개의 상품 검색</span></div></li>";
-					}
 					$.each(itemSel, function(idx, item) {
 					result+=
 					"<li class='prod "+gender+"'>"+

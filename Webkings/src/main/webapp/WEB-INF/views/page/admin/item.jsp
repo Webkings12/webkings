@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/adminTop.jsp" %>
-<div class="body-sec">
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
 var itemCate= "${cateView}";
@@ -18,7 +17,9 @@ var ssp="${param.ssp}";
 var sep="${param.sep}";
 </script>
 <script type="text/javascript" src="<c:url value='/js/adminItem.js'/>"></script>
+<div class="body-sec">
 <div class="in-sec">
+<p class="privacy-fixed" id="adminPf"><a href="<c:url value='/admin.do'/>">홈으로</a></p>
 	<div class="admin">
 		<div class="list-top-1">
 			<p class="notice-2"><strong>카테고리 전체 : </strong> <em></em> <i>total</i></p>

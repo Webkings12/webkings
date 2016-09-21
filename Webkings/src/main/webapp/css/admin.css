@@ -10,6 +10,29 @@ body>div.header div.shadow div.in-sec {
     position: relative;
     height: 71px;
 }
+div.body-sec>div.in-sec p.privacy-fixed {
+    position: fixed;
+    bottom: 20px;
+    width: 1560px;
+    height: 60px;
+    left: 50%;
+    margin-left: -780px;
+}
+div.body-sec>div.in-sec p#adminPf>a {
+    background-image: url(../images/home.png);
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    right: 80;
+    bottom: 120;
+    font-size: 0;
+    line-height: 0;
+}
 .modal2{
 	display: none;
 }
