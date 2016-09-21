@@ -15,7 +15,6 @@
 		</if>
 		order by s_click desc
 	</select>
-	
 	<select id="shopNew" parameterType="ShopViewVO" resultType="ShopViewVO">
 		select * from shopView
 		where 1=1
