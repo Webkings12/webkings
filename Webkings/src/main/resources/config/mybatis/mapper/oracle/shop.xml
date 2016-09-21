@@ -41,5 +41,9 @@
 		where 1=1
 		and s_no = #{sNo}
 	</select>
-	
+	<delete id="shopDel" parameterType="int">
+		delete from shop
+		where 1=1
+		and s_no =#{sNo}
+	</delete>
 </mapper>
