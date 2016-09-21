@@ -19,7 +19,7 @@
 	$(document).ready(function(){
 		$("#sendDel").click(function(){
 			if(confirm("삭제하시겠습니까?")){
-				$(location).attr('href', '<c:url value="/admin/freeboard/delete.do?bNo=${vo.bNo}&gender=${gender }" />');
+				$(location).attr('href', '<c:url value="/admin/freeboard/delete.do?bNo=${vo.bNo}&bFilename=${vo.bFilename}" />');
 					
 			}
 		})
@@ -42,7 +42,7 @@
 					<div class="float_left">
 						<!-- 유저 이미지 -->
 						<c:if test="${empty vo.mImage }">
-						<img class="user_Img" src="<c:url value='/user_images/defaultUser.png'/>">
+						<img class="user_Img" src="<c:url value='/user_images/person-icon.png'/>">
 						</c:if>
 						<c:if test="${!empty vo.mImage }">
 						<img class="user_Img" src="<c:url value='/user_images/${vo.mImage }'/>">

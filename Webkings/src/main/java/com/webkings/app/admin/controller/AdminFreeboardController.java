@@ -362,36 +362,36 @@ public class AdminFreeboardController {
 	}
 	
 	@RequestMapping("/delete.do")
-	public String delete(@RequestParam(defaultValue="0") int bNo,@RequestParam(defaultValue="F") String gender,Model model){
+	public String delete(@ModelAttribute BoardViewVO vo,@RequestParam String bFilename,
+			HttpServletRequest request,Model model){
 		//1.
-		logger.info("삭제 파라미터 bNo={}",bNo);
-		if(bNo==0){
+		logger.info("삭제 파라미터 vo{}",vo);
+		if(vo.getbNo()==0){
 			model.addAttribute("msg","잘못된 url입니다");
-			model.addAttribute("url","/freeboard/list.do?gender="+gender);
+			model.addAttribute("url","/admin/freeboard/list.do");
 			
 			return "common/message";
 		}
 		//2.
 		logger.info("여기서 에러냐?");
-		int cnt=fBoardService.deleteBoard(bNo);
+		int cnt=fBoardService.deleteBoard(vo.getbNo());
 		//3.
 		String msg="",url="";
 		if(cnt>0){
 			msg="삭제 완료";
-			url="/admin/freeboard/list.do?gender="+gender;
+			url="/admin/freeboard/list.do";
+			
+			String upPath=fileUtil.getUploadPath(request, fileUtil.BOARD_IMAGE_UPLOAD);
+			logger.info("삭제 경로 ={}",upPath);
+			File delFile= new File(upPath, bFilename);
+			if(delFile.exists()){
+				boolean bool=delFile.delete();
+				logger.info("파일 삭제 결과={}",bool);
+			}
 		}else{
 			msg="삭제 실패";
-			url="/admin/freeboard/detail.do?no="+bNo;
+			url="/admin/freeboard/detail.do?no="+vo.getbNo();
 		}
-		
-		int pageNum=3;
-		List<Item_TypeVO> itemList = itemService.selectItemType(gender);
-		List<StyleVO> styleList = styleService.selectStyle(gender);
-		
-		model.addAttribute("styleList", styleList);
-		model.addAttribute("itemList", itemList);
-		model.addAttribute("pageNum", pageNum);
-		model.addAttribute("gender",gender);
 		
 		
 		model.addAttribute("msg", msg);
@@ -420,7 +420,6 @@ public class AdminFreeboardController {
 					String upPath=fileUtil.getUploadPath(request, fileUtil.BOARD_IMAGE_UPLOAD);
 					
 					File delFile=new File(upPath,bFilename);
-					delFile.delete();
 					if(delFile.exists()){
 						boolean bool=delFile.delete();
 						logger.info("파일 삭제 결과={}",bool);
