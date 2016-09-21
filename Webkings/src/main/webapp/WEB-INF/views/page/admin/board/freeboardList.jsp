@@ -91,7 +91,7 @@
 		<tbody>  
 		<c:if test="${empty alist }">
 			<tr>
-				<td colspan="5" class="align_center">데이터가 없습니다</td>
+				<td colspan="6" class="align_center">데이터가 없습니다</td>
 			</tr>
 		</c:if>
 		  <!--게시판 내용 반복문 시작  -->
