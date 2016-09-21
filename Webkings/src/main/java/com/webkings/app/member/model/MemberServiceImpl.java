@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -79,6 +80,24 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public List<MemberVo> selectList() {
 		return memberDAO.selectList();
+	}
+	
+	@Override
+	@Transactional
+	public int deletememberList(List<MemberVo> memberDelList) {
+		int cnt=0;
+		try{
+			for(MemberVo vo:memberDelList){
+				String mEmail=vo.getmEmail();
+				if(mEmail!=null && !mEmail.isEmpty()){
+					cnt =memberDAO.deleteMember(mEmail);
+				}
+			}
+		}catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt=-1;
+		}
+		return cnt;
 	}
 
 }

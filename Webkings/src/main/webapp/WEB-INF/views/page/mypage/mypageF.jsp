@@ -96,74 +96,8 @@ $(document).ready(function() {
 	
 	<%@ include file="footer-sec.jsp" %>
 
+</div>		
 </div>
-		
-</div>
-<!--  회원정보 수정 -->
-	<div id="divEdit" class="modal">
-			
-			<div class="amodel">
-				<span
-				onclick="document.getElementById('divEdit').style.display='none'"
-				class="close1" title="Close Modal">&times;</span>
-				<form id="formEdit" name="formEdit" target="_iFrmForAction"
-					method="post" action="<c:url value='/member/memberEdit.do?gender=${gender}'/>"
-					enctype="multipart/form-data">
-					<div class="imgfile1">
-
-						<div class="imgfile">
-							<c:if test="${!empty sessionScope.mImage}">
-								<img id="UploadedImg1" src="<c:url value='/user_images/${sessionScope.mImage}'/>"/>
-							</c:if>
-							<c:if test="${empty sessionScope.mImage}">
-								<img id="UploadedImg1" src="<c:url value='/user_images/person-icon.png'/>" />
-							</c:if>
-						</div>
-						<div>
-							<input type='file' name="upFile1" id="upFile1"
-								onchange="readURL1(this)" /> <input type="hidden"
-								name="oldmImage" value="${sessionScope.mImage}"> 
-						</div>
-					</div>
-					<div id="divedit">
-					<div class="reg"><input type="text" name="mNick"
-							placeholder="닉네임" id="mNick">
-					</div>
-							 <a id="memberQuit"><p>회원탈퇴</p></a>
-					</div>
-					<button type="submit" class="cancelbtn" style="width: 100%;">수정완료</button>
-				</form>
-			</div>
-	</div>
-	<!-- 회원 정보 수정 끝-->
-	<!-- 회원 탈퇴 -->
-		<div id="divQuit1" class="modal">
-			
-		<div class="amodel">
-		<span
-				onclick="document.getElementById('divQuit1').style.display='none'"
-				class="close1" title="Close Modal">&times;</span>
-		<form  action="<c:url value="/member/memberQuit.do"/>" method="post" id="formQuit">
-			<div class="divp">
-			<h2 class="h2">다음 안내사항을 확인해주세요</h2>
-			<p>
-				탈퇴 후 회원정보 및 개인형 서비스 정보는<br>
-				 모두 삭제 됩니다.<br>
-				가입시 입력한 정보 : 이메일, 닉네임, 생년월일, 성별<br> 
-				서비스 이용 정보 : Point, 친구쇼핑몰목록, 관심상품<br>
-				삭제된 정보는 복구 불가능합니다</p>
-			</div>
-			<div class="reg">
-				<input type="checkbox" id="inquit" name="inquit">
-				<label for="inquit">내용을 확인하였으며, 이에 동의합니다.</label>
-				 <input type="hidden" name="mEmail" value="${sessionScope.mEmail}">
-				 <input type="hidden" name="mImage" value="${sessionScope.mImage }">
-			</div>
-			<button type="submit" class="cancelbtn" id="cancelbtn" style="width: 100%;">회원탈퇴</button>
-		</form>
-		</div>
-	</div>
-	<!-- 회원 탈퇴 끝 -->	
 </div>
 
 </body>

@@ -19,4 +19,7 @@ public interface MemberService {
 	
 	public int adminCheck(MemberVo vo);
 	public List<MemberVo> selectList();
+	
+	//회원 여러명 삭제
+	public int deletememberList(List<MemberVo> memberDelList);
 }

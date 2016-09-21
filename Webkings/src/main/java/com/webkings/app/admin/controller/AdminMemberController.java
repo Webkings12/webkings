@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -74,7 +75,57 @@ public class AdminMemberController {
 		
 		
 			return "page/admin/memberList";
-		
 	}
+	@RequestMapping("/memberDeleteList.do")
+	public String memberDeleteList(
+		@ModelAttribute AdminMemberListVO memberDelList, 
+		HttpServletRequest request, Model model){
+		
+		logger.info("관리자 - 선택한 회원 삭제, 파라미터 "
+				+ "memberDelList={}", memberDelList);
+		
+		List<MemberVo> memberList = memberDelList.getMemberDelList();
+		logger.info("memberList.size()={}", memberList.size());
+
+		int cnt = memberService.deletememberList(memberList);
+		logger.info("선택한 회원 삭제 처리 결과, cnt={}", cnt);
+		
+		String msg="",url="/admin/memberList.do";
+		if(cnt>0){
+			for(int i=0;i<memberList.size();i++){
+				MemberVo memberVo = memberList.get(i);
+				
+				int mNo = memberVo.getmNo();
+				String mImage = memberVo.getmImage();
+				
+				logger.info("i={}", i);
+				logger.info("mNo={}, mImage={}",
+						mNo, mImage);
+				
+				//체크한 상품만 파일 삭제
+				if(mNo!=0){
+					// 업로드 경로
+					String upPath=fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
+				
+					//File 객체 생성후 파일 삭제
+					File delfile= new File(upPath, mImage);
+					if(delfile.exists()){
+						boolean bool= delfile.delete();
+						logger.info("파일 삭제 결과={}",bool);
+					}
+				}
+			}//for
+			
+			msg="선택한 회원들을 삭제하였습니다.";
+		}else{
+			msg="선택한 회원들을  삭제하지 못했습니다.";
+		}//if	
+		
+		//3.
+		model.addAttribute("msg", msg);
+		model.addAttribute("url", url);
+		return "common/message";
+	}
+	
 	
 }
