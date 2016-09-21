@@ -40,5 +40,10 @@ public class ShopServiceImpl implements ShopService{
 	public int shopDel(int sNo) {
 		return shopDao.shopDel(sNo);
 	}
+
+	@Override
+	public int insertShop(ShopVO shopVo) {
+		return shopDao.insertShop(shopVo);
+	}
 	
 }

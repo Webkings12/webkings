@@ -10,9 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.webkings.app.chief.model.ChiefService;
-import com.webkings.app.chief.model.ChiefVo;
+import com.webkings.app.chief.model.ChiefVO;
+import com.webkings.app.shop.model.ShopService;
+import com.webkings.app.shop.model.ShopVO;
 
 @Controller
 @RequestMapping("/chief")
@@ -21,6 +25,7 @@ public class ChiefController {
 	
 	@Autowired
 	private ChiefService chiefService;
+	private ShopService shopService;
 	
 	@RequestMapping(value="/chiefMain.do", method=RequestMethod.GET)
 	public String chiefMain_get(){
@@ -36,12 +41,18 @@ public class ChiefController {
 		return "chief/addChief";
 	}
 	
-	@RequestMapping(value="/insertChiefChkId.do", method={RequestMethod.GET, RequestMethod.POST})
-	public String insertChiefChkId_post(HttpServletRequest request){
-		logger.info("insertChiefChkId 기업회원 가입요청 IdChk, 파라미터 request={}",request);
-		String reqParam = request.getParameter("id");
-		
-		int count = chiefService.selectChiefId(reqParam);
+	@RequestMapping(value="/insertChiefChkId.do")
+	@ResponseBody
+	public String insertChiefChkId_get(@RequestParam(value = "id", required = false) String id){
+		logger.info("arrive insertChiefChkId");
+//		if (reqParam.equals("123@naver.com")) {
+//			logger.info("1");
+//		} else {
+//			logger.info("2");
+//		}
+		logger.info("id={}", id);
+		int count = chiefService.selectChiefId(id);
+	    
 		logger.info("selectCount",count);
 		if (count == 0) {
 			return "사용 가능합니다.";
@@ -50,16 +61,32 @@ public class ChiefController {
 		}
 	}
 	
-	@RequestMapping(value="/insertChief.do", method={RequestMethod.GET, RequestMethod.POST})
-	public String insertChief_post(@ModelAttribute ChiefVo chiefVo, HttpServletRequest request, Model model){
-		logger.info("insertChief 기업회원 가입, 파라미터 ChiefVo={}",chiefVo);
+	@RequestMapping(value="/chief/chiefNShopInsert.do", method=RequestMethod.POST)
+	public String chiefNShopInsert_post(@ModelAttribute ChiefVO chiefVO, @ModelAttribute ShopVO shopVO, HttpServletRequest request, Model model){
+		logger.info("chiefNShopInsertFrom 기업회원 가입 chiefVOnShopVO add, 파라미터 ChiefVo={},{}",chiefVO, shopVO);
 		
-		int count = chiefService.insertChief(chiefVo); 
+		int countChief = chiefService.insertChief(chiefVO);
 		
-		if (count == 1) {
-			return "redirect:/chief/m_center.do";
+		boolean insertResult;
+		
+		if (countChief == 1) {
+			insertResult = true;
+			//return "redirect:/chief/m_center.do";
 		} else {
-			return "redirect:/chief/addChief.do"; 
+			insertResult = false;
+			//return "redirect:/chief/addChief.do"; 
+		}		
+
+		if (insertResult) {
+			int countShop  = shopService.insertShop(shopVO);
+			
+			if (countShop == 1) {
+				return "redirect:/chief/m_center.do";
+			} else {
+				return "redirect:/chief/addChief.do"; 
+			}
+		} else {
+			return "";
 		}
 	}
 }

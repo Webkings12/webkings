@@ -39,4 +39,9 @@ public class ShopDAOMybatis extends SqlSessionDaoSupport implements ShopDAO{
 	public int shopDel(int sNo) {
 		return getSqlSession().delete(namespace+".shopDel",sNo);
 	}
+
+	@Override
+	public int insertShop(ShopVO shopVo) {
+		return getSqlSession().insert(namespace+".insertShop",shopVo);
+	}
 }

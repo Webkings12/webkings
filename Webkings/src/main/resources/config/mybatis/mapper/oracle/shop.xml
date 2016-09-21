@@ -24,6 +24,7 @@
 			and to_char(s_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
 		]]>
 	</select>
+	
 	<select id="shopSelCount" parameterType="String" resultType="int">
 		select count(*) from shopview
 		where 1=1
@@ -36,14 +37,24 @@
 		where 1=1
 		and s_no = #{sNo}
 	</update>
+	
 	<select id="latelyshoplist" parameterType="int" resultType="ShopViewVO">
 		select * from shopView
 		where 1=1
 		and s_no = #{sNo}
 	</select>
-	<delete id="shopDel" parameterType="int">
-		delete from shop
-		where 1=1
-		and s_no =#{sNo}
-	</delete>
+	
+	<insert id="insertFreeBoard" parameterType="FreeBoardVO">
+		<selectKey order="BEFORE" keyProperty="sNo" resultType="int">
+			select SHOP_SEQ.NEXTVAL from dual
+		</selectKey>
+		insert into shop(S_NO, S_DOMAIN, S_MSYN, S_NAME, S_BIMAGE, S_SIMAGE,
+                  		 S_BINFO, S_SINFO, S_AGE, ST_NO, ST_GENDER, S_STAFF,
+                  		 S_DEP, S_POSITION, S_TEL, S_PHONE, S_EMAIL, S_HIT,
+                  		 S_ACCYN, S_ACCDATE, S_PAYYN, S_REGDATE, S_CHGDATE, C_NO)
+				  values(#{sNo},, #{S_DOMAIN}, #{S_M#{SYN}, #{S_NAME}, #{S_BIMAGE}, #{S_SIMAGE},
+                    	 #{S_BINFO}, #{S_#{SINFO}, #{S_AGE}, #{ST_NO}, #{ST_GENDER}, #{S_STAFF},
+                    	 #{S_DEP}, #{S_PO#{SITION}, #{S_TEL}, #{S_PHONE}, #{S_EMAIL}, #{S_HIT},
+                    	 #{S_ACCYN}, #{S_ACCDATE}, #{S_PAYYN}, #{S_REGDATE}, #{S_CHGDATE}, #{C_NO})
+	</insert>	
 </mapper>

@@ -2,7 +2,7 @@ package com.webkings.app.chief.model;
 
 import java.sql.Timestamp;
 
-public class ChiefVo {
+public class ChiefVO {
 	private int C_NO;
 	private String C_NUMBER;
 	private String C_EMAIL;
@@ -94,7 +94,7 @@ public class ChiefVo {
 		C_TYPE = c_TYPE;
 	}
 	
-	public ChiefVo(int c_NO, String c_NUMBER, String c_EMAIL, String c_PWD, String c_NAME, String c_CNAME, String c_ADD,
+	public ChiefVO(int c_NO, String c_NUMBER, String c_EMAIL, String c_PWD, String c_NAME, String c_CNAME, String c_ADD,
 			String c_REGDATE, Timestamp c_CHGDATE, String c_TYPE) {
 		super();
 		C_NO = c_NO;

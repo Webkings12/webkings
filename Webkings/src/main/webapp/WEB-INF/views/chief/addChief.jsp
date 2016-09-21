@@ -17,33 +17,63 @@
 $(document).ready(function() {
 	alert("arrive");
 	$("#idcheck").click(function () {
-		if($("#id").val().length < 1) {
+		/*
+			null chk
+		*/		
+		if($("#C_EMAIL").val().length < 1) {
 			alert("사용하실 아이디를 입력해주세요.");
-			$("#id").focus();
+			$("#C_EMAIL").focus();
 			return false;
-		} else if(!chkEmail($("#id").val())) {
+		} else if(!chkEmail($("#C_EMAIL").val())) {
 			alert("이메일 형식에 맞춰주세요.\r\n aaa@naver.com");
 		}
 		
+		var C_EMAIL = $("#C_EMAIL").val();
+		alert(C_EMAIL);
+		
+		/*
+			사용중인 email인지 확인
+		*/
 		$.ajax({
 			url:"<c:url value='/chief/insertChiefChkId.do'/>",
 			type:"GET",
-			data:"id="+$("#id").val(),
+			data:"id="+C_EMAIL,
 			dataType:"text",
 			success:function(res){
 				alert("success");
+				alert(res);
 				// "사용 가능합니다." or "이미 사용중인 아이디입니다."
 				if(res.val().equals("사용 가능합니다.")) {
-					$("#idChkResult").val(res);
+					$("#idChkResult").appendTo($(res));
+					/*$("#idChkResult").css("style='color:red'", "#0000ff");*/
+					$('#idChkResult').css('background-color','blue');
+					/*document.getElementById('idChkResult').innerHTML = res;
+					$("#idChkResult").html(res);*/
 				} else {
-					$("#idChkResult").val(res);
+					$("#idChkResult").appendTo($(res));
+					$('#idChkResult').css('background-color','red');
+					/*$("#idChkResult").css("color", "#ff0000");*/
 				}				
 			},
 			error:function(xhr, status, error){
-				alert("error");
+				alert(error);
 			}
 		});
-
+		
+		/*url:"<c:url value='/certify/certifyNo.do'/>",
+		type:"GET",
+		data:"mEmail="+$("#mEmail").val(), //요청 파라미터
+		dataType:"text",
+		success:function(res){
+			alert("인증메일이 발송되었습니다");
+			$("#certifyChk").val(res);
+		},
+		error:function(xhr, status, error){
+		}*/
+		
+		/*
+			email 형식 확인
+		*/
 		function chkEmail(mEmail) {
 			var reg_email =new RegExp(/^[a-zA-Z0-9]([-_\.]?[0-9a-zA-Z])*@[a-zA-Z]([-_\.]?[a-zA-Z])*\.[a-zA-Z]{2,3}$/i); 
 			return reg_email.test(mEmail);
@@ -82,7 +112,7 @@ $(document).ready(function() {
 						<div class="tWidth"></div>
 						
 						<!-- addChiefInfo start -->
-						<form id="formLogin" name="" method="post" confirmmessage="입력하신 정보로 가입하시겠습니까?" enctype="multipart/form-data" class="_autoValidateForm">
+						<form id="formLogin" action="<c:url value='/chief/chiefNShopInsertFrom.do'/>" name="chiefNShopInsertFrom" method="post" confirmmessage="입력하신 정보로 가입하시겠습니까?" enctype="multipart/form-data" class="_autoValidateForm">
 							<div class="titTabSec">
 								<h2>로그인 정보</h2>
 							</div>
@@ -94,9 +124,9 @@ $(document).ready(function() {
 									</colgroup>
 									<tbody>
 										<tr>
-											<th><strong>회원 ID</strong><span class="required">*</span></th>
+											<th><strong>회원 ID(Email)</strong><span class="required">*</span></th>
 											<td><div class="inSec">
-												<input id="id" value="" type="text" fieldname="아이디" maxlength="20" minlength="4" restrictutf8bytes="20" class="htxt1 __required __onlyAlphaNum __toLowerCase __noSpace __noStartNumber" onkeyup="this.form.checkId.value = 'N'" style="width: 200px; text-transform: lowercase;">
+												<input id="C_EMAIL" value="" type="text" fieldname="아이디(email)" maxlength="20" minlength="4" restrictutf8bytes="20" class="htxt1 __required __onlyAlphaNum __toLowerCase __noSpace __noStartNumber" onkeyup="this.form.checkId.value = 'N'" style="width: 200px; text-transform: lowercase;">
 												<a href="javascript:;" id="idcheck" name="idcheck" class="sys-btn sys-btn-type3">중복검사</a>
 												<span id="idChkResult" class="mgl10">id를 입력 후 중복검사를 진행해 주세요.</span>
 											</div></td>
