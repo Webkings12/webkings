@@ -336,3 +336,12 @@ img, fieldset {
 .bottomMargin{
 	margin-bottom: 200px;
 }
+
+.boardContent img{
+	max-width: 670px;
+	
+}
+
+#bContent{
+	height: 600px;
+}

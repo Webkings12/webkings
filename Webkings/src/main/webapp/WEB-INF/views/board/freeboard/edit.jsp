@@ -15,6 +15,7 @@ var url ="<c:url value='/shop/shopStyle.do'/>";
 var searchName="${searchName}";
 </script>
 <script type="text/javascript" src="<c:url value='/js/shop.js'/>"></script>
+<script src="<c:url value='/ckeditor/ckeditor.js' />" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
@@ -36,16 +37,28 @@ $(document).ready(function() {
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/board.css"/>
 <script type="text/javascript">
 	$(document).ready(function(){
+		
+		CKEDITOR.replace('bContent');
+		var instance = CKEDITOR.instances.bContent;
+		instance.updateElement();
+		CKEDITOR.config.height = 500;
+		
 		$("#edit_form").submit(function(event){
 			if($("#bTitle").val()==""){
 				alert("제목을 입력하세요");
 				$("#bTitle").focus();
 				event.preventDefault();
-			}else if($("#bContent").val()==''){
+			}else if(instance.getData() == ""){
+	            alert("내용을 입력하세요");
+	            $("#bContent").focus();
+	            return false;
+	         }
+			
+			/* else if($("#bContent").val()==''){
 				alert("내용을 입력하세요");
 				$("#bContent").focus();
 				event.preventDefault();
-			}
+			} */
 			if($("#bTitle").val().length>45){
 				alert("제목이 너무 깁니다");
 				$('#bTitle').focus();

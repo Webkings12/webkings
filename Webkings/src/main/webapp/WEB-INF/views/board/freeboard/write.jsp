@@ -8,22 +8,36 @@
 <script src="<c:url value='/ckeditor/ckeditor.js' />" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		//CKEDITOR.replace('bContent');
+		CKEDITOR.replace('bContent');
+		var instance = CKEDITOR.instances.bContent;
+		instance.updateElement();
+		CKEDITOR.config.height = 500;
+		
 		$("#write_form").submit(function(event){
 			if($("#bTitle").val()==""){
 				alert("제목을 입력하세요");
 				$("#bTitle").focus();
 				event.preventDefault();
-			}else if($("#bContent").val()==''){
+			}else if(instance.getData() == ""){
+	            alert("내용을 입력하세요");
+	            $("#bContent").focus();
+	            return false;
+	         }
+			/* else if($("#bContent").val().length<1){
 				alert("내용을 입력하세요");
 				$("#bContent").focus();
 				event.preventDefault();
-			}
+			} */
 			if($("#bTitle").val().length>45){
 				alert("제목이 너무 깁니다");
 				$('#bTitle').focus();
 				event.preventDefault();
 			}
+			
+			
+		     
+		     
+			
 		});
 		
 		$("#btSubmit").click(function(){

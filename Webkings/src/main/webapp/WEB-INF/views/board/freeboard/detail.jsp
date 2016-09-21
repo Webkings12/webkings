@@ -85,7 +85,7 @@ $(document).ready(function() {
 		</c:if>
 		<div>		
 				
-			<pre class="boardContent">${vo.bContent }</pre>
+			<pre class="boardContent" style="overflow: hidden;">${vo.bContent }</pre>
 		</div>
 		<div>
 			<div class="float_left">
