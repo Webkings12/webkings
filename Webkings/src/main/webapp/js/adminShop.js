@@ -18,7 +18,7 @@ $(document).ready(function() {
 						$.each(styleSel, function(idx, item) {
 						result+=
 						"<li class='shop  "+gender+" ia'><a href='javascript:;' seq='271'>"	+
-						"<input type='checkbox' id='chk' value='"+item.sNo+"' style='display:none;'/>"+
+						"<input type='checkbox' id='chk' name='chk' value='"+item.sNo+"' style='display:none;'/>"+
 						"<img src='/Webkings/shopImage/"+item.sSimage+"' " +
 						"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1471857259160_n1.jpg' class='item' style='display: block;'>"+
 						"<div class='over'><div class='btn'>";
@@ -146,6 +146,26 @@ $(document).ready(function() {
 				}
 			});
 			$(".aw-2").append(offName);
+			
+			/*전체 선택*/
+			$("div.body-sec>div.in-sec p#adminAll>a").click(function() {
+				var checkA="";
+				if($(this).find("input[type=checkbox]").is(":checked")==false){
+					$(this).find("input[type=checkbox]").prop("checked", true);
+					checkA=true;
+				}else{
+					$(this).find("input[type=checkbox]").prop("checked", false);
+					checkA=false;
+				}
+				if(checkA){
+					$("input:checkbox[name='chk']").prop("checked", true);
+					$(".item-list>li.shop>a").addClass("active");
+				}else{
+					$("input:checkbox[name='chk']").prop("checked", false);
+					$(".item-list>li.shop>a").removeClass("active");
+				}
+			});
+			
 			
 			/*샵 추가*/
 			$(".list-top-1>ul>li.order ul a").click(function() {

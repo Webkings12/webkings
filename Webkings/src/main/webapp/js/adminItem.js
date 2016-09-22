@@ -16,7 +16,7 @@ $(document).ready(function() {
 					result+=
 					"<li class='prod "+gender+"'>"+
 						"<a id='aaa1' href='javascript:;'  sseq='121' seq='1349867' maindate='20160908'>" +
-						"<input type='checkbox' id='chk' value='"+item.iNo+"' style='display:none;'/>"+
+						"<input type='checkbox' id='chk' name='chk' value='"+item.iNo+"' style='display:none;'/>"+
 						"<input type='hidden' id='itemiNo' name='iINo' value='"+item.iNo+"'>"+
 							"<img src='/Webkings/ItemImage/"+item.iImage+"' data-original='http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg'"+
 							"style='height: 340px; display: block;' class='item'>"+
@@ -144,6 +144,25 @@ $(document).ready(function() {
 			}else{
 				$(this).find("input:checkbox[id='chk']").prop("checked", true);
 				$(this).addClass("active");
+			}
+		});
+		
+		/*전체 선택*/
+		$("div.body-sec>div.in-sec p#adminAll>a").click(function() {
+			var checkA="";
+			if($(this).find("input[type=checkbox]").is(":checked")==false){
+				$(this).find("input[type=checkbox]").prop("checked", true);
+				checkA=true;
+			}else{
+				$(this).find("input[type=checkbox]").prop("checked", false);
+				checkA=false;
+			}
+			if(checkA){
+				$("input:checkbox[name='chk']").prop("checked", true);
+				$(".item-list>li.prod>a").addClass("active");
+			}else{
+				$("input:checkbox[name='chk']").prop("checked", false);
+				$(".item-list>li.prod>a").removeClass("active");
 			}
 		});
 });

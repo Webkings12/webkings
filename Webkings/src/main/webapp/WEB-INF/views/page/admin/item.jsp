@@ -20,6 +20,7 @@ var sep="${param.sep}";
 <script type="text/javascript" src="<c:url value='/js/adminItem.js'/>"></script>
 <div class="body-sec">
 <div class="in-sec">
+<p class="privacy-fixed" id="adminAll"><a href="javascript:;"><input type="checkbox" style="display: none;">전체선택</a></p>
 <p class="privacy-fixed" id="adminDelete"><a href="javascript:;">삭제</a></p>
 <p class="privacy-fixed" id="adminPf"><a href="<c:url value='/admin.do'/>">홈으로</a></p>
 	<div class="admin">

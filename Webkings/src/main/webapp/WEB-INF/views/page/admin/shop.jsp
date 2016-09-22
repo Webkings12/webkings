@@ -22,6 +22,7 @@ if(offVal=="0"){
 <script type="text/javascript" src="<c:url value='/js/adminShop.js'/>"></script>
 <div class="body-sec">
 <div class="in-sec">
+<p class="privacy-fixed" id="adminAll"><a href="javascript:;"><input type="checkbox" style="display: none;">전체선택</a></p>
 <c:if test="${offVal=='0'}">
 	<p class="privacy-fixed" id="adminDelete"><a href="javascript:;">삭제</a></p>
 </c:if>

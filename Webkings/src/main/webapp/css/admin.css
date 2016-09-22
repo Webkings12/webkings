@@ -118,6 +118,21 @@ float: left;
     display: block;
     opacity: .6;
 }
+div.body-sec>div.in-sec p#adminAll>a {
+    background-image: url(../images/select-brightness-button.png);
+    -webkit-background-size: 252px 234px;
+    -moz-background-size: 252px 234px;
+    -o-background-size: 252px 234px;
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    right: 82;
+    bottom: 310;
+    font-size: 0;
+    line-height: 0;
+}
 
 div.body-sec>div.in-sec p#adminDelete>a {
     background-image: url(../images/delete.png);
