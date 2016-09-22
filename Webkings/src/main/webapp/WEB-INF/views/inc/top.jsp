@@ -288,8 +288,8 @@ var searchList="";
 								</div>
 								<div class="certify">
 									<input type="text" placeholder="인증번호"
-										 id="certify" name="certify" style="width: 40%; height: 30px;" >
-									<a id="aCertify" style="width: 28%; height: 30px; font-size: 2.0ex">인증번호 받기</a>
+										 id="certify" name="certify" style="width: 49.6%; height: 41px;margin-left: 4;margin: 8px 4;s" >
+									<a id="aCertify" style="width: 28%; height: 30px; font-size: 2.1ex;margin-left: 9;">인증번호 받기</a>
 								</div>
 							</div>
 

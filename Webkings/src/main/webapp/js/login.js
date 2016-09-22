@@ -103,13 +103,23 @@ $(document).ready(function(){
 //이용약관
 
 $(document).ready(function(){
-	$(".tos label").click(function(event){
+	$(".tos label").click(function(){
 		if($(this).parents(".tos").find("input[type=checkbox]").is(":checked")==true){
+			alert("ㄴㄴㄴㄴ");
 			$(this).prop('checked', false);
 			$(this).parents(".tos").find("label").removeClass("active");
 		}else{
+			alert("ㅇㅇㅇ");
 			$(this).prop('checked', true);
 			$(this).parents(".tos").find("label").addClass("active");
+			
+		}
+		if($("#tos1").is(":checked")==true && $("#tos2").is(":checked")==true ){
+			alert("첫번째");
+			$("#bt1").prop("class", "active");
+		}else{
+			alert("두번째");
+			$("#bt1").prop("class","cancelbtn");
 		}
 	});
 	
@@ -139,6 +149,7 @@ $(document).ready(function(){
 		}
 		$("#divtos").css("display","none");
 		$(".tos label").removeClass("active");
+		$("input[type=checkbox]").prop('checked', false) ;
 		
 		$("#divreg").css("display","block");
 
