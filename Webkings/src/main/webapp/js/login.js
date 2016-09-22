@@ -151,6 +151,14 @@ $(document).ready(function(){
 		$("#divreg").css("display","block");
 
 	});
+	
+	$("#spantos").click(function () {
+		itemIn= 0;
+		$(".tos label").removeClass("active");
+		$("input[type=checkbox]").prop('checked', false) ;
+	    $("#regcancelbtn").prop("class","cancelbtn");
+	    $("#divtos").css("display","none");
+	})
 		
 });
 

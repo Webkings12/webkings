@@ -193,7 +193,7 @@ var searchList="";
 				<!-- 이용약관 시작 -->
 						
 					<div id="divtos" class="modal">
-					      <span onclick="document.getElementById('divtos').style.display='none'" class="close" title="Close Modal">&times;</span>
+					      <span id="spantos" class="close" title="Close Modal">&times;</span>
 					  <div class="amodel">
 					<div class="modal1">
 					    <div class="imgcontainer">
