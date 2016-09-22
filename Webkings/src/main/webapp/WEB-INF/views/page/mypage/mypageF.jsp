@@ -61,6 +61,9 @@ $(document).ready(function() {
 		alert("서비스 준비중입니다");
 	});
 
+	$("#follow").click(function() {
+		alert("서비스 준비중입니다");
+	});
 });
 </script>
 <%@ include file="../../inc/top.jsp" %>

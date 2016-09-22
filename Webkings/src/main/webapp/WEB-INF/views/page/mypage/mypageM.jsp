@@ -40,6 +40,10 @@ $(document).ready(function() {
 	$("#coupon").click(function() {
 		alert("서비스 준비중입니다");
 	});
+	
+	$("#follow").click(function() {
+		alert("서비스 준비중입니다");
+	});
 });
 </script>
 	
