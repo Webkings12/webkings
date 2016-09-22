@@ -95,7 +95,7 @@ $(document).ready(function() {
 						</c:if>
 					</tbody>
 				</table>
-				<button type="submit" class="cancelbtn">선택한 회원삭제</button>
+				<button type="submit" class="cancelbtn" id="delcancelbtn">선택한 회원삭제</button>
 			</div>
 </form>
 		<%@ include file="../../inc/adminFooter.jsp" %>

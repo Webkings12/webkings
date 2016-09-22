@@ -54,6 +54,20 @@ $(document).ready(function(){
 });
 
 //이미지 원으로
+function checkExt(file){
+      var fileName=file.value;
+      
+      var filter =/\.(jpg|gif|tif|bmp|png)$/i;
+      
+      if(filter.test(fileName)== false){
+         alert("이미지파일이 아닙니다.");
+         file.outerHTML = file.outerHTML;
+         $('#UploadedImg1').attr('src','<c:url value="/images/person-icon.png"/>');
+         return;
+      }
+      readURL1(file);
+}
+
 function readURL1(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -132,18 +146,18 @@ function readURL1(input) {
 					method="post" action="<c:url value='/admin/adminEdit.do'/>"
 					enctype="multipart/form-data">
 					<div class="imgcontainer">
-						<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
-								class="avatar">
+					      <h2 class="h2">회원정보수정</h2>
+					      <hr>
 					</div>
 					
 					<div class="imgfile1">
 
 						<div class="imgfile" style="margin-top: 50px; text-align: center;">
-								<img id="UploadedImg1" src="" style="width: 80px;height: 80px; border-radius: 40px"/>
+								<img id="UploadedImg1" src=""/>
 						</div>
 						<div style="text-align: center;">
 							<input type='file' name="upFile1" id="upFile1"
-								onchange="readURL1(this)" />
+								onchange="checkExt(this)" />
 								<input type="hidden" name="oldmImage" id="oldmImage">
 								<input type="hidden" name="mNo" id="mNo">
 						</div>
@@ -159,7 +173,9 @@ function readURL1(input) {
 					</div>
 						
 					</div>
-					<button type="submit" class="cancelbtn" style="width: 100%;">수정완료</button>
+					<div class="center">
+						<button type="submit" class="cancelbtn">수정완료</button>
+					</div>
 				</form>
 			</div>
 	</div>
