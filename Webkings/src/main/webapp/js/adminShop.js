@@ -91,7 +91,6 @@ $(document).ready(function() {
 						data:"shopValArray="+shopArray+"&gender="+gender,
 						dataType:"json",
 						success:function(res){
-							alert(res);
 							$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender+"&offVal="+offVal);
 						},
 					error:function(xhr, status, error){
@@ -123,7 +122,6 @@ $(document).ready(function() {
 						data:"shopValArray="+shopArray+"&gender="+gender,
 						dataType:"json",
 						success:function(res){
-							alert(res);
 							$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender+"&offVal="+offVal);
 						},
 					error:function(xhr, status, error){

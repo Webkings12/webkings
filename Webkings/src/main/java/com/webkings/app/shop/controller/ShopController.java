@@ -66,6 +66,7 @@ public class ShopController {
 		logger.info("shopSearchName={}",searchName);
 		ShopViewVO shopViewVo = new ShopViewVO();
 		shopViewVo.setStGender(gender);
+		logger.info("shopgender={}",shopViewVo.getStGender());
 		shopViewVo.setStName(style);
 		List<ShopViewVO> shopNew =null;
 		if(searchName == null || searchName.equals("")){

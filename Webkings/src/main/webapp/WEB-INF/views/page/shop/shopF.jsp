@@ -5,6 +5,7 @@
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
 var style="${style}";
+alert(style);
 var url ="<c:url value='/shop/shopStyle.do'/>";
 var searchName="${searchName}";
 </script>
