@@ -24,9 +24,7 @@ $(document).ready(function() {
 	$(".gender.m").click(function() {
 			gender="M";
 			page=$(".active #gnbPage").val();
-			
 			if(page==null || page==""){
-				
 				page="/search";
 			}
 			if($(".list-top-1 p").hasClass("notice-2")){
