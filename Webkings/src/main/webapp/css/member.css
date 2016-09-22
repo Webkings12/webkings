@@ -103,6 +103,7 @@ button {
 .amodel .imgcontainer h2{
 	font-size: 28;
 	margin-bottom: 20px;
+	color: black;
 }	
 .tos label:after{
 	content: "";
@@ -372,6 +373,7 @@ margin: 0 auto;
 .registerModel .h2{
 	font-size: 28;
     margin-bottom: 20px;
+    color: black;
 }
 .registerModel .imgcontainer{
 	    margin: 40px 0 12px 0;

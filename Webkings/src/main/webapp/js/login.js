@@ -16,7 +16,6 @@ $(document).ready(function(){
 			$("#mPwd1").focus();
 			return false;
 		}
-		
 		$("#divLogin").css("display","none");
 	});
 	
@@ -43,7 +42,6 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
 //회원수정 사진
 function readURL1(input) {
     if (input.files && input.files[0]) {
@@ -149,7 +147,7 @@ $(document).ready(function(){
 		$("#divtos").css("display","none");
 		$(".tos label").removeClass("active");
 		$("input[type=checkbox]").prop('checked', false) ;
-		
+		$("#regcancelbtn").prop("class","cancelbtn");
 		$("#divreg").css("display","block");
 
 	});
