@@ -21,10 +21,13 @@ $(document).ready(function() {
 						"<input type='checkbox' id='chk' value='"+item.sNo+"' style='display:none;'/>"+
 						"<img src='/Webkings/shopImage/"+item.sSimage+"' " +
 						"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1471857259160_n1.jpg' class='item' style='display: block;'>"+
-						"<div class='over'><div class='btn'>" +
-						"<span class='fb sns'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'>		" +
-						"</span><i>삭제</i></div>" +
-						"<div class='bg'></div>	</div>	<div class='info'>"	+
+						"<div class='over'><div class='btn'>";
+						if(offVal=="0"){
+						result+="<span class='fb sns'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'></span><i>삭제</i></div>";
+						}else{
+						result+="<span class='fbadd sns'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'></span><i>추가</i></div>";
+						}
+						result+="<div class='bg'></div>	</div>	<div class='info'>"	+
 						"<strong><i>"+(idx+1)+"위</i>"+item.sName+"</strong>	<span><i cate='206'>"+item.stName+"</i></span>	<em class=''></em>	</div>"+
 						"</a></li>";
 						});

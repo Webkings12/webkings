@@ -21,7 +21,12 @@ if(offVal=="0"){
 <script type="text/javascript" src="<c:url value='/js/adminShop.js'/>"></script>
 <div class="body-sec">
 <div class="in-sec">
-<p class="privacy-fixed" id="adminDelete"><a href="javascript:;">삭제</a></p>
+<c:if test="${offVal=='0'}">
+	<p class="privacy-fixed" id="adminDelete"><a href="javascript:;">삭제</a></p>
+</c:if>
+<c:if test="${offVal=='1' }">
+	<p class="privacy-fixed" id="adminAdd"><a href="javascript:;">추가</a></p>
+</c:if>
 <p class="privacy-fixed" id="adminPf"><a href="<c:url value='/admin.do'/>">홈으로</a></p>
 <div>
 <div class="list-top-1">
