@@ -103,7 +103,29 @@ $(document).ready(function(){
 //이용약관
 
 $(document).ready(function(){
-	$("#bt1").click(function(event){
+	$(".tos label").click(function(event){
+		if($(this).parents(".tos").find("input[type=checkbox]").is(":checked")==true){
+			$(this).prop('checked', false);
+			$(this).parents(".tos").find("label").removeClass("active");
+		}else{
+			$(this).prop('checked', true);
+			$(this).parents(".tos").find("label").addClass("active");
+		}
+	});
+	
+	
+	
+
+	/*$(".tos #tos2").click(function(event){
+		if($("#tos2").is(":checked")==true){
+			$(this).find("input[type=checkbox]").prop('checked', false);
+			$(this).removeClass("active");
+		}else{
+			$(this).find("input[type=checkbox]").prop('checked', true);
+			$(this).addClass("active");
+		}
+	});*/
+	$(".amodel .cancelbtn").click(function() {
 		if(!$("#tos1").is(":checked")){
 			alert("이용약관에 동의하셔야 합니다.");
 			$("#divtos").css("display","block");
@@ -115,11 +137,13 @@ $(document).ready(function(){
 			$("#tos2").focus();
 			return false;
 		}
-
 		$("#divtos").css("display","none");
+		$(".tos label").removeClass("active");
+		
 		$("#divreg").css("display","block");
 
 	});
+		
 });
 
 // 비밀번호 찾기

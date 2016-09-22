@@ -255,7 +255,7 @@ var searchList="";
 
 				<div id="divreg" class="modal">
 				 <span onclick="document.getElementById('divreg').style.display='none'" class="close" title="Close Modal">&times;</span>
-					<div class="amodel">
+					<div class="registerModel">
 						<form id="form1" class="modal-content animate"
 							action="<c:url value="/member/register.do"/>" method="post"
 							enctype="multipart/form-data">

@@ -244,7 +244,25 @@ span.psw {
 .container{
 	text-align: center;
 }
-
+.tos label.active:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(0,-50%);
+    -moz-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    right: 12px;
+    background-image: url(../images/chkF.png);
+    -webkit-background-size: 258px 223px;
+    -moz-background-size: 258px 223px;
+    -o-background-size: 258px 223px;
+    background-size: 13px 10px;
+    background-repeat: no-repeat;
+    width: 13px;
+    height: 10px;
+}
 .tos label{
 	margin-left:20;
 	  cursor: pointer;
@@ -295,6 +313,15 @@ span.psw {
     height: 450;
 	border-radius: 10px;
 }
+
+.registerModel{
+	background-color: #fefefe;
+    margin: 10% auto 15% auto;
+    border: 1px solid #888;
+    width: 480;
+    height: 650;
+    border-radius: 10px;
+}
 .amodel .cancelbtn{
 	    margin: 0;
     width: 83.4%;
@@ -324,13 +351,13 @@ span.psw {
 	border-radius: 10px 10px 10px 10px;
 }
 .imgfile{
-	margin:0 auto;
-	width:80px; 
-	height:80px;
-	-webkit-border-radius:40px;
-	-moz-border-radius:40px;
-	border-radius: 40px;
-	border: 0.3px solid silver;
+margin: 0 auto;
+    width: 140px;
+    height: 140px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 75px;
+    border: 0.3px solid silver;
 }
 
 .h2{
@@ -404,7 +431,7 @@ span.psw {
 	text-align: center;
 }
 .imgfile{
-	margin-top: 50px;
+	margin-top: 22px;
 }
 .divedit{
 	padding-left: 50px;
@@ -421,9 +448,9 @@ span.psw {
 }
 
 #UploadedImg{
-	width:80px;
-	height:80px;
-  	border-radius:40px;
+width: 100%;
+    height: 100%;
+    border-radius: 75px;
 }
 #UploadedImg1{
 	width:80px;
