@@ -323,7 +323,7 @@ $(document).ready(function() {
 												</div>
 											</div></td>
 										</tr>
-										<tr>
+										<!-- tr>
 											<th><strong>유입 추적코드</strong></th>
 											<td colspan="3"><div class="inSec">
 												<table class="form" style="width:960px">
@@ -373,7 +373,7 @@ $(document).ready(function() {
 												</ul>
 											</div></td>
 										</tr>
-										<tr>
+										<tr> -->
 											<th><strong>일반 쇼핑몰 설명 문구</strong><span class="required">*</span></th>
 											<td><div class="inSec">
 												<label for="label-txt1" class="label-txt1 hd-lab">공백포함 40자</label>
@@ -387,7 +387,7 @@ $(document).ready(function() {
 												<input name="adShopDescription" value="" type="text" id="label-txt2" fieldname="광고 쇼핑몰 설명 문구" restrictutf8bytes="200" class="htxt1 hd-lab __required" style="width: 95%;">
 											</div></td>
 										</tr>
-										<tr>
+										<!-- tr>
 											<th><strong>호스팅사 선택</strong><span class="required">*</span></th>
 											<td><div class="inSec">
 												<ul class="inputList">
@@ -406,7 +406,7 @@ $(document).ready(function() {
 											<td><div class="inSec">
 												<input name="hostingEtc" value="" type="text" fieldname="호스팅사 기타" restrictutf8bytes="30" class="htxt1" disabled="disabled" style="width: 100px;">
 											</div></td>
-										</tr>
+										</tr> -->
 										<tr>
 											<th><strong>검색수 검색어</strong></th>
 											<td><div class="inSec">
@@ -759,11 +759,11 @@ $(document).ready(function() {
 									</tbody>
 								</table>
 							</div>
-							<div class="titTabSec">
+							<!-- div class="titTabSec">
 								<h2>고객센터 정보</h2>
-							</div>
+							</div> -->
 							<div class="boardList1 mgb30">
-								<table class="form">
+								<!-- table class="form">
 									<colgroup>
 										<col width="160">
 										<col width="*">
@@ -849,7 +849,7 @@ $(document).ready(function() {
 											</div></td>
 										</tr>
 									</tbody>
-								</table>
+								</table> -->
 							</div>
 							<div class="tcenter">
 								<input type="submit" value="기업회원 가입" class="sys-btn sys-btn-type2">
