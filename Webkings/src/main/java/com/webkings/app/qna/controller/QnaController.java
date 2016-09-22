@@ -155,10 +155,17 @@ public class QnaController {
 		return "board/qna/list";
 	}
 	@RequestMapping("/listView.do")
-	public String qnaListView(SearchVO searchVo,@RequestParam(defaultValue="F") String gender,Model model){
+	public String qnaListView(SearchVO searchVo,HttpSession session,@RequestParam(defaultValue="F") String gender,Model model){
 		//1. 파라미터 읽어오기
+		String mType=(String)session.getAttribute("mType");
+		String mEmail=(String)session.getAttribute("mEmail");
+		if(!mType.equals("0")){
+			searchVo.setSearchKeyword(mEmail);
+			searchVo.setSearchCondition("m_email");
+		}
 		logger.info("글목록 조회, 파라미터 searchVo={}",
 				searchVo);
+		
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(10); //블록사이즈

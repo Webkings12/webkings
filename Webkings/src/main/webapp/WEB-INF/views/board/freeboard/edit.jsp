@@ -71,6 +71,30 @@ $(document).ready(function() {
 			$("#edit_form").submit();
 		});
 	});
+	
+	function checkExt(file){
+		var fileName=file.value;
+		
+		var filter =/\.(jpg|gif|tif|bmp|png)$/i;
+		
+		if(filter.test(fileName)== false){
+			alert("이미지파일이 아닙니다.");
+			file.outerHTML = file.outerHTML;
+			$('#upBoardImage').attr('src','');
+			return;
+		}
+		boardImage(file);
+	}
+	
+	function boardImage(input) {
+	    if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	        reader.onload = function (e) {
+	            $('#upBoardImage').attr('src', e.target.result);
+	        }
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	}
 </script>
 
 
@@ -86,11 +110,9 @@ $(document).ready(function() {
 		<div class="align_center bTitle">
 			<strong>제목</strong><input type="text" id="bTitle" name="bTitle" class="top_Padding" value="${vo.bTitle }"><strong>45</strong>자 제한
 		</div>
-		<div class="divContent">
-			<textarea id="bContent" name="bContent">${vo.bContent }</textarea>
-		</div>
-		<div>
-			<input type="file" name="upfile" accept=".jpg,.png,.gif">
+		<img id="upBoardImage">
+		<div class="align_left">
+			<input type="file" name="upfile" onchange="checkExt(this)">
 			<c:if test="${!empty vo.bFilename }">
          		<p style="color:green;">
          			※첨부파일을 새로 지정할 경우 기존파일
@@ -98,6 +120,10 @@ $(document).ready(function() {
          		</p>
          	</c:if>
 		</div>	
+		<div class="divContent">
+			<textarea id="bContent" name="bContent">${vo.bContent }</textarea>
+		</div>
+		
 		<br>			
 		<div class="btn">
 			<a id="btSubmit" class="btn_default btn_light btn_large btn_BaW" href="#">수정</a>

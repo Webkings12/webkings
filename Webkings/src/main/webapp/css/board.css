@@ -126,8 +126,8 @@
 .top_Padding{
 	padding-top: 10px;
 }
-.bTitle{
-	margin-bottom: 5px;
+.bTitle input[type=text]{
+	padding: 5px;
 }
 .boardContent{
 		border: 1px solid #CECECE;
@@ -348,4 +348,10 @@ img, fieldset {
 
 #bContent{
 	height: 600px;
+}
+
+#upBoardImage{
+	max-width: 698px;
+	margin-bottom: 15px;
+	border: 1px solid lightgray;
 }
