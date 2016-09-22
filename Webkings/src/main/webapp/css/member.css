@@ -509,12 +509,12 @@ margin: 0 auto;
 }
 
 .editModel input[type=file] {
-    margin-top: 295;
+    margin-top: 375;
     border: 0;
     font-size: 13;
     margin-bottom: 10;
-    width: 100px;
-    height:100px;
+    width: 110px;
+    height: 110px;
     left: 50%;
     transform: translate(-50%,0);
     top: 0;
