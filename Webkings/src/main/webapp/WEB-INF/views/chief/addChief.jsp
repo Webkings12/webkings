@@ -84,9 +84,9 @@ $(document).ready(function() {
 			var C_PWD = $('#C_PWD').val();
 			var C_PWD_re = $('#C_PWD-re').val();
 			
-			alert("C_PWD = " + C_PWD);
-			
-			if( $(this).attr('id') == "C_PWD" || $(this).attr('id') == "C_PWD-re" ) {
+			if( $(this).attr('id') == "C_PWD"  ) {
+				return false;				
+			} else if ( $(this).attr('id') == "C_PWD-re" ) {
 				if( C_PWD ==  C_PWD_re ) {
 					$('#C_PWD_RESULT').html("일치");
 				} else {
@@ -186,7 +186,7 @@ $(document).ready(function() {
 												<br>sta1.com (<strong style="color:#0000ff">O</strong>)
 											</div></td>
 										</tr>
-										<tr>
+										<!-- <tr>
 											<th><strong>모바일 사이트 유무</strong><span class="required">*</span></th>
 											<td colspan="3"><div class="inSec">
 												<ul>
@@ -221,7 +221,7 @@ $(document).ready(function() {
 											<td><div class="inSec"><input name="mobUrl" value="http://" type="text" fieldname="모바일 쇼핑몰 연결 URL 주소" restrictutf8bytes="80" forcestartwith="http://" checkfunctionname="checkUrl" class="htxt1 __required __noQuestionMark __noAmpersand" style="width: 400px;">
 											<span class="mgl10">http:// 로 시작하는 완전한 URL을 입력하세요. 모바일 URL이 없으면 웹과 동일하게 입력하세요. (추적코드는 입력하지마세요.)</span>
 											</div></td>
-										</tr>
+										</tr> -->
 										<tr>
 											<th><strong>쇼핑몰 대표 이미지</strong><span class="required">*</span></th>
 											<td><div class="inSec">
