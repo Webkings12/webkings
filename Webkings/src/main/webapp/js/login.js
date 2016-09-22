@@ -103,22 +103,20 @@ $(document).ready(function(){
 //이용약관
 
 $(document).ready(function(){
+	var itemIn= 0;
 	$(".tos label").click(function(){
 		if($(this).parents(".tos").find("input[type=checkbox]").is(":checked")==true){
-			alert("ㄴㄴㄴㄴ");
 			$(this).prop('checked', false);
 			$(this).parents(".tos").find("label").removeClass("active");
+			itemIn+=-1;
 		}else{
-			alert("ㅇㅇㅇ");
 			$(this).prop('checked', true);
 			$(this).parents(".tos").find("label").addClass("active");
-			
+			itemIn+=1;
 		}
-		if($("#tos1").is(":checked")==true && $("#tos2").is(":checked")==true ){
-			alert("첫번째");
-			$("#bt1").prop("class", "active");
+		if(itemIn==2){
+				$("#bt1").prop("class", "active");
 		}else{
-			alert("두번째");
 			$("#bt1").prop("class","cancelbtn");
 		}
 	});
