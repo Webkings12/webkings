@@ -1,6 +1,7 @@
 <%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../../inc/top.jsp" %>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
@@ -46,7 +47,12 @@ $(document).ready(function() {
 				style="height: 340px; display: block;" class="item">
 				<div class="info">	<span class="shop">${i.sName}</span>		
 				<span class="name">${i.iName}</span>	<em class='cate' cate="101">${i.itName}</em>
-				<i>${i.iSalePrice}</i>	
+				<c:if test="${!empty i.iSalePrice}">
+						<i><s><fmt:formatNumber value="${i.iPrice}" pattern="#,###" /></s><fmt:formatNumber value="${i.iSalePrice}" pattern="#,###"/> </i>
+				</c:if>
+				<c:if test="${empty i.iSalePrice}">
+						<i><fmt:formatNumber value="${i.iPrice}" pattern="#,###" /></i>
+				</c:if>
 					<div class="btn">
 					<span class="fb">
 						<input type='hidden' id='fbTitle' value="${i.iName }"/>

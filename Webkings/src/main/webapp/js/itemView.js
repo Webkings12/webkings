@@ -2,6 +2,10 @@
  * 
  */
 $(document).ready(function() {
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+	
 	var iNo="";
 	var sNo="";
 	var itemDo="";
@@ -14,6 +18,7 @@ $(document).ready(function() {
 				success:function(res){
 				itemSel = res.itemList;
 				nItemSel = res.nItemList;
+				
 					var result =	
 					"<li class='bnr-1'>"+
 						"<a href='https://play.google.com/store/apps/details?id=com.cjenm.sknights&hl=ko' target='_blank'>"+
@@ -39,9 +44,9 @@ $(document).ready(function() {
 								"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 									"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em>";
 									if(item.iSalePrice!=null){
-										result+="<i><s>"+item.iPrice+"</s>"+item.iSalePrice+"</i>";
+										result+="<i><s>"+numberWithCommas(item.iPrice)+"</s>"+numberWithCommas(item.iSalePrice)+"</i>";
 									}else{
-										result+="<i>"+item.iPrice+"</i>";
+										result+="<i>"+numberWithCommas(item.iPrice)+"</i>";
 									}
 									result+="<div class='btn'>"+
 										"<span class='fb'>" +
@@ -69,6 +74,7 @@ $(document).ready(function() {
 									"</div>"+
 									"</li>";
 					$.each(itemSel, function(idx, item) {
+						
 						result+=
 						"<li class='prod "+item.itGender+" ia' id='prod2'>"+
 							"<a id='aaa' href='http://"+item.iDomain+"' target='_blank' sseq='121' seq='1349867' maindate='20160908'>"+
@@ -80,9 +86,9 @@ $(document).ready(function() {
 								"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 									"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em>";
 									if(item.iSalePrice!=null){
-										result+="<i><s>"+item.iPrice+"</s>"+item.iSalePrice+"</i>";
+										result+="<i><s>"+numberWithCommas(item.iPrice)+"</s>"+numberWithCommas(item.iSalePrice)+"</i>";
 									}else{
-										result+="<i>"+item.iPrice+"</i>";
+										result+="<i>"+numberWithCommas(item.iPrice)+"</i>";
 									}
 									result +=
 									"<div class='btn'>"+

@@ -68,7 +68,12 @@ $(document).ready(function() {
 				<span class="favor" id="favor1">관심상품</span>
 				<div class="info">	<span class="shop" style="color:#e6178f;">${item.sName}</span>		
 				<span class="name">${item.iName}</span>	<em class='cate' cate="101">${item.itName}</em>
-				 <i>${item.iSaleprice}</i>	
+					<c:if test="${!empty item.iSaleprice}">
+						<i><s><fmt:formatNumber value="${item.iPrice}" pattern="#,###" /></s><fmt:formatNumber value="${item.iSaleprice}" pattern="#,###"/> </i>
+				</c:if>
+				<c:if test="${empty item.iSaleprice}">
+						<i><fmt:formatNumber value="${item.iPrice}" pattern="#,###" /></i>
+				</c:if>
 					<div class="btn">
 					<span class="fb">
 						<input type='hidden' id='fbTitle' value="${item.iName }"/>

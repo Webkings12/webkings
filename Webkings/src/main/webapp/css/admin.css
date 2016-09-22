@@ -389,6 +389,8 @@ body>div.header div.shadow div.in-sec {
     position: relative;
     width: 1416px;
    padding-top: 16px;
+   padding-bottom: 150px;
+   
 }
 div.body-sec>div.in-sec p.privacy-fixed {
     position: fixed;

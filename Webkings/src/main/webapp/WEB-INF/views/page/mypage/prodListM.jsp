@@ -45,7 +45,12 @@ $(document).ready(function() {
 				style="height: 340px; display: block;" class="item">
 				<div class="info">	<span class="shop">${i.sName}</span>		
 				<span class="name">${i.iName}</span>	<em class='cate' cate="101">${i.itName}</em>
-				<i>${i.iSalePrice}</i>	
+				<c:if test="${!empty i.iSalePrice}">
+						<i><s><fmt:formatNumber value="${i.iPrice}" pattern="#,###" /></s><fmt:formatNumber value="${i.iSalePrice}" pattern="#,###"/> </i>
+				</c:if>
+				<c:if test="${empty i.iSalePrice}">
+						<i><fmt:formatNumber value="${i.iPrice}" pattern="#,###" /></i>
+				</c:if>
 					<div class="btn">
 					<span class="fb">
 						<input type='hidden' id='fbTitle' value="${i.iName }"/>

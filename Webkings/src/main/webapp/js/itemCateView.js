@@ -2,6 +2,9 @@
  * 
  */
 $(document).ready(function() {
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 			 $.ajax({
 				url:url,
 				type:"GET",
@@ -32,9 +35,9 @@ $(document).ready(function() {
 							"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em>" ;
 									if(item.iSalePrice!=null){
-										result+="<i><s>"+item.iPrice+"</s>"+item.iSalePrice+"</i>";
+										result+="<i><s>"+numberWithCommas(item.iPrice)+"</s>"+numberWithCommas(item.iSalePrice)+"</i>";
 									}else{
-										result+="<i>"+item.iPrice+"</i>";
+										result+="<i>"+numberWithCommas(item.iPrice)+"</i>";
 									}	
 									result+="<div class='btn'>"+
 									"<span class='fb'>" +
