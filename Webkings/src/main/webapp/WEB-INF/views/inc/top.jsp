@@ -156,7 +156,7 @@ var searchList="";
 						</c:if>					
 						<c:if test="${!empty sessionScope.mEmail }">
 							<li><a>${sessionScope.mNick}님</a></li>
-							<li><a href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
+							<li><a href="javascript:void(0);" onclick="logout()">로그아웃</a></li>
 						</c:if>
 						</ul>
 					<%-- </c:if> --%>
@@ -645,5 +645,11 @@ var GoogleApp = {
             }
           });
         };
+        
+        function logout(){
+          	 Kakao.Auth.logout(function(){
+           		location.href="/Webkings//member/logout.do";
+           	});
+           };
 
   </script>
