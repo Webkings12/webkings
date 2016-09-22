@@ -76,7 +76,9 @@
 	<select id="shopNostyle" parameterType="ShopViewVO" resultType="ShopViewVO">
 		 select * from shopnoView
 		where 1=1
+		<if test='stGender neq ""'>
 		and st_gender=#{stGender}
+		</if>
 		<if test='stName neq "all" and stName neq "" and stName neq "쇼핑몰 전체"'>
 			and st_name = #{stName}
 		</if>
