@@ -553,9 +553,11 @@ $(document).ready(function(){
 				}
 			});
 		}
-		 if(pwdCheck=="2"){
+		if(pwdCheck=="0"){
+			return true; 
+		else {
 			return false; 
-		} 
+		}
 	});
 });
 </script>
