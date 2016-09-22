@@ -273,9 +273,7 @@ span.psw {
 .toss+label{
 	padding: 10px;
 }
-.container1 {
-   
-}
+
 .reg{
 	padding-left:10px;
 	text-align: center;
@@ -323,11 +321,11 @@ span.psw {
     border-radius: 10px;
 }
 .registerModel input[type=file]{
-	   width: 70%;
+	width: 70%;
     margin-top: 20;
     border: 0;
     font-size: 13;
-        margin-bottom: 10;
+    margin-bottom: 10;
 }
 .registerModel .reg input[type=text]{
 	    margin: 0;
@@ -438,15 +436,16 @@ margin: 0 auto;
 .divp {
     margin: 0 auto;
     margin-top: 50;
-    margin-bottom: 40;
-    border: 2px solid silver;
-    width: 300px;
+    margin-bottom: 15;
+    border: 1px solid #e4e6e9;
+    width: 370px;
 }
 .divp p{
 	text-align:center;
 	font-size: 13px;
 }
 .h2{
+	color:#e6178f;
 	text-align: center;
 }
 #inquit{
@@ -477,27 +476,89 @@ margin: 0 auto;
 	text-align: center;
 }
 
-#memberQuit, #memberfind{
-	color: #492147;
-	border: 1px solid silver;
-	background-color: white;
-	width: 70%;
-	height: 30px;
-	text-align: center;
-}
-
 #UploadedImg{
-width: 100%;
+	width: 100%;
     height: 100%;
     border-radius: 75px;
 }
-#UploadedImg1{
-	width:80px;
-	height:80px;
-  	border-radius:40px;
+
+#UploadedImg1 {
+    width: 130px;
+    height:130px;
+    position: relative;
+    margin: 0 auto;
+    border-radius: 75px;
+    overflow: hidden;
+ 
 }
-#UploadedImg2{
-	width:80px;
-	height:80px;
-  	border-radius:40px;
+#delPwd{
+	width: 370px;
 }
+
+.editModel{
+	background-color: #fefefe;
+    margin: 10% auto 15% auto;
+    border: 1px solid #888;
+    width: 460;
+    height: 600;
+    border-radius: 10px;
+}
+.editModel input[type=text]{
+	width: 370px;
+	padding: 12px 20px;
+}
+
+.editModel input[type=file] {
+    margin-top: 295;
+    border: 0;
+    font-size: 13;
+    margin-bottom: 10;
+    width: 100px;
+    height:100px;
+    left: 50%;
+    transform: translate(-50%,0);
+    top: 0;
+    z-index: 1;
+    opacity: 0;
+    position: absolute;
+}
+.editModel .h2 {
+    font-size: 28;
+    margin-bottom: 20px;
+}
+
+.Quitamodel{
+    background-color: #fefefe;
+    margin: 10% auto 15% auto;
+    border: 1px solid #888;
+    width: 480;
+    height: 510;
+    border-radius: 10px;
+}
+.Quitamodel .cancelbtn, .editModel .cancelbtn{
+	text-align:center;
+	width: 370px;
+}
+
+#memberfind , #memberQuit{
+/* 	line-height: 40px;
+    text-indent: 12px; */
+    text-decoration: none;
+    cursor: pointer;
+    width: 80;
+    color: #e6178f;
+    background-color: white;
+    height: 30px;
+    float: left;
+    margin: 10px 0 0 37;
+    padding-left: 50;
+}
+#amodelEditfind .cancelbtn{
+	text-align: center;
+    width: 330;
+    margin-left: 4;
+}
+.divp h2{
+	padding-bottom: 10px;
+}
+

@@ -451,7 +451,7 @@ $(document).ready(function(event){
 				<!--  회원정보 수정 -->
 	<div id="divEdit" class="modal">
 			
-			<div class="amodel">
+			<div class="editModel">
 				<span
 				onclick="document.getElementById('divEdit').style.display='none'"
 				class="close" title="Close Modal">&times;</span>
@@ -459,18 +459,17 @@ $(document).ready(function(event){
 					method="post" action="<c:url value='/member/memberEdit.do?gender=${gender}'/>"
 					enctype="multipart/form-data">
 					<div class="imgcontainer">
-						<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
-								class="avatar">
+						<h2 class="h2">회원정보수정</h2>
 					</div>
-					
+					<hr>
 					<div class="imgfile1">
 
-						<div class="imgfile" style="margin-top: 50px;">
+						<div class="imgfile">
 							<c:if test="${!empty sessionScope.mImage}">
-								<img id="UploadedImg1" src="<c:url value='/user_images/${sessionScope.mImage}'/>" style="width: 80px;height: 80px; border-radius: 40px"/>
+								<img id="UploadedImg1" src="<c:url value='/user_images/${sessionScope.mImage}'/>"/>
 							</c:if>
 							<c:if test="${empty sessionScope.mImage}">
-								<img id="UploadedImg2" src="<c:url value='/user_images/person-icon.png'/>" style="width: 80px;height: 80px; border-radius: 40px"/>
+								<img id="UploadedImg1" src="<c:url value='/user_images/person-icon.png'/>"/>
 							</c:if>
 						</div>
 						<div style="text-align: center;">
@@ -483,10 +482,13 @@ $(document).ready(function(event){
 					<div class="reg"><input type="text" name="mNick"
 							placeholder="닉네임" id="mNick" value="${sessionScope.mNick}">
 					</div>
-							<a id="memberfind"><p>비밀번호 변경</p></a>
-							 <a id="memberQuit"><p>회원탈퇴</p></a>
+					<div class="reg">
+							<a id="memberfind">비밀번호 변경</a><a id="memberQuit">회원탈퇴</a>
 					</div>
-					<button type="submit" class="cancelbtn" style="width: 100%;">수정완료</button>
+					</div>
+					<div class="container">
+						<button type="submit" class="cancelbtn">수정완료</button>
+					</div>
 				</form>
 			</div>
 	</div>
@@ -494,24 +496,26 @@ $(document).ready(function(event){
 	<!-- 비밀번호 변경 -->
 	<div id="divEditfind" class="modal">
 			
-		<div class="amodel">
+		<div class="amodel" id="amodelEditfind">
 		<span
 				onclick="document.getElementById('divEditfind').style.display='none'"
 				class="close" title="Close Modal">&times;</span>
 		<form  action="<c:url value="/member/memberEditfind.do"/>" method="post" id="formEditfind">
 			<div class="imgcontainer">
-				<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
-					class="avatar">
+				<h2 class="h2">비밀번호 변경</h2>
 			</div>
+			<hr>
 			<div class="reg" style="margin-top: 50px;">
 				<input type="text" placeholder="예전비밀번호" name="oldPwd" id="oldPwd">
-				<input type="text" name="chkPwd" id="chkPwd" value="${sessionScope.mPwd}">
+				<input type="hidden" name="chkPwd" id="chkPwd" value="${sessionScope.mPwd}">
 			</div>
 			<div class="reg">
 				<input type="text" placeholder="바꾸실비밀번호" name="mMPwd" id="m_Pwd">
 				<input type="hidden" name="mEmail" id="mEmail" value="${sessionScope.mEmail}">
 			</div>
-			<button type="submit" class="cancelbtn" id="cancelbtn" style="width: 100%;">비밀번호 변경</button>
+			<div class="container">
+				<button type="submit" class="cancelbtn" id="cancelbtn">비밀번호 변경</button>
+			</div>
 		</form>
 		</div>
 	</div>
@@ -542,7 +546,6 @@ $(document).ready(function(){
 				success:function(res){
 					if(res==1){
 						alert("탈퇴"); 	
-						/* location.href="/Webkings/admin.do"; */
 					}else if (res==2) {
 						alert("비밀번호가 다릅니다");
 					}
@@ -553,8 +556,9 @@ $(document).ready(function(){
 				}
 			});
 		}
-		if(pwdCheck=="0"){
-			return true; 
+		if(pwdCheck=="1"){
+			return true;
+		}
 		else {
 			return false; 
 		}
@@ -564,7 +568,7 @@ $(document).ready(function(){
 <%-- <form action="<c:url value='/page.do'/>" method="get" id="formPage"></form> --%>
 		<div id="divQuit1" class="modal">
 			
-		<div class="amodel">
+		<div class="Quitamodel">
 		<span
 				onclick="document.getElementById('divQuit1').style.display='none'"
 				class="close" title="Close Modal">&times;</span>
@@ -576,20 +580,23 @@ $(document).ready(function(){
 			<div class="divp">
 			<h2 class="h2">다음 안내사항을 확인해주세요</h2>
 			<p>
-				탈퇴 후 회원정보 및 개인형 서비스 정보는<br>
-				 모두 삭제 됩니다.<br>
+				탈퇴 후 회원정보 및 개인형 서비스 정보는모두 삭제 됩니다.<br>
 				가입시 입력한 정보 : 이메일, 닉네임, 생년월일, 성별<br> 
 				서비스 이용 정보 : Point, 친구쇼핑몰목록, 관심상품<br>
 				삭제된 정보는 복구 불가능합니다.</p>
 			</div>
-			<div class="reg">
+			<div class="tos">
 				<input type="checkbox" id="inquit" name="inquit">
 				<label for="inquit">내용을 확인하였으며, 이에 동의합니다.</label>
-				<input type="password" name="mPwd" id="delPwd">
-				 <input type="hidden" name="mEmail" value="${sessionScope.mEmail}">
+			</div>
+			<div style="text-align: center;">
+				<input type="password" name="mPwd" id="delPwd" placeholder="비밀번호 확인">
+				 <input type="hidden" name="mEmail" value="${sessionScope.mEmail}" >
 				 <input type="hidden" name="mImage" value="${sessionScope.mImage }">
 			</div>
-			<button type="submit" class="cancelbtn" id="cancelbtn" style="width: 100%;">회원탈퇴</button>
+			<div class="container">
+				<button type="submit" class="cancelbtn" id="cancelbtn">회원탈퇴</button>
+			</div>	
 		</form>
 		</div>
 	</div>
@@ -693,7 +700,7 @@ var GoogleApp = {
         
         function logout(){
           	 Kakao.Auth.logout(function(){
-           		location.href="/Webkings//member/logout.do";
+           		location.href="/Webkings/member/logout.do";
            	});
            };
 

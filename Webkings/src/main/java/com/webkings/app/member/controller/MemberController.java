@@ -281,6 +281,7 @@ public class MemberController {
 		vo.setmPwd(mMPwd);
 		
 		int cnt=memberService.updatePwd(vo);
+		session.removeAttribute("mPwd");
 		session.setAttribute("mPwd", vo.getmPwd());
 		String msg="";
 		if(cnt>0){
