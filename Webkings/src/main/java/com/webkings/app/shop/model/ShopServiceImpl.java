@@ -92,7 +92,6 @@ public class ShopServiceImpl implements ShopService{
 		return shopDao.shopNoStyle(shopViewVo);
 	}
 	
-	
 	public int insertShop(ShopVO shopVo) {
 		return shopDao.insertShop(shopVo);
 	}

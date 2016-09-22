@@ -79,7 +79,7 @@ public class AdminShopController {
 	}
 	
 	@RequestMapping("/adminShopDel.do")
-	public String adminItemView(@RequestParam int sNo, @RequestParam String gender, Model model){
+	public String adminItemView(@RequestParam int sNo, @RequestParam String gender,@RequestParam String offVal, Model model){
 		
 		int cnt = shopService.shopDel(sNo);
 		
@@ -87,10 +87,29 @@ public class AdminShopController {
 		String url="";
 		if(cnt>0){
 			msg="삭제 성공";
-			url="/adminShopView.do?gender="+gender;
+			url="/adminShopView.do?gender="+gender+"&offVal="+offVal;
 		}else{
 			msg="삭제 실패";
-			url="/adminShopView.do?gender="+gender;
+			url="/adminShopView.do?gender="+gender+"&offVal="+offVal;
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("url",url);
+		return "common/message";
+	}
+	
+	@RequestMapping("/adminShopAdd.do")
+	public String adminItemAdd(@RequestParam int sNo, @RequestParam String gender,@RequestParam String offVal, Model model){
+		
+		int cnt = shopService.ShopAdd(sNo);
+		
+		String msg="";
+		String url="";
+		if(cnt>0){
+			msg="추가 성공";
+			url="/adminShopView.do?gender="+gender+"&offVal="+offVal;
+		}else{
+			msg="추가 실패";
+			url="/adminShopView.do?gender="+gender+"&offVal="+offVal;
 		}
 		model.addAttribute("msg",msg);
 		model.addAttribute("url",url);
@@ -107,4 +126,17 @@ public class AdminShopController {
 		logger.info("다중 업데이트 확인 cnt={}",cnt);
 		return cnt;
 	}
+	
+	
+	@RequestMapping("/adminShopMultiAdd.do")
+	@ResponseBody
+	public int  shopMultiAdd(@RequestParam List<Integer> shopValArray, Model model){
+		List<Integer> spList =shopValArray;
+		
+		int cnt = shopService.shopMultiAdd(spList);
+		
+		logger.info("다중 업데이트 확인 cnt={}",cnt);
+		return cnt;
+	}
+	
 }

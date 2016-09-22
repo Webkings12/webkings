@@ -23,7 +23,7 @@ $(document).ready(function() {
 						"data-original='http://img.sta1.kr/_up/shop/logo/2016/08/1471857259160_n1.jpg' class='item' style='display: block;'>"+
 						"<div class='over'><div class='btn'>";
 						if(offVal=="0"){
-						result+="<span class='fb sns'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'></span><i>삭제</i></div>";
+						result+="<span class='fb sns'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'></span><i>제거</i></div>";
 						}else{
 						result+="<span class='fbadd sns'><input type='hidden' id='inputsNo' name='sNo' value='"+item.sNo+"'></span><i>추가</i></div>";
 						}
@@ -47,13 +47,25 @@ $(document).ready(function() {
 				 $(".option-sec-2 input[type=text]").focus();
 			 }
 			 
-			
-			$(".item-list>li.shop .over .btn span").click(function(e) {
+			/*개별삭제*/
+			$(".item-list>li.shop .over .btn span.fb").click(function(e) {
 				e.stopPropagation();
 				e.preventDefault(); 
 				var sNo= $(this).find("input").val();
-					if (confirm("리스트에서 제거 하시겠습니까?") == true){    //확인
-						$(location).attr('href', "/Webkings/adminShopDel.do?sNo="+sNo+"&gender="+gender);
+					if (confirm("비활성화 시키겠습니까?") == true){    //확인
+						$(location).attr('href', "/Webkings/adminShopDel.do?sNo="+sNo+"&gender="+gender+"&offVal="+offVal);
+					}else{   //취소
+					    return;
+					}
+			});
+			
+			/*개별추가*/
+			$(".item-list>li.shop .over .btn span.fbadd").click(function(e) {
+				e.stopPropagation();
+				e.preventDefault(); 
+				var sNo= $(this).find("input").val();
+					if (confirm("활성화 시키겠습니까?") == true){    //확인
+						$(location).attr('href', "/Webkings/adminShopAdd.do?sNo="+sNo+"&gender="+gender+"&offVal="+offVal);
 					}else{   //취소
 					    return;
 					}
@@ -80,7 +92,39 @@ $(document).ready(function() {
 						dataType:"json",
 						success:function(res){
 							alert(res);
-							$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender);
+							$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender+"&offVal="+offVal);
+						},
+					error:function(xhr, status, error){
+						alert(error);
+					}
+					});
+				}else{   //취소
+				    return;
+				}
+			});
+			
+			/*다중 추가*/
+			$("div.body-sec>div.in-sec p#adminAdd>a").click(function() {
+				var count = $(".item-list>li.shop>a input[type=checkbox]:checked").length;
+				
+				if(count==0){
+					alert("활성화 시킬 샵을 먼저 체크하세요");
+					return false;
+				}
+				var shopArray=[];
+				$(".item-list>li.shop>a input:checkbox[id='chk']:checked").each(function() {
+					shopArray.push($(this).val());
+				});
+				if (confirm("샵을 활성화 시키겠습니까?") == true){    //확인
+					$.ajax({
+						url:MultiAddUrl,
+						type:"POST",
+						async:false,
+						data:"shopValArray="+shopArray+"&gender="+gender,
+						dataType:"json",
+						success:function(res){
+							alert(res);
+							$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender+"&offVal="+offVal);
 						},
 					error:function(xhr, status, error){
 						alert(error);

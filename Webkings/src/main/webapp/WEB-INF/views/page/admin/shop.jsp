@@ -7,6 +7,7 @@ var style="${style}";
 var url ="<c:url value='/adminShopSel.do'/>";
 var searchName="${searchName}";
 var MultiDelUrl="<c:url value='/adminShopMultiDel.do'/>";
+var MultiAddUrl="<c:url value='/adminShopMultiAdd.do'/>";
 var offSelUrl="<c:url value='/adminOffShop.do'/>";
 var offVal="${offVal}";
 </script>
