@@ -559,7 +559,7 @@ $(document).ready(function(){
 	});
 });
 </script>
-<form action="<c:url value='/page.do'/>" method="get" id="formPage"></form>
+<%-- <form action="<c:url value='/page.do'/>" method="get" id="formPage"></form> --%>
 		<div id="divQuit1" class="modal">
 			
 		<div class="amodel">
