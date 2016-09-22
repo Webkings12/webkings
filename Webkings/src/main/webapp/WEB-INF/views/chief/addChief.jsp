@@ -94,7 +94,63 @@ $(document).ready(function() {
 				}
 			}
 		});
-	})
+	});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {	
+	$(".img_file_onchange").on('change', function() {
+		alert(".img_file_onchange fnc");
+		var imgloc = "";
+		if( $(this).attr('id') == "logoFile1"  ) {
+			imgloc = "preImgSec1";
+		} else if ( $(this).attr('id') == "logoFile2"  ) {
+			imgloc = "preImgSec2";
+		} else if ( $(this).attr('id') == "adLogoFile1"  ) {
+			imgloc = "preImgSec3";
+		} else if ( $(this).attr('id') == "adLogoFile2"  ) {
+			imgloc = "preImgSec4";
+		};
+		alert("imgloc = " + imgloc);
+        ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+
+        //배열에 추출한 확장자가 존재하는지 체크
+        if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+            resetFormElement($(this)); //폼 초기화
+            window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+        };
+        
+        if(imgloc == "preImgSec1") {
+        	alert("arrive if 1");
+        	file = $(this).prop("files")[0];
+            blobURL = window.URL.createObjectURL(file);
+            $('#preImgSec1 img').attr('src', blobURL);
+            $('#preImgSec1').slideDown(); //업로드한 이미지 미리보기 
+            $(this).slideUp(); //파일 양식 감춤
+        } else if(imgloc == "preImgSec2") {
+        	alert("arrive if 2");
+        	file = $(this).prop("files")[0];
+            blobURL = window.URL.createObjectURL(file);
+            $('#preImgSec2 img').attr('src', blobURL);
+            $('#preImgSec2').slideDown(); //업로드한 이미지 미리보기 
+            $(this).slideUp(); //파일 양식 감춤
+        } else if(imgloc == "preImgSec3") {
+        	alert("arrive if 3");
+        	file = $(this).prop("files")[0];
+            blobURL = window.URL.createObjectURL(file);
+            $('#preImgSec3 img').attr('src', blobURL);
+            $('#preImgSec3').slideDown(); //업로드한 이미지 미리보기 
+            $(this).slideUp(); //파일 양식 감춤
+        } else if(imgloc == "preImgSec4") {
+        	alert("arrive if 4");
+        	file = $(this).prop("files")[0];
+            blobURL = window.URL.createObjectURL(file);
+            $('#preImgSec4 img').attr('src', blobURL);
+            $('#preImgSec4').slideDown(); //업로드한 이미지 미리보기 
+            $(this).slideUp(); //파일 양식 감춤
+        }
+
+	 });
 });
 </script>
 <body>
@@ -227,8 +283,10 @@ $(document).ready(function() {
 											<td><div class="inSec">
 												<div class="imgInputSec mgb30">
 													<p class="tit">일반 쇼핑몰 대표 이미지</p>
-													<div id="preImgSec1" class="noImgSec" style="width: 115px; height: 170px;"></div>
-													<div id="preImgSec2" class="noImgSec" style="width: 115px; height: 170px;"></div>
+													<div id="preImgSec1" class="noImgSec" style="width: 115px; height: 170px;">
+													</div>
+													<div id="preImgSec2" class="noImgSec" style="width: 115px; height: 170px; float:left;">
+													</div>
 													<div class="hspace1"></div>
 													<ul class="mgb10">
 														<li>* 등록하실 이미지 사이즈는 230*340 픽셀로 등록하셔야 합니다.</li>
@@ -236,13 +294,11 @@ $(document).ready(function() {
 													</ul>
 													<div class="file">
 														<input type="text" class="htxt1" style="width: 300px;" readonly="readonly">
-														<a href="javascript:;" class="sys-btn sys-btn-type3">찾아보기</a>
-														<input name="logoFile1" type="file" fieldname="첫번째 쇼핑몰 대표 이미지" allowfileext="jpg,jpeg" class="hfile1 opa0 __required" onchange="previewImage(this,'preImgSec1','115*170');">
+														<input id="logoFile1" name="logoFile1" type="file" accept=".jpg,.png,.gif,.jpeg" class="img_file_onchange" >
 													</div>
 													<div class="file">
 														<input type="text" class="htxt1" style="width: 300px;" readonly="readonly">
-														<a href="javascript:;" class="sys-btn sys-btn-type3">찾아보기</a>
-														<input name="logoFile2" type="file" fieldname="두번째 쇼핑몰 대표 이미지" allowfileext="jpg,jpeg" notequaltoel="logoFile1" class="hfile1 opa0" onchange="previewImage(this,'preImgSec2','115*170');">
+														<input id="logoFile2" name="logoFile2" type="file" accept=".jpg,.png,.gif,.jpeg" class="img_file_onchange" >
 													</div>
 												</div>
 												<div class="imgInputSec mgb30">
@@ -257,12 +313,12 @@ $(document).ready(function() {
 													<div class="file">
 														<input type="text" class="htxt1" style="width: 300px;" readonly="readonly">
 														<a href="javascript:;" class="sys-btn sys-btn-type3">찾아보기</a>
-														<input name="adLogoFile1" type="file" fieldname="첫번째 광고용 쇼핑몰 대표 이미지" allowfileext="jpg,jpeg" class="hfile1 opa0 __required" onchange="previewImage(this,'preImgSec3','236*170');">
+														<input name="adLogoFile1" type="file" accept=".jpg,.png,.gif,.jpeg" class="img_file_onchange" >
 													</div>
 													<div class="file">
 														<input type="text" class="htxt1" style="width: 300px;" readonly="readonly">
 														<a href="javascript:;" class="sys-btn sys-btn-type3">찾아보기</a>
-														<input name="adLogoFile2" type="file" fieldname="두번째 광고용 쇼핑몰 대표 이미지" allowfileext="jpg,jpeg" notequaltoel="adLogoFile1" class="hfile1 opa0" onchange="previewImage(this,'preImgSec4','236*170');">
+														<input name="adLogoFile2" type="file" accept=".jpg,.png,.gif,.jpeg" class="img_file_onchange" >
 													</div>
 												</div>
 											</div></td>

@@ -28,8 +28,15 @@ public class ShopVO {
 	private String s_Payyn;	//결제확인유무
 	private Timestamp s_Regdate;	//쇼핑몰등록일
 	private Timestamp s_Chgdate;	//쇼핑몰수정일
+	private int C_NO;
 	
 	//get//set
+	public int getC_NO() {
+		return C_NO;
+	}
+	public void setC_NO(int C_NO) {
+		this.C_NO = C_NO;
+	}
 	public int getS_No() {
 		return s_No;
 	}
@@ -177,7 +184,7 @@ public class ShopVO {
 				+ ", s_Gender=" + s_Gender + ", s_Age=" + s_Age + ", s_Style=" + s_Style + ", s_Staff=" + s_Staff
 				+ ", s_Dep=" + s_Dep + ", s_Position=" + s_Position + ", s_Tel=" + s_Tel + ", s_Phone=" + s_Phone
 				+ ", s_Email=" + s_Email + ", s_Hit=" + s_Hit + ", s_Accyn=" + s_Accyn + ", s_Accdate=" + s_Accdate
-				+ ", s_Payyn=" + s_Payyn + ", s_Regdate=" + s_Regdate + ", s_Chgdate=" + s_Chgdate + "]";
+				+ ", s_Payyn=" + s_Payyn + ", s_Regdate=" + s_Regdate + ", s_Chgdate=" + s_Chgdate + ", C_NO =" + C_NO + "]";
 	}
 	
 }

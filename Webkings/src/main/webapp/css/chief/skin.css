@@ -676,3 +676,26 @@ label.hd-lab {
     padding: 10px 0 0 54px;
 }
 
+.hfile1 {
+    position: relative;
+    width: 64px;
+    height: 26px;
+    left: -66px;
+    cursor: pointer;
+}
+
+input.img_file_onchange {
+    border: 1px solid #dbdbdb;
+    height: 25px;
+    padding: 2px 0 1px 10px;
+}
+
+.imgInputSec .noImgSec {
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 230px;
+    height: 340px;
+    border: 1px solid #838383;
+    background-color: #f9fafb;
+    overflow: hidden;
+}
