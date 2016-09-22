@@ -3,6 +3,7 @@
  */
 // 로그인
 $(document).ready(function(){
+	$("#regcancelbtn").prop("class","cancelbtn");
 	$("#formLogin").submit(function(){
 		if($("#mEmail1").val().length<1){
 			alert("이메일을 입력하세요.");
@@ -15,7 +16,6 @@ $(document).ready(function(){
 			$("#mPwd1").focus();
 			return false;
 		}
-		
 		$("#divLogin").css("display","none");
 	});
 	
@@ -42,7 +42,6 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
 //회원수정 사진
 function readURL1(input) {
     if (input.files && input.files[0]) {
@@ -115,9 +114,9 @@ $(document).ready(function(){
 			itemIn+=1;
 		}
 		if(itemIn==2){
-				$("#bt1").prop("class", "active");
+			$("#regcancelbtn").prop("class", "active");
 		}else{
-			$("#bt1").prop("class","cancelbtn");
+			$("#regcancelbtn").prop("class","cancelbtn");
 		}
 	});
 	
@@ -148,7 +147,7 @@ $(document).ready(function(){
 		$("#divtos").css("display","none");
 		$(".tos label").removeClass("active");
 		$("input[type=checkbox]").prop('checked', false) ;
-		
+		$("#regcancelbtn").prop("class","cancelbtn");
 		$("#divreg").css("display","block");
 
 	});
