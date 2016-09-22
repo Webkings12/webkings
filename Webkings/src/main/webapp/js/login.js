@@ -133,7 +133,7 @@ $(document).ready(function(){
 			$(this).addClass("active");
 		}
 	});*/
-	$(".amodel .cancelbtn").click(function() {
+	$(".amodel #regcancelbtn").click(function() {
 		if(!$("#tos1").is(":checked")){
 			alert("이용약관에 동의하셔야 합니다.");
 			$("#divtos").css("display","block");

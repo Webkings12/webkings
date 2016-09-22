@@ -219,7 +219,7 @@ var searchList="";
 					    </div>
 					</div>
 					    <div class="container" >
-					      <button type="button" id="bt1" class="cancelbtn">다음</button>
+					      <button type="button" id="regcancelbtn" class="cancelbtn">다음</button>
 					    </div>
 					</div>
 				</div>
@@ -355,9 +355,9 @@ $(document).ready(function(event){
 		$("#divLogin").css("display","none");
 		$("#divfind").css("display","block");
 	});
+	
 });
 </script>
-
 
 					<div id="divLogin" class="modal">
 						<span
@@ -518,13 +518,55 @@ $(document).ready(function(event){
 	
 	<!-- 비밀번호 변경 끝-->
 	<!-- 회원 탈퇴 -->
+<script type="text/javascript">
+$(document).ready(function(){
+	var pwdCheck="";
+	$("#formQuit").submit(function(event){
+		if(!$("#inquit").is(":checked")){
+			alert("탈퇴약관에 동의하셔야 합니다.");
+			$("#divQuit").css("display","block");
+			$("#inquit").focus();
+			return false;
+		}else if($("#delPwd").val().length<1){
+			alert("비밀번호를 입력하세요.");
+			$("#divQuit").css("display","block");
+			$("#delPwd").focus();
+			return false;
+		}else{				
+			$.ajax({
+				url:"<c:url value='/member/memberQuit.do'/>",
+				type:"POST",
+				async:false,
+				data:$(this).serialize(), //요청 파라미터
+				dataType:"json",
+				success:function(res){
+					if(res==1){
+						alert("탈퇴"); 	
+						/* location.href="/Webkings/admin.do"; */
+					}else if (res==2) {
+						alert("비밀번호가 다릅니다");
+					}
+					pwdCheck=res;
+				},
+				error:function(xhr, status, error){
+					alert(error);
+				}
+			});
+		}
+		 if(pwdCheck=="2"){
+			return false; 
+		} 
+	});
+});
+</script>
+<form action="<c:url value='/page.do'/>" method="get" id="formPage"></form>
 		<div id="divQuit1" class="modal">
 			
 		<div class="amodel">
 		<span
 				onclick="document.getElementById('divQuit1').style.display='none'"
 				class="close" title="Close Modal">&times;</span>
-		<form  action="<c:url value="/member/memberQuit.do"/>" method="post" id="formQuit">
+		<form method="post" id="formQuit">
 			<div class="imgcontainer">
 				<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
 					class="avatar">
@@ -541,6 +583,7 @@ $(document).ready(function(event){
 			<div class="reg">
 				<input type="checkbox" id="inquit" name="inquit">
 				<label for="inquit">내용을 확인하였으며, 이에 동의합니다.</label>
+				<input type="password" name="mPwd" id="delPwd">
 				 <input type="hidden" name="mEmail" value="${sessionScope.mEmail}">
 				 <input type="hidden" name="mImage" value="${sessionScope.mImage }">
 			</div>
