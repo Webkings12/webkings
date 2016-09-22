@@ -39,7 +39,7 @@ $(document).ready(function() {
 			<c:forEach var="i" items="${item.value}">
 		
 	<li class="prod ${gender} ia" id="prod2" style="list-style: none;">
-		<a href="http://${ item.iDomain}" sseq="121" seq="1349867" maindate="20160908">
+		<a href="http://${ i.iDomain}" sseq="121" seq="1349867" maindate="20160908">
 		<input type="hidden" id="itemiNo" name="iNo" value="${i.iNo }">
 			<img src="<c:url value='/ItemImage/${i.iImage}'/>" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"
 				style="height: 340px; display: block;" class="item">
