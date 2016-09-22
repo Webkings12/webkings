@@ -16,8 +16,8 @@ $(document).ready(function() {
 				nItemSel = res.nItemList;
 					var result =	
 					"<li class='bnr-1'>"+
-						"<a href='http://naver.com' target='_blank'>"+
-						"<img src='' class='item'></a>"+
+						"<a href='https://play.google.com/store/apps/details?id=com.cjenm.sknights&hl=ko' target='_blank'>"+
+						"<img src='http://img.sta1.info/rsc/front/img/bnr-1.png' class='item'></a>"+
 					"</li>";
 					
 					result +="<li class='date' id='date1'>"+
