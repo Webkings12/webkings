@@ -3,6 +3,7 @@
  */
 // 로그인
 $(document).ready(function(){
+	$("#regcancelbtn").prop("class","cancelbtn");
 	$("#formLogin").submit(function(){
 		if($("#mEmail1").val().length<1){
 			alert("이메일을 입력하세요.");
@@ -115,9 +116,9 @@ $(document).ready(function(){
 			itemIn+=1;
 		}
 		if(itemIn==2){
-				$("#bt1").prop("class", "active");
+			$("#regcancelbtn").prop("class", "active");
 		}else{
-			$("#bt1").prop("class","cancelbtn");
+			$("#regcancelbtn").prop("class","cancelbtn");
 		}
 	});
 	
