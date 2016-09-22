@@ -184,16 +184,21 @@ public class MemberController {
 	
 	
 	@RequestMapping("/memberQuit.do")
-	public String memberQuit_post(HttpServletRequest request,HttpSession session ,@RequestParam(defaultValue="") String mImage,
-			@RequestParam(defaultValue="") String mEmail){
-		logger.info("회원탈퇴처리 mEmail={},mImage={}",mEmail,mImage);
+	@ResponseBody
+	public int memberQuit_post(HttpServletRequest request,HttpSession session,
+			@ModelAttribute MemberVo membervo){
+		logger.info("회원탈퇴처리 membervo={}",membervo);
 		
-		int cnt=memberService.deleteMember(mEmail);
+		int result=memberService.loginCheck(membervo);
+		logger.info("result={}",result);
+		if(result==MemberService.LOGIN_OK){
+		
+		int cnt=memberService.deleteMember(membervo.getmEmail());
 		logger.info("회원탈퇴처리결과 cnt={}",cnt);
 		
 			String upPath=fileUtil.getUploadPath(request, fileUtil.IMAGE_UPLOAD);
 		
-			File delfile= new File(upPath, mImage);
+			File delfile= new File(upPath, membervo.getmImage());
 			if(delfile.exists()){
 				boolean bool= delfile.delete();
 				logger.info("파일 삭제 결과={}",bool);	
@@ -206,8 +211,8 @@ public class MemberController {
 			session.removeAttribute("mType");
 			session.removeAttribute("mPwd");
 		
-		
-		return "redirect:/page.do";
+		}
+		return result;
 		
 	}
 	
