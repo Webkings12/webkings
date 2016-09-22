@@ -22,6 +22,7 @@
 		<![CDATA[
 			and to_char(s_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
 		]]>
+		and 
 	</select>
 	
 	<select id="shopSelCount" parameterType="String" resultType="int">
@@ -50,11 +51,37 @@
 		and s_no = #{sNo}
 	</update>
 	
+	<update id="shopAdd" parameterType="int">
+		update shop
+		set s_payyn = 'Y' 
+		where 1=1
+		and s_no = #{sNo}
+	</update>
+	
 	<select id="shopNoSel" parameterType="int" resultType="ShopViewVO">
 	    select * from shopView
 		where 1=1
 		and s_no = #{sNo}
 	</select>	
+	
+	<select id="shopNosNoSel" parameterType="int" resultType="ShopViewVO">
+	    select * from shopnoView
+		where 1=1
+		and s_no = #{sNo}
+	</select>	
+	
+	<select id="shopNostyle" parameterType="ShopViewVO" resultType="ShopViewVO">
+		 select * from shopnoView
+		where 1=1
+		and st_gender=#{stGender}
+		<if test='stName neq "all" and stName neq "" and stName neq "쇼핑몰 전체"'>
+			and st_name = #{stName}
+		</if>
+		<if test="searchKeyword neq ''">
+		 	and s_name like upper('%' || #{searchKeyword} ||  '%')
+		</if>
+		order by s_click desc
+	</select>
 	
 	<insert id="insertFreeBoard" parameterType="FreeBoardVO">
 		<selectKey order="BEFORE" keyProperty="sNo" resultType="int">

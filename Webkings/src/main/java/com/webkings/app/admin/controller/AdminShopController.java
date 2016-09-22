@@ -34,22 +34,25 @@ public class AdminShopController {
 	
 	public static final Logger logger = LoggerFactory.getLogger(AdminShopController.class);
 	@RequestMapping("/adminShopView.do")
-	public String adminShopView(@RequestParam String gender, @RequestParam(defaultValue="all") String style, 
-			@RequestParam(required=false) String searchName, Model model){
-		
+	public String adminShopView(@RequestParam(defaultValue="F") String gender, @RequestParam(defaultValue="all") String style, 
+			@RequestParam(required=false) String searchName, @RequestParam(defaultValue="0") String offVal, Model model){
+		if(offVal.equals("")){
+			offVal="0";
+		}
 		List<StyleVO> styleList = styleService.selectStyle(gender);
 		
 		model.addAttribute("styleList", styleList);
 		model.addAttribute("gender", gender);
 		model.addAttribute("style", style);
 		model.addAttribute("searchName", searchName);
+		model.addAttribute("offVal", offVal);
 		return "page/admin/shop";
 	}
 	
 	@RequestMapping("/adminShopSel.do")
 	@ResponseBody
-	public Map<String, Object> shopStyle(@RequestParam String gender, @RequestParam String style, 
-			@RequestParam(required=false) String searchName, Model model){
+	public Map<String, Object> shopStyle(@RequestParam(defaultValue="F") String gender, @RequestParam String style, 
+			@RequestParam(required=false) String searchName,@RequestParam String offVal, Model model){
 		logger.info("샵 param data ={},{}",gender , style);
 		logger.info("shopSearchName={}",searchName);
 		
@@ -64,9 +67,12 @@ public class AdminShopController {
 		}else{
 			shopViewVo.setSearchKeyword(searchName);
 		}
-		
-		List<ShopViewVO> shopList = shopService.shopStyle(shopViewVo);
-		
+		List<ShopViewVO> shopList =null;
+		if(offVal.equals("0")){
+			shopList = shopService.shopStyle(shopViewVo);
+		}else{
+			shopList =shopService.shopNoStyle(shopViewVo);
+		}
 		Map<String, Object> resMap = new HashMap<String, Object>();
 		resMap.put("shopList", shopList);
 		return resMap;

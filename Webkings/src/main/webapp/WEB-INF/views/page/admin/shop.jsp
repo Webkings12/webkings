@@ -7,6 +7,16 @@ var style="${style}";
 var url ="<c:url value='/adminShopSel.do'/>";
 var searchName="${searchName}";
 var MultiDelUrl="<c:url value='/adminShopMultiDel.do'/>";
+var offSelUrl="<c:url value='/adminOffShop.do'/>";
+var offVal="${offVal}";
+</script>
+<script type="text/javascript">
+var offName="";
+if(offVal=="0"){
+	offName="활성화";
+}else{
+	offName="비활성화";
+}
 </script>
 <script type="text/javascript" src="<c:url value='/js/adminShop.js'/>"></script>
 <div class="body-sec">
@@ -16,6 +26,16 @@ var MultiDelUrl="<c:url value='/adminShopMultiDel.do'/>";
 <div>
 <div class="list-top-1">
 <p class="sep">샵 관리</p>
+<ul>
+			<li class="order" style="right: 200; top: 36;">
+				<a href="javascript:;" class="aw-2"></a>
+				<ul>
+					<li><a href="javascript:;"><input type="hidden" value="0">활성화</a></li>
+					<li><a href="javascript:;"><input type="hidden" value="1">비활성화</a></li>
+				</ul>
+			</li>
+</ul>
+
 		<div class="tab-type-1">
 			<ul>
 			<li>
@@ -28,15 +48,15 @@ var MultiDelUrl="<c:url value='/adminShopMultiDel.do'/>";
 									남성
 								</c:if> 
 								</a> </dt>
-								<dd><a href="/Webkings/adminShopView.do?gender=F">
+								<dd><a href="/Webkings/adminShopView.do?gender=F&offVal=${offVal}">
 										<em>여성</em></a></dd>
-								<dd><a href="/Webkings/adminShopView.do?gender=M">
+								<dd><a href="/Webkings/adminShopView.do?gender=M&offVal=${offVal}">
 										<em>남성</em></a></dd>
 					</dl>
 				</li>
 				<li class="active">
 					<dl class="shop-cate-sel">
-						<dt><a href="/Webkings/shop/shopView.do?gender=F&style=${style}&searchName=${style}">
+						<dt><a href="/Webkings/adminShopView.do?gender=${gender}&style=${style}&searchName=${style}&offVal=${offVal}">
 						<c:if test="${style ne 'all'}">
 						 ${style}
 						</c:if>
@@ -44,10 +64,10 @@ var MultiDelUrl="<c:url value='/adminShopMultiDel.do'/>";
 						 쇼핑몰 전체
 						</c:if> 
 						</a></dt>
-					<dd><a href="/Webkings/shop/shopView.do?gender=F&searchName=${searchName}"><em>쇼핑몰 전체</em></a></dd>
+					<dd><a href="/Webkings/adminShopView.do?gender=${gender}&searchName=${searchName}&offVal=${offVal}"><em>쇼핑몰 전체</em></a></dd>
 					<c:forEach var="StyleVO" items="${styleList}">
 						<dd>
-							<a href="/Webkings/shop/shopView.do?gender=F&style=${StyleVO.stName}&searchName=${searchName}">
+							<a href="/Webkings/adminShopView.do?gender=${gender}&style=${StyleVO.stName}&searchName=${searchName}&offVal=${offVal}">
 								<em>${StyleVO.stName}</em>
 							</a>
 						</dd>

@@ -9,6 +9,11 @@ public interface ShopDAO {
 	public int shopClickUpdate(String sNo);
 	public List<ShopViewVO>latelyshoplist(int sNo);
 	public int shopDel(int sNo);
+	public int ShopAdd(int sNo);
 	public ShopViewVO shopsNoSel(int sNo);
+	public ShopViewVO shopNosNoSel(int sNo);
+	public List<ShopViewVO> shopNoStyle(ShopViewVO shopViewVo);
+	
+	
 	public int insertShop(ShopVO shopVo);
 }

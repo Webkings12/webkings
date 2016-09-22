@@ -6,7 +6,7 @@ $(document).ready(function() {
 			 $.ajax({
 				url:url,
 				type:"GET",
-				data: "gender="+gender+"&style="+style+"&searchName="+searchName,
+				data: "gender="+gender+"&style="+style+"&searchName="+searchName+"&offVal="+offVal,
 				async:false,
 				dataType:"json",
 				success:function(res){
@@ -56,7 +56,6 @@ $(document).ready(function() {
 					}
 			});
 			
-			
 			/*다중 삭제*/
 			$("div.body-sec>div.in-sec p#adminDelete>a").click(function() {
 				var count = $(".item-list>li.shop>a input[type=checkbox]:checked").length;
@@ -99,8 +98,15 @@ $(document).ready(function() {
 					$(this).addClass("active");
 				}
 			});
+			$(".aw-2").append(offName);
+			
+			/*샵 추가*/
+			$(".list-top-1>ul>li.order ul a").click(function() {
+				offVal=$(this).find("input[type=hidden]").val();
+				$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender+"&offVal="+offVal);
+			});
 });
 function enterSearch(){
 	searchName = $(".option-sec-2 input[type=text]").val();
-	$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender+"&style="+style+"&searchName="+searchName);
+	$(location).attr('href', "/Webkings/adminShopView.do?gender="+gender+"&style="+style+"&searchName="+searchName+"&offVal="+offVal);
 }

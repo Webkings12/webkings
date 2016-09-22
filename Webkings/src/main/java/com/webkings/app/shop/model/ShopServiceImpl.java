@@ -61,8 +61,39 @@ public class ShopServiceImpl implements ShopService{
 		}
 		return cnt;
 	}
+	@Override
+	public int shopMultiAdd(List<Integer> spList) {
+	int cnt =0;
+		
+		try {
+			for (int sNo : spList) {
+				cnt = shopDao.ShopAdd(sNo);
+			}
+			
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			cnt=-1;
+		}
+		return cnt;
+	}
+	@Override
+	public int ShopAdd(int sNo) {
+		return shopDao.ShopAdd(sNo);
+	}
+
+
+	@Override
+	public ShopViewVO shopNosNoSel(int sNo) {
+		return shopDao.shopNosNoSel(sNo);
+	}
+
+	@Override
+	public List<ShopViewVO> shopNoStyle(ShopViewVO shopViewVo) {
+		return shopDao.shopNoStyle(shopViewVo);
+	}
+	
+	
 	public int insertShop(ShopVO shopVo) {
 		return shopDao.insertShop(shopVo);
 	}
-	
 }
