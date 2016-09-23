@@ -145,11 +145,11 @@ public class AdminFreeboardController {
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(10); //블록사이즈
-		pagingInfo.setRecordCountPerPage(15); //페이지에 보여줄 레코드수
+		pagingInfo.setRecordCountPerPage(10); //페이지에 보여줄 레코드수
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage()); //현제 페이지
 		
 		searchVo.setBlockSize(10); 
-		searchVo.setRecordCountPerPage(15);
+		searchVo.setRecordCountPerPage(10);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex()); //시작 레코드
 				
 		//2. db작업 - select
@@ -200,11 +200,11 @@ public class AdminFreeboardController {
 		
 		PaginationInfo pagingInfo = new PaginationInfo();
 		pagingInfo.setBlockSize(10); //블록사이즈
-		pagingInfo.setRecordCountPerPage(15); //페이지에 보여줄 레코드수
+		pagingInfo.setRecordCountPerPage(10); //페이지에 보여줄 레코드수
 		pagingInfo.setCurrentPage(searchVo.getCurrentPage()); //현제 페이지
 		
 		searchVo.setBlockSize(10); 
-		searchVo.setRecordCountPerPage(15);
+		searchVo.setRecordCountPerPage(10);
 		searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex()); //시작 레코드
 				
 		//2. db작업 - select

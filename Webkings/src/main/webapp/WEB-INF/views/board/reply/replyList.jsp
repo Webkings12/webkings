@@ -22,6 +22,7 @@
 		
 		obj=document.getElementById(res);
 		if(obj.style.display=="none"){
+			$(".toggle").css("display","none");
 			obj.style.display="inline";
 		}else{
 			obj.style.display="none";
@@ -62,7 +63,7 @@
 		 		<td>
 		 			<span>${rVo.rContent}</span>
 		 			<a id="rereply${rVo.rNo }" onclick="reToggle(${rVo.rNo })" style="font-size: 0.8em;color: #CC66FF;" >-답글</a>
-		 			<div style="display: none;" id="toggle${rVo.rNo }" style="margin-top: 15px">
+		 			<div style="display: none;" class="toggle" id="toggle${rVo.rNo }" style="margin-top: 15px">
 		 			
 		 				<form action="<c:url value='/reply/write2.do'/>" name="rereplyWrite${rVo.rNo }" id="rereplyWrite${rVo.rNo }" method="post">
 		 					<input type="hidden"  name="rGbn" value="${rVo.rGbn }"  />
@@ -95,7 +96,7 @@
 		 				<a id="replyDel" href="<c:url value='/reply/delete.do?rNo=${rVo.rNo }&bNo=${rVo.bNo }'/>">X</a>
 		 			</c:if>
 		 			</span>
-		 			<div style="display: none;" id="toggle${rVo.rNo }" style="margin-top: 15px">
+		 			<div style="display: none;" class="toggle" id="toggle${rVo.rNo }" style="margin-top: 15px">
 		 			
 		 				<form action="<c:url value='/reply/write2.do'/>" name="rereplyWrite${rVo.rNo }" id="rereplyWrite${rVo.rNo }" method="post">
 		 					<input type="hidden"  name="rGbn" value="${rVo.rGbn }"  />

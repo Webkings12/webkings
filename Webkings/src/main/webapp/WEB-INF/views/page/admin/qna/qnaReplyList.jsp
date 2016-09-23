@@ -22,6 +22,7 @@
 		
 		obj=document.getElementById(res);
 		if(obj.style.display=="none"){
+			$(".toggle").css("display","none");
 			obj.style.display="inline";
 		}else{
 			obj.style.display="none";
@@ -62,13 +63,13 @@
 		 		<td>
 		 			<span>${qrVo.qrContent}</span>
 		 			<a id="rereply${qrVo.qrNo }" onclick="reToggle(${qrVo.qrNo })" style="font-size: 0.8em;color: #CC66FF;" >-답글</a>
-		 			<div style="display: none;" id="toggle${qrVo.qrNo }" style="margin-top: 15px">
+		 			<div style="display: none;" class="toggle" id="toggle${qrVo.qrNo }" style="margin-top: 15px">
 		 			
 		 				<form action="<c:url value='/admin/qnaReply/write2.do'/>" name="rereplyWrite${qrVo.qrNo }" id="rereplyWrite${qrVo.qrNo }" method="post">
 		 					<input type="hidden"  name="qrGbn" value="${qrVo.qrGbn }"  />
 		 					<input type="hidden"  name="qrNoGroup" value="${qrVo.qrNoGroup }"  />
 		 					<input type="hidden"  name="qNo" value="${qrVo.qNo }"  />
-            				<textarea class="rContent" name="qrContent" id="rerContent${qrVo.qrNo }" rows="1" cols="70"></textarea></span>
+            				<textarea class="rContent" name="qrContent" id="rerContent${qrVo.qrNo }" rows="1" cols="70"></textarea>
            					 <input type="button" class="btn_default btReReply" id="btReply" onclick="replySend(${qrVo.qrNo })" value="등록">
 		 				</form>
 		 				
@@ -91,13 +92,13 @@
 		 			|<fmt:formatDate value="${qrVo.qrRegdate }" pattern="yyyy-MM-dd"/>
 		 				<a id="replyDel" href="<c:url value='/admin/qnaReply/delete.do?qrNo=${qrVo.qrNo }&qNo=${qrVo.qNo }'/>">X</a>
 		 			</span>
-		 			<div style="display: none;" id="toggle${qrVo.qrNo }" style="margin-top: 15px">
+		 			<div style="display: none;" class="toggle" id="toggle${qrVo.qrNo }" style="margin-top: 15px">
 		 			
 		 				<form action="<c:url value='/admin/qnaReply/write2.do'/>" name="rereplyWrite${qrVo.qrNo }" id="rereplyWrite${qrVo.qrNo }" method="post">
 		 					<input type="hidden"  name="qrGbn" value="${qrVo.qrGbn }"  />
 		 					<input type="hidden"  name="qrNoGroup" value="${qrVo.qrNoGroup }"  />
 		 					<input type="hidden"  name="qNo" value="${qrVo.qNo }"  />
-            				<textarea class="rContent" name="qrContent" id="rerContent${qrVo.qrNo }" rows="1" cols="70"></textarea></span>
+            				<textarea class="rContent" name="qrContent" id="rerContent${qrVo.qrNo }" rows="1" cols="70"></textarea>
            					 <input type="button" class="btn_default btReReply" id="btReply" onclick="replySend(${qrVo.qrNo })" value="등록">
 		 				</form>
 		 				

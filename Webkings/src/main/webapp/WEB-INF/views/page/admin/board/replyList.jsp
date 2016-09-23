@@ -22,6 +22,7 @@
 		
 		obj=document.getElementById(res);
 		if(obj.style.display=="none"){
+			$(".toggle").css("display","none");
 			obj.style.display="inline";
 		}else{
 			obj.style.display="none";
@@ -62,13 +63,13 @@
 		 		<td>
 		 			<span>${rVo.rContent}</span>
 		 			<a id="rereply${rVo.rNo }" onclick="reToggle(${rVo.rNo })" style="font-size: 0.8em;color: #CC66FF;" >-답글</a>
-		 			<div style="display: none;" id="toggle${rVo.rNo }" style="margin-top: 15px">
+		 			<div style="display: none;" class="toggle" id="toggle${rVo.rNo }" style="margin-top: 15px">
 		 			
 		 				<form action="<c:url value='/admin/reply/write2.do'/>" name="rereplyWrite${rVo.rNo }" id="rereplyWrite${rVo.rNo }" method="post">
 		 					<input type="hidden"  name="rGbn" value="${rVo.rGbn }"  />
 		 					<input type="hidden"  name="rNoGroup" value="${rVo.rNoGroup }"  />
 		 					<input type="hidden"  name="bNo" value="${rVo.bNo }"  />
-            				<textarea class="rContent" name="rContent" id="rerContent${rVo.rNo }" rows="1" cols="70"></textarea></span>
+            				<textarea class="rContent" name="rContent" id="rerContent${rVo.rNo }" rows="1" cols="70"></textarea>
            					 <input type="button" class="btn_default btReReply" id="btReply" onclick="replySend(${rVo.rNo })" value="등록">
 		 				</form>
 		 				
@@ -91,13 +92,13 @@
 		 			|<fmt:formatDate value="${rVo.rRegdate }" pattern="yyyy-MM-dd"/>
 		 				<a id="replyDel" href="<c:url value='/admin/reply/delete.do?rNo=${rVo.rNo }&bNo=${rVo.bNo }'/>">X</a>
 		 			</span>
-		 			<div style="display: none;" id="toggle${rVo.rNo }" style="margin-top: 15px">
+		 			<div style="display: none;" class="toggle" id="toggle${rVo.rNo }" style="margin-top: 15px">
 		 			
 		 				<form action="<c:url value='/admin/reply/write2.do'/>" name="rereplyWrite${rVo.rNo }" id="rereplyWrite${rVo.rNo }" method="post">
 		 					<input type="hidden"  name="rGbn" value="${rVo.rGbn }"  />
 		 					<input type="hidden"  name="rNoGroup" value="${rVo.rNoGroup }"  />
 		 					<input type="hidden"  name="bNo" value="${rVo.bNo }"  />
-            				<textarea class="rContent" name="rContent" id="rerContent${rVo.rNo }" rows="1" cols="70"></textarea></span>
+            				<textarea class="rContent" name="rContent" id="rerContent${rVo.rNo }" rows="1" cols="70"></textarea>
            					 <input type="button" class="btn_default btReReply" id="btReply" onclick="replySend(${rVo.rNo })" value="등록">
 		 				</form>
 		 				

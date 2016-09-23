@@ -22,6 +22,7 @@
 		
 		obj=document.getElementById(res);
 		if(obj.style.display=="none"){
+			$(".toggle").css("display","none");
 			obj.style.display="inline";
 		}else{
 			obj.style.display="none";
@@ -62,7 +63,7 @@
 		 		<td>
 		 			<span>${qrVo.qrContent}</span>
 		 			<a id="rereply${qrVo.qrNo }" onclick="reToggle(${qrVo.qrNo })" style="font-size: 0.8em;color: #CC66FF;" >-답글</a>
-		 			<div style="display: none;" id="toggle${qrVo.qrNo }" style="margin-top: 15px">
+		 			<div style="display: none;" class="toggle" id="toggle${qrVo.qrNo }" style="margin-top: 15px">
 		 			
 		 				<form action="<c:url value='/qnaReply/write2.do'/>" name="rereplyWrite${qrVo.qrNo }" id="rereplyWrite${qrVo.qrNo }" method="post">
 		 					<input type="hidden"  name="qrGbn" value="${qrVo.qrGbn }"  />
@@ -95,7 +96,7 @@
 		 				<a id="replyDel" href="<c:url value='/qnaReply/delete.do?qrNo=${qrVo.qrNo }&qNo=${qrVo.qNo }'/>">X</a>
 		 			</c:if>
 		 			</span>
-		 			<div style="display: none;" id="toggle${qrVo.qrNo }" style="margin-top: 15px">
+		 			<div style="display: none;" class="toggle" id="toggle${qrVo.qrNo }" style="margin-top: 15px">
 		 			
 		 				<form action="<c:url value='/qnaReply/write2.do'/>" name="rereplyWrite${qrVo.qrNo }" id="rereplyWrite${qrVo.qrNo }" method="post">
 		 					<input type="hidden"  name="qrGbn" value="${qrVo.qrGbn }"  />
