@@ -2,6 +2,8 @@ package com.webkings.app.member.model;
 
 import java.util.List;
 
+import com.webkings.app.common.SearchVO;
+
 public interface MemberDAO {
 	public int insertMember(MemberVo vo);
 	public String loginCheck(MemberVo vo);
@@ -13,6 +15,7 @@ public interface MemberDAO {
 	
 	/*관리자*/
 	public String adminCheck(MemberVo vo);
-	public List<MemberVo> selectList();
+	public List<MemberVo> selectList(SearchVO searchVo);
 	public int updateAdmin(MemberVo vo);
+	public int TotalRecord(SearchVO vo);
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import com.webkings.app.common.SearchVO;
+
 @Repository
 public class MemberDAOMybatis extends SqlSessionDaoSupport implements MemberDAO {
 
@@ -46,12 +48,16 @@ public class MemberDAOMybatis extends SqlSessionDaoSupport implements MemberDAO 
 		return getSqlSession().selectOne(namespace+".adminSelectPwd", vo);
 	}
 	@Override
-	public List<MemberVo> selectList() {
-		return getSqlSession().selectList(namespace+".selectList");
+	public List<MemberVo> selectList(SearchVO searchVo) {
+		return getSqlSession().selectList(namespace+".selectList",searchVo);
 	}
 	@Override
 	public int updateAdmin(MemberVo vo) {
 		return getSqlSession().update(namespace+".updateAdmin", vo);
+	}
+	@Override
+	public int TotalRecord(SearchVO vo) {
+		return getSqlSession().selectOne(namespace+".TotalRecord", vo);
 	}
 
 }

@@ -16,9 +16,22 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+	
 });
-
+function pageProc(curPage){
+	document.frmPage.currentPage.value=curPage;
+	document.frmPage.submit();
+}
 </script>
+<form name="frmPage" method="post" 
+	action="<c:url value='/admin/memberList.do'/>">
+	<input type="hidden" name="currentPage">
+	<input type="hidden" name="searchCondition" 
+		value="">
+	<input type="hidden" name="searchKeyword" 
+		value="">	
+</form>
+
 <form name="frmList" method="post" action="<c:url value= '/admin/memberDeleteList.do'/>">
 <div class="body-sec">
 <div class="in-sec">
@@ -92,11 +105,42 @@ $(document).ready(function() {
 							</tr>
 							<c:set var="i" value="${i+1}"/>
 							</c:forEach>	
-						</c:if>
 					</tbody>
 				</table>
-				<button type="submit" class="cancelbtn" id="delcancelbtn">선택한 회원삭제</button>
+						<!-- 이전 블록으로 이동 -->
+					<div style="text-align: center;">
+						<c:if test="${pagingInfo.firstPage>1 }">
+							<a href="#" onclick="pageProc(${pagingInfo.firstPage-1})"> <img
+								src="<c:url value='/images/first.JPG'/>" alt="이전으로 이동"></a>
+						</c:if>
+						<!-- 페이지 번호 추가 -->
+
+						<!-- [1][2][3][4][5][6][7][8][9][10] -->
+						<c:forEach var="a" begin="${pagingInfo.firstPage }"
+							end="${pagingInfo.lastPage }">
+							<c:if test="${a==pagingInfo.currentPage }">
+								<span class="apage"
+									style="font-weight: bold; color: #888;">${a }</span>
+							</c:if>
+							<c:if test="${a!=pagingInfo.currentPage }">
+								<a class="apage" href="#" onclick="pageProc(${a})">&nbsp;&nbsp;${a }&nbsp;&nbsp;</a>
+							</c:if>
+
+						</c:forEach>
+						<!--  페이지 번호 끝 -->
+
+						<!-- 다음 블록으로 이동 -->
+						<c:if test="${pagingInfo.lastPage<pagingInfo.totalPage }">
+							<a href="#" onclick="pageProc(${pagingInfo.lastPage+1})"> <img
+								src="<c:url value='/images/last.JPG'/>" alt="다음 블록 이동"></a>
+						</c:if>
+					</div>
+				</div>
+			<div class="divdtn" style="margin: 0 auto; width: 700px;">
+				<button type="submit" class="cancelbtn" id="delcancelbtn" style="text-align: center;">선택한 회원삭제</button>
 			</div>
+		</c:if>
+	</div>
 </form>
 		<%@ include file="../../inc/adminFooter.jsp" %>
 		

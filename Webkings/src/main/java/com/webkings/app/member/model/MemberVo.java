@@ -2,7 +2,9 @@ package com.webkings.app.member.model;
 
 import java.sql.Timestamp;
 
-public class MemberVo {
+import com.webkings.app.common.SearchVO;
+
+public class MemberVo{
 	private int mNo;//회원번호 
 	private String mType;//회원구분값 
 	private String mEmail; //이메일

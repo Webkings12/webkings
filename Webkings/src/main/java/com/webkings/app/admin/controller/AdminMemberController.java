@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webkings.app.common.FileUploadWabUtil;
+import com.webkings.app.common.PaginationInfo;
+import com.webkings.app.common.SearchVO;
 import com.webkings.app.member.model.MemberService;
 import com.webkings.app.member.model.MemberVo;
 
@@ -34,9 +36,10 @@ public class AdminMemberController {
 	private FileUploadWabUtil fileUtil;
 	
 	@RequestMapping("/memberList.do")
-	public String memberList(HttpSession session, Model model) {
+	public String memberList(SearchVO searchVo,  HttpSession session, Model model) {
 		String m_Type=(String)session.getAttribute("adminmType"); 
 		logger.info("회원리스트 보여주기 mType={}",m_Type);
+		PaginationInfo pagingInfo = new PaginationInfo();
 		List<MemberVo> memberList=new ArrayList<MemberVo>();
 		if(m_Type!=null && !m_Type.isEmpty()){
 			if(m_Type.equals("1")){
@@ -44,11 +47,23 @@ public class AdminMemberController {
 				model.addAttribute("url","/admin.do");
 				return "common/message";
 			}else if(m_Type.equals("0")){
-				memberList=memberService.selectList();
+				pagingInfo.setBlockSize(10); //블록사이즈
+				pagingInfo.setRecordCountPerPage(5); //페이지에 보여줄 레코드수
+				pagingInfo.setCurrentPage(searchVo.getCurrentPage()); //현재 페이지
+				
+				searchVo.setRecordCountPerPage(5);
+				searchVo.setFirstRecordIndex(pagingInfo.getFirstRecordIndex()); //시작 레코드
+				
+				memberList=memberService.selectList(searchVo);
 				logger.info("회원리스트 보여주기 memberList={}",memberList.size());
+				
+				int totalRecord 
+				= memberService.TotalRecord(searchVo);
+				pagingInfo.setTotalRecord(totalRecord);
 			}
 		}
 		model.addAttribute("memberList",memberList);
+		model.addAttribute("pagingInfo", pagingInfo);
 		
 		return "page/admin/memberList";
 	}

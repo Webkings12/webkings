@@ -44,14 +44,30 @@
 		set m_Pwd=#{mPwd}
 		where m_Email=#{mEmail}
 	</update>
-	<select id="selectList"  resultType="MemberVo" >
-		select * from member 
-		where m_type=1
-		order by m_no desc
+	<select id="selectList"  resultType="MemberVo"  parameterType="SearchVO">
+		select * from
+		(
+		    select rownum as RNUM, member_ALL.*
+		    from
+		        (select * from member where m_type=1
+					order by m_no desc 		        
+		        ) member_ALL 
+		) 
+		<![CDATA[
+		where  RNUM> #{firstRecordIndex} 
+			and RNUM<= #{firstRecordIndex}
+			+ #{recordCountPerPage}
+		]]>
 	</select>
 	<update id="updateAdmin" parameterType="MemberVo">
 		update member
 		set m_Email=#{mEmail},m_nick=#{mNick},m_image=#{mImage}
 		where m_no=#{mNo}
 	</update>
+	
+	<select id="TotalRecord" parameterType="SearchVO" resultType="int">
+		select count(*) 
+		from member
+		where m_type=1
+	</select>
 </mapper>

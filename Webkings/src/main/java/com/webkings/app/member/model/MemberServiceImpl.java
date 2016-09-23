@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.webkings.app.common.SearchVO;
+
 @Service
 public class MemberServiceImpl implements MemberService{
 
@@ -78,8 +80,8 @@ public class MemberServiceImpl implements MemberService{
 
 	
 	@Override
-	public List<MemberVo> selectList() {
-		return memberDAO.selectList();
+	public List<MemberVo> selectList(SearchVO searchVo) {
+		return memberDAO.selectList(searchVo);
 	}
 	
 	@Override
@@ -102,6 +104,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int updateAdmin(MemberVo vo) {
 		return memberDAO.updateAdmin(vo);
+	}
+	@Override
+	public int TotalRecord(SearchVO vo) {
+		return memberDAO.TotalRecord(vo);
 	}
 
 }

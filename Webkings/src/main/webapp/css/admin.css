@@ -1129,5 +1129,7 @@ img.avatar {
     background-color: #c0c0c0;
     color: white;
 }
-
-
+.apage{
+	margin-top: 10px;
+	font-size: 15px;
+}

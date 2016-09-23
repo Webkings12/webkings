@@ -297,8 +297,6 @@ var searchList="";
 					</ul>
 					<%-- <c:if test=""> 세션이 있으면 --%>
 						<ul class="logout">
-						<input type="text" name="mEmail123" id="mEmail1123"
-											value="${cookie.ck_mEmail.value}">
 						<c:if test="${empty sessionScope.mEmail }">
 							<li><a onclick="document.getElementById('divLogin').style.display='block'">로그인</a></li>
 							<li><a
