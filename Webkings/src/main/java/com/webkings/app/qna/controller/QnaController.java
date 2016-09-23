@@ -264,7 +264,7 @@ public class QnaController {
 		String msg="",url="";
 		if(cnt>0){
 			msg="삭제 완료";
-			url="/qna/list.do"+"&gender="+gender;
+			url="/qna/list.do?gender="+gender;
 		}else{
 			msg="삭제 실패";
 			url="/qna/detail.do?no="+qNo+"&gender="+gender;
