@@ -88,9 +88,9 @@ public class MemberController {
 	@RequestMapping(value="/login.do")
 	@ResponseBody
 	public int login_post(@ModelAttribute MemberVo memberVo,
-			HttpServletRequest request,HttpServletResponse response,String chkId,Model model){
+			HttpServletRequest request,HttpServletResponse response,String chkId1,Model model){
 		logger.info("로그인 파라미터, memberVo={}",memberVo);
-		logger.info("로그인 파라미터, chkId={}",chkId);		
+		logger.info("로그인 파라미터, chkId={}",chkId1);		
 		int result=memberService.loginCheck(memberVo);
 		
 		logger.info("result={}",result);
@@ -106,14 +106,16 @@ public class MemberController {
 			session.setAttribute("mPwd", memberVo.getmPwd());
 			
 			Cookie ck= new Cookie("ck_mEmail", memberVo.getmEmail());
-			if(chkId!=null){
+			if(chkId1!=null){
+				logger.info("ckckckckck  memberVo.getmEmail()={}", memberVo.getmEmail());
 				ck.setMaxAge(100*24*60*60); 
-				response.addCookie(ck);	
+				response.addCookie(ck);
 			}else{
 				ck.setMaxAge(0);
 				response.addCookie(ck);
 			}
 		}
+		
 		return result;
 	}
 	

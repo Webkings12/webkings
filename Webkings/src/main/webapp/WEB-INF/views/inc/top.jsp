@@ -297,6 +297,8 @@ var searchList="";
 					</ul>
 					<%-- <c:if test=""> 세션이 있으면 --%>
 						<ul class="logout">
+						<input type="text" name="mEmail123" id="mEmail1123"
+											value="${cookie.ck_mEmail.value}">
 						<c:if test="${empty sessionScope.mEmail }">
 							<li><a onclick="document.getElementById('divLogin').style.display='block'">로그인</a></li>
 							<li><a
@@ -387,7 +389,7 @@ var searchList="";
 								<h2 class="h2">회원가입</h2>
 							</div>
 							<hr>
-							<div class="reg">
+							<div class="reg" style="margin-bottom: 30px;">
 								<div class="imgfile">
 									<img id="UploadedImg" src="<c:url value='/images/person-icon.png'/>" />
 								</div>
@@ -449,7 +451,11 @@ var searchList="";
 									</div>
 									<button type="submit" class="cancelbtn" >로그인</button>
 									<div class="searchBox">
-									<input type="checkbox" id="chkId" name="chkId"> 
+									<input type="checkbox" id="chkId1" name="chkId1"
+										<c:if test="${!empty cookie.ck_mEmail.value}">
+											checked
+										</c:if>
+									> 
 									<label for="chkId">아이디 저장</label> 
 									<a href="#" id="find"	class="a">비밀번호 찾기</a>
 									</div>
