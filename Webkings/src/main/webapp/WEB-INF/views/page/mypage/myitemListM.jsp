@@ -31,6 +31,7 @@ $(document).ready(function() {
 			dataType:"text",
 			success:function(res){
 				alert("관심상품에서 삭제하였습니다");
+				$(location).attr('href', "/Webkings/myitemList.do?gender=M");
 			},
 			error:function(xhr, status, error){
 			}
@@ -95,3 +96,4 @@ $(document).ready(function() {
 </div>
 </div>
 </div>
+<div id="loading"></div>

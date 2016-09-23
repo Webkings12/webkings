@@ -5,6 +5,7 @@ $(document).ready(function() {
 	function numberWithCommas(x) {
 	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	}
+	 $('#loading').css("display", "none");
 	$.ajax({
 		url:searchUrl,
 		type:"GET", 
@@ -268,5 +269,5 @@ $(document).ready(function() {
 		  var popOption = "width=600, height=400, resizable=no, scrollbars=no, status=no;";
 		  window.open("http://www.facebook.com/sharer/sharer.php?u="+fbUrl, "share",popOption); 
 	});
-	 
+	
 });
