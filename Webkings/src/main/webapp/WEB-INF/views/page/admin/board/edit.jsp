@@ -52,7 +52,7 @@
 		if(filter.test(fileName)== false){
 			alert("이미지파일이 아닙니다.");
 			file.outerHTML = file.outerHTML;
-			$('#upBoardImage').attr('src','');
+			$('#upBoardImage').attr('src',"<c:url value='/fBoardImages/${vo.bFilename }'/>");
 			return;
 		}
 		boardImage(file);
@@ -62,7 +62,7 @@
 	    if (input.files && input.files[0]) {
 	        var reader = new FileReader();
 	        reader.onload = function (e) {
-	            $('#upBoardImage').attr('src', e.target.result);
+	        	$('#upBoardImage').attr('src', e.target.result);
 	        }
 	        reader.readAsDataURL(input.files[0]);
 	    }
@@ -82,7 +82,9 @@
 		<div class="align_center bTitle">
 			<strong>제목</strong><input type="text" id="bTitle" name="bTitle" class="top_Padding" value="${vo.bTitle }"><strong>45</strong>자 제한
 		</div>
-		<img id="upBoardImage">
+		<c:if test="${!empty vo.bFilename }">
+		<img id="upBoardImage" src="<c:url value='/fBoardImages/${vo.bFilename }'/>">
+		</c:if>
 		<div class="align_left">
 			<input type="file" name="upfile" onchange="checkExt(this)">
 			<c:if test="${!empty vo.bFilename }">
