@@ -18,7 +18,7 @@ $(document).ready(function() {
 	});
 	
 	for(var i=0;i<$("#length").val();i++){
-		$("#adel"+i).click(){
+		$("#adel").click(){
 			if(confirm("정말 삭제하시겠습니까?")){
 				return true;
 			}else {
