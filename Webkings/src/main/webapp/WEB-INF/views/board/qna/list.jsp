@@ -103,7 +103,7 @@ function pageProc(curPage){
 		 		<td><a href="<c:url value='/qna/detail.do?no=${vo.qNo}&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }'/>">
 		 		<!-- 제목이 긴경우 일부만 보여주기 -->
 		 		<c:if test="${fn:length(vo.qTitle)>25 }">
-		 			${fn:substring(vo.qTitle,0,25) }...
+		 			<span title="${vo.qTitle }">${fn:substring(vo.qTitle,0,25) }...</span>
 		 		</c:if>
 		 		<c:if test="${fn:length(vo.qTitle)<=25 }">
 		 			${vo.qTitle}
