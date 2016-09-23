@@ -25,5 +25,6 @@ $(document).ready(function() {
 </div>
 </div>
 </div>
+<div id="loading"></div>
 </body>
 </html>

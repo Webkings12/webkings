@@ -71,3 +71,4 @@ $(document).ready(function() {
 </div>
 </div>
 </div>
+<div id="loading"></div>

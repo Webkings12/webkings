@@ -94,9 +94,6 @@ $(document).ready(function() {
 			<li class="follow"><a href="#login">내팔로잉<em></em></a></li>
 		</ul>
 	</div>
-	
-	
-	
 	<%@ include file="footer-sec.jsp" %>
 
 </div>		

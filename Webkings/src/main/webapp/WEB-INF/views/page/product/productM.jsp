@@ -121,5 +121,6 @@ $(document).ready(function() {
 </form> -->
 </div>
 </div>
+<div id="loading"></div>
 </body>
 </html>
