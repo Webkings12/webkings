@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../../inc/top.jsp" %>
 <script type="text/javascript" src="<c:url value='/jquery/jquery-3.1.0.min.js'/>"></script>
-<script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/js/mainF.js'/>"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	var pageNum = ${pageNum};
@@ -22,25 +23,26 @@ $(document).ready(function() {
 $(document).ready(function() {
 	
 	$(".item-list>li.prod #favor1").click(function (e) {
+		var ithisVal=$(this).find("#itemiNo").val();
+		var mthisVal=$(this).find("#itemmNo").val();
 		e.stopPropagation();
 		e.preventDefault();
 		$.ajax({
 			url:"/Webkings/myitemdelete.do",
 			type:"GET",
-			data:"iNo="+$("#itemiNo").val()+"&mNo="+$("#itemmNo").val(), //요청 파라미터
+			data:"iNo="+ithisVal+"&mNo="+mthisVal, //요청 파라미터
 			dataType:"text",
 			success:function(res){
 				alert("관심상품에서 삭제하였습니다");
-				$(location).attr('href', "/Webkings/myitemList.do?gender=M");
+				$(location).attr('href', "/Webkings/myitemList.do?gender=F");
 			},
 			error:function(xhr, status, error){
+				alert(error);
 			}
 		});
 	});
 	
 });
-
-
 </script>
 <div class="body-sec">
 <div class="in-sec">
@@ -61,20 +63,22 @@ $(document).ready(function() {
 	<c:if test="${!empty myitemList }">
 		<c:forEach var="item" items="${myitemList }">
 	<li class="prod ${gender} ia" id="prod2" style="list-style: none;">
-		<a href="http://${ item.iDomain}"  target="_blank" sseq="121" seq="1349867" maindate="20160908">
-		<input type="hidden" id="itemiNo" name="iNo" value="${item.iNo }">
-		<input type="hidden" id="itemmNo" name="mNo" value="${item.mNo }">
+		<a href="http://${ item.iDomain}" target="_blank" sseq="121" seq="1349867" maindate="20160908">
 			<img src="<c:url value='/ItemImage/${item.iImage}'/>" data-original="http://img.sta1.kr/_up/prod/main/2016/09/08/1473208334629_w.jpg"
 				style="height: 340px; display: block;" class="item">
-				<span class="favor" id="favor1">관심상품</span>
+				<span class="favor" id="favor1">관심상품
+				<input type="hidden" id="itemiNo" name="iNo" value="${item.iNo }">
+				<input type="hidden" id="itemmNo" name="mNo" value="${item.mNo }"></span>
 				<div class="info">	<span class="shop" style="color:#e6178f;">${item.sName}</span>		
 				<span class="name">${item.iName}</span>	<em class='cate' cate="101">${item.itName}</em>
-					<c:if test="${!empty item.iSaleprice}">
+				
+				<c:if test="${!empty item.iSaleprice}">
 						<i><s><fmt:formatNumber value="${item.iPrice}" pattern="#,###" /></s><fmt:formatNumber value="${item.iSaleprice}" pattern="#,###"/> </i>
 				</c:if>
 				<c:if test="${empty item.iSaleprice}">
 						<i><fmt:formatNumber value="${item.iPrice}" pattern="#,###" /></i>
 				</c:if>
+				
 					<div class="btn">
 					<span class="fb">
 						<input type='hidden' id='fbTitle' value="${item.iName }"/>
