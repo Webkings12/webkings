@@ -30,13 +30,13 @@ $(document).ready(function() {
 			data:"iNo="+$("#itemiNo").val()+"&mNo="+$("#itemmNo").val(), //요청 파라미터
 			dataType:"text",
 			success:function(res){
-
+				alert("관심상품에서 삭제하였습니다");
 			},
 			error:function(xhr, status, error){
 			}
 		});
 	});
-	}
+	
 });
 
 
@@ -82,7 +82,7 @@ $(document).ready(function() {
 						<input type='hidden' id='fbContent' value="${item.itName}"/>
 					</span><i>페이스북 공유</i>
 					<span class="tw">
-					<input type="hidden" id="itN" value="${item.iName}"/>
+						<input type="hidden" id="itN" value="${item.iName}"/>
 						<input type="hidden" id="doma" value="${ item.iDomain}"/>
 					</span><i>트위터 공유</i>
 									</div>	
