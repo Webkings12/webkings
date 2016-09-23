@@ -351,6 +351,7 @@ img, fieldset {
 }
 
 #upBoardImage{
+	margin-top:15px;
 	max-width: 698px;
 	margin-bottom: 15px;
 	border: 1px solid lightgray;

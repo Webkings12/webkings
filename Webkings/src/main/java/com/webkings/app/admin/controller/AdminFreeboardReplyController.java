@@ -28,8 +28,8 @@ public class AdminFreeboardReplyController{
 	
 	@RequestMapping("/write.do")
 	public String insertReply(@ModelAttribute ReplyViewVO viewVo,HttpSession session){
-		int mNo=(Integer)session.getAttribute("mNo");
-		viewVo.setmNo(mNo);
+		int adminmNo=(Integer)session.getAttribute("adminmNo");
+		viewVo.setmNo(adminmNo);
 		logger.info("댓글 입력 파라미터 viewVo={}",viewVo);
 		int cnt=replyService.insertReply(viewVo);
 		logger.info("댓글 입력 결과cnt={}",cnt);
@@ -61,8 +61,8 @@ public class AdminFreeboardReplyController{
 	@RequestMapping("/write2.do")
 	public String insertReply2(@ModelAttribute ReplyViewVO viewVo,HttpSession session){
 		//1.
-		int mNo=(Integer)session.getAttribute("mNo");
-		viewVo.setmNo(mNo);
+		int adminmNo=(Integer)session.getAttribute("adminmNo");
+		viewVo.setmNo(adminmNo);
 		logger.info("댓글의 댓글 글쓰기 파라미터={}",viewVo); 
 		//2.
 		int cnt=replyService.insertReply2(viewVo);
