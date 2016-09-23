@@ -60,6 +60,154 @@ var shopCount="";
 var searchList="";
 </script>
 <script type="text/javascript" src="<c:url value='/js/search.js'/>"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#aCertify").click(function() {
+			if(($("#mEmail").val().length<1)){
+				alert("이메일을 입력하세요.");
+				$("#divreg").css("display","block");
+				$("#mEmail").focus();
+				return false
+			}
+		$.ajax({
+			url:"<c:url value='/certify/certifyNo.do'/>",
+			type:"GET",
+			data:"mEmail="+$("#mEmail").val(), //요청 파라미터
+			dataType:"text",
+			success:function(res){
+				alert("인증메일이 발송되었습니다");
+				$("#certifyChk").val(res);
+			},
+			error:function(xhr, status, error){
+			}
+		});
+	});
+		// 회원탈퇴
+		var pwdCheck="";
+		$("#formQuit").submit(function(event){
+			if(!$("#inquit").is(":checked")){
+				alert("탈퇴약관에 동의하셔야 합니다.");
+				$("#divQuit").css("display","block");
+				$("#inquit").focus();
+				return false;
+			}else if($("#delPwd").val().length<1){
+				alert("비밀번호를 입력하세요.");
+				$("#divQuit").css("display","block");
+				$("#delPwd").focus();
+				return false;
+			}else{				
+				$.ajax({
+					url:"<c:url value='/member/memberQuit.do'/>",
+					type:"POST",
+					async:false,
+					data:$(this).serialize(), //요청 파라미터
+					dataType:"json",
+					success:function(res){
+						if(res==1){
+							alert("탈퇴"); 	
+						}else if (res==2) {
+							alert("비밀번호가 다릅니다");
+						}
+						pwdCheck=res;
+					},
+					error:function(xhr, status, error){
+						alert(error);
+					}
+				});
+			}
+			if(pwdCheck=="1"){
+				return true;
+			}
+			else {
+				return false; 
+			}
+		});
+		
+		// 로그인
+		var loginCheck="";
+		$("#formLogin").submit(function(event){
+			if($("#mEmail1").val().length<1){
+				alert("이메일을 입력하세요.");
+				$("#divLogin").css("display","block");
+				$("#mEmail1").focus();
+				return false;
+			}else if($("#mPwd1").val().length<1){
+				alert("비밀번호를 입력하세요.");
+				$("#divLogin").css("display","block");
+				$("#mPwd1").focus();
+				return false;
+			}else{				
+				$.ajax({
+					url:"<c:url value='/member/login.do'/>",
+					type:"POST",
+					async:false,
+					data:$(this).serialize(), //요청 파라미터
+					dataType:"json",
+					success:function(res){
+						if(res==1){
+						}else if (res==2) {
+							alert("비밀번호가 다릅니다");
+							$("#divLogin").css("display","block");
+						}else if (res==3){
+							alert("아이디가 존재하지 않습니다");
+							$("#divLogin").css("display","block");
+						}
+						loginCheck=res;
+					},
+					error:function(xhr, status, error){
+						alert(error);
+					}
+				});
+			}
+			if(loginCheck=="1"){
+				return true; 
+			}else{
+				return false;
+			}
+		});
+		
+		
+		//로그인창에서 회원가입 버튼 누르면
+		$("#reg").click(function () {
+			$("#divLogin").css("display","none");
+			$("#divtos").css("display","block");
+		});
+		
+		// 비밀번호 찾기 버튼
+		$("#find").click(function () {
+			$("#divLogin").css("display","none");
+			$("#divfind").css("display","block");
+		});
+		
+});
+	// 회원가입 이미지 확장자 체크
+	function checkreg(file){
+	    var fileName=file.value;
+	    
+	    var filter =/\.(jpg|gif|tif|bmp|png)$/i;
+	    if(filter.test(fileName)== false){
+	       alert("이미지파일이 아닙니다.");
+	       file.outerHTML = file.outerHTML;
+	       $('#UploadedImg').attr('src','<c:url value="/images/person-icon.png"/>');
+	       return;
+	    }
+	    readURL(file);
+	}
+	
+	// 회원수정 이미지 확장자 체크
+	function checkEdit(file){
+	    var fileName=file.value;
+	    var filter =/\.(jpg|gif|tif|bmp|png)$/i;
+	    
+	    if(filter.test(fileName)== false){
+	       alert("이미지파일이 아닙니다.");
+	       file.outerHTML = file.outerHTML;
+	       $('#UploadedImg1').attr('src','<c:url value="/images/person-icon.png"/>');
+	       return;
+	    }
+	    readURL1(file);
+	}
+</script>	
 </head>
 <body class="F">
 <input type="hidden" name="semail" id="semail" value="${sessionScope.mEmail}">
@@ -227,31 +375,7 @@ var searchList="";
 				
 				<!-- 이용약관 끝 -->
 	<!-- 회원가입 시작-->	
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#aCertify").click(function() {
-			if(($("#mEmail").val().length<1)){
-				alert("이메일을 입력하세요.");
-				$("#divreg").css("display","block");
-				$("#mEmail").focus();
-				return false
-			}
-		$.ajax({
-			url:"<c:url value='/certify/certifyNo.do'/>",
-			type:"GET",
-			data:"mEmail="+$("#mEmail").val(), //요청 파라미터
-			dataType:"text",
-			success:function(res){
-				alert("인증메일이 발송되었습니다");
-				$("#certifyChk").val(res);
-			},
-			error:function(xhr, status, error){
-			}
-		});
-	});
-		
-});
-</script>	
+
 
 				<div id="divreg" class="modal">
 				 <span onclick="document.getElementById('divreg').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -268,7 +392,7 @@ var searchList="";
 									<img id="UploadedImg" src="<c:url value='/images/person-icon.png'/>" />
 								</div>
 								<div>
-									<input type='file' name="upFile" onchange="readURL(this)" ;/>
+									<input type='file' name="upFile" onchange="checkreg(this)";/>
 								</div>
 							</div>
 
@@ -302,62 +426,6 @@ var searchList="";
 				</div>
 				<!-- 회원가입 끝-->
 				<!-- 로그인 시작-->		
-<script type="text/javascript">
-$(document).ready(function(event){
-	var loginCheck="";
-	$("#formLogin").submit(function(event){
-		if($("#mEmail1").val().length<1){
-			alert("이메일을 입력하세요.");
-			$("#divLogin").css("display","block");
-			$("#mEmail1").focus();
-			return false;
-		}else if($("#mPwd1").val().length<1){
-			alert("비밀번호를 입력하세요.");
-			$("#divLogin").css("display","block");
-			$("#mPwd1").focus();
-			return false;
-		}else{				
-			$.ajax({
-				url:"<c:url value='/member/login.do'/>",
-				type:"POST",
-				async:false,
-				data:$(this).serialize(), //요청 파라미터
-				dataType:"json",
-				success:function(res){
-					if(res==1){
-					}else if (res==2) {
-						alert("비밀번호가 다릅니다");
-						$("#divLogin").css("display","block");
-					}else if (res==3){
-						alert("아이디가 존재하지 않습니다");
-						$("#divLogin").css("display","block");
-					}
-					loginCheck=res;
-				},
-				error:function(xhr, status, error){
-					alert(error);
-				}
-			});
-		}
-		if(loginCheck=="1"){
-			return true; 
-		}else{
-			return false;
-		}
-	});
-	
-	$("#reg").click(function () {
-		$("#divLogin").css("display","none");
-		$("#divtos").css("display","block");
-	});
-			
-	$("#find").click(function () {
-		$("#divLogin").css("display","none");
-		$("#divfind").css("display","block");
-	});
-	
-});
-</script>
 
 					<div id="divLogin" class="modal">
 						<span
@@ -381,7 +449,7 @@ $(document).ready(function(event){
 									</div>
 									<button type="submit" class="cancelbtn" >로그인</button>
 									<div class="searchBox">
-									<input type="checkbox" checked="checked" id="chkId" name="chkId"> 
+									<input type="checkbox" id="chkId" name="chkId"> 
 									<label for="chkId">아이디 저장</label> 
 									<a href="#" id="find"	class="a">비밀번호 찾기</a>
 									</div>
@@ -474,7 +542,7 @@ $(document).ready(function(event){
 						</div>
 						<div style="text-align: center;">
 							<input type='file' name="upFile1" id="upFile1"
-								onchange="readURL1(this)" /> <input type="hidden"
+								onchange="checkEdit(this)"/> <input type="hidden"
 								name="oldmImage" value="${sessionScope.mImage}"> 
 						</div>
 					</div>
@@ -522,50 +590,6 @@ $(document).ready(function(event){
 	
 	<!-- 비밀번호 변경 끝-->
 	<!-- 회원 탈퇴 -->
-<script type="text/javascript">
-$(document).ready(function(){
-	var pwdCheck="";
-	$("#formQuit").submit(function(event){
-		if(!$("#inquit").is(":checked")){
-			alert("탈퇴약관에 동의하셔야 합니다.");
-			$("#divQuit").css("display","block");
-			$("#inquit").focus();
-			return false;
-		}else if($("#delPwd").val().length<1){
-			alert("비밀번호를 입력하세요.");
-			$("#divQuit").css("display","block");
-			$("#delPwd").focus();
-			return false;
-		}else{				
-			$.ajax({
-				url:"<c:url value='/member/memberQuit.do'/>",
-				type:"POST",
-				async:false,
-				data:$(this).serialize(), //요청 파라미터
-				dataType:"json",
-				success:function(res){
-					if(res==1){
-						alert("탈퇴"); 	
-					}else if (res==2) {
-						alert("비밀번호가 다릅니다");
-					}
-					pwdCheck=res;
-				},
-				error:function(xhr, status, error){
-					alert(error);
-				}
-			});
-		}
-		if(pwdCheck=="1"){
-			return true;
-		}
-		else {
-			return false; 
-		}
-	});
-});
-</script>
-<%-- <form action="<c:url value='/page.do'/>" method="get" id="formPage"></form> --%>
 		<div id="divQuit1" class="modal">
 			
 		<div class="Quitamodel">

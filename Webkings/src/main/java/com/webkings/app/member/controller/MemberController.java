@@ -90,7 +90,7 @@ public class MemberController {
 	public int login_post(@ModelAttribute MemberVo memberVo,
 			HttpServletRequest request,HttpServletResponse response,String chkId,Model model){
 		logger.info("로그인 파라미터, memberVo={}",memberVo);
-		
+		logger.info("로그인 파라미터, chkId={}",chkId);		
 		int result=memberService.loginCheck(memberVo);
 		
 		logger.info("result={}",result);
@@ -107,8 +107,8 @@ public class MemberController {
 			
 			Cookie ck= new Cookie("ck_mEmail", memberVo.getmEmail());
 			if(chkId!=null){
-				ck.setMaxAge(1*24*60*60); 
-				response.addCookie(ck);				
+				ck.setMaxAge(100*24*60*60); 
+				response.addCookie(ck);	
 			}else{
 				ck.setMaxAge(0);
 				response.addCookie(ck);
