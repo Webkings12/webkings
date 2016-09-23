@@ -40,6 +40,13 @@ $(document).ready(function(){
 		}, function(){
 			$(this).css("background","");
 		});
+	
+	$("ul").hover(function(){
+		$(this).find("li").css("display","block");
+			
+	}, function(){
+		$(this).find("li").css("display","none");
+	});
 });
 function pageProc(curPage){
 	document.frmPage.currentPage.value=curPage;
@@ -52,7 +59,9 @@ function pageProc(curPage){
 	document.frmPage2.submit();
 		
 } */
+
 </script>
+
 <div class="body-sec">
 <div class="in-sec">
 
@@ -82,7 +91,8 @@ function pageProc(curPage){
 </form> --%>
 
 
-
+<div >
+			 	 	
 <div class="divList2">
 		<div class="align_left">
 			<c:if test="${!empty param.searchKeyword }">
@@ -104,7 +114,7 @@ function pageProc(curPage){
 		</colgroup>
 		<thead>
 		  <tr>
-		    <th scope="col">번호</th>
+		    <th scope="col">이미지</th>
 		    <th scope="col">제목</th>
 		    <th scope="col">작성자</th>
 		    <th scope="col">날짜</th>
@@ -121,7 +131,21 @@ function pageProc(curPage){
 		<c:if test="${!empty alist }">
 		<c:forEach var="vo" items="${alist }">
 		<tr style="text-align: center">
-			 	 	<td>${vo.bNo }</td>
+			 	 	<td>
+					 	 	<ul><img class="imageView" style="width:50px;height:50px;margin:0;" id="upBoardImage" 
+						 	 	<c:if test="${empty vo.bFilename }">
+						 	 	src="<c:url value='/fBoardImages/none_data.png'/>"
+						 	 	</c:if>
+						 	 	<c:if test="${!empty vo.bFilename }">
+						 	 	src="<c:url value='/fBoardImages/${vo.bFilename }'/>"
+						 	 	</c:if>
+					 	 		>
+					 	 		<c:if test="${!empty vo.bFilename }">
+			 	 					<li style="display: none;position: absolute;"><img id="imageView" src="<c:url value='/fBoardImages/${vo.bFilename }'/>"  ></li>
+			 	 				</c:if>
+			 	 			</ul>
+			 	 	</td>
+			 	 	<%-- <td>${vo.bNo }</td> --%>
 			 		<td><a
 			 			href="<c:url value='/freeboard/detail.do?no=${vo.bNo }&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }&gender=${gender }'/>" 
 			 			<%-- <c:if test="${empty searchVo.searchKeyword }" >
