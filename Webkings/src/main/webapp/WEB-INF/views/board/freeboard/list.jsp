@@ -133,7 +133,7 @@ function pageProc(curPage){
 			 			>
 			 		<!-- 제목이 긴경우 일부만 보여주기 -->
 			 		<c:if test="${fn:length(vo.bTitle)>20 }">
-			 			${fn:substring(vo.bTitle,0,20) }...
+			 			<span title="${vo.bTitle }">${fn:substring(vo.bTitle,0,20) }...</span>
 			 		</c:if>
 			 		<c:if test="${fn:length(vo.bTitle)<=20 }">
 			 			${vo.bTitle}

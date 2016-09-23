@@ -77,9 +77,7 @@
 		 		</td>
 		 		<td>
 		 			<fmt:formatDate value="${rVo.rRegdate }" pattern="yyyy-MM-dd"/>
-		 			<c:if test="${sessionScope.mType=='0'}">
 		 				<a id="replyDel" href="<c:url value='/admin/reply/delete.do?rNo=${rVo.rNo }&bNo=${rVo.bNo }'/>">X</a>
-		 			</c:if>
 		 		</td>
 		 	</tr>
 		 </c:if>
@@ -91,9 +89,7 @@
 		 			<a id="rereply${rVo.rNo }"  onclick="reToggle(${rVo.rNo })" style="font-size: 0.8em;color: #CC66FF;" >-답글</a>
 		 			<span class="dateSpan">
 		 			|<fmt:formatDate value="${rVo.rRegdate }" pattern="yyyy-MM-dd"/>
-		 			<c:if test="${sessionScope.mType=='0'}">
 		 				<a id="replyDel" href="<c:url value='/admin/reply/delete.do?rNo=${rVo.rNo }&bNo=${rVo.bNo }'/>">X</a>
-		 			</c:if>
 		 			</span>
 		 			<div style="display: none;" id="toggle${rVo.rNo }" style="margin-top: 15px">
 		 			

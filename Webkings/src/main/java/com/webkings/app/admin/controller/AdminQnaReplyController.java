@@ -27,8 +27,8 @@ public class AdminQnaReplyController {
 	
 	@RequestMapping("/write.do")
 	public String insertReply(@ModelAttribute QnaReplyViewVO viewVo,HttpSession session){
-		int mNo=(Integer)session.getAttribute("mNo");
-		viewVo.setmNo(mNo);
+		int adminmNo=(Integer)session.getAttribute("adminmNo");
+		viewVo.setmNo(adminmNo);
 		logger.info("댓글 입력 파라미터 viewVo={}",viewVo);
 		int cnt=qnaReplyService.insertReply(viewVo);
 		logger.info("댓글 입력 결과cnt={}",cnt);
@@ -55,14 +55,14 @@ public class AdminQnaReplyController {
 		int cnt=qnaReplyService.deleteReply(qrNo);
 		logger.info("리플 삭제 결과 cnt={}",cnt);
 		//3.
-		return "redirect:/qna/detail.do?no="+qNo;
+		return "redirect:/admin/qna/detail.do?no="+qNo;
 	}
 
 	@RequestMapping("/write2.do")
 	public String insertReply2(@ModelAttribute QnaReplyViewVO viewVo,HttpSession session){
 		//1.
-		int mNo=(Integer)session.getAttribute("mNo");
-		viewVo.setmNo(mNo);
+		int adminmNo=(Integer)session.getAttribute("adminmNo");
+		viewVo.setmNo(adminmNo);
 		logger.info("댓글의 댓글 글쓰기 파라미터={}",viewVo); 
 		//2.
 		int cnt=qnaReplyService.insertReply2(viewVo);

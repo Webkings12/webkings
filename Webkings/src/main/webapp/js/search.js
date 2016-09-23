@@ -2,7 +2,9 @@
  * 
  */
 $(document).ready(function() {
-	
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 	$.ajax({
 		url:searchUrl,
 		type:"GET", 
@@ -65,8 +67,13 @@ $(document).ready(function() {
 					"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
 
 					"<div class='info'>		<span class='shop'>"+item.sName+"</span>" +
-					"<span class='name'>"+item.iName+"</span>		<em class='cate' cate='104'>"+item.itName+"</em><i>"+item.iSalePrice+"</i>"+
-					"<div class='btn'><span class='fb'>"+
+					"<span class='name'>"+item.iName+"</span>		<em class='cate' cate='104'>"+item.itName+"</em>";
+					if(item.iSalePrice!=null){
+						result+="<i><s>"+numberWithCommas(item.iPrice)+"</s>"+numberWithCommas(item.iSalePrice)+"</i>";
+					}else{
+						result+="<i>"+numberWithCommas(item.iPrice)+"</i>";
+					}	
+					result+="<div class='btn'><span class='fb'>"+
 					"<input type='hidden' id='fbTitle' value='"+item.iName+"'/>"+
 					"<input type='hidden' id='fbUrl' value='"+item.iDomain+"'/>" +
 					"<input type='hidden' id='fbImage' value='"+item.iImage+"'/>" +
