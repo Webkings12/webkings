@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../inc/adminTop.jsp" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -18,14 +19,13 @@ $(document).ready(function() {
 	});
 	
 	for(var i=0;i<$("#length").val();i++){
-		$("#adel"+i).click(){
+		$("#adel"+i).click(function(){
 			if(confirm("정말 삭제하시겠습니까?")){
 				return true;
 			}else {
 				return false;
 			}
-		}
-	 	
+		}); 	
 	}
 });
 function pageProc(curPage){
