@@ -356,3 +356,6 @@ img, fieldset {
 	margin-bottom: 15px;
 	border: 1px solid lightgray;
 }
+#imageView{
+	max-width: 300px;
+}

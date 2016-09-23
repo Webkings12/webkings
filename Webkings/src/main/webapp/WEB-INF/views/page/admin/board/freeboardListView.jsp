@@ -28,6 +28,15 @@
 			
 			frmList.action="<c:url value='/admin/freeboard/deleteMuti.do' />"
 			frmList.submit();
+			
+			
+		});
+		
+		$("ul").hover(function(){
+			$(this).find("li").css("display","block");
+				
+		}, function(){
+			$(this).find("li").css("display","none");
 		});
 	});
 	
@@ -86,7 +95,7 @@
 		<thead>
 		  <tr>
 		  	<th><input type="checkbox" name="chkAll"></th>
-		    <th scope="col">번호</th>
+		    <th scope="col">이미지</th>
 		    <th scope="col">제목</th>
 		    <th scope="col">작성자</th>
 		    <th scope="col">날짜</th>
@@ -110,7 +119,21 @@
 						id="chk_${i }">
 						<input type="hidden" name="boardItem[${i }].bFilename" value="${vo.bFilename }">
 					</td>
-			 	 	<td>${vo.bNo }</td>
+			 	 	<td>
+					 	 	<ul><img class="imageView" style="width:50px;height:50px;margin:0;" id="upBoardImage" 
+						 	 	<c:if test="${empty vo.bFilename }">
+						 	 	src="<c:url value='/fBoardImages/none_data.png'/>"
+						 	 	</c:if>
+						 	 	<c:if test="${!empty vo.bFilename }">
+						 	 	src="<c:url value='/fBoardImages/${vo.bFilename }'/>"
+						 	 	</c:if>
+					 	 		>
+					 	 		<c:if test="${!empty vo.bFilename }">
+			 	 					<li style="display: none;position: absolute;"><img id="imageView" src="<c:url value='/fBoardImages/${vo.bFilename }'/>"  ></li>
+			 	 				</c:if>
+			 	 			</ul>
+			 	 	</td>
+			 	 	<%-- <td>${vo.bNo }</td> --%>
 			 		<td><a href="<c:url value='/admin/freeboard/detail.do?no=${vo.bNo }&currentPage=${pagingInfo.currentPage}&searchKeyword=${searchVo.searchKeyword }&searchCondition=${searchVo.searchCondition }&gender=${gender }'/>" >
 			 		<!-- 제목이 긴경우 일부만 보여주기 -->
 			 		<c:if test="${fn:length(vo.bTitle)>20 }">
@@ -197,7 +220,7 @@
 			<input type="submit" value="검색" id="btSearch2">
 	    </form>
 	    	<div class="align_right">
-	    		<a href='<c:url value="/freeboard/list.do?gender=${gender }"/>' class="btn_default btn_light size_M" >목록</a>
+	    		<a href='<c:url value="/admin/freeboard/list.do"/>' class="btn_default btn_light size_M" >목록</a>
 			    <a href="#" class="btn_default btn_light size_M" id="btDel">삭제</a>
 			</div>
 	</div>
