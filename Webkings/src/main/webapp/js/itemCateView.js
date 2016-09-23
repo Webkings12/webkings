@@ -31,7 +31,8 @@ $(document).ready(function() {
 							"<span class='favor'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
 										"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
 
-							"<span class='favor' id='addItem'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'></span>"+
+							"<span class='favor' id='addItem'>관심상품<input type='hidden' id='inputiNo' name='iINo' value='"+item.iNo+"'>" +
+										"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
 							"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em>" ;
 									if(item.iSalePrice!=null){

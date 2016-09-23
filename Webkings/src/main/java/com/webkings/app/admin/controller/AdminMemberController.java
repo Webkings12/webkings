@@ -64,6 +64,7 @@ public class AdminMemberController {
 		}
 		model.addAttribute("memberList",memberList);
 		model.addAttribute("pagingInfo", pagingInfo);
+		model.addAttribute("searchVo", searchVo);
 		
 		return "page/admin/memberList";
 	}

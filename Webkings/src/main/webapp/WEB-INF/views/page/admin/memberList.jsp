@@ -9,7 +9,7 @@ $(document).ready(function() {
 		$("tbody input[type='checkbox']").prop("checked", this.checked);
 	});
 	
-	$(".cancelbtn").submit(function() {
+	$("#frmList").submit(function() {
 		var count= $("tbody input[type='checkbox']:checked").length;
 		if(count==0){
 			alert("삭제하려는 상품을 먼저 체크하세요");
@@ -17,24 +17,32 @@ $(document).ready(function() {
 		}
 	});
 	
+	for(var i=0;i<$("#length").val();i++){
+		$("#adel"+i).click(){
+			if(confirm("정말 삭제하시겠습니까?")){
+				return true;
+			}else {
+				return false;
+			}
+		}
+	 	
+	}
 });
 function pageProc(curPage){
 	document.frmPage.currentPage.value=curPage;
 	document.frmPage.submit();
 }
 </script>
-<form name="frmPage" method="post" 
+<form name="frmPage" id="frmPage" method="post" 
 	action="<c:url value='/admin/memberList.do'/>">
 	<input type="hidden" name="currentPage">
-	<input type="hidden" name="searchCondition" 
-		value="">
 	<input type="hidden" name="searchKeyword" 
-		value="">	
+		value="${searchVo.searchKeyword}">	
 </form>
 
-<form name="frmList" method="post" action="<c:url value= '/admin/memberDeleteList.do'/>">
 <div class="body-sec">
 <div class="in-sec">
+
 <p class="privacy-fixed" id="adminPf"><a href="<c:url value='/admin.do'/>">홈으로</a></p>
 		<div class="footer">
 			<div class="list-top-2">
@@ -46,6 +54,18 @@ function pageProc(curPage){
 					</div>
 				</div>
 			</div>
+			<div>
+			</div>
+			<%-- <form name="frm11" id="frm11" method="post" 
+				action="<c:url value='/admin/memberList.do'/>">
+			<div class="searchbiv">	
+				<input type="text" name="searchKeyword" title="검색어 입력"  id="searchmEmail"
+			 	value="${param.searchKeyword}">
+			</div>
+			<button type="submit" id="searchbt" class="searchbt">검색</button>
+			</form> --%>
+			
+			<form id="frmList" name="frmList" method="post" action="<c:url value= '/admin/memberDeleteList.do'/>">
 			<div class="divList">
 				<table class="List">
 					<colgroup>
@@ -101,7 +121,7 @@ function pageProc(curPage){
 								</c:if>
 								</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${vo.mRegdate}"/></td>
-								<td><a href="<c:url value='/admin/memberQuit.do?mEmail=${vo.mEmail}&mImage=${vo.mImage}'/>">회원삭제</a></td>
+								<td><a id="adel${vs.index}" href="<c:url value='/admin/memberQuit.do?mEmail=${vo.mEmail}&mImage=${vo.mImage}'/>">회원삭제</a></td>
 							</tr>
 							<c:set var="i" value="${i+1}"/>
 							</c:forEach>	
