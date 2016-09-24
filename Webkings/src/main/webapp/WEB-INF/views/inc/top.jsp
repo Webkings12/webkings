@@ -687,19 +687,16 @@ var GoogleApp = {
 	naver_id_login.setPopup();
 	naver_id_login.setState(state);
 	naver_id_login.init_naver_id_login();
-
-	 	
+	naver_id_login.getAccessToken();
+	
+	
 	function naverSignInCallback() {
 		opener.parent.location="/Webkings/member/apiLogin.do?mEmail="+naver_id_login.getProfileData('email')+"&mNick="+naver_id_login.getProfileData('nickname');
 		window.close();
 	}
 	// 네이버 사용자 프로필 조회
 	naver_id_login.get_naver_userprofile("naverSignInCallback()");
-</script>
 
-<!-- 카카오 -->
-<script type='text/javascript'>
-  
     //<![CDATA[
       // 사용할 앱의 JavaScript 키를 설정해 주세요.
       Kakao.init('9ccbc592cdad5e00996fdc1c739bad84');
@@ -729,6 +726,7 @@ var GoogleApp = {
         function logout(){
           	 Kakao.Auth.logout(function(){
            		location.href="/Webkings/member/logout.do";
+           		naver_id_login.setAccessToken("");
            	});
            };
 

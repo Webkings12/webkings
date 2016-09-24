@@ -1134,7 +1134,12 @@ img.avatar {
 	background-color: #c0c0c0;
 	width: 50px;
 	height: 30px;
+	font-size: 15px;
+	margin-top:-14px;
+	padding: 0;
 }
 .searchbiv{
 	float: right;
+	margin-right: 370px;
+	margin-top: 100px;
 }
