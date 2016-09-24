@@ -89,6 +89,27 @@ function readURL1(input) {
 			<div class="in-sec">
 	<h1><a href="<c:url value='/admin.do'/>"></a></h1>
 	<div class="title">관리자 페이지</div>
+	<ul class="gnb">
+						<li class="">
+							<a href="<c:url value='/admin/memberList.do'/>">회원관리</a>
+						</li>
+						<li class="">
+							<a href="javascript:;" onclick="document.getElementById('ItemGenderSel').style.display='block'">상품 관리</a>
+						</li>
+						<li class="">
+							<a href="javascript:;" onclick="document.getElementById('ShopGenderSel').style.display='block'">샵 관리</a>
+						</li>
+						<li class="">
+							<a href="<c:url value='/admin/freeboard/list.do'/>" id="coupon">
+								게시판 관리
+							</a>
+						</li>
+						<li class="">
+							<a href="<c:url value='/admin/qna/list.do'/>" id="coupon">
+								문의 관리
+							</a>
+						</li>
+					</ul>
 	<div class="logout"><a id=aLogout href="<c:url value='/logout.do'/>"></a></div>
 	<div id="divLogin" class="modal2">
 						<div class="amodel2">
