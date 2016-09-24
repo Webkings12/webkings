@@ -52,18 +52,19 @@ function pageProc(curPage){
 							<li class="active single"><a href="javascript:;" class="nlink" >회원정보 관리</a></li>
 						</ul>
 					</div>
+					<form name="frm11" id="frm11" method="post" 
+						action="<c:url value='/admin/memberList.do'/>">
+						<div class="searchbiv">	
+							<input type="text" name="searchKeyword" title="검색어 입력"  id="searchmEmail" placeholder="회원이메일"
+			 				value="${param.searchKeyword}" style="height: 30px; margin-right: 0; margin-bottom: 5px;">
+							<button type="submit" id="searchbt" class="searchbt">검색</button>
+						</div>
+				</form>
 				</div>
 			</div>
 			<div>
 			</div>
-			<%-- <form name="frm11" id="frm11" method="post" 
-				action="<c:url value='/admin/memberList.do'/>">
-			<div class="searchbiv">	
-				<input type="text" name="searchKeyword" title="검색어 입력"  id="searchmEmail"
-			 	value="${param.searchKeyword}">
-			</div>
-			<button type="submit" id="searchbt" class="searchbt">검색</button>
-			</form> --%>
+			
 			
 			<form id="frmList" name="frmList" method="post" action="<c:url value= '/admin/memberDeleteList.do'/>">
 			<div class="divList">
