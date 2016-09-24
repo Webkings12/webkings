@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/foot.css"/>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="<c:url value='/js/mainM.js'/>"></script>
 <script type="text/javascript">
@@ -69,6 +70,7 @@ $(document).ready(function() {
 </div>
 </div>
 </div>
+<%@ include file="../../inc/footer-sec.jsp" %>
 <div id="loading"></div>
 </body>
 </html>

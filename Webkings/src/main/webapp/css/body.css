@@ -59,6 +59,7 @@ div.body-sec>div.in-sec {
 div.body-sec>div.in-sec>div {
     min-height: 660px;
     padding-bottom: 20px;
+    margin-bottom: 50px;
 }
 body.F .detail-search input:checked+label {
     color: #e6178f !important;
@@ -81,7 +82,7 @@ div.body-sec>div.in-sec p.privacy-fixed>a {
     height: 60px;
     position: fixed;
     right: 20;
-    bottom: 20;
+    bottom: 80;
     font-size: 0;
     line-height: 0;
 }

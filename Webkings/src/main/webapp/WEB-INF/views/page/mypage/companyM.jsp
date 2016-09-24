@@ -107,7 +107,7 @@ $(document).ready(function() {
 
 			<div class="in-sec-2">
 				<div class="company-sec">
-					<img src="<c:url value='/images/WEBKINGS LOGO.png'/>" style="width: 480px; height: 240px;">
+					<img src="<c:url value='/images/WEBKINGSLOGO.png'/>" style="width: 480px; height: 240px;">
 					<ul>
 						<li><strong>회사명</strong><span>(주)WEBKINGS</span></li>
 						<li><strong>사업자번호</strong><span>123-12-1234</span></li>

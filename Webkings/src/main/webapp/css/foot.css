@@ -1,18 +1,22 @@
 @CHARSET "UTF-8";
 div.footer-sec {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
-    height: 48px;
+        background-color: rgb(242, 242, 245);
+    height: 70px;
+      border-top: 1px solid #e0e0e0;
+      z-index : 3;
 }
 div.footer-sec>div {
     width: 1440px;
     margin: 0 auto;
+ 
 }
 div.footer-sec>div>.in-sec {
     width: 1410px;
     margin: 0 auto;
-    border-top: 1px solid #e0e0e0;
+  
 }
 div.footer-sec>div>.in-sec>div {
     border-top: 1px solid #fff;
@@ -29,7 +33,7 @@ div.footer-sec ul li:first-child a {
 div.footer-sec ul li a {
     display: block;
     margin-top: 11px;
-    line-height: 40px;
+    line-height: 50px;
     padding: 0 6px 0 7px;
 }
 div.footer-sec p.copyright {
@@ -38,7 +42,7 @@ div.footer-sec p.copyright {
     font-family: DINPro_R,sans-serif;
     font-weight: normal;
     font-style: normal;
-    line-height: 60px;
+    line-height: 67px;
     letter-spacing: 0;
     word-spacing: 0;
 }
