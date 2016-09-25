@@ -51,6 +51,18 @@
 		<![CDATA[
 			and to_char(i_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
 		]]>
+		<if test='orderVal eq "0"'>
+			order by i_no desc
+		</if>
+		<if test='orderVal eq "1"'>
+			order by i_click desc
+		</if>
+		<if test='orderVal eq "2"'>
+			order by i_salePrice desc
+		</if>
+		<if test='orderVal eq "3"'>
+			order by i_salePrice asc
+		</if>
 		</if>
 	</select>
 	
@@ -86,7 +98,7 @@
 			and to_char(i_regdate+1, 'yyyymmdd') > to_char(sysdate,'yyyymmdd')
 			]]>
 		</if>
-		<if test='orderVal eq "0"'>
+		<!-- <if test='orderVal eq "0"'>
 			order by i_no desc
 		</if>
 		<if test='orderVal eq "1"'>
@@ -97,7 +109,7 @@
 		</if>
 		<if test='orderVal eq "3"'>
 			order by i_salePrice asc
-		</if>
+		</if> -->
 		
 	</select>
 	

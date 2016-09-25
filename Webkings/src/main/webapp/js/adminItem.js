@@ -22,7 +22,7 @@ $(document).ready(function() {
 							"style='height: 340px; display: block;' class='item'>"+
 							"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 								"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em>";
-								if(item.iSalePrice!=null){
+							if(item.iSalePrice !=null && item.iSalePrice!= item.iPrice){
 									result+="<i><s>"+item.iPrice+"</s>"+item.iSalePrice+"</i>";
 								}else{
 									result+="<i>"+item.iPrice+"</i>";
@@ -43,7 +43,7 @@ $(document).ready(function() {
 				}
 			}); 
 			 
-			$(".notice-2 em").append(itAllCount);
+		$(".notice-2 em").append(itAllCount);
 			 
 		$(".option-sec-1>ul>li.order ul a").click(function(){
 					orderVal=$(this).find("input").val();

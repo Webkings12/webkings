@@ -5,7 +5,7 @@
 <script type="text/javascript">
 var itemCate= "${cateView}";
 var itemSel=[];
-var orderVal="${orderVal}";
+var orderVal="${param.orderVal}";
 var itAllCount;
 var orderName="${orderName}";
 var MultiDelUrl="<c:url value='/adminItemMultiDel.do'/>";

@@ -249,3 +249,4 @@ function pageProc(curPage){
 	</div>
 </div>
 </div>
+<%@ include file="../../inc/footer-sec.jsp" %>
