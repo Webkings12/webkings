@@ -73,4 +73,9 @@ public class ShopDAOMybatis extends SqlSessionDaoSupport implements ShopDAO{
 	public int openShop(String sDomain) {
 		return getSqlSession().update(namespace+".openShop",sDomain);
 	}
+
+	@Override
+	public String checkShop2(String shop) {
+		return getSqlSession().selectOne(namespace+".checkShop2",shop);
+	}
 }

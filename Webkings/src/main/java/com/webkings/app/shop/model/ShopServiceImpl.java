@@ -103,4 +103,9 @@ public class ShopServiceImpl implements ShopService{
 	public int openShop(String sDomain){
 		return shopDao.openShop(sDomain);
 	}
+
+	@Override
+	public String checkShop2(String shop) {
+		return shopDao.checkShop2(shop);
+	}
 }

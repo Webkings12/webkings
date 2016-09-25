@@ -156,10 +156,18 @@ public class ShopController {
 	public int openShop(@RequestParam String shop){
 		//1.
 		logger.info("샵 오픈 도메인 shop={}",shop);
+		String res=shopService.checkShop2(shop);
+		int result=0;
+		if(res.equals("Y")){
+			result=1;
+		}else if(res.equals("N")){
+			result=2;
+		}
+		logger.info("삽 오픈 연장 여부 result={}",result );
 		//2.
 		int cnt=shopService.openShop(shop);
 		logger.info("샵 오픈 cnt={}",cnt);
 		//3.
-		return cnt;
+		return result;
 	}
 }

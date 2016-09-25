@@ -103,11 +103,19 @@
 	</insert>	
 	
 	<select id="checkShop" parameterType="String" resultType="int">
-		select count(*) from shop where s_domain=#{shop}
+		select count(*) from shop where s_name=#{shop}
 	</select>
 	<update id="openShop" parameterType="String">
 		update shop
-		set s_payyn='Y'
-		where s_domain=#{shop} 
+		set s_payyn='Y',
+		 	s_accyn='Y',
+    		s_accdate=sysdate,
+		      s_paysday=sysdate,
+		      s_payeday=decode(s_payeday, null, sysdate+30, s_payeday+30)
+		where s_name=#{shop} 
 	</update>
+	
+	<select id="checkShop2" parameterType="String" resultType="String">
+		select s_payyn from shop where s_name=#{shop}
+	</select>
 </mapper>
