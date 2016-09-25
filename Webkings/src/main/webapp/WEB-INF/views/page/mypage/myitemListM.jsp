@@ -58,7 +58,7 @@ $(document).ready(function() {
 <br>
 <br>
 <br>
-<h1 style="text-align: center;">관심상품   <span style="color:#0fb6c5;">${list}</span></h1>
+<h1 style="text-align: center;">관심상품 <span style="color:#0fb6c5;">${list}</span></h1>
 	<c:if test="${empty myitemList }">
 	</c:if>
 	<c:if test="${!empty myitemList }"> 
