@@ -137,4 +137,4 @@ $(document).ready(function() {
 	
 	</div>
 	</div>
-	
+	<%@ include file="../../inc/footer-sec.jsp" %>
