@@ -16,4 +16,7 @@ public interface ShopDAO {
 	
 	
 	public int insertShop(ShopVO shopVo);
+	
+	public int checkShop(String sDomain);
+	public int openShop(String sDomain);
 }

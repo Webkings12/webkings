@@ -18,4 +18,7 @@ public interface ShopService {
 
 	
 	public int insertShop(ShopVO shopVO);
+	
+	public int checkShop(String sDomain);
+	public int openShop(String sDomain);
 }

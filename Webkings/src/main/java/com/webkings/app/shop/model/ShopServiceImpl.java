@@ -95,4 +95,12 @@ public class ShopServiceImpl implements ShopService{
 	public int insertShop(ShopVO shopVo) {
 		return shopDao.insertShop(shopVo);
 	}
+	
+	public int checkShop(String sDomain){
+		return shopDao.checkShop(sDomain);
+	}
+	
+	public int openShop(String sDomain){
+		return shopDao.openShop(sDomain);
+	}
 }

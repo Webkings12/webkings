@@ -101,4 +101,13 @@
                     	 #{S_DEP}, #{S_PO#{SITION}, #{S_TEL}, #{S_PHONE}, #{S_EMAIL}, #{S_HIT},
                     	 #{S_ACCYN}, #{S_ACCDATE}, #{S_PAYYN}, #{S_REGDATE}, #{S_CHGDATE}, #{C_NO})
 	</insert>	
+	
+	<select id="checkShop" parameterType="String" resultType="int">
+		select count(*) from shop where s_domain=#{shop}
+	</select>
+	<update id="openShop" parameterType="String">
+		update shop
+		set s_payyn='Y'
+		where s_domain=#{shop} 
+	</update>
 </mapper>

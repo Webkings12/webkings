@@ -138,4 +138,28 @@ public class ShopController {
 		model.addAttribute("pageNum",pageNum);
 		return "page/mypage/latelyShopList"+gender;
 	}
+	
+	@RequestMapping("/checkShop.do")
+	@ResponseBody
+	public int checkShop(@RequestParam String shop){
+		//1.
+		logger.info("샵 도메인 shop={}",shop);
+		//2.
+		int cnt=shopService.checkShop(shop);
+		logger.info("샵 체크결과 cnt={}",cnt);
+		//3.
+		return cnt;
+	}
+	
+	@RequestMapping("/openShop.do")
+	@ResponseBody
+	public int openShop(@RequestParam String shop){
+		//1.
+		logger.info("샵 오픈 도메인 shop={}",shop);
+		//2.
+		int cnt=shopService.openShop(shop);
+		logger.info("샵 오픈 cnt={}",cnt);
+		//3.
+		return cnt;
+	}
 }
