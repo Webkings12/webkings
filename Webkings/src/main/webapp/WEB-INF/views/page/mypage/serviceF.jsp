@@ -287,9 +287,10 @@ $(document).ready(function() {
 </div>
 		
 		
-	<%@ include file="footer-sec.jsp" %>
+	
 	</div>
 </div>
+<%@ include file="footer-sec.jsp" %>
 </div>
 </body>
 </html>

@@ -54,16 +54,15 @@ $(document).ready(function() {
 						<input type="hidden" id="doma" value="${item.sDomain}"/>
 						</span>
 						<i>트위터 공유</i></div>
-						<p><i>316,800</i> 회 포털검색</p>		<div class="bg"></div>	</div>	<div class="info"><strong>"${s.sName}</strong>
+						<p><i>316,800</i> 회 포털검색</p>		<div class="bg"></div>	</div>	<div class="info"><strong>${s.sName}</strong>
 						<span><i cate="201">${s.stName}</i></span>		<em class="">팔로우</em>	</div></a></li>
 			
 				</c:forEach>
 			</c:forEach>
 			</ul>
 			</c:if>
-			
-		
 </div>
 </div>
+<%@ include file="footer-sec.jsp" %>
 </div>
 <div id="loading"></div>

@@ -99,5 +99,6 @@ $(document).ready(function() {
 			</c:if>
 </div>
 </div>
+<%@ include file="footer-sec.jsp" %>
 </div>
 <div id="loading"></div>
