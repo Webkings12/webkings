@@ -84,14 +84,15 @@ function openShop(){
 				
 				if(res==1){
 					msg2="쇼핑몰 오픈";
+					$("#result2").html(msg2);
 				}else{
-					msg2="쇼핑몰 이름이 잘못되었습니다. 확인해주세요";
+					alert("쇼핑몰 이름이 잘못되었습니다. 확인해주세요");
 				}
 		},
 		error:function(xhr,status,error){
 			alert(status+" : "+error);
 		}
-		$("#result2").html(msg2);
+		
 	});	
 	
 		
@@ -100,11 +101,13 @@ function openShop(){
 </script>
 <style type="text/css">
 .divFm{
-	width: 700px;
+	width: 400px;
 	margin: 0 auto;
+	border: 1px solid gray;
+	padding:20px;
 }
 .divFm label, .divForm .sp1 {
-    width: 20%;
+    width: 30%;
     float: left;
     text-align: left;
     padding: 3px 15px 0 0;
@@ -113,7 +116,15 @@ function openShop(){
 }
 .divFm input[type=text]{
 	text-align:right;
+	width: 60%;
 }
+
+.divFm .divInput {
+    clear: both;
+    border-bottom: 1px solid #eee;
+    padding: 5px 0;
+    margin: 0;
+    overflow: auto;
 </style>
 </head>
 <body>
@@ -123,31 +134,31 @@ function openShop(){
 			<label class="sp1">주문번호</label>
 			<input type="text" name="pNo">
 		</div> -->
-		<div>
+		<div class="divInput">
 			<label class="sp1">금액</label>
 			<input type="text" name="price" id="price" value="50" readonly>
 		</div>
-		<div>
+		<div class="divInput">
 			<label class="sp1">쇼핑몰 도메인</label>
 			<input type="text" name="pName" id="pName">
 		</div>
-		<div>
+		<div class="divInput">
 			<label class="sp1">이메일주소</label>
 			<input type="text" name="email" id="email">
 		</div>
-		<div>
+		<div class="divInput">
 			<label class="sp1">성함</label>
 			<input type="text" name="name" id="name">
 		</div>
-		<div>
+		<div class="divInput">
 			<label class="sp1">주소</label>
 			<input type="text" name="address" id="address">
 		</div>
-		<div>
+		<div class="divInput">
 			<label class="sp1">우편번호</label>
 			<input type="text" name="zipcode" id="zipcode">
 		</div>
-		<div>
+		<div class="divInput">
 			<label class="sp1">연락처</label>
 			<input type="text" name="tel" id="tel">
 		</div>
