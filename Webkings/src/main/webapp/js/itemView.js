@@ -43,7 +43,7 @@ $(document).ready(function() {
 										"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
 								"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 									"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em>";
-									if(item.iSalePrice!=null){
+									if(item.iSalePrice !=null && item.iSalePrice!= item.iPrice){
 										result+="<i><s>"+numberWithCommas(item.iPrice)+"</s>"+numberWithCommas(item.iSalePrice)+"</i>";
 									}else{
 										result+="<i>"+numberWithCommas(item.iPrice)+"</i>";
@@ -85,7 +85,7 @@ $(document).ready(function() {
 										"<input type='hidden' id='inputsNo' name='iSNo' value='"+item.sNo+"'></span>"+
 								"<div class='info'>	<span class='shop'>"+item.sName+"</span>"+		
 									"<span class='name'>"+item.iName+"</span>	<em class='cate' cate='101'>"+item.itName+"</em>";
-									if(item.iSalePrice!=null){
+									if(item.iSalePrice !=null && item.iSalePrice!= item.iPrice){
 										result+="<i><s>"+numberWithCommas(item.iPrice)+"</s>"+numberWithCommas(item.iSalePrice)+"</i>";
 									}else{
 										result+="<i>"+numberWithCommas(item.iPrice)+"</i>";
