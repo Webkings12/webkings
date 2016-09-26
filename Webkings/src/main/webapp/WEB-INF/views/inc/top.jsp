@@ -75,10 +75,17 @@ var searchList="";
 			data:"mEmail="+$("#mEmail").val(), //요청 파라미터
 			dataType:"text",
 			success:function(res){
-				alert("인증메일이 발송되었습니다");
-				$("#certifyChk").val(res);
+				alert("res" + res);
+				if(res == "이미 존재하는 이메일입니다") {
+					alert("이미 존재하는 이메일입니다");
+				}else {
+					alert("인증메일이 발송되었습니다");
+					$("#certifyChk").val(res);
+				}
+				
 			},
 			error:function(xhr, status, error){
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			}
 		});
 	});
@@ -178,6 +185,9 @@ var searchList="";
 			$("#divLogin").css("display","none");
 			$("#divfind").css("display","block");
 		});
+		
+		// 아이디 존재여부 체크
+		
 		
 });
 	// 회원가입 이미지 확장자 체크
@@ -413,6 +423,7 @@ var searchList="";
 								<div class="certify">
 									<input type="text" placeholder="인증번호"
 										 id="certify" name="certify" style="width: 49.6%; height: 41px;margin-left: 4;margin: 8px 4;s" >
+										<input type="hidden" id="certifyChk" name="certifyChk">
 									<a id="aCertify" style="width: 28%; height: 30px; font-size: 2.1ex;margin-left: 9;">인증번호 받기</a>
 								</div>
 							</div>
@@ -725,9 +736,15 @@ var GoogleApp = {
         
         function logout(){
           	 Kakao.Auth.logout(function(){
+          		signOut();
            		location.href="/Webkings/member/logout.do";
-           		naver_id_login.setAccessToken("");
            	});
-           };
-
+          	
+          };
+       function signOut() {
+     	     var auth2 = gapi.auth2.getAuthInstance();
+     	     auth2.signOut().then(function () {
+     	        console.log('User signed out.');
+     	     });
+     	 }
   </script>
