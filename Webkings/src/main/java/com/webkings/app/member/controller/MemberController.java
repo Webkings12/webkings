@@ -90,7 +90,7 @@ public class MemberController {
 	public int login_post(@ModelAttribute MemberVo memberVo,
 			HttpServletRequest request,HttpServletResponse response,String chkId1,Model model){
 		logger.info("로그인 파라미터, memberVo={}",memberVo);
-		logger.info("로그인 파라미터, chkId={}",chkId1);		
+		logger.info("로그인 파라미터, chkId={}",chkId1);	
 		int result=memberService.loginCheck(memberVo);
 		
 		logger.info("result={}",result);

@@ -13,7 +13,7 @@ public class ChiefVO {
 	private String C_REGDATE;
 	private Timestamp C_CHGDATE;
 	private String C_TYPE;
-
+	
 	public int getC_NO() {
 		return C_NO;
 	}

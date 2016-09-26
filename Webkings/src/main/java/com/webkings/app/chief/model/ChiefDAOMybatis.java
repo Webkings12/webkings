@@ -8,9 +8,8 @@ public class ChiefDAOMybatis extends SqlSessionDaoSupport implements ChiefDAO {
 	private String namespace="com.mybatis.mapper.oracle.chief";
 
 	@Override
-	public int loginCheck(ChiefVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public String loginCheck(ChiefVO vo) {
+		return getSqlSession().selectOne(namespace+".selectChiefPwd", vo);
 	}
 
 	@Override
@@ -21,5 +20,10 @@ public class ChiefDAOMybatis extends SqlSessionDaoSupport implements ChiefDAO {
 	@Override
 	public int selectChiefId(String reqParam) {
 		return getSqlSession().insert(namespace+".selectChiefId", reqParam);
+	}
+
+	@Override
+	public ChiefVO selectcEmail(String cEmail) {
+		return getSqlSession().selectOne(namespace+".selectmChiefEmail",cEmail);
 	}
 }

@@ -4,25 +4,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/skin.css"/>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/base.css"/>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
-<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
-<body>
+<!DOCTYPE>
 	<!-- header -->
-	<jsp:include page="inc/top.jsp" flush="false" />
-	
+	<%@ include  file="inc/top.jsp" %>
 	<!-- body -->
 	<div class="bodySec">
 		<div class="bodyInSec">
-		
+			
 			<!-- left -->
 			<div class="leftSec">
-				<jsp:include page="inc/left.jsp" flush="false" />
+				<%@ include  file="inc/left.jsp" %>
 			</div>
 			
 			<!-- right content -->

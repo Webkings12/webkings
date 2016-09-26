@@ -3,6 +3,15 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.mybatis.mapper.oracle.chief">	
+	<select id="selectChiefPwd" parameterType="ChiefVO"
+		resultType="string">
+		select C_Pwd from chief
+		where c_Email=#{C_EMAIL} and c_type=1
+	</select>
+	<select id="selectmChiefEmail" parameterType="String" resultType="ChiefVO" >
+		select * from chief
+		where c_email=#{cEmail}
+	</select>
 	<select id="selectChiefId" parameterType="String" resultType="int" >
 		select count(*) from chief
 		 where 1 = 1

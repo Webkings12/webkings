@@ -4,22 +4,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/skin.css"/>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/chief/base.css"/>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Marketing center</title>
-</head>
-<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
-<body>	
+<!DOCTYPE>
 	<!-- left -->
 	<div class="tbtnSec">
 		<div class="inSec">
-			<a class="sys-btn sys-btn-type4">
+			<c:if test="${empty sessionScope.cEmail }">
+			<a href="javascript:;" class="sys-btn sys-btn-type4">
 				<span>로그인</span>
 			</a>
+				</c:if>
+				<c:if test="${!empty sessionScope.cEmail }">
+				<a href='javascript:;' class="sys-btn sys-btn-type5" onclick="logout()">
+					<span>로그아웃</span>
+				</a>
+				</c:if>
+			
 			<a href="<c:url value='/chief/addChief.do'/>" class="sys-btn sys-btn-type4">
 				<span>회원가입</span>
 			</a>

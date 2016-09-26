@@ -164,7 +164,6 @@ $(document).ready(function(){
 	})
 		
 });
-
 // 비밀번호 찾기
 $(document).ready(function(){
 	$("#frmFind").submit(function(){
@@ -178,7 +177,6 @@ $(document).ready(function(){
 		$("#divLogin").css("display","block");
 	});
 });
-
 
 
 function chkEmail(mEmail)

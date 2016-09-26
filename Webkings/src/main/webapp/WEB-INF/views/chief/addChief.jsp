@@ -162,9 +162,9 @@ $(document).ready(function() {
 		<div class="bodyInSec">
 		
 			<!-- left -->
-			<div class="leftSec">
-				<jsp:include page="inc/left.jsp" flush="false" />
-			</div>
+	<div class="leftSec">
+		<jsp:include page="inc/left.jsp" flush="false" />
+	</div>
 			
 			<!-- right content -->
 			<div class="rightSec">

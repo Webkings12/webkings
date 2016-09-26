@@ -10,7 +10,19 @@ public class ChiefServiceImpl implements ChiefService{
 	
 	@Override
 	public int loginCheck(ChiefVO vo) {
-		return 0;
+			int result=0;
+		
+		String pwd =chiefDAO.loginCheck(vo);
+		if(pwd==null || pwd.isEmpty()){
+			result=ID_NONE;
+		}else{
+			if(pwd.equals(vo.getC_PWD())){
+				result=LOGIN_OK;
+			}else{
+				result=PWD_DISAGREE; 
+			}
+		}
+		return result;
 	}
 
 	@Override
@@ -21,6 +33,11 @@ public class ChiefServiceImpl implements ChiefService{
 	@Override
 	public int insertChief(ChiefVO vo) {
 		return chiefDAO.insertChief(vo);
+	}
+
+	@Override
+	public ChiefVO selectcEmail(String cEmail) {
+		return chiefDAO.selectcEmail(cEmail);
 	}
 
 }

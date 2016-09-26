@@ -3,7 +3,10 @@ package com.webkings.app.chief.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.webkings.app.chief.model.ChiefService;
 import com.webkings.app.chief.model.ChiefVO;
 import com.webkings.app.common.FileUploadWabUtil;
+import com.webkings.app.member.model.MemberService;
+import com.webkings.app.member.model.MemberVo;
 import com.webkings.app.shop.model.ShopService;
 import com.webkings.app.shop.model.ShopVO;
 
@@ -46,7 +51,6 @@ public class ChiefController {
 	@RequestMapping(value="/addChief.do", method=RequestMethod.GET)
 	public String addChief_get(){
 		logger.info("addChief");
-		
 		return "chief/addChief";
 	}
 	
@@ -70,7 +74,7 @@ public class ChiefController {
 		}
 	}
 	
-	@RequestMapping(value="/chief/chiefNShopInsert.do", method=RequestMethod.POST)
+	@RequestMapping(value="/chiefNShopInsert.do", method=RequestMethod.POST)
 	public String chiefNShopInsert_post(@ModelAttribute ChiefVO chiefVO, @ModelAttribute ShopVO shopVO, HttpServletRequest request, Model model){
 		logger.info("chiefNShopInsertFrom 기업회원 가입 chiefVOnShopVO add, 파라미터 ChiefVo={},{}",chiefVO, shopVO);
 		
@@ -115,5 +119,48 @@ public class ChiefController {
 		} else {
 			return "";
 		}
+	}
+	@RequestMapping(value="/chiefLogin.do")
+	@ResponseBody
+	public int login_post(@ModelAttribute ChiefVO chiefVo,
+			HttpServletRequest request,HttpServletResponse response, String chkId1,Model model){
+		logger.info("로그인 파라미터, chiefVo={}",chiefVo);
+		logger.info("로그인 파라미터, chkId={}",chkId1);		
+		int result=chiefService.loginCheck(chiefVo);
+		
+		logger.info("result={}",result);
+		if(result==chiefService.LOGIN_OK){
+			chiefVo = chiefService.selectcEmail(chiefVo.getC_EMAIL());
+			HttpSession session= request.getSession();
+			session.setAttribute("cEmail", chiefVo.getC_EMAIL());
+			session.setAttribute("cName", chiefVo.getC_NAME());
+			session.setAttribute("cNo", chiefVo.getC_NO());
+			session.setAttribute("cType", chiefVo.getC_TYPE());
+			session.setAttribute("cPwd", chiefVo.getC_PWD());
+			
+			Cookie ck= new Cookie("ck_cEmail", chiefVo.getC_EMAIL());
+			if(chkId1!=null){
+				logger.info("ckckckckck  chiefVo.getcEmail()={}", chiefVo.getC_EMAIL());
+				ck.setMaxAge(100*24*60*60); 
+				response.addCookie(ck);
+			}else{
+				ck.setMaxAge(0);
+				response.addCookie(ck);
+			}
+		}
+		return result;
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session){
+		
+		session.removeAttribute("cEmail");
+		session.removeAttribute("cName");
+		session.removeAttribute("cNo");
+		session.removeAttribute("cType");
+		session.removeAttribute("cPwd");
+		
+		
+		return "redirect:/chief/chiefMain.do";
 	}
 }
