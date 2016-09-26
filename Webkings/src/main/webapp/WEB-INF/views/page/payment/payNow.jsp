@@ -18,7 +18,6 @@
 <script>
 
 $(document).ready(function(){
-	alert("${sessionScope.cName}");
 	var cnt=0;
 	$("#pay").click(function(){
 		

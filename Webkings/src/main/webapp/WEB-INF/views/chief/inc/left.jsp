@@ -9,7 +9,11 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#bMoney").click(function(){
+		if(cEmail==""){
+			$(".modal").css("display", "block");	
+		}else{
 			location.href="<c:url value='/payment/payNow.do'/>";
+		}
 		});
 	});
 </script>

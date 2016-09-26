@@ -15,7 +15,7 @@
 </head>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript">
-var cEmail;
+var cEmail="${sessionScope.cEmail}";
 var cPwd;
 </script>
 <script type="text/javascript" src='<c:url value="/js/chiefLeft.js"/>'></script>
@@ -38,8 +38,6 @@ $("#formLogin").submit(function(event){
 	}else{
 		cEmail=$("#cEmail1").val();
 		cPwd=$("#cPwd1").val();
-		alert(cEmail);
-		alert(cPwd);
 		$.ajax({
 			url:"<c:url value='/chief/chiefLogin.do'/>",
 			type:"POST",
@@ -48,7 +46,6 @@ $("#formLogin").submit(function(event){
 			dataType:"json",
 			success:function(res){
 				if(res==1){
-					alert(res);
 				}else if (res==2) {
 					alert("비밀번호가 다릅니다");
 					$("#divLogin").css("display","block");
