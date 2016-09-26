@@ -5,10 +5,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE>
+<script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#bMoney").click(function(){
+			location.href="<c:url value='/payment/payNow.do'/>";
+		});
+	});
+</script>
 	<!-- left -->
 	<div class="tbtnSec">
 		<div class="inSec">
-			<c:if test="${empty sessionScope.cEmail }">
+			<c:if test="${empty sessionScope.cEmail}">
 			<a href="javascript:;" class="sys-btn sys-btn-type4">
 				<span>로그인</span>
 			</a>
@@ -28,7 +36,8 @@
 			<li>
 				<a class="146">
 					<em><i>1</i></em>
-					<strong>비즈머니</strong>
+					<strong><span id="bMoney">비즈머니</span></strong> 
+					<%-- <strong><a href="<c:url value='/payment/payNow.do'/>">비즈머니</a></strong> --%> 
 				</a>
 				<dl>
 					<dd>

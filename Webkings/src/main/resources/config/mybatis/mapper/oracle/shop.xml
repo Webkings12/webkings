@@ -118,4 +118,8 @@
 	<select id="checkShop2" parameterType="String" resultType="String">
 		select s_payyn from shop where s_name=#{shop}
 	</select>
+	
+	<select id="selectShopName" parameterType="int" resultType="ShopNameViewVO">
+		select * from shopnameview where c_No=#{cNo}
+	</select>
 </mapper>

@@ -108,4 +108,8 @@ public class ShopServiceImpl implements ShopService{
 	public String checkShop2(String shop) {
 		return shopDao.checkShop2(shop);
 	}
+	
+	public List<ShopNameViewVO> selectShopName(int cNo){
+		return shopDao.selectShopName(cNo);
+	}
 }

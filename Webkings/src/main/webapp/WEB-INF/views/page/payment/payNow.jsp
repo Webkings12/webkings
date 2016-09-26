@@ -2,15 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
+<%@ include  file="../../chief/inc/top.jsp" %>
+	<!-- body -->
+	<div class="bodySec">
+		<div class="bodyInSec">
+			
+			<!-- left -->
+			<div class="leftSec">
+					<%@ include  file="../../chief/inc/left.jsp" %>
+			</div>
+			
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.1.js"></script>
 <script>
 
 $(document).ready(function(){
+	alert("${sessionScope.cName}");
 	var cnt=0;
 	$("#pay").click(function(){
 		
@@ -124,8 +132,9 @@ function openShop(){
 .divFm{
 	width: 400px;
 	margin: 0 auto;
-	border: 1px solid gray;
+	/* border: 1px solid gray; */
 	padding:20px;
+	margin-top: 150px;
 }
 .divFm label, .divForm .sp1 {
     width: 30%;
@@ -156,8 +165,6 @@ function openShop(){
 }
 
 </style>
-</head>
-<body>
 <div class="divFm">
 	<form name="frmPay">
 		<!-- <div class="">
@@ -172,13 +179,27 @@ function openShop(){
 			<label class="sp1">쇼핑몰 이름</label>
 			<input type="text" name="sName" id="sName">
 		</div>
+		
+	<%-- 	<div class="divInput">
+			<label class="sp1">쇼핑몰 이름</label><br>
+			<select name="sName" id="sName" style="width:60%">
+			<c:if test="${!empty sVo}">
+			<c:forEach var="vo" items="sVo">
+				<option value="${vo.sName }">
+				${vo.sName }
+				</option>
+			</c:forEach>
+			</c:if>
+			</select>
+		</div> --%>
+		
 		<div class="divInput">
 			<label class="sp1">이메일주소</label>
-			<input type="text" name="email" id="email">
+			<input type="text" name="email" id="email" value='${sessionScope.cEmail }'>
 		</div>
 		<div class="divInput">
 			<label class="sp1">성함</label>
-			<input type="text" name="name" id="name">
+			<input type="text" name="name" id="name" value='${sessionScope.cName }'>
 		</div>
 		<!-- <div class="divInput">
 			<label class="sp1">주소</label>
@@ -202,8 +223,20 @@ function openShop(){
 	<div id="result2" style="text-align: center;" class="payResultView">
 	</div>
 </div>
-	
-
-
+		</div>
+	</div>
+<div class="footSec">
+		<h1>
+			<a href="javascript:;">
+				<img src="http://img.sta1.info/rsc/mkc/img/skin/logo_2.gif" alt="마케팅센터">
+			</a>
+		</h1>
+		<div class="fleft">
+			<img src="http://img.sta1.info/rsc/mkc/img/skin/footer_1.gif" alt="">
+		</div>
+		<div class="fright">
+			<img src="http://img.sta1.info/rsc/mkc/img/skin/footer_2.gif" alt="">
+		</div>
+	</div>
 </body>
 </html>

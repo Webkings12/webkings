@@ -78,4 +78,9 @@ public class ShopDAOMybatis extends SqlSessionDaoSupport implements ShopDAO{
 	public String checkShop2(String shop) {
 		return getSqlSession().selectOne(namespace+".checkShop2",shop);
 	}
+
+	@Override
+	public List<ShopNameViewVO> selectShopName(int cNo) {
+		return getSqlSession().selectList(namespace+".selectShopName",cNo);
+	}
 }

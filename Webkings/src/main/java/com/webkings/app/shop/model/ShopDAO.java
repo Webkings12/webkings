@@ -20,4 +20,6 @@ public interface ShopDAO {
 	public int checkShop(String sDomain);
 	public int openShop(String sDomain);
 	public String checkShop2(String shop);
+	public List<ShopNameViewVO> selectShopName(int cNo);
+	
 }
