@@ -57,7 +57,7 @@
 											<tbody>
 												<tr>
 													<td class="tleft">
-														<a href="#">CPC 최저 가격 변동 공지! (8월 1일 적용 예정)</a>
+														<a href="#">CPC 최저 가격 변동 공지! (10월 1일 적용 예정)</a>
 													</td>
 													<td>
 														2016-07-28
@@ -101,7 +101,7 @@
 								<div class="inSec">
 									<div class="titTabSec">
 										<h2>광고주현황 (여성쇼핑몰)</h2>
-										<p class="txt">2016-09-05 현재</p>
+										<p class="txt">2016-09-26 현재</p>
 									</div>
 									<div class="boardList1">
 										<table class="list list1">
