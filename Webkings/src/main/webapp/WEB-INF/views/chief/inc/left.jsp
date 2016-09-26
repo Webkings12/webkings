@@ -14,11 +14,10 @@
 			</a>
 				</c:if>
 				<c:if test="${!empty sessionScope.cEmail }">
-				<a href='javascript:;' class="sys-btn sys-btn-type5" onclick="logout()">
+				<a href='javascript:;' class="sys-btn sys-btn-type4" onclick="logout()">
 					<span>로그아웃</span>
 				</a>
 				</c:if>
-			
 			<a href="<c:url value='/chief/addChief.do'/>" class="sys-btn sys-btn-type4">
 				<span>회원가입</span>
 			</a>

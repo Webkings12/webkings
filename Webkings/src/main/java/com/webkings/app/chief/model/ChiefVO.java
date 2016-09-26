@@ -22,6 +22,10 @@ public class ChiefVO {
 		C_NO = c_NO;
 	}
 
+	public ChiefVO() {
+		super();
+	}
+
 	public String getC_NUMBER() {
 		return C_NUMBER;
 	}

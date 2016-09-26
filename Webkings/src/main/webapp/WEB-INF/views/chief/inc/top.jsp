@@ -14,12 +14,17 @@
 <title>마케팅센터</title>
 </head>
 <script type="text/javascript" src='<c:url value="/jquery/jquery-3.1.0.min.js"/>'></script>
+<script type="text/javascript">
+var cEmail;
+var cPwd;
+</script>
 <script type="text/javascript" src='<c:url value="/js/chiefLeft.js"/>'></script>
 <script type="text/javascript">
 //로그인
 var loginCheck="";
 $(document).ready(function() {
 $("#formLogin").submit(function(event){
+	
 	if($("#cEmail1").val().length<1){
 		alert("사업자 이메일을 입력하세요.");
 		$("#divLogin").css("display","block");
@@ -30,15 +35,20 @@ $("#formLogin").submit(function(event){
 		$("#divLogin").css("display","block");
 		$("#cPwd1").focus();
 		return false;
-	}else{				
+	}else{
+		cEmail=$("#cEmail1").val();
+		cPwd=$("#cPwd1").val();
+		alert(cEmail);
+		alert(cPwd);
 		$.ajax({
 			url:"<c:url value='/chief/chiefLogin.do'/>",
 			type:"POST",
 			async:false,
-			data:$(this).serialize(), //요청 파라미터
+			data:"cEmail="+cEmail+"&cPwd="+cPwd, //요청 파라미터
 			dataType:"json",
 			success:function(res){
 				if(res==1){
+					alert(res);
 				}else if (res==2) {
 					alert("비밀번호가 다릅니다");
 					$("#divLogin").css("display","block");
@@ -62,7 +72,7 @@ $("#formLogin").submit(function(event){
 });
 function logout(){
   location.href="/Webkings/chief/logout.do";
-};
+}
 </script>
 <body>
 	<!-- header -->
@@ -90,7 +100,7 @@ function logout(){
 						<span onclick="document.getElementById('divLogin').style.display='none'"
 							class="close" title="Close Modal">&times;</span>
 						<div class="amodel2">
-							<form class="modal-content animate" id="formLogin" name="formLogin" method="post">
+							<form class="modal-content animate" id="formLogin" name="formLogin">
 								<div class="imgcontainer">
 									<img src="<c:url value='/images/logo.png'/>" alt="Avatar"
 										class="avatar">
@@ -116,7 +126,6 @@ function logout(){
 									<a href="javascript:;" id="find"	class="a">비밀번호 찾기</a>
 									</div>
 								</div>
-
 							</form>
 						</div>
 					</div>

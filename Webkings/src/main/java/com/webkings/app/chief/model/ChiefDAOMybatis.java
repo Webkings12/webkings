@@ -24,6 +24,6 @@ public class ChiefDAOMybatis extends SqlSessionDaoSupport implements ChiefDAO {
 
 	@Override
 	public ChiefVO selectcEmail(String cEmail) {
-		return getSqlSession().selectOne(namespace+".selectmChiefEmail",cEmail);
+		return getSqlSession().selectOne(namespace+".selectcChiefEmail",cEmail);
 	}
 }

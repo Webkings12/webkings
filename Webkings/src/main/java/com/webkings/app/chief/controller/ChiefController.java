@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.webkings.app.chief.model.ChiefService;
 import com.webkings.app.chief.model.ChiefVO;
 import com.webkings.app.common.FileUploadWabUtil;
-import com.webkings.app.member.model.MemberService;
-import com.webkings.app.member.model.MemberVo;
 import com.webkings.app.shop.model.ShopService;
 import com.webkings.app.shop.model.ShopVO;
 
@@ -122,21 +120,27 @@ public class ChiefController {
 	}
 	@RequestMapping(value="/chiefLogin.do")
 	@ResponseBody
-	public int login_post(@ModelAttribute ChiefVO chiefVo,
-			HttpServletRequest request,HttpServletResponse response, String chkId1,Model model){
-		logger.info("로그인 파라미터, chiefVo={}",chiefVo);
-		logger.info("로그인 파라미터, chkId={}",chkId1);		
+	public int login_post(@RequestParam String cEmail, @RequestParam String cPwd,
+			HttpServletRequest request, HttpServletResponse response, String chkId1,Model model){
+		logger.info("로그인 파라미터, chiefemail,cpwd={},{}",cEmail,cPwd);
+		logger.info("로그인 파라미터, chkId={}",chkId1);	
+		ChiefVO chiefVo = new ChiefVO();
+		chiefVo.setC_EMAIL(cEmail);
+		chiefVo.setC_PWD(cPwd);
 		int result=chiefService.loginCheck(chiefVo);
-		
 		logger.info("result={}",result);
 		if(result==chiefService.LOGIN_OK){
-			chiefVo = chiefService.selectcEmail(chiefVo.getC_EMAIL());
+			logger.info("들어는 오니?");
+			ChiefVO chiefVo1 = chiefService.selectcEmail(cEmail);
+			logger.info("chiefVo1={}",chiefVo1);
 			HttpSession session= request.getSession();
+			logger.info("세션ㄴ?");
 			session.setAttribute("cEmail", chiefVo.getC_EMAIL());
 			session.setAttribute("cName", chiefVo.getC_NAME());
 			session.setAttribute("cNo", chiefVo.getC_NO());
 			session.setAttribute("cType", chiefVo.getC_TYPE());
 			session.setAttribute("cPwd", chiefVo.getC_PWD());
+			
 			
 			Cookie ck= new Cookie("ck_cEmail", chiefVo.getC_EMAIL());
 			if(chkId1!=null){
