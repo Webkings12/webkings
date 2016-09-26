@@ -83,21 +83,26 @@ $(document).ready(function(){
 			$("#divreg").css("display","block");
 			$("#mPwd_ok").focus();
 			return false;
+		}else if ($("#certifyChk").val().length<1){
+				alert("인증번호를 받으세요");
+				$("#divreg").css("display","block");
+				$("#aCertify").focus();
+				return false
+		}else if ($("#certify").val().length<1){
+			alert("인증번호를 입력하세요");
+			$("#divreg").css("display","block");
+			$("#certify").focus();
+			return false
+		}else if ($("#certify").val()!=$("#certifyChk").val()){
+			alert("인증번호가 다릅니다");
+			$("#divreg").css("display","block");
+			$("#certify").focus();
+			return false
 		}
 		
 		$("#divreg").css("display","none");
 		
 	});
-	$("#aCertify").click(function() {
-		if(($("#mEmail").val().length<1)){
-			alert("이메일을 입력하세요.");
-			$("#divreg").css("display","block");
-			$("#mEmail").focus();
-			return false
-		}
-	
-	});
-	
 	
 	
 });

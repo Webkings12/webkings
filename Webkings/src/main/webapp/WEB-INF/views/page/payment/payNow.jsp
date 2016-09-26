@@ -13,6 +13,7 @@
 $(document).ready(function(){
 	var cnt=0;
 	$("#pay").click(function(){
+		
 		if($("#sName").val().length<1){
 			alert("쇼핑몰 이름을 적으세요");
 			$("#sName").focus();
@@ -70,9 +71,9 @@ function payment(){
 	    merchant_uid : 'merchant_' + new Date().getTime(),  //주문번호인듯?
 	    name : '쇼핑몰 : '+$("#sName").val(),  //조핑몰
 	    amount : $("#price").val(),  //가격
-	    buyer_email : $("#email").val(),  
-	    buyer_name : $("#name").val(),
-	    buyer_tel : $("#tel").val()
+	    buyer_email : '이메일 : '+$("#email").val(),  
+	    buyer_name : '이름 : '+$("#name").val(),
+	    buyer_tel :'연락처 : '+ $("#tel").val()
 	    /* buyer_addr : $("#address").val(),
 	    buyer_postcode : $("#zipcode").val() */
 	}, function(rsp) {
@@ -145,6 +146,15 @@ function openShop(){
     padding: 5px 0;
     margin: 0;
     overflow: auto;
+}
+.payResultView{
+	/* margin-top:10px;
+	color:#fff;
+	padding: 10px;
+	border-radius: 3px; */
+	
+}
+
 </style>
 </head>
 <body>
@@ -187,11 +197,9 @@ function openShop(){
 		</div>
 	</form>
 	
-	<div id="result">
-	
+	<div id="result"  class="payResultView">
 	</div>
-	<div id="result2" style="text-align: center;">
-	
+	<div id="result2" style="text-align: center;" class="payResultView">
 	</div>
 </div>
 	

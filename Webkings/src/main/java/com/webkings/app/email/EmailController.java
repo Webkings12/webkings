@@ -46,6 +46,7 @@ public class EmailController {
 
 
 			String receiver=mEmail;
+			
 			String sender="admin@Webkings.com";
 
 			logger.info("newpwd={}",newpwd);
@@ -74,13 +75,15 @@ public class EmailController {
 		return "redirect:/page.do";
 	}
 	
-	@RequestMapping("/certify/certifyNo.do")
+	@RequestMapping(value="/certify/certifyNo.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public String certifyNo(@RequestParam String mEmail){
 		logger.info("인증번호 발송 처리 파라미터,mEmail={}",mEmail);
-
-		
-			String certify = "";
+		String certify = "";
+		int count =memberService.selectmCount(mEmail);
+		logger.info("아이디 존재여부,count={}",count);
+		if(count==0){
+			certify = "";
 			for (int i = 1; i <= 6; i++) {
 				// 영어
 				char chPwd=(char)(Math.random()*26+97);
@@ -111,7 +114,10 @@ public class EmailController {
 				e.printStackTrace();
 			}
 			
-			
+		}
+		else if(count==1){
+			certify="이미 존재하는 이메일입니다";
+		}
 		
 		return certify;
 	}
