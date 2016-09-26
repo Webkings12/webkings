@@ -98,7 +98,7 @@ $(document).ready(function() {
 							</a>
 						</li>
 			</c:forEach>
-			</c:if>
+		</c:if>
 </div>
 </div>
 <%@ include file="footer-sec.jsp" %>

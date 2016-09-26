@@ -16,7 +16,7 @@ public class ChiefServiceImpl implements ChiefService{
 		if(pwd==null || pwd.isEmpty()){
 			result=ID_NONE;
 		}else{
-			if(pwd.equals(vo.getC_PWD())){
+			if(pwd.equals(vo.getcPwd())){
 				result=LOGIN_OK;
 			}else{
 				result=PWD_DISAGREE; 

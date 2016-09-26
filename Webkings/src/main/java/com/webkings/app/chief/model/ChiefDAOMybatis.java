@@ -1,11 +1,14 @@
 package com.webkings.app.chief.model;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ChiefDAOMybatis extends SqlSessionDaoSupport implements ChiefDAO {
 	private String namespace="com.mybatis.mapper.oracle.chief";
+	private static final Logger logger = LoggerFactory.getLogger(ChiefDAOMybatis.class);
 
 	@Override
 	public String loginCheck(ChiefVO vo) {
@@ -24,6 +27,7 @@ public class ChiefDAOMybatis extends SqlSessionDaoSupport implements ChiefDAO {
 
 	@Override
 	public ChiefVO selectcEmail(String cEmail) {
-		return getSqlSession().selectOne(namespace+".selectcChiefEmail",cEmail);
+		logger.info("cmail={}",cEmail);
+		return getSqlSession().selectOne(namespace+".selectcChiefEmail", cEmail);
 	}
 }

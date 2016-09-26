@@ -91,7 +91,7 @@ public class ChiefController {
 		
 		shopVO.setS_Bimage(fileName);
 		shopVO.setS_Simage(fileName);
-		int C_NO = chiefVO.getC_NO();
+		int C_NO = chiefVO.getcNo();
 		shopVO.setC_NO(C_NO);
 		
 		int countChief = chiefService.insertChief(chiefVO);
@@ -125,26 +125,25 @@ public class ChiefController {
 		logger.info("로그인 파라미터, chiefemail,cpwd={},{}",cEmail,cPwd);
 		logger.info("로그인 파라미터, chkId={}",chkId1);	
 		ChiefVO chiefVo = new ChiefVO();
-		chiefVo.setC_EMAIL(cEmail);
-		chiefVo.setC_PWD(cPwd);
+		chiefVo.setcEmail(cEmail);
+		chiefVo.setcPwd(cPwd);
 		int result=chiefService.loginCheck(chiefVo);
 		logger.info("result={}",result);
 		if(result==chiefService.LOGIN_OK){
 			logger.info("들어는 오니?");
 			ChiefVO chiefVo1 = chiefService.selectcEmail(cEmail);
-			logger.info("chiefVo1={}",chiefVo1);
+			logger.info("chiefVo={}", chiefService.selectcEmail(cEmail));
 			HttpSession session= request.getSession();
 			logger.info("세션ㄴ?");
-			session.setAttribute("cEmail", chiefVo.getC_EMAIL());
-			session.setAttribute("cName", chiefVo.getC_NAME());
-			session.setAttribute("cNo", chiefVo.getC_NO());
-			session.setAttribute("cType", chiefVo.getC_TYPE());
-			session.setAttribute("cPwd", chiefVo.getC_PWD());
+			session.setAttribute("cEmail", chiefVo1.getcEmail());
+			session.setAttribute("cName", chiefVo1.getcName());
+			session.setAttribute("cNo", chiefVo1.getcNo());
+			session.setAttribute("cType", chiefVo1.getcType());
+			session.setAttribute("cPwd", chiefVo1.getcType());
 			
-			
-			Cookie ck= new Cookie("ck_cEmail", chiefVo.getC_EMAIL());
+			Cookie ck= new Cookie("ck_cEmail", chiefVo.getcEmail());
 			if(chkId1!=null){
-				logger.info("ckckckckck  chiefVo.getcEmail()={}", chiefVo.getC_EMAIL());
+				logger.info("ckckckckck  chiefVo.getcEmail()={}", chiefVo.getcEmail());
 				ck.setMaxAge(100*24*60*60); 
 				response.addCookie(ck);
 			}else{

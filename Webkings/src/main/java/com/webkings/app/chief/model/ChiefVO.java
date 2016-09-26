@@ -3,113 +3,84 @@ package com.webkings.app.chief.model;
 import java.sql.Timestamp;
 
 public class ChiefVO {
-	private int C_NO;
-	private String C_NUMBER;
-	private String C_EMAIL;
-	private String C_PWD;
-	private String C_NAME;
-	private String C_CNAME;
-	private String C_ADD;
-	private String C_REGDATE;
-	private Timestamp C_CHGDATE;
-	private String C_TYPE;
-	
-	public int getC_NO() {
-		return C_NO;
+	private int cNo;
+	private String cNumber;
+	private String cEmail;
+	private String cPwd;
+	private String cName;
+	private String cCname;
+	private String cAdd;
+	private String cRegdate;
+	private Timestamp cChgdate;
+	private String cType;
+	public int getcNo() {
+		return cNo;
 	}
-
-	public void setC_NO(int c_NO) {
-		C_NO = c_NO;
+	public void setcNo(int cNo) {
+		this.cNo = cNo;
 	}
-
-	public ChiefVO() {
-		super();
+	public String getcNumber() {
+		return cNumber;
 	}
-
-	public String getC_NUMBER() {
-		return C_NUMBER;
+	public void setcNumber(String cNumber) {
+		this.cNumber = cNumber;
 	}
-
-	public void setC_NUMBER(String c_NUMBER) {
-		C_NUMBER = c_NUMBER;
+	public String getcEmail() {
+		return cEmail;
 	}
-
-	public String getC_EMAIL() {
-		return C_EMAIL;
+	public void setcEmail(String cEmail) {
+		this.cEmail = cEmail;
 	}
-
-	public void setC_EMAIL(String c_EMAIL) {
-		C_EMAIL = c_EMAIL;
+	public String getcPwd() {
+		return cPwd;
 	}
-
-	public String getC_PWD() {
-		return C_PWD;
+	public void setcPwd(String cPwd) {
+		this.cPwd = cPwd;
 	}
-
-	public void setC_PWD(String c_PWD) {
-		C_PWD = c_PWD;
+	public String getcName() {
+		return cName;
 	}
-
-	public String getC_NAME() {
-		return C_NAME;
+	public void setcName(String cName) {
+		this.cName = cName;
 	}
-
-	public void setC_NAME(String c_NAME) {
-		C_NAME = c_NAME;
+	public String getcCname() {
+		return cCname;
 	}
-
-	public String getC_CNAME() {
-		return C_CNAME;
+	public void setcCname(String cCname) {
+		this.cCname = cCname;
 	}
-
-	public void setC_CNAME(String c_CNAME) {
-		C_CNAME = c_CNAME;
+	public String getcAdd() {
+		return cAdd;
 	}
-
-	public String getC_ADD() {
-		return C_ADD;
+	public void setcAdd(String cAdd) {
+		this.cAdd = cAdd;
 	}
-
-	public void setC_ADD(String c_ADD) {
-		C_ADD = c_ADD;
+	public String getcRegdate() {
+		return cRegdate;
 	}
-
-	public String getC_REGDATE() {
-		return C_REGDATE;
+	public void setcRegdate(String cRegdate) {
+		this.cRegdate = cRegdate;
 	}
-
-	public void setC_REGDATE(String c_REGDATE) {
-		C_REGDATE = c_REGDATE;
+	public Timestamp getcChgdate() {
+		return cChgdate;
 	}
-
-	public Timestamp getC_CHGDATE() {
-		return C_CHGDATE;
+	public void setcChgdate(Timestamp cChgdate) {
+		this.cChgdate = cChgdate;
 	}
-
-	public void setC_CHGDATE(Timestamp c_CHGDATE) {
-		C_CHGDATE = c_CHGDATE;
+	public String getcType() {
+		return cType;
 	}
-
-	public String getC_TYPE() {
-		return C_TYPE;
+	public void setcType(String cType) {
+		this.cType = cType;
 	}
-
-	public void setC_TYPE(String c_TYPE) {
-		C_TYPE = c_TYPE;
+	@Override
+	public String toString() {
+		return "ChiefVO [cNo=" + cNo + ", cNumber=" + cNumber + ", cEmail=" + cEmail + ", cPwd=" + cPwd + ", cName="
+				+ cName + ", cCname=" + cCname + ", cAdd=" + cAdd + ", cRegdate=" + cRegdate + ", cChgdate=" + cChgdate
+				+ ", cType=" + cType + "]";
 	}
 	
-	public ChiefVO(int c_NO, String c_NUMBER, String c_EMAIL, String c_PWD, String c_NAME, String c_CNAME, String c_ADD,
-			String c_REGDATE, Timestamp c_CHGDATE, String c_TYPE) {
-		super();
-		C_NO = c_NO;
-		C_NUMBER = c_NUMBER;
-		C_EMAIL = c_EMAIL;
-		C_PWD = c_PWD;
-		C_NAME = c_NAME;
-		C_CNAME = c_CNAME;
-		C_ADD = c_ADD;
-		C_REGDATE = c_REGDATE;
-		C_CHGDATE = c_CHGDATE;
-		C_TYPE = c_TYPE;
-	}
+	
+	
+	
 }

@@ -2,16 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.mybatis.mapper.oracle.chief">	
+<mapper namespace="com.mybatis.mapper.oracle.chief">
 	<select id="selectChiefPwd" parameterType="ChiefVO"
 		resultType="string">
 		select C_Pwd from chief
-		where c_Email=#{C_EMAIL} and c_type=1
+		where c_Email=#{cEmail} and c_type=1
 	</select>
-	<select id="selectcChiefEmail" parameterType="String" resultType="ChiefVO" >
+	
+	<select id="selectcChiefEmail" parameterType="String" resultType="ChiefVO">
 		select * from chief
-		where c_email=#{cEmail}
+		where 1=1
+		and c_email = #{cEmail}
 	</select>
+	
 	<select id="selectChiefId" parameterType="String" resultType="int" >
 		select count(*) from chief
 		 where 1 = 1
@@ -23,6 +26,6 @@
 			select chief_seq.nextval from dual
 		</selectKey>
 			insert into chief(  C_NO,    C_NUMBER,    C_EMAIL,    C_PWD,    C_NAME,    C_CNAME,    C_ADD,    C_REGDATE,    C_CHGDATE,    C_TYPE) 
-			           values(#{cNo},  #{C_NUMBER}, #{C_EMAIL}, #{C_PWD}, #{C_NAME}, #{C_CNAME}, #{C_ADD}, #{C_REGDATE}, #{C_CHGDATE}, #{C_TYPE})
+			           values(#{cNo},  #{cNumber}, #{cEmail}, #{cPwd}, #{cName}, #{cCname}, #{cAdd}, #{cRegdate}, #{cChgdate}, #{cType})
 	</insert>
 </mapper>
