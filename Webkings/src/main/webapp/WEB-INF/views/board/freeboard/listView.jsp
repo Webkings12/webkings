@@ -107,7 +107,7 @@ function pageProc(curPage){
 						 	 	</c:if>
 					 	 		>
 					 	 		<c:if test="${!empty vo.bFilename }">
-			 	 					<li style="display: none;position: absolute;"><img id="imageView" src="<c:url value='/fBoardImages/${vo.bFilename }'/>"  ></li>
+			 	 					<li style="display: none;position: absolute;left: 30%;"><img id="imageView" src="<c:url value='/fBoardImages/${vo.bFilename }'/>"  ></li>
 			 	 				</c:if>
 			 	 			</ul>
 			 	 	</td>

@@ -5,6 +5,7 @@
 		margin: 0 auto;
 		width: 700px;
 		text-align: center;
+		margin-bottom: 200px;
 }
 .divList2{
 		margin: 0 auto;
@@ -358,4 +359,8 @@ img, fieldset {
 }
 #imageView{
 	max-width: 300px;
+}
+div.body-sec>div.in-sec>div{
+	margin-bottom: 0;
+	
 }
