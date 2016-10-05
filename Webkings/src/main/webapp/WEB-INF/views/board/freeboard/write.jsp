@@ -70,7 +70,7 @@
 </script>
 
 
-<div class="divFrm2 topMargin">
+<div class="divFrm2 topMargin writeFm">
 		
 	<form id="write_form" method="post" name="write_form" action="<c:url value='/freeboard/write.do'/>" enctype="multipart/form-data" >
 
