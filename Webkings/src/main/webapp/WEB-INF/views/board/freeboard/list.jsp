@@ -42,10 +42,10 @@ $(document).ready(function(){
 		});
 	
 	$("ul").hover(function(){
-		$(this).find("li").css("display","block");
+		$(this).find("span").css("display","block");
 			
 	}, function(){
-		$(this).find("li").css("display","none");
+		$(this).find("span").css("display","none");
 	});
 });
 function pageProc(curPage){
@@ -141,7 +141,7 @@ function pageProc(curPage){
 						 	 	</c:if>
 					 	 		>
 					 	 		<c:if test="${!empty vo.bFilename }">
-			 	 					<li style="display: none;position: absolute;left: 30%;"><img id="imageView" src="<c:url value='/fBoardImages/${vo.bFilename }'/>"  ></li>
+			 	 					<span style="display: none;position: absolute;left: 30%;"><img id="imageView" src="<c:url value='/fBoardImages/${vo.bFilename }'/>"  ></span>
 			 	 				</c:if>
 			 	 			</ul>
 			 	 	</td>
